@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "التحليلات - TaskBoard"
+  },
+  "header": {
+    "title": "التقرير التحليلي"
+  },
+  "tabs": {
+    "overview": "نظرة عامة",
+    "financial": "المالية",
+    "projects": "المشاريع",
+    "team": "الفريق",
+    "trends": "الاتجاهات"
+  },
+  "projects": {
+    "title": "المشاريع",
+    "projectName": "اسم المشروع",
+    "projectHealth": "صحة المشاريع",
+    "projectStatusDistribution": "توزيع الحالة"
+  },
+  "team": {
+    "title": "أداء الفريق",
+    "memberName": "اسم العضو",
+    "details": "تفاصيل أداء الفريق",
+    "completedTasks": "المهام المكتملة",
+    "performance": "أداء الفريق"
+  },
+  "trends": {
+    "title": "اتجاهات المهام",
+    "byStatus": "حسب الحالة",
+    "byPriority": "حسب الأولوية",
+    "dateRange": "نطاق التاريخ",
+    "createdTasks": "المهام المنشأة",
+    "summary": "ملخص الاتجاهات"
+  },
+  "labels": {
+    "tasksByStatus": "المهام حسب الحالة",
+    "tasks": "المهام",
+    "percentage": "النسبة المئوية",
+    "noData": "لا توجد بيانات متاحة"
+  },
+  "dateRange": {
+    "all": "كل الوقت",
+    "1d": "آخر 24 ساعة",
+    "7d": "آخر 7 أيام",
+    "30d": "آخر 30 يوماً",
+    "90d": "آخر 90 يوماً"
+  },
+  "actions": {
+    "export": "تصدير التقرير"
+  },
+  "filters": {
+    "allProjects": "كل المشاريع",
+    "byProject": "تصفية حسب المشروع"
+  },
+  "messages": {
+    "success": {
+      "exported": "تم تصدير التقرير بنجاح"
+    },
+    "error": {
+      "fetchFailed": "فشل تحميل بيانات التحليلات"
+    }
+  },
+  "financial": {
+    "title": "النظرة المالية",
+    "byProject": "التوزيع حسب المشروع",
+    "byMember": "التوزيع حسب العضو",
+    "projectsWithBudget": "المشاريع بميزانية",
+    "paidMembers": "الأعضاء المدفوعون",
+    "noData": "لا توجد بيانات مالية متاحة",
+    "details": "تفاصيل التوزيع المالي",
+    "nameLabel": "الاسم",
+    "totalLabel": "الإجمالي",
+    "projectTotal": "إجمالي المشروع"
+  }
+}

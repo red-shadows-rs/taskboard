@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "title": "Profile - TaskBoard"
+  },
+  "form": {
+    "fields": {
+      "name": "Name",
+      "email": "Email Address"
+    }
+  },
+  "password": {
+    "fields": {
+      "current": "Current Password",
+      "new": "New Password",
+      "confirm": "Confirm New Password"
+    }
+  },
+  "messages": {
+    "success": {
+      "profileUpdated": "Profile updated successfully",
+      "passwordChanged": "Password changed successfully"
+    },
+    "error": {
+      "updateFailed": "Failed to update profile",
+      "passwordChangeFailed": "Failed to change password",
+      "passwordMismatch": "Passwords do not match",
+      "nameTooShort": "Name must be at least 2 characters",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "currentPasswordRequired": "Current password is required"
+    }
+  }
+}

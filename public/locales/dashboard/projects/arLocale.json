@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "المشاريع - TaskBoard"
+  },
+  "header": {
+    "title": "المشاريع"
+  },
+  "filters": {
+    "search": "بحث عن المشاريع..."
+  },
+  "list": {
+    "noProjects": "لا توجد مشاريع",
+    "createButton": "إنشاء مشروع"
+  },
+  "card": {
+    "title": "العنوان",
+    "members": "الأعضاء",
+    "endDate": "تاريخ النهاية",
+    "actions": {
+      "export": "تصدير التقرير"
+    }
+  },
+  "pdf": {
+    "title": "تقرير المشروع",
+    "sectionTitle": "تقرير القسم"
+  },
+  "startDate": "تاريخ البداية",
+  "teamMembers": "أعضاء الفريق",
+  "form": {
+    "fields": {
+      "titleEn": "العنوان (English)",
+      "titleAr": "العنوان (عربي)",
+      "status": "الحالة",
+      "startDate": "تاريخ البداية",
+      "endDate": "تاريخ النهاية",
+      "teamMembers": "أعضاء الفريق"
+    },
+    "labels": {
+      "selectColor": "اختر اللون",
+      "members": "أعضاء"
+    }
+  },
+  "placeholders": {
+    "selectStartDate": "اختر تاريخ البداية",
+    "selectEndDate": "اختر تاريخ النهاية"
+  },
+  "modals": {
+    "create": {
+      "title": "إنشاء مشروع جديد",
+      "description": "إضافة مشروع جديد للفريق"
+    },
+    "edit": {
+      "title": "تعديل المشروع",
+      "description": "تحديث بيانات المشروع"
+    },
+    "delete": {
+      "title": "حذف المشروع",
+      "description": "هل أنت متأكد من حذف هذا المشروع؟"
+    }
+  },
+  "status": {
+    "label": "الحالة",
+    "planning": "تخطيط",
+    "active": "نشط",
+    "completed": "مكتمل",
+    "on_hold": "معلق"
+  },
+  "messages": {
+    "success": {
+      "created": "تم إنشاء المشروع بنجاح",
+      "updated": "تم تحديث المشروع بنجاح",
+      "deleted": "تم حذف المشروع بنجاح",
+      "reportGenerated": "تم إنشاء التقرير بنجاح"
+    },
+    "error": {
+      "fetchFailed": "فشل تحميل المشاريع",
+      "createFailed": "فشل إنشاء المشروع",
+      "updateFailed": "فشل تحديث المشروع",
+      "deleteFailed": "فشل حذف المشروع",
+      "exportFailed": "فشل تصدير التقرير"
+    }
+  },
+  "validation": {
+    "titleMinEn": "يجب أن يتكون العنوان الإنجليزي من 3 أحرف على الأقل",
+    "titleMinAr": "يجب أن يتكون العنوان العربي من 3 أحرف على الأقل"
+  }
+}

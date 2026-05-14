@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "title": "الملف الشخصي - TaskBoard"
+  },
+  "form": {
+    "fields": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني"
+    }
+  },
+  "password": {
+    "fields": {
+      "current": "كلمة المرور الحالية",
+      "new": "كلمة المرور الجديدة",
+      "confirm": "تأكيد كلمة المرور الجديدة"
+    }
+  },
+  "messages": {
+    "success": {
+      "profileUpdated": "تم تحديث الملف الشخصي بنجاح",
+      "passwordChanged": "تم تغيير كلمة المرور بنجاح"
+    },
+    "error": {
+      "updateFailed": "فشل تحديث الملف الشخصي",
+      "passwordChangeFailed": "فشل تغيير كلمة المرور",
+      "passwordMismatch": "كلمات المرور غير متطابقة",
+      "nameTooShort": "يجب أن يتكون الاسم من حرفين على الأقل",
+      "passwordTooShort": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+      "currentPasswordRequired": "كلمة المرور الحالية مطلوبة"
+    }
+  }
+}

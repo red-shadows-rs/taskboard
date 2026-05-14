@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "الفريق - TaskBoard"
+  },
+  "filters": {
+    "role": "تصفية حسب الدور",
+    "allRoles": "كل الأدوار"
+  },
+  "list": {
+    "search": "بحث عن أعضاء الفريق...",
+    "addButton": "إضافة عضو",
+    "noMembers": "لا يوجد أعضاء"
+  },
+  "form": {
+    "fields": {
+      "name": "الاسم",
+      "email": "البريد",
+      "password": "كلمة المرور",
+      "role": "الدور"
+    },
+    "actions": {
+      "create": "إنشاء"
+    },
+    "labels": {
+      "memberName": "الاسم",
+      "memberEmail": "البريد الإلكتروني"
+    }
+  },
+  "placeholders": {
+    "selectRole": "اختر الدور",
+    "selectMembers": "اختر الأعضاء",
+    "leaveBlank": "اتركها فارغة للإبقاء على الحالية"
+  },
+  "modals": {
+    "create": {
+      "title": "إضافة عضو جديد",
+      "description": "إضافة عضو جديد للفريق"
+    },
+    "edit": {
+      "title": "تعديل العضو",
+      "description": "تحديث بيانات العضو"
+    },
+    "delete": {
+      "title": "حذف العضو",
+      "description": "هل أنت متأكد من حذف هذا العضو؟"
+    }
+  },
+  "messages": {
+    "success": {
+      "added": "تم إضافة العضو بنجاح",
+      "updated": "تم تحديث العضو بنجاح",
+      "deleted": "تم حذف العضو بنجاح"
+    },
+    "error": {
+      "fetchFailed": "فشل تحميل المستخدمين",
+      "addFailed": "فشل إضافة العضو",
+      "updateFailed": "فشل تحديث العضو",
+      "deleteFailed": "فشل حذف العضو"
+    }
+  }
+}

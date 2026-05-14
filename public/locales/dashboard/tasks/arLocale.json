@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "المهام - TaskBoard"
+  },
+  "header": {
+    "title": "المهام"
+  },
+  "sections": {
+    "title": "الأقسام"
+  },
+  "table": {
+    "title": "المهام"
+  },
+  "filters": {
+    "search": "بحث عن المهام...",
+    "searchSections": "بحث عن الأقسام..."
+  },
+  "list": {
+    "noTasks": "لا توجد مهام بعد",
+    "createButton": "إنشاء مهمة",
+    "editSection": "تعديل القسم",
+    "createSection": "إنشاء قسم",
+    "actionItems": "المهام",
+    "noTags": "لا توجد وسوم",
+    "section": "القسم",
+    "assigned": "المكلفين"
+  },
+  "card": {
+    "title": "العنوان",
+    "description": "الوصف",
+    "status": "الحالة",
+    "priority": "الأولوية",
+    "price": "السعر",
+    "assignee": "المكلفين",
+    "dueDate": "تاريخ الاستحقاق",
+    "createdAt": "تاريخ الإنشاء",
+    "tags": "الوسوم",
+    "attachments": "المرفقات"
+  },
+  "priority": {
+    "label": "الأولوية",
+    "low": "منخفضة",
+    "medium": "متوسطة",
+    "high": "عالية",
+    "urgent": "عاجلة"
+  },
+  "pdf": {
+    "title": "تقرير المهمة"
+  },
+  "form": {
+    "field": "الحقل",
+    "value": "القيمة",
+    "fields": {
+      "title": "العنوان",
+      "titleEn": "العنوان (English)",
+      "titleAr": "العنوان (عربي)",
+      "descriptionEn": "الوصف (English)",
+      "descriptionAr": "الوصف (عربي)",
+      "status": "الحالة",
+      "assignedTo": "إسناد إلى",
+      "dueDate": "تاريخ الاستحقاق",
+      "createdAt": "تاريخ الإنشاء",
+      "tags": "الوسوم",
+      "addTag": "الوسم",
+      "attachments": "المرفقات"
+    },
+    "upload": {
+      "click": "اضغط للرفع",
+      "dragDrop": "أو قم بالسحب والإفلات",
+      "fileTypes": "PNG, JPG, GIF"
+    },
+    "actions": {
+      "addMore": "إضافة المزيد"
+    }
+  },
+  "placeholders": {
+    "selectStatus": "اختر الحالة",
+    "selectPriority": "اختر الأولوية",
+    "selectMembers": "اختر الأعضاء",
+    "addTag": "اختر وسم",
+    "selectDate": "اختر التاريخ"
+  },
+  "modals": {
+    "create": {
+      "title": "إنشاء مهمة جديدة",
+      "description": "أضف مهمة جديدة للمشروع"
+    },
+    "edit": {
+      "title": "تعديل المهمة",
+      "description": "تحديث بيانات المهمة"
+    },
+    "delete": {
+      "title": "حذف المهمة",
+      "description": "هل أنت متأكد من حذف هذه المهمة؟"
+    },
+    "createSection": {
+      "title": "إنشاء قسم جديد",
+      "description": "أضف قسماً لتنظيم مهامك"
+    },
+    "editSection": {
+      "title": "تعديل القسم",
+      "description": "تحديث بيانات القسم"
+    },
+    "deleteSection": {
+      "title": "حذف القسم",
+      "description": "هل أنت متأكد من حذف هذا القسم؟"
+    }
+  },
+  "messages": {
+    "success": {
+      "created": "تم إنشاء المهمة بنجاح",
+      "updated": "تم تحديث المهمة بنجاح",
+      "deleted": "تم حذف المهمة بنجاح",
+      "reportGenerated": "تم إنشاء التقرير بنجاح"
+    },
+    "error": {
+      "fetchFailed": "فشل تحميل المهام",
+      "createFailed": "فشل إنشاء المهمة",
+      "updateFailed": "فشل تحديث المهمة",
+      "deleteFailed": "فشل حذف المهمة",
+      "uploadFailed": "فشل رفع الصورة",
+      "exportFailed": "فشل تصدير التقرير"
+    }
+  },
+  "validation": {
+    "titleMinEn": "يجب أن يتكون العنوان الإنجليزي من 3 أحرف على الأقل",
+    "titleMinAr": "يجب أن يتكون العنوان العربي من 3 أحرف على الأقل",
+    "descriptionMin": "يجب أن يتكون الوصف من 10 أحرف على الأقل"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "Projects - TaskBoard"
+  },
+  "header": {
+    "title": "Projects"
+  },
+  "filters": {
+    "search": "Search projects..."
+  },
+  "list": {
+    "noProjects": "No projects yet",
+    "createButton": "Create Project"
+  },
+  "card": {
+    "title": "Title",
+    "members": "Members",
+    "endDate": "End Date",
+    "actions": {
+      "export": "Export Report"
+    }
+  },
+  "pdf": {
+    "title": "Project Report",
+    "sectionTitle": "Section Report"
+  },
+  "startDate": "Start Date",
+  "teamMembers": "Team Members",
+  "form": {
+    "fields": {
+      "titleEn": "Title (English)",
+      "titleAr": "Title (Arabic)",
+      "status": "Status",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "teamMembers": "Team Members"
+    },
+    "labels": {
+      "selectColor": "Select color",
+      "members": "Members"
+    }
+  },
+  "placeholders": {
+    "selectStartDate": "Select start date",
+    "selectEndDate": "Select end date"
+  },
+  "modals": {
+    "create": {
+      "title": "Create New Project",
+      "description": "Add a new project to the team"
+    },
+    "edit": {
+      "title": "Edit Project",
+      "description": "Update project details"
+    },
+    "delete": {
+      "title": "Delete Project",
+      "description": "Are you sure you want to delete this project?"
+    }
+  },
+  "status": {
+    "label": "Status",
+    "planning": "Planning",
+    "active": "Active",
+    "completed": "Completed",
+    "on_hold": "On Hold"
+  },
+  "messages": {
+    "success": {
+      "created": "Project created successfully",
+      "updated": "Project updated successfully",
+      "deleted": "Project deleted successfully",
+      "reportGenerated": "Report generated successfully"
+    },
+    "error": {
+      "fetchFailed": "Failed to fetch projects",
+      "createFailed": "Failed to create project",
+      "updateFailed": "Failed to update project",
+      "deleteFailed": "Failed to delete project",
+      "exportFailed": "Failed to export PDF"
+    }
+  },
+  "validation": {
+    "titleMinEn": "English title must be at least 3 characters",
+    "titleMinAr": "Arabic title must be at least 3 characters"
+  }
+}

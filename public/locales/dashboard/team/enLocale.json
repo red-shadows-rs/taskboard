@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "Team - TaskBoard"
+  },
+  "filters": {
+    "role": "Filter by role",
+    "allRoles": "All Roles"
+  },
+  "list": {
+    "search": "Search team members...",
+    "addButton": "Add Member",
+    "noMembers": "No members yet"
+  },
+  "form": {
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "role": "Role"
+    },
+    "actions": {
+      "create": "Create"
+    },
+    "labels": {
+      "memberName": "Name",
+      "memberEmail": "Email"
+    }
+  },
+  "placeholders": {
+    "selectRole": "Select role",
+    "selectMembers": "Select members",
+    "leaveBlank": "Leave blank to keep current"
+  },
+  "modals": {
+    "create": {
+      "title": "Add New Member",
+      "description": "Add a new member to the team"
+    },
+    "edit": {
+      "title": "Edit Member",
+      "description": "Update member details"
+    },
+    "delete": {
+      "title": "Delete Member",
+      "description": "Are you sure you want to delete this member?"
+    }
+  },
+  "messages": {
+    "success": {
+      "added": "Member added successfully",
+      "updated": "Member updated successfully",
+      "deleted": "Member deleted successfully"
+    },
+    "error": {
+      "fetchFailed": "Failed to fetch users",
+      "addFailed": "Failed to add member",
+      "updateFailed": "Failed to update member",
+      "deleteFailed": "Failed to delete member"
+    }
+  }
+}

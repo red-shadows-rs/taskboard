@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Analytics - TaskBoard"
+  },
+  "header": {
+    "title": "Analytics Report"
+  },
+  "tabs": {
+    "overview": "Overview",
+    "financial": "Financial",
+    "projects": "Projects",
+    "team": "Team",
+    "trends": "Trends"
+  },
+  "projects": {
+    "title": "Projects",
+    "projectName": "Project Name",
+    "projectHealth": "Project Health",
+    "projectStatusDistribution": "Status Distribution"
+  },
+  "team": {
+    "title": "Team Performance",
+    "memberName": "Member Name",
+    "details": "Team Performance Details",
+    "completedTasks": "Completed Tasks",
+    "performance": "Team Performance"
+  },
+  "trends": {
+    "title": "Task Trends",
+    "byStatus": "By Status",
+    "byPriority": "By Priority",
+    "dateRange": "Date Range",
+    "createdTasks": "Created Tasks",
+    "summary": "Trends Summary"
+  },
+  "labels": {
+    "tasksByStatus": "Tasks by Status",
+    "tasks": "Tasks",
+    "percentage": "Percentage",
+    "noData": "No data available"
+  },
+  "dateRange": {
+    "all": "All Time",
+    "1d": "Last 24 Hours",
+    "7d": "Last 7 Days",
+    "30d": "Last 30 Days",
+    "90d": "Last 90 Days"
+  },
+  "actions": {
+    "export": "Export Report"
+  },
+  "filters": {
+    "allProjects": "All Projects",
+    "byProject": "Filter by Project"
+  },
+  "messages": {
+    "success": {
+      "exported": "Report exported successfully"
+    },
+    "error": {
+      "fetchFailed": "Failed to load analytics data"
+    }
+  },
+  "financial": {
+    "title": "Financial Overview",
+    "byProject": "Distribution by Project",
+    "byMember": "Distribution by Member",
+    "projectsWithBudget": "Projects with Budget",
+    "paidMembers": "Paid Members",
+    "noData": "No financial data available",
+    "details": "Financial Distribution Details",
+    "nameLabel": "Name",
+    "totalLabel": "Total",
+    "projectTotal": "Project Total"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "appName": "TaskBoard",
+  "appDescription": "A task management dashboard",
+  "nav": {
+    "analytics": "Analytics",
+    "team": "Team",
+    "tasks": "Tasks",
+    "projects": "Projects",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "role": {
+    "leader": "Leader",
+    "member": "Member",
+    "client": "Client"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "Toggle Theme"
+  },
+  "language": {
+    "english": "English",
+    "arabic": "العربية",
+    "toggle": "Toggle Language"
+  },
+  "button": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "create": "Create",
+    "update": "Update",
+    "delete": "Delete",
+    "edit": "Edit",
+    "clear": "Clear",
+    "downloadPDF": "Download PDF"
+  },
+  "notFound": {
+    "title": "Not Found - TaskBoard",
+    "heading": "404",
+    "subheading": "Page Not Found",
+    "description": "The page you are looking for doesn't exist or has been moved.",
+    "returnHome": "Return Home"
+  },
+  "errorPage": {
+    "title": "Internal Server Error - TaskBoard",
+    "description": "Something went wrong!",
+    "defaultMessage": "An unexpected error occurred. Please try again.",
+    "tryAgain": "Try Again",
+    "returnHome": "Return Home"
+  },
+  "apiErrors": {
+    "failedToUpdateSection": "Failed to update section",
+    "failedToUpdateProjectOrder": "Failed to update project order",
+    "failedToUpdateSectionOrder": "Failed to update section order",
+    "failedToMoveTask": "Failed to move task"
+  },
+  "footer": {
+    "copyright": "© {year} TaskBoard. All rights reserved."
+  },
+  "stats": {
+    "totalTasks": "Total Tasks",
+    "completedTasks": "Completed Tasks",
+    "pendingTasks": "Pending Tasks",
+    "inProgressTasks": "In Progress Tasks",
+    "overdueTasks": "Overdue Tasks",
+    "totalProjects": "Total Projects",
+    "activeProjects": "Active Projects",
+    "teamMembers": "Team Members",
+    "completionRate": "Completion Rate",
+    "totalPrice": "Total Price",
+    "tasks": "Tasks",
+    "completed": "Completed",
+    "inProgress": "In Progress"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address"
+  },
+  "status": {
+    "label": "Status",
+    "todo": "To Do",
+    "in_progress": "In Progress",
+    "in_review": "In Review",
+    "done": "Done"
+  }
+}

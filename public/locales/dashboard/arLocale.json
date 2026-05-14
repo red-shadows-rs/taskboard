@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "title": "لوحة التحكم - TaskBoard"
+  },
+  "filters": {
+    "search": "بحث...",
+    "project": "تصفية حسب المشروع",
+    "status": "تصفية حسب الحالة",
+    "allProjects": "كل المشاريع",
+    "allStatuses": "كل الحالات"
+  }
+}

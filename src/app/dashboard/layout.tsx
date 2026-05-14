@@ -1,0 +1,24 @@
+import { redirect } from "next/navigation";
+import { getSession } from "@/app/api/auth/utilsAuth";
+import { Footer } from "@/components/layouts/footerLayout";
+import { Navbar } from "@/components/layouts/navbarLayout";
+
+export default async function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const user = await getSession();
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-background">
+      <Navbar user={user} />
+      {children}
+      <Footer />
+    </div>
+  );
+}

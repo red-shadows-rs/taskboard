@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "title": "Login - TaskBoard"
+  },
+  "header": {
+    "title": "Welcome Back",
+    "subtitle": "Please sign in to continue"
+  },
+  "form": {
+    "fields": {
+      "email": "Email Address",
+      "password": "Password"
+    },
+    "actions": {
+      "submit": "Login",
+      "loading": "Logging in..."
+    }
+  },
+  "messages": {
+    "error": {
+      "invalidPassword": "Password must be at least 6 characters",
+      "invalidCredentials": "Invalid email or password",
+      "login": "Login failed"
+    }
+  }
+}

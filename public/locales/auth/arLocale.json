@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "title": "تسجيل الدخول - TaskBoard"
+  },
+  "header": {
+    "title": "مرحباً بك",
+    "subtitle": "سجل دخولك للمتابعة"
+  },
+  "form": {
+    "fields": {
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور"
+    },
+    "actions": {
+      "submit": "دخول",
+      "loading": "جاري تسجيل الدخول..."
+    }
+  },
+  "messages": {
+    "error": {
+      "invalidPassword": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+      "invalidCredentials": "بيانات الدخول غير صحيحة",
+      "login": "فشل تسجيل الدخول"
+    }
+  }
+}

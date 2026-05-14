@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "title": "Dashboard - TaskBoard"
+  },
+  "filters": {
+    "search": "Search...",
+    "project": "Filter by Project",
+    "status": "Filter by Status",
+    "allProjects": "All Projects",
+    "allStatuses": "All Statuses"
+  }
+}

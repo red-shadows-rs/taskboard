@@ -1,0 +1,87 @@
+{
+  "appName": "TaskBoard",
+  "appDescription": "لوحة تحكم لإدارة المهام",
+  "nav": {
+    "analytics": "التحليلات",
+    "team": "الفريق",
+    "tasks": "المهام",
+    "projects": "المشاريع",
+    "profile": "الملف الشخصي",
+    "logout": "تسجيل الخروج"
+  },
+  "role": {
+    "leader": "قائد",
+    "member": "عضو",
+    "client": "عميل"
+  },
+  "theme": {
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام",
+    "toggle": "تغيير الثيم"
+  },
+  "language": {
+    "english": "English",
+    "arabic": "العربية",
+    "toggle": "تغيير اللغة"
+  },
+  "button": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "create": "إنشاء",
+    "update": "تحديث",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "clear": "مسح",
+    "downloadPDF": "تصدير التقرير"
+  },
+  "notFound": {
+    "title": "غير موجود - TaskBoard",
+    "heading": "404",
+    "subheading": "الصفحة غير موجودة",
+    "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "returnHome": "العودة للصفحة الرئيسية"
+  },
+  "errorPage": {
+    "title": "خطأ داخلي في الخادم - TaskBoard",
+    "description": "حدث خطأ ما!",
+    "defaultMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+    "tryAgain": "حاول مرة أخرى",
+    "returnHome": "العودة للصفحة الرئيسية"
+  },
+  "apiErrors": {
+    "failedToUpdateSection": "فشل تحديث القسم",
+    "failedToUpdateProjectOrder": "فشل تحديث ترتيب المشروع",
+    "failedToUpdateSectionOrder": "فشل تحديث ترتيب القسم",
+    "failedToMoveTask": "فشل نقل المهمة"
+  },
+  "footer": {
+    "copyright": "© {year} TaskBoard. جميع الحقوق محفوظة."
+  },
+  "stats": {
+    "totalTasks": "إجمالي المهام",
+    "completedTasks": "المهام المكتملة",
+    "pendingTasks": "المهام المتبقية",
+    "inProgressTasks": "المهام قيد التنفيذ",
+    "overdueTasks": "المهام المتأخرة",
+    "totalProjects": "إجمالي المشاريع",
+    "activeProjects": "المشاريع النشطة",
+    "teamMembers": "أعضاء الفريق",
+    "completionRate": "نسبة الإنجاز",
+    "totalPrice": "السعر الإجمالي",
+    "tasks": "المهام",
+    "completed": "مكتملة",
+    "inProgress": "قيد التنفيذ"
+  },
+  "validation": {
+    "required": "هذا الحقل مطلوب",
+    "invalidEmail": "بريد إلكتروني غير صالح"
+  },
+  "status": {
+    "label": "الحالة",
+    "todo": "للعمل",
+    "in_progress": "قيد التنفيذ",
+    "in_review": "قيد المراجعة",
+    "done": "مكتملة"
+  }
+}
