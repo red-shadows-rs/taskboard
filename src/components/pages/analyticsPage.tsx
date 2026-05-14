@@ -77,12 +77,12 @@ export default function Analytics({ user }: AnalyticsProps) {
       if (range === "all") return allTasks;
 
       const cutoffDate = new Date(
-        Date.now() - DATE_RANGE_DAYS[range] * 24 * 60 * 60 * 1000
+        Date.now() - DATE_RANGE_DAYS[range] * 24 * 60 * 60 * 1000,
       );
 
       return allTasks.filter((task) => new Date(task.createdAt) >= cutoffDate);
     },
-    []
+    [],
   );
 
   const filterTasksByProject = useCallback(
@@ -94,20 +94,20 @@ export default function Analytics({ user }: AnalyticsProps) {
         .map((s) => s.id);
 
       return allTasks.filter((task) =>
-        projectSectionIds.includes(task.sectionId)
+        projectSectionIds.includes(task.sectionId),
       );
     },
-    []
+    [],
   );
 
   const filteredTasksByDate = useMemo(
     () => filterTasksByDate(tasks, dateRange),
-    [tasks, dateRange, filterTasksByDate]
+    [tasks, dateRange, filterTasksByDate],
   );
 
   const filteredTasks = useMemo(
     () => filterTasksByProject(filteredTasksByDate, selectedProject, sections),
-    [filteredTasksByDate, selectedProject, sections, filterTasksByProject]
+    [filteredTasksByDate, selectedProject, sections, filterTasksByProject],
   );
 
   const filteredProjects = useMemo(() => {
@@ -167,7 +167,7 @@ export default function Analytics({ user }: AnalyticsProps) {
 
         if (user.role === "member" || user.role === "leader") {
           fetchedTasks = fetchedTasks.filter((task) =>
-            task.assignedTo.includes(user.id)
+            task.assignedTo.includes(user.id),
           );
         }
         setTasks(fetchedTasks);
@@ -181,7 +181,7 @@ export default function Analytics({ user }: AnalyticsProps) {
       if (usersRes.ok) {
         const usersData = await usersRes.json();
         setUsers(
-          (usersData.users || []).filter((u: User) => u.role !== "client")
+          (usersData.users || []).filter((u: User) => u.role !== "client"),
         );
       }
 
@@ -206,7 +206,7 @@ export default function Analytics({ user }: AnalyticsProps) {
       { value: "30d", label: t("dashboard.analytics.dateRange.30d") },
       { value: "90d", label: t("dashboard.analytics.dateRange.90d") },
     ],
-    [t]
+    [t],
   );
 
   const tabsOrder = useMemo(
@@ -214,7 +214,7 @@ export default function Analytics({ user }: AnalyticsProps) {
       language === "ar"
         ? ["trends", "team", "projects", "financial", "overview"]
         : ["overview", "financial", "projects", "team", "trends"],
-    [language]
+    [language],
   );
 
   if (!mounted) return null;
@@ -234,7 +234,9 @@ export default function Analytics({ user }: AnalyticsProps) {
               className="w-full sm:w-[200px]"
               suppressHydrationWarning
             >
-              <SelectValue placeholder={t("dashboard.analytics.filters.dateRange")} />
+              <SelectValue
+                placeholder={t("dashboard.analytics.filters.dateRange")}
+              />
             </SelectTrigger>
             <SelectContent>
               {dateRanges.map((range) => (
@@ -254,7 +256,9 @@ export default function Analytics({ user }: AnalyticsProps) {
               className="w-full sm:w-[200px]"
               suppressHydrationWarning
             >
-              <SelectValue placeholder={t("dashboard.analytics.filters.allProjects")} />
+              <SelectValue
+                placeholder={t("dashboard.analytics.filters.allProjects")}
+              />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">
@@ -326,8 +330,14 @@ export default function Analytics({ user }: AnalyticsProps) {
             <EmptyState message={t("dashboard.analytics.labels.noData")} />
           ) : (
             <>
-              <TeamPerformanceChart users={filteredUsers} tasks={filteredTasks} />
-              <TeamPerformanceTable users={filteredUsers} tasks={filteredTasks} />
+              <TeamPerformanceChart
+                users={filteredUsers}
+                tasks={filteredTasks}
+              />
+              <TeamPerformanceTable
+                users={filteredUsers}
+                tasks={filteredTasks}
+              />
             </>
           )}
         </TabsContent>

@@ -46,10 +46,7 @@ export async function GET(request: NextRequest) {
         : error instanceof Error && error.message.includes("Forbidden")
           ? 403
           : 500;
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status },
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status });
   }
 }
 
@@ -115,9 +112,7 @@ export async function POST(request: NextRequest) {
       updatedAt: new Date().toISOString(),
       order: result.data.order ?? newOrder,
       assigneePrices:
-        user.role === "leader"
-          ? (result.data.assigneePrices ?? [])
-          : [],
+        user.role === "leader" ? (result.data.assigneePrices ?? []) : [],
     });
 
     return NextResponse.json({ task }, { status: 201 });
@@ -128,9 +123,6 @@ export async function POST(request: NextRequest) {
         : error instanceof Error && error.message.includes("Forbidden")
           ? 403
           : 500;
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status },
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status });
   }
 }

@@ -44,10 +44,7 @@ export async function GET(
         : error instanceof Error && error.message.includes("Forbidden")
           ? 403
           : 500;
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status },
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status });
   }
 }
 
@@ -108,10 +105,7 @@ export async function PATCH(
         : error instanceof Error && error.message.includes("Forbidden")
           ? 403
           : 500;
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status },
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status });
   }
 }
 
@@ -139,7 +133,8 @@ export async function DELETE(
         const firstImagePath = task.attachments[0];
         if (firstImagePath) {
           const taskDir = path.dirname(path.join(publicDir, firstImagePath));
-          if (!isPathInside(taskDir, publicDir)) throw new Error("Invalid path");
+          if (!isPathInside(taskDir, publicDir))
+            throw new Error("Invalid path");
           const files = await fs.readdir(taskDir);
           if (files.length === 0) {
             await fs.rmdir(taskDir);
@@ -162,9 +157,6 @@ export async function DELETE(
         : error instanceof Error && error.message.includes("Forbidden")
           ? 403
           : 500;
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status },
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status });
   }
 }

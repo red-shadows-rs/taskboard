@@ -25,9 +25,6 @@ export async function POST(request: Request) {
         : error instanceof Error && error.message.includes("Forbidden")
           ? 403
           : 500;
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status },
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status });
   }
 }

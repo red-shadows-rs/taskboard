@@ -163,23 +163,23 @@ const SectionCard = memo(function SectionCard({
             <div className="flex items-center gap-1">
               {(currentUser.role === "leader" ||
                 currentUser.role === "client") && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-8 w-8 p-0 hover:bg-muted"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (
-                        currentUser.role === "leader" ||
-                        currentUser.role === "client"
-                      ) {
-                        onEdit?.(section);
-                      }
-                    }}
-                    aria-label={t("common.button.edit")}
-                  >
-                    <Edit2 className="h-3 w-3" />
-                  </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 w-8 p-0 hover:bg-muted"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (
+                      currentUser.role === "leader" ||
+                      currentUser.role === "client"
+                    ) {
+                      onEdit?.(section);
+                    }
+                  }}
+                  aria-label={t("common.button.edit")}
+                >
+                  <Edit2 className="h-3 w-3" />
+                </Button>
               )}
             </div>
           )}

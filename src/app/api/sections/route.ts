@@ -33,10 +33,7 @@ export async function GET(request: NextRequest) {
         : error instanceof Error && error.message.includes("Forbidden")
           ? 403
           : 500;
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status },
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status });
   }
 }
 
@@ -82,9 +79,6 @@ export async function POST(request: NextRequest) {
         : error instanceof Error && error.message.includes("Forbidden")
           ? 403
           : 500;
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status },
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status });
   }
 }

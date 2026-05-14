@@ -463,20 +463,23 @@ const KanbanBoard = memo(function KanbanBoard({
               <DroppableColumn column={column}>
                 <Card className="flex flex-col">
                   <CardHeader className={`${column.color} rounded-t-lg`}>
-                  <CardTitle className="flex items-center justify-between text-base text-gray-800 dark:text-gray-100">
-                    {t(column.titleKey)}
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-emerald-700 dark:text-emerald-400 font-medium">
-                        {formatPrice(calculateColumnTotal(columnTasks, column.id), language)}
-                      </span>
-                      <Badge
-                        variant="secondary"
-                        className="dark:bg-gray-700 dark:text-gray-100"
-                      >
-                        {columnTasks.length}
-                      </Badge>
-                    </div>
-                  </CardTitle>
+                    <CardTitle className="flex items-center justify-between text-base text-gray-800 dark:text-gray-100">
+                      {t(column.titleKey)}
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-emerald-700 dark:text-emerald-400 font-medium">
+                          {formatPrice(
+                            calculateColumnTotal(columnTasks, column.id),
+                            language,
+                          )}
+                        </span>
+                        <Badge
+                          variant="secondary"
+                          className="dark:bg-gray-700 dark:text-gray-100"
+                        >
+                          {columnTasks.length}
+                        </Badge>
+                      </div>
+                    </CardTitle>
                   </CardHeader>
 
                   <CardContent className="pt-4 space-y-3 min-h-[200px]">

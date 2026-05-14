@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [4.0.3] - 2026-05-14
+
+### Changed
+
+- **Updated repository links** from `SHADOW-x7/taskboard` to `red-shadows-rs/TaskBoard`
+- **Updated branding** from `RED SHADOWS` to `RED SHADOWS | RS`
+- **Removed ESLint disable comment** for Font Awesome CSS link
+
+---
+
 ## [4.0.2] - 2026-05-14
 
 ### Added
@@ -150,9 +160,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[4.0.2]: https://github.com/SHADOW-x7/taskboard/releases/tag/v4.0.2
-[4.0.1]: https://github.com/SHADOW-x7/taskboard/releases/tag/v4.0.1
-[4.0.0]: https://github.com/SHADOW-x7/taskboard/releases/tag/v4.0.0
-[3.0.0]: https://github.com/SHADOW-x7/taskboard/releases/tag/v3.0.0
-[2.0.0]: https://github.com/SHADOW-x7/taskboard/releases/tag/v2.0.0
-[1.0.0]: https://github.com/SHADOW-x7/taskboard/releases/tag/v1.0.0
+[4.0.3]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.3
+[4.0.2]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.2
+[4.0.1]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.1
+[4.0.0]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.0
+[3.0.0]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v3.0.0
+[2.0.0]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v2.0.0
+[1.0.0]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v1.0.0

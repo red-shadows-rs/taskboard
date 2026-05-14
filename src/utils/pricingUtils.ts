@@ -30,10 +30,7 @@ export function calculateGrandTotal(tasks: Task[]): number {
   return tasks.reduce((sum, t) => sum + getTaskTotal(t), 0);
 }
 
-export function calculateColumnTotal(
-  tasks: Task[],
-  status: string,
-): number {
+export function calculateColumnTotal(tasks: Task[], status: string): number {
   return tasks
     .filter((t) => t.status === status)
     .reduce((sum, t) => sum + getTaskTotal(t), 0);

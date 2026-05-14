@@ -14,17 +14,6 @@ import { checkRateLimit } from "@/app/api/shared/rateLimitShared";
 
 import type { NextRequest } from "next/server";
 
-function isPathInside(target: string, base: string): boolean {
-  const resolvedTarget = path.resolve(target);
-  const resolvedBase = path.resolve(base);
-  const relative = path.relative(resolvedBase, resolvedTarget);
-  return (
-    !relative.startsWith("..") &&
-    !path.isAbsolute(relative) &&
-    resolvedTarget.startsWith(resolvedBase + path.sep)
-  );
-}
-
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
@@ -74,13 +63,17 @@ export async function POST(
     for (const file of files) {
       if (file.size > MAX_FILE_SIZE) {
         return NextResponse.json(
-          { error: `File too large. Max size is ${MAX_FILE_SIZE / 1024 / 1024}MB` },
+          {
+            error: `File too large. Max size is ${MAX_FILE_SIZE / 1024 / 1024}MB`,
+          },
           { status: 400 },
         );
       }
       if (!allowedMimeTypes.includes(file.type)) {
         return NextResponse.json(
-          { error: `Invalid file type: ${file.type}. Allowed: JPEG, PNG, GIF, WebP, SVG` },
+          {
+            error: `Invalid file type: ${file.type}. Allowed: JPEG, PNG, GIF, WebP, SVG`,
+          },
           { status: 400 },
         );
       }
@@ -108,7 +101,7 @@ export async function POST(
     for (const file of files) {
       const fileUuid = uuidv4();
       const isImage = file.type.startsWith("image/");
-      const extension = isImage ? "webp" : (file.name.split(".").pop() || "bin");
+      const extension = isImage ? "webp" : file.name.split(".").pop() || "bin";
       const filename = `${fileUuid}.${extension}`;
 
       const relativePath = path
@@ -143,9 +136,6 @@ export async function POST(
         : error instanceof Error && error.message.includes("Forbidden")
           ? 403
           : 500;
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status },
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status });
   }
 }

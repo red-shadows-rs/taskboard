@@ -7,7 +7,7 @@ import { getUserByEmail, getUserById } from "@/app/api/shared/databaseShared";
 import type { User } from "@/types";
 
 const SESSION_COOKIE = "taskboard_session";
-const SESSION_SECRET = process.env.SESSION_SECRET;
+const SESSION_SECRET = process.env.SESSION_SECRET as string;
 
 if (!SESSION_SECRET) {
   throw new Error(

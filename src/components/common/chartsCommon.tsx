@@ -35,7 +35,11 @@ import {
 } from "@/components/ui/cardUi";
 import { cn } from "@/components/ui/utilsUi";
 import { useLanguage } from "@/contexts/languageContext";
-import { calculateGrandTotal, calculateProjectTotal, formatPrice } from "@/utils/pricingUtils";
+import {
+  calculateGrandTotal,
+  calculateProjectTotal,
+  formatPrice,
+} from "@/utils/pricingUtils";
 
 import type { Task, Project, User, Section } from "@/types";
 
@@ -204,12 +208,7 @@ export function StatsCards({
           >
             <CardContent className="p-5">
               <div className="flex items-center gap-4 rtl:flex-row-reverse">
-                <div
-                  className={cn(
-                    "shrink-0 p-3 rounded-xl",
-                    card.bg
-                  )}
-                >
+                <div className={cn("shrink-0 p-3 rounded-xl", card.bg)}>
                   <Icon className={cn("h-6 w-6", card.color)} />
                 </div>
                 <div className="min-w-0 flex-1 rtl:text-right">
@@ -370,11 +369,13 @@ export function FinancialOverview({
             <ChartErrorBoundary>
               <Card>
                 <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
-          <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
-            <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-            <span className="flex-1 rtl:text-right">{t("dashboard.analytics.financial.byProject")}</span>
-          </CardTitle>
-        </CardHeader>
+                  <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
+                    <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
+                    <span className="flex-1 rtl:text-right">
+                      {t("dashboard.analytics.financial.byProject")}
+                    </span>
+                  </CardTitle>
+                </CardHeader>
                 <CardContent>
                   <ResponsiveContainer width="100%" height={350}>
                     <BarChart data={financialData.projectTotals}>
@@ -404,13 +405,15 @@ export function FinancialOverview({
                                 </p>
                                 <p className="text-sm">
                                   <span className="text-muted-foreground">
-                                    {t("dashboard.analytics.financial.totalLabel")}
+                                    {t(
+                                      "dashboard.analytics.financial.totalLabel",
+                                    )}
                                     :{" "}
                                   </span>
                                   <span className="font-medium text-emerald-600 dark:text-emerald-400">
                                     {formatPrice(
                                       payload[0].payload.total,
-                                      language
+                                      language,
                                     )}
                                   </span>
                                 </p>
@@ -442,11 +445,13 @@ export function FinancialOverview({
             <ChartErrorBoundary>
               <Card>
                 <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
-          <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
-            <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-            <span className="flex-1 rtl:text-right">{t("dashboard.analytics.financial.byMember")}</span>
-          </CardTitle>
-        </CardHeader>
+                  <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
+                    <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
+                    <span className="flex-1 rtl:text-right">
+                      {t("dashboard.analytics.financial.byMember")}
+                    </span>
+                  </CardTitle>
+                </CardHeader>
                 <CardContent>
                   <ResponsiveContainer width="100%" height={350}>
                     <BarChart data={financialData.userTotals}>
@@ -476,13 +481,15 @@ export function FinancialOverview({
                                 </p>
                                 <p className="text-sm">
                                   <span className="text-muted-foreground">
-                                    {t("dashboard.analytics.financial.totalLabel")}
+                                    {t(
+                                      "dashboard.analytics.financial.totalLabel",
+                                    )}
                                     :{" "}
                                   </span>
                                   <span className="font-medium text-emerald-600 dark:text-emerald-400">
                                     {formatPrice(
                                       payload[0].payload.total,
-                                      language
+                                      language,
                                     )}
                                   </span>
                                 </p>
@@ -519,7 +526,9 @@ export function FinancialOverview({
           <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
             <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
               <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-              <span className="flex-1 rtl:text-right">{t("dashboard.analytics.financial.details")}</span>
+              <span className="flex-1 rtl:text-right">
+                {t("dashboard.analytics.financial.details")}
+              </span>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -532,16 +541,14 @@ export function FinancialOverview({
                         <th className="ltr:text-left rtl:text-right py-3.5 px-4 font-semibold text-sm">
                           {t("dashboard.analytics.financial.totalLabel")}
                         </th>
-                        {[...financialData.projectTotals]
-                          .reverse()
-                          .map((p) => (
-                            <th
-                              key={p.id}
-                              className="ltr:text-left rtl:text-right py-3.5 px-4 font-semibold text-sm"
-                            >
-                              {p.name}
-                            </th>
-                          ))}
+                        {[...financialData.projectTotals].reverse().map((p) => (
+                          <th
+                            key={p.id}
+                            className="ltr:text-left rtl:text-right py-3.5 px-4 font-semibold text-sm"
+                          >
+                            {p.name}
+                          </th>
+                        ))}
                         <th className="ltr:text-left rtl:text-right py-3.5 px-4 font-semibold text-sm">
                           {t("dashboard.analytics.financial.nameLabel")}
                         </th>
@@ -586,7 +593,9 @@ export function FinancialOverview({
                                     {formatPrice(row.values[p.id], language)}
                                   </span>
                                 ) : (
-                                  <span className="text-muted-foreground">—</span>
+                                  <span className="text-muted-foreground">
+                                    —
+                                  </span>
                                 )}
                               </td>
                             ))}
@@ -626,16 +635,14 @@ export function FinancialOverview({
                         <td className="ltr:text-left rtl:text-right py-3.5 px-4 text-sm font-bold tabular-nums text-emerald-700 dark:text-emerald-300">
                           {formatPrice(financialData.grandTotal, language)}
                         </td>
-                        {[...financialData.projectTotals]
-                          .reverse()
-                          .map((p) => (
-                            <td
-                              key={p.id}
-                              className="ltr:text-left rtl:text-right py-3.5 px-4 text-sm font-medium tabular-nums text-emerald-600 dark:text-emerald-400"
-                            >
-                              {formatPrice(p.total, language)}
-                            </td>
-                          ))}
+                        {[...financialData.projectTotals].reverse().map((p) => (
+                          <td
+                            key={p.id}
+                            className="ltr:text-left rtl:text-right py-3.5 px-4 text-sm font-medium tabular-nums text-emerald-600 dark:text-emerald-400"
+                          >
+                            {formatPrice(p.total, language)}
+                          </td>
+                        ))}
                         <td className="ltr:text-left rtl:text-right py-3.5 px-4 text-sm font-medium">
                           {t("dashboard.analytics.financial.projectTotal")}
                         </td>
@@ -819,7 +826,9 @@ export function TaskCharts({ tasks, language: propLanguage }: TaskChartsProps) {
       <CardHeader className="border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
         <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
           <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-          <span className="flex-1 rtl:text-right">{t("dashboard.analytics.labels.tasksByStatus")}</span>
+          <span className="flex-1 rtl:text-right">
+            {t("dashboard.analytics.labels.tasksByStatus")}
+          </span>
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-6">
@@ -833,7 +842,7 @@ export function TaskCharts({ tasks, language: propLanguage }: TaskChartsProps) {
               label={(entry) =>
                 renderCustomizedLabel(
                   entry,
-                  statusData.reduce((sum, item) => sum + item.value, 0)
+                  statusData.reduce((sum, item) => sum + item.value, 0),
                 )
               }
               outerRadius={90}
@@ -862,7 +871,9 @@ export function TaskCharts({ tasks, language: propLanguage }: TaskChartsProps) {
       <CardHeader className="border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
         <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
           <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-          <span className="flex-1 rtl:text-right">{t("dashboard.analytics.trends.byPriority")}</span>
+          <span className="flex-1 rtl:text-right">
+            {t("dashboard.analytics.trends.byPriority")}
+          </span>
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-6">
@@ -973,7 +984,9 @@ export function ProjectOverviewChart({
         <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
           <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
             <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-            <span className="flex-1 rtl:text-right">{t("dashboard.analytics.projects.title")}</span>
+            <span className="flex-1 rtl:text-right">
+              {t("dashboard.analytics.projects.title")}
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -1100,7 +1113,9 @@ export function TeamPerformanceChart({
         <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
           <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
             <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-            <span className="flex-1 rtl:text-right">{t("dashboard.analytics.team.title")}</span>
+            <span className="flex-1 rtl:text-right">
+              {t("dashboard.analytics.team.title")}
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -1248,7 +1263,9 @@ export function TaskTrendsChart({ tasks }: TaskTrendsChartProps) {
         <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
           <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
             <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-            <span className="flex-1 rtl:text-right">{t("dashboard.analytics.trends.title")}</span>
+            <span className="flex-1 rtl:text-right">
+              {t("dashboard.analytics.trends.title")}
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -1389,7 +1406,7 @@ export function TrendsSummaryTable({ tasks }: TrendsSummaryTableProps) {
     key: string;
     header: string;
     numeric?: boolean;
-    cell: (row: typeof trendsData[0]) => React.ReactNode;
+    cell: (row: (typeof trendsData)[0]) => React.ReactNode;
   };
 
   const columns: ColumnDef[] = [
@@ -1449,11 +1466,13 @@ export function TrendsSummaryTable({ tasks }: TrendsSummaryTableProps) {
   return (
     <Card>
       <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
-          <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
-            <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-            <span className="flex-1 rtl:text-right">{t("dashboard.analytics.trends.summary")}</span>
-          </CardTitle>
-        </CardHeader>
+        <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
+          <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
+          <span className="flex-1 rtl:text-right">
+            {t("dashboard.analytics.trends.summary")}
+          </span>
+        </CardTitle>
+      </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -1477,7 +1496,7 @@ export function TrendsSummaryTable({ tasks }: TrendsSummaryTableProps) {
                       key={col.key}
                       className={cn(
                         "ltr:text-left rtl:text-right py-3.5 px-4 text-sm",
-                        col.numeric && "tabular-nums"
+                        col.numeric && "tabular-nums",
                       )}
                     >
                       {col.cell(row)}
@@ -1540,7 +1559,9 @@ export function ProjectStatusChart({ projects }: ProjectStatusChartProps) {
         <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
           <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
             <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-            <span className="flex-1 rtl:text-right">{t("dashboard.analytics.projects.projectStatusDistribution")}</span>
+            <span className="flex-1 rtl:text-right">
+              {t("dashboard.analytics.projects.projectStatusDistribution")}
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -1554,7 +1575,7 @@ export function ProjectStatusChart({ projects }: ProjectStatusChartProps) {
                 label={(entry) =>
                   renderCustomizedLabel(
                     entry,
-                    statusData.reduce((sum, item) => sum + item.value, 0)
+                    statusData.reduce((sum, item) => sum + item.value, 0),
                   )
                 }
                 outerRadius={90}
@@ -1589,13 +1610,15 @@ export function ProjectStatusChart({ projects }: ProjectStatusChartProps) {
                 wrapperStyle={{ direction: language === "ar" ? "rtl" : "ltr" }}
               />
               <Legend
-                content={<CustomLegend payload={undefined} language={language} />}
+                content={
+                  <CustomLegend payload={undefined} language={language} />
+                }
               />
             </PieChart>
           </ResponsiveContainer>
         </CardContent>
-    </Card>
-  </ChartErrorBoundary>
+      </Card>
+    </ChartErrorBoundary>
   );
 }
 
@@ -1655,7 +1678,7 @@ export function ProjectHealthTable({
     key: string;
     header: string;
     numeric?: boolean;
-    cell: (row: typeof projectHealth[0]) => React.ReactNode;
+    cell: (row: (typeof projectHealth)[0]) => React.ReactNode;
   };
 
   const columns: ProjectHealthColumnDef[] = [
@@ -1682,9 +1705,7 @@ export function ProjectHealthTable({
       numeric: true,
       cell: (row) => (
         <span
-          className={
-            row.overdueTasks > 0 ? "text-red-600 font-medium" : ""
-          }
+          className={row.overdueTasks > 0 ? "text-red-600 font-medium" : ""}
         >
           {row.overdueTasks}
         </span>
@@ -1734,11 +1755,13 @@ export function ProjectHealthTable({
   return (
     <Card>
       <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
-          <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
-            <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-            <span className="flex-1 rtl:text-right">{t("dashboard.analytics.projects.projectHealth")}</span>
-          </CardTitle>
-        </CardHeader>
+        <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
+          <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
+          <span className="flex-1 rtl:text-right">
+            {t("dashboard.analytics.projects.projectHealth")}
+          </span>
+        </CardTitle>
+      </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -1762,7 +1785,7 @@ export function ProjectHealthTable({
                       key={col.key}
                       className={cn(
                         "ltr:text-left rtl:text-right py-3.5 px-4 text-sm",
-                        col.numeric && "tabular-nums"
+                        col.numeric && "tabular-nums",
                       )}
                     >
                       {col.cell(project)}
@@ -1837,7 +1860,7 @@ export function TeamPerformanceTable({
     key: string;
     header: string;
     numeric?: boolean;
-    cell: (row: typeof teamPerformance[0]) => React.ReactNode;
+    cell: (row: (typeof teamPerformance)[0]) => React.ReactNode;
   };
 
   const columns: TeamColumnDef[] = [
@@ -1870,9 +1893,7 @@ export function TeamPerformanceTable({
       numeric: true,
       cell: (row) => (
         <span
-          className={
-            row.overdueTasks > 0 ? "text-red-600 font-medium" : ""
-          }
+          className={row.overdueTasks > 0 ? "text-red-600 font-medium" : ""}
         >
           {row.overdueTasks}
         </span>
@@ -1913,11 +1934,13 @@ export function TeamPerformanceTable({
   return (
     <Card>
       <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
-          <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
-            <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
-            <span className="flex-1 rtl:text-right">{t("dashboard.analytics.team.details")}</span>
-          </CardTitle>
-        </CardHeader>
+        <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
+          <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
+          <span className="flex-1 rtl:text-right">
+            {t("dashboard.analytics.team.details")}
+          </span>
+        </CardTitle>
+      </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -1941,7 +1964,7 @@ export function TeamPerformanceTable({
                       key={col.key}
                       className={cn(
                         "ltr:text-left rtl:text-right py-3.5 px-4 text-sm",
-                        col.numeric && "tabular-nums"
+                        col.numeric && "tabular-nums",
                       )}
                     >
                       {col.cell(member)}

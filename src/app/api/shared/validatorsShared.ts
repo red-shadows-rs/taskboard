@@ -56,10 +56,12 @@ export const taskSchema = z.object({
   order: z.number().optional(),
   attachments: z
     .array(
-      z.string().regex(
-        /^images\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+\.(webp|png|jpg|jpeg|gif|svg|bin)$/,
-        "Invalid attachment path",
-      ),
+      z
+        .string()
+        .regex(
+          /^images\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+\.(webp|png|jpg|jpeg|gif|svg|bin)$/,
+          "Invalid attachment path",
+        ),
     )
     .default([]),
   assigneePrices: z

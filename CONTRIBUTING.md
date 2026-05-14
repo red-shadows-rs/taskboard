@@ -12,14 +12,14 @@ This project adheres to a [Code of Conduct](./CODE_OF_CONDUCT.md). By participat
 
 Before submitting a bug report:
 
-1. Check the [existing issues](https://github.com/SHADOW-x7/taskboard/issues) to avoid duplicates
+1. Check the [existing issues](https://github.com/red-shadows-rs/TaskBoard/issues) to avoid duplicates
 2. Use the bug report template if available
 3. Include detailed steps to reproduce, expected behavior, and actual behavior
 4. Include environment details: Node.js version, browser, OS
 
 ### Suggesting Features
 
-1. Check the [roadmap](./README.md#-roadmap) and [existing issues](https://github.com/SHADOW-x7/taskboard/issues)
+1. Check the [roadmap](./README.md#-roadmap) and [existing issues](https://github.com/red-shadows-rs/TaskBoard/issues)
 2. Open a feature request with a clear description of the problem and proposed solution
 3. Include use cases and any relevant examples
 
@@ -49,7 +49,7 @@ TaskBoard | vX.Y.Z | Brief description of changes
 ### Development Setup
 
 ```bash
-git clone https://github.com/SHADOW-x7/taskboard.git
+git clone https://github.com/red-shadows-rs/TaskBoard.git
 cd taskboard
 npm install
 cp .env.example .env.local

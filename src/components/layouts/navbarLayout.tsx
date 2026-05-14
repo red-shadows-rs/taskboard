@@ -84,7 +84,12 @@ export function Navbar({ user }: NavbarProps) {
           <div className="flex items-center gap-6">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="lg:hidden" aria-label={t("common.nav.menu")}>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="lg:hidden"
+                  aria-label={t("common.nav.menu")}
+                >
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>

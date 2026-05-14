@@ -556,14 +556,18 @@ export function TaskCard({
                 <Flag className="ltr:mr-1 rtl:ml-1 h-3 w-3" />
                 {t(`dashboard.tasks.priority.${task.priority}`)}
               </Badge>
-              {(task.assigneePrices ?? []).reduce((s, ap) => s + ap.price, 0) > 0 && (
+              {(task.assigneePrices ?? []).reduce((s, ap) => s + ap.price, 0) >
+                0 && (
                 <Badge
                   className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
                   variant="outline"
                 >
                   <DollarSign className="ltr:mr-1 rtl:ml-1 h-3 w-3" />
                   {formatPrice(
-                    (task.assigneePrices ?? []).reduce((s, ap) => s + ap.price, 0),
+                    (task.assigneePrices ?? []).reduce(
+                      (s, ap) => s + ap.price,
+                      0,
+                    ),
                     language,
                   )}
                 </Badge>
@@ -1368,64 +1372,59 @@ export function TaskForm({
         {currentUser?.role === "leader" &&
           !showStatusOnly &&
           selectedMembers.length > 0 && (
-          <div className="space-y-1 mt-4">
-            <Label>
-              {t("dashboard.tasks.card.price")}
-            </Label>
-            <div className="border rounded-md overflow-hidden">
-              <table className="w-full">
-                <tbody>
-                  {selectedMembers.map((memberId) => {
-                    const memberUser = users.find((u) => u.id === memberId);
-                    const price = getAssigneePrice(memberId);
-                    return (
-                      <tr
-                        key={memberId}
-                        className="border-b last:border-b-0"
-                      >
-                        <td className="py-1.5 px-3 w-px whitespace-nowrap">
-                          <span className="text-xs text-muted-foreground block ltr:text-left rtl:text-right">
-                            {memberUser?.name || memberId}
-                          </span>
-                        </td>
-                        <td className="py-1.5 px-3">
-                          <div
-                            className={cn(
-                              "w-full flex items-center rounded-md border border-input bg-transparent shadow-sm transition-all duration-200 focus-within:ring-2 focus-within:ring-ring focus-within:border-primary",
-                            )}
-                          >
-                            <Button
-                              type="button"
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8 rounded-none rounded-l-md border-0 hover:bg-muted"
-                              onClick={() => setAssigneePrice(memberId, -5)}
-                              disabled={price <= 0}
+            <div className="space-y-1 mt-4">
+              <Label>{t("dashboard.tasks.card.price")}</Label>
+              <div className="border rounded-md overflow-hidden">
+                <table className="w-full">
+                  <tbody>
+                    {selectedMembers.map((memberId) => {
+                      const memberUser = users.find((u) => u.id === memberId);
+                      const price = getAssigneePrice(memberId);
+                      return (
+                        <tr key={memberId} className="border-b last:border-b-0">
+                          <td className="py-1.5 px-3 w-px whitespace-nowrap">
+                            <span className="text-xs text-muted-foreground block ltr:text-left rtl:text-right">
+                              {memberUser?.name || memberId}
+                            </span>
+                          </td>
+                          <td className="py-1.5 px-3">
+                            <div
+                              className={cn(
+                                "w-full flex items-center rounded-md border border-input bg-transparent shadow-sm transition-all duration-200 focus-within:ring-2 focus-within:ring-ring focus-within:border-primary",
+                              )}
                             >
-                              <Minus className="h-3 w-3" />
-                            </Button>
-                            <div className="px-2 flex-1 text-center font-medium text-sm text-emerald-700 dark:text-emerald-400 tabular-nums select-none">
-                              {formatPricePlain(price)}
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8 rounded-none rounded-l-md border-0 hover:bg-muted"
+                                onClick={() => setAssigneePrice(memberId, -5)}
+                                disabled={price <= 0}
+                              >
+                                <Minus className="h-3 w-3" />
+                              </Button>
+                              <div className="px-2 flex-1 text-center font-medium text-sm text-emerald-700 dark:text-emerald-400 tabular-nums select-none">
+                                {formatPricePlain(price)}
+                              </div>
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8 rounded-none rounded-r-md border-0 hover:bg-muted"
+                                onClick={() => setAssigneePrice(memberId, 5)}
+                              >
+                                <Plus className="h-3 w-3" />
+                              </Button>
                             </div>
-                            <Button
-                              type="button"
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8 rounded-none rounded-r-md border-0 hover:bg-muted"
-                              onClick={() => setAssigneePrice(memberId, 5)}
-                            >
-                              <Plus className="h-3 w-3" />
-                            </Button>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         {!showStatusOnly && !isRestrictedView && !isClient && (
           <div className="space-y-1 mb-6">

@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  ArrowLeft,
-  Plus,
-  Search,
-  FileText,
-  Trash2,
-  Ban,
-} from "lucide-react";
+import { ArrowLeft, Plus, Search, FileText, Trash2, Ban } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { usePathname } from "next/navigation";
@@ -735,11 +728,7 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
             </Badge>
           </div>
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleExportProject}
-            >
+            <Button variant="outline" size="sm" onClick={handleExportProject}>
               <FileText className="h-4 w-4 ltr:mr-2 rtl:ml-2" />
               {t("dashboard.projects.card.actions.export")}
             </Button>

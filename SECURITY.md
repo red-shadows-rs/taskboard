@@ -32,9 +32,9 @@ We follow a coordinated disclosure process:
 ## Supported Versions
 
 | Version | Supported |
-|---|---|
-| 4.x | Yes |
-| < 4.0 | No |
+| ------- | --------- |
+| 4.x     | Yes       |
+| < 4.0   | No        |
 
 ## Security Best Practices
 

@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/SHADOW-x7/taskboard/blob/main/README.ar.md">العربية</a>
+  <a href="https://github.com/red-shadows-rs/TaskBoard/blob/main/README.ar.md">العربية</a>
   &nbsp;&bull;&nbsp;
   <a href="#-features">Features</a>
   &nbsp;&bull;&nbsp;
@@ -30,7 +30,7 @@
 <br/>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-4.0.2-2563eb?style=for-the-badge" alt="Version 4.0.2">
+  <img src="https://img.shields.io/badge/version-4.0.3-2563eb?style=for-the-badge" alt="Version 4.0.3">
   <img src="https://img.shields.io/badge/license-MIT-10b981?style=for-the-badge" alt="MIT License">
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16">
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18">
@@ -103,25 +103,25 @@ Managing projects across bilingual teams is challenging. TaskBoard bridges the g
 
 ## 🚀 Tech Stack
 
-| Category | Technology | Purpose |
-|---|---|---|
-| **Framework** | [Next.js 16](https://nextjs.org/) | App Router + Turbopack |
-| **UI** | [React 18](https://react.dev/) + [Radix UI](https://www.radix-ui.com/) | Component primitives |
-| **Styling** | [Tailwind CSS 3](https://tailwindcss.com/) | Utility-first CSS |
-| **Language** | [TypeScript 5](https://www.typescriptlang.org/) | Type safety |
-| **Drag & Drop** | [dnd-kit](https://dndkit.com/) | Kanban reordering |
-| **Rich Text** | [Tiptap](https://tiptap.dev/) | Task descriptions |
-| **Forms** | [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) | Validation |
-| **State** | [Zustand](https://zustand.docs.pmnd.rs/) | Global UI state |
-| **Charts** | [Recharts](https://recharts.org/) | Analytics |
-| **PDF** | [jsPDF](https://github.com/parallax/jsPDF) + [jspdf-autotable](https://github.com/simonbengtsson/jsPDF-AutoTable) | Export |
-| **Auth** | [bcryptjs](https://github.com/dcodeIO/bcrypt.js) + HMAC-SHA256 | Sessions |
-| **Animations** | [Framer Motion](https://www.framer.com/motion/) | Transitions |
-| **Notifications** | [react-hot-toast](https://react-hot-toast.com/) | Toast alerts |
-| **Dates** | [date-fns](https://date-fns.org/) + [react-day-picker](https://react-day-picker.js.org/) | Date handling |
-| **Icons** | [Lucide React](https://lucide.dev/) + [Font Awesome 6](https://fontawesome.com/) | Iconography |
-| **Linting** | [ESLint 9](https://eslint.org/) (flat config) | Code quality |
-| **Formatting** | [Prettier](https://prettier.io/) | Code style |
+| Category          | Technology                                                                                                        | Purpose                |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| **Framework**     | [Next.js 16](https://nextjs.org/)                                                                                 | App Router + Turbopack |
+| **UI**            | [React 18](https://react.dev/) + [Radix UI](https://www.radix-ui.com/)                                            | Component primitives   |
+| **Styling**       | [Tailwind CSS 3](https://tailwindcss.com/)                                                                        | Utility-first CSS      |
+| **Language**      | [TypeScript 5](https://www.typescriptlang.org/)                                                                   | Type safety            |
+| **Drag & Drop**   | [dnd-kit](https://dndkit.com/)                                                                                    | Kanban reordering      |
+| **Rich Text**     | [Tiptap](https://tiptap.dev/)                                                                                     | Task descriptions      |
+| **Forms**         | [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)                                         | Validation             |
+| **State**         | [Zustand](https://zustand.docs.pmnd.rs/)                                                                          | Global UI state        |
+| **Charts**        | [Recharts](https://recharts.org/)                                                                                 | Analytics              |
+| **PDF**           | [jsPDF](https://github.com/parallax/jsPDF) + [jspdf-autotable](https://github.com/simonbengtsson/jsPDF-AutoTable) | Export                 |
+| **Auth**          | [bcryptjs](https://github.com/dcodeIO/bcrypt.js) + HMAC-SHA256                                                    | Sessions               |
+| **Animations**    | [Framer Motion](https://www.framer.com/motion/)                                                                   | Transitions            |
+| **Notifications** | [react-hot-toast](https://react-hot-toast.com/)                                                                   | Toast alerts           |
+| **Dates**         | [date-fns](https://date-fns.org/) + [react-day-picker](https://react-day-picker.js.org/)                          | Date handling          |
+| **Icons**         | [Lucide React](https://lucide.dev/) + [Font Awesome 6](https://fontawesome.com/)                                  | Iconography            |
+| **Linting**       | [ESLint 9](https://eslint.org/) (flat config)                                                                     | Code quality           |
+| **Formatting**    | [Prettier](https://prettier.io/)                                                                                  | Code style             |
 
 ---
 
@@ -135,7 +135,7 @@ Managing projects across bilingual teams is challenging. TaskBoard bridges the g
 ### Quick Start
 
 ```bash
-git clone https://github.com/SHADOW-x7/taskboard.git
+git clone https://github.com/red-shadows-rs/TaskBoard.git
 cd taskboard
 npm install
 cp .env.example .env.local
@@ -146,24 +146,24 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Environment Variables
 
-| Variable | Required | Default | Description |
-|---|---|---|---|
-| `NODE_ENV` | Yes | `development` | Environment mode |
-| `SESSION_SECRET` | Yes | — | HMAC-SHA256 signing key |
+| Variable         | Required | Default       | Description             |
+| ---------------- | -------- | ------------- | ----------------------- |
+| `NODE_ENV`       | Yes      | `development` | Environment mode        |
+| `SESSION_SECRET` | Yes      | —             | HMAC-SHA256 signing key |
 
 ### Available Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start dev server with Turbopack |
-| `npm run build` | Production build |
-| `npm start` | Start production server |
-| `npm run lint` | Run ESLint |
-| `npm run lint:fix` | Auto-fix lint issues |
-| `npm run format` | Format with Prettier |
-| `npm run format:check` | Check formatting |
-| `npm run type-check` | TypeScript type checking |
-| `npm run validate` | Full validation (format + lint + types) |
+| Command                | Description                             |
+| ---------------------- | --------------------------------------- |
+| `npm run dev`          | Start dev server with Turbopack         |
+| `npm run build`        | Production build                        |
+| `npm start`            | Start production server                 |
+| `npm run lint`         | Run ESLint                              |
+| `npm run lint:fix`     | Auto-fix lint issues                    |
+| `npm run format`       | Format with Prettier                    |
+| `npm run format:check` | Check formatting                        |
+| `npm run type-check`   | TypeScript type checking                |
+| `npm run validate`     | Full validation (format + lint + types) |
 
 ---
 
@@ -250,14 +250,14 @@ To report a security vulnerability, please follow our [Security Policy](./SECURI
 
 See [CHANGELOG.md](./CHANGELOG.md) for a detailed version history. This project follows [Semantic Versioning](https://semver.org/).
 
-| Version | Date | Highlights |
-|---|---|---|
-| **4.0.2** | 2026-05-14 | Restored original icon, added .env.example |
-| 4.0.1 | 2026-05-14 | Documentation overhaul, Arabic README, improved icons, data cleanup |
-| 4.0.0 | 2026-05-14 | Analytics, PDF export, PWA, bilingual, dark/light theme, drag & drop |
-| 3.0.0 | 2026-04-01 | Project/section management, task CRUD, user roles, session auth |
-| 2.0.0 | 2026-03-01 | Kanban board UI, task statuses/priorities/tags, dashboard layout |
-| 1.0.0 | 2026-02-01 | Initial setup: Next.js App Router, login page, Tailwind CSS |
+| Version   | Date       | Highlights                                                           |
+| --------- | ---------- | -------------------------------------------------------------------- |
+| **4.0.3** | 2026-05-14 | Fixed repo links, updated branding, version bump               |
+| 4.0.1     | 2026-05-14 | Documentation overhaul, Arabic README, improved icons, data cleanup  |
+| 4.0.0     | 2026-05-14 | Analytics, PDF export, PWA, bilingual, dark/light theme, drag & drop |
+| 3.0.0     | 2026-04-01 | Project/section management, task CRUD, user roles, session auth      |
+| 2.0.0     | 2026-03-01 | Kanban board UI, task statuses/priorities/tags, dashboard layout     |
+| 1.0.0     | 2026-02-01 | Initial setup: Next.js App Router, login page, Tailwind CSS          |
 
 ---
 
@@ -274,5 +274,5 @@ This project is licensed under the [MIT License](./LICENSE).
 ---
 
 <p align="center">
-  <sub>Built with ❤️ by <a href="https://github.com/SHADOW-x7">RED SHADOWS</a></sub>
+  <sub>Built with ❤️ by <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a></sub>
 </p>
