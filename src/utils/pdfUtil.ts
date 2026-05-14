@@ -1336,8 +1336,7 @@ export const exportTaskPDF = async (
             "FAST",
           );
           y += imgH + 10;
-        } catch (e) {
-          console.error("Failed to add image to PDF", e);
+        } catch (_e) {
         }
       }
     }

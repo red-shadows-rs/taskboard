@@ -31,7 +31,6 @@ export default function Error({
 
   useEffect(() => {
     if (process.env.NODE_ENV === "development" && error) {
-      console.error("Application error:", error);
     }
   }, [error]);
 

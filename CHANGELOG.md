@@ -7,13 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [4.0.4] - 2026-05-14
+
+### Changed
+
+- **Removed ESLint disable comments** from layout.tsx
+- **Removed console.log/error statements** from error.tsx and pdfUtil.ts
+- **Added missing version tags** for v4.0.0 through v4.0.4
+
+---
+
 ## [4.0.3] - 2026-05-14
 
 ### Changed
 
 - **Updated repository links** from `SHADOW-x7/taskboard` to `red-shadows-rs/TaskBoard`
 - **Updated branding** from `RED SHADOWS` to `RED SHADOWS | RS`
-- **Removed ESLint disable comment** for Font Awesome CSS link
 
 ---
 
@@ -160,6 +169,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[4.0.4]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.4
 [4.0.3]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.3
 [4.0.2]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.2
 [4.0.1]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.1

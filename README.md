@@ -30,7 +30,7 @@
 <br/>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-4.0.3-2563eb?style=for-the-badge" alt="Version 4.0.3">
+  <img src="https://img.shields.io/badge/version-4.0.4-2563eb?style=for-the-badge" alt="Version 4.0.4">
   <img src="https://img.shields.io/badge/license-MIT-10b981?style=for-the-badge" alt="MIT License">
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16">
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18">
@@ -252,8 +252,10 @@ See [CHANGELOG.md](./CHANGELOG.md) for a detailed version history. This project 
 
 | Version   | Date       | Highlights                                                           |
 | --------- | ---------- | -------------------------------------------------------------------- |
-| **4.0.3** | 2026-05-14 | Fixed repo links, updated branding, version bump               |
-| 4.0.1     | 2026-05-14 | Documentation overhaul, Arabic README, improved icons, data cleanup  |
+| **4.0.4** | 2026-05-14 | Removed ESLint disable comments, removed console logs, added missing tags |
+| 4.0.3     | 2026-05-14 | Fixed repo links, updated branding, version bump                         |
+| 4.0.2     | 2026-05-14 | Restored original icon, added .env.example                               |
+| 4.0.1     | 2026-05-14 | Documentation overhaul, Arabic README, improved icons, data cleanup      |
 | 4.0.0     | 2026-05-14 | Analytics, PDF export, PWA, bilingual, dark/light theme, drag & drop |
 | 3.0.0     | 2026-04-01 | Project/section management, task CRUD, user roles, session auth      |
 | 2.0.0     | 2026-03-01 | Kanban board UI, task statuses/priorities/tags, dashboard layout     |
