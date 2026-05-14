@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [4.0.5] - 2026-05-14
+
+### Fixed
+
+- **Fixed drag-and-drop** on desktop by lowering mobile breakpoint from 1024px to 768px
+- **Fixed metadata icons** to reference existing SVG files instead of missing WebP files
+- **Moved Font Awesome CSS** import from `<link>` tag to `@import` in globals.css
+
+### Removed
+
+- **Removed ESLint disable comment** for Font Awesome CSS link
+
+---
+
 ## [4.0.4] - 2026-05-14
 
 ### Changed
@@ -169,6 +183,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[4.0.5]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.5
 [4.0.4]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.4
 [4.0.3]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.3
 [4.0.2]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.2

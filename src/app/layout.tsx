@@ -14,17 +14,9 @@ export const metadata: Metadata = {
   title: "TaskBoard - Task Management System",
   description: "Professional task management system for teams and managers",
   icons: {
-    icon: [
-      { url: "/favicon.webp", sizes: "32x32", type: "image/webp" },
-      { url: "/icon-16.webp", sizes: "16x16", type: "image/webp" },
-      { url: "/icon-32.webp", sizes: "32x32", type: "image/webp" },
-      { url: "/icon-192.webp", sizes: "192x192", type: "image/webp" },
-      { url: "/icon-512.webp", sizes: "512x512", type: "image/webp" },
-    ],
-    shortcut: "/favicon.webp",
-    apple: [
-      { url: "/apple-touch-icon.webp", sizes: "180x180", type: "image/webp" },
-    ],
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/apple-icon.svg",
   },
   manifest: "/manifest.json",
 };
@@ -43,17 +35,11 @@ export default async function RootLayout({
       <head>
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="/css/font-awesome.min.css" />
-        <link rel="icon" href="/favicon.webp" sizes="32x32" />
-        <link
-          rel="icon"
-          href="/icon-192.webp"
-          type="image/webp"
-          sizes="192x192"
-        />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link
           rel="apple-touch-icon"
-          href="/apple-touch-icon.webp"
-          sizes="180x180"
+          href="/apple-icon.svg"
+          type="image/svg+xml"
         />
         <meta name="theme-color" content="#3b82f6" />
       </head>

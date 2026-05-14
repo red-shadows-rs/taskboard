@@ -30,7 +30,7 @@
 <br/>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/الإصدار-4.0.4-2563eb?style=for-the-badge" alt="الإصدار 4.0.4">
+  <img src="https://img.shields.io/badge/الإصدار-4.0.5-2563eb?style=for-the-badge" alt="الإصدار 4.0.5">
   <img src="https://img.shields.io/badge/الترخيص-MIT-10b981?style=for-the-badge" alt="ترخيص MIT">
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16">
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18">
@@ -252,7 +252,8 @@ TaskBoard/
 
 | الإصدار   | التاريخ    | أبرز المميزات                                                               |
 | --------- | ---------- | --------------------------------------------------------------------------- |
-| **4.0.4** | 2026-05-14 | حذف تعليقات ESLint، حذف console logs، إضافة tags المفقودة              |
+| **4.0.5** | 2026-05-14 | إصلاح السحب والإفلات على سطح المكتب، إصلاح أيقونات metadata، حذف تعليقات ESLint |
+| 4.0.4     | 2026-05-14 | حذف تعليقات ESLint، حذف console logs، إضافة tags المفقودة              |
 | 4.0.3     | 2026-05-14 | إصلاح روابط المستودع، تحديث العلامة التجارية، رفع الإصدار               |
 | 4.0.2     | 2026-05-14 | استعادة الأيقونة الأصلية، إضافة .env.example                             |
 | 4.0.1     | 2026-05-14 | تجديد التوثيق، README بالعربية، تحسين الأيقونات، تنظيف البيانات         |

@@ -147,20 +147,12 @@ const SortableTaskItem = ({
     cursor: isDragDisabled ? "default" : "grab",
   };
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    if (!isDragDisabled) {
-      return;
-    }
-    e.preventDefault();
-  };
-
   return (
     <div
       ref={setNodeRef}
       style={style}
       {...attributes}
       {...listeners}
-      onPointerDown={handlePointerDown}
       className={cn(
         "relative transition-all duration-200",
         isDragging && "opacity-50 shadow-2xl z-50",
@@ -210,7 +202,7 @@ const KanbanBoard = memo(function KanbanBoard({
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
+      setIsMobile(window.innerWidth < 768);
     };
 
     checkMobile();
