@@ -1,9 +1,9 @@
 {
   "name": "taskboard",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "private": false,
   "description": "Professional task management system for teams and managers",
-  "author": "SHADOW_x7 - RED SHADOWS | RS",
+  "author": "Shadow-x78 - RED SHADOWS | RS",
   "license": "MIT",
   "overrides": {
     "@types/react": "18.2.79",
