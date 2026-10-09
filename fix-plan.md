@@ -398,3 +398,8 @@ The user asked to fix the vulnerabilities first, then upgrade packages, plus CSP
     (a) accept the dev-only advisory — recommended;
     (b) migrate Tailwind 4 **and** remove `@next/eslint-plugin-next` to reach 0 (styling risk +
     loss of Next lint rules).
+
+### Final resolution
+
+- T-023 (F-003): **closed as accepted** (option a) by user decision. No migration. Rationale and
+  evidence recorded in `audit-report.md` ("Final decision — F-003 accepted").
