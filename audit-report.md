@@ -889,3 +889,45 @@ by the framework, not by an import).
 8. **F-020 (attachment images through Next Image + auth).** Needs a manual UI test before any fix.
 9. **No test suite.** There is no automated test command; all verification is lint/type-check/build
    plus manual checks. Consider adding tests (out of current scope).
+
+---
+
+## Resolution status (Phases 4–8, second round)
+
+All items below were executed after explicit user approval, each as one atomic change followed by a
+verification command. Commits are on branch `audit-cleanup`.
+
+| Finding                         | Status            | What changed                                                                                                                                     | Evidence                                                                                                       |
+| ------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| F-001 jsPDF (critical)          | **Fixed**         | `jspdf` `^2.5.2` → `^4.2.1`                                                                                                                      | `npm audit` no longer lists jspdf; browser export produced a valid 136 KB, 2-page PDF with no console errors   |
+| F-002 sharp (high)              | **Fixed**         | `sharp` `^0.34.5` → `^0.35.5`                                                                                                                    | `npm audit` clear; sharp smoke test + image upload e2e                                                         |
+| F-003 braces chain (high)       | **Unfixable now** | no patch exists; documented                                                                                                                      | `CVE-2026-93687`, "Patched versions: None"; build-time dev chain only; needs a Tailwind 4 migration (deferred) |
+| F-004 transformers chain (high) | **Fixed**         | `@huggingface/transformers` `^3.8.1` → `^4.3.1`; `sprintf-js` override `^1.1.3`                                                                  | identical translation output; `/api/translate` e2e returned the same text                                      |
+| F-005 uuid (moderate)           | **Fixed**         | `uuid` `^9.0.1` → `^11.1.1`; removed `@types/uuid` stub                                                                                          | `npm audit` clear; project creation (uuid v4) e2e                                                              |
+| F-006 rate-limit IP             | **Fixed**         | trust `x-real-ip` only when `TRUST_PROXY=true`                                                                                                   | unit test + lint/type-check                                                                                    |
+| F-007 CSP                       | **Fixed**         | real `Content-Security-Policy` added in `next.config.ts`                                                                                         | header present on `/login`; page renders, 0 CSP violations                                                     |
+| F-008 dead effect               | **Fixed**         | removed empty `useEffect` + import                                                                                                               | lint/type-check                                                                                                |
+| F-009 leader tasks              | **Fixed**         | leaders see all project tasks                                                                                                                    | lint/type-check                                                                                                |
+| F-010 JSON retry                | **Fixed**         | rethrow `SyntaxError` immediately                                                                                                                | type-check                                                                                                     |
+| F-011 section delete            | **Fixed**         | recompute project `endDate`                                                                                                                      | type-check                                                                                                     |
+| F-012 secret length             | **Fixed**         | enforce ≥32 chars in `utilsAuth.ts`; docs + `.env.example` updated                                                                               | build; local/CI secrets ≥32 chars                                                                              |
+| F-013 own password              | **Fixed**         | require current password on self change                                                                                                          | lint/type-check                                                                                                |
+| F-014 locales auth              | **Fixed**         | `requireAuth()` added; login page uses built-in fallback                                                                                         | unauth `/api/locales` → 401; login page still renders                                                          |
+| F-015 unused prop               | **Fixed**         | removed `isActive`                                                                                                                               | lint/type-check                                                                                                |
+| F-016 store mutation            | **Fixed**         | sort a copy                                                                                                                                      | lint/type-check                                                                                                |
+| F-017 README table              | **Fixed**         | added `4.1.0` row                                                                                                                                | `check:versions`                                                                                               |
+| F-018 rate-limit scope          | Won't fix         | documented limitation                                                                                                                            | n/a                                                                                                            |
+| F-019 local secret              | No change         | correctly untracked; value never touched                                                                                                         | `git check-ignore`                                                                                             |
+| F-020 attachments               | **Fixed**         | uploads moved to `uploads/` (git-ignored) outside `public/`; served via auth-gated `/images` rewrite; `unoptimized` so the browser sends cookies | unauth image → 401; authed → 200; rendered in the task dialog                                                  |
+| F-021 type import               | **Fixed**         | `import type`                                                                                                                                    | type-check                                                                                                     |
+| F-022 private pkg               | **Fixed**         | `"private": true`                                                                                                                                | node check                                                                                                     |
+| No test suite                   | **Fixed**         | Vitest added (5 files, 22 tests); `npm test`; CI runs it                                                                                         | `npm test` → 22 passed                                                                                         |
+
+### Dependency audit, before vs after
+
+- Before: `17 vulnerabilities (8 moderate, 8 high, 1 critical)`.
+- After: `6 high severity vulnerabilities`, all in the single `braces` chain
+  (`tailwindcss`, `@next/eslint-plugin-next`, `braces`, `chokidar`, `fast-glob`, `micromatch`),
+  all **dev/build-time** dependencies, and **unfixable** because the advisory has no patched version.
+  The only remediation is migrating Tailwind CSS 3 → 4 (a large breaking styling change) and
+  replacing the ESLint plugin's glob chain. Deferred to a dedicated, separately-tested migration.

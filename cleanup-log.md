@@ -144,3 +144,65 @@ needed a revert.
 - `git status` clean. `git diff --stat pre-audit..HEAD`: 17 files, +1272 / −60. No secret added
   (no `.env*` in the diff).
 - Dependency audit unchanged (17 vulnerabilities remain; all upgrades deferred by decision).
+
+---
+
+## Round 2 — User-directed fixes (2026-10-09)
+
+User directive: fix vulnerabilities first, then upgrade packages; add CSP; gate `/api/locales`
+without breaking login; enforce `SESSION_SECRET`; fix attachments; add automated tests.
+All changes were made one at a time with verification; nothing needed a revert.
+
+### Added
+
+- `vitest.config.mts` (test runner config; `.mts` to avoid the Vite CJS-config warning).
+- `src/utils/pricingUtils.test.ts`, `src/utils/textScriptUtil.test.ts`,
+  `src/components/ui/utilsUi.test.ts`, `src/app/api/shared/validatorsShared.test.ts`,
+  `src/app/api/shared/rateLimitShared.test.ts` (22 tests total).
+- `src/app/api/shared/storageShared.ts` (upload directory helpers).
+- `package.json`: `"test": "vitest run"`, `vitest@^4.1.11` devDependency.
+
+### Code changed
+
+- `src/app/api/auth/utilsAuth.ts` — enforce `SESSION_SECRET` ≥ 32 chars (F-012).
+- `next.config.ts` — real `Content-Security-Policy` header (F-007).
+- `src/app/api/locales/route.ts` — `requireAuth()` gate (F-014).
+- `src/app/api/tasks/[id]/image/route.ts`, `src/app/api/images/[...path]/route.ts`,
+  `src/app/api/tasks/[id]/route.ts` — store/serve/delete attachments under `uploads/` (F-020).
+- `src/components/common/tasksCommon.tsx` — attachment `<Image>` set `unoptimized` (F-020).
+- `.gitignore` — ignore `uploads/`.
+- `.github/workflows/ci.yml` — run `npm test`.
+- `.env.example`, `README.md`, `README_AR.md` — secret minimum, CSP claim, `npm test` row.
+
+### Dependencies upgraded (one commit each)
+
+- `sharp` `^0.34.5` → `^0.35.5` (F-002), commit `6527f39e`.
+- `uuid` `^9.0.1` → `^11.1.1`, removed `@types/uuid` (F-005), commit `b6c129c2`.
+- `jspdf` `^2.5.2` → `^4.2.1` (F-001), commit `39912ee3`.
+- `@huggingface/transformers` `^3.8.1` → `^4.3.1` (F-004), commit `9f4fb966`.
+- `overrides`: `postcss-selector-parser@^7.1.6`, `sprintf-js@^1.1.3` (F-003/F-004 transitive).
+
+### End-to-end verifications run (all passed)
+
+- Login, project/section/task creation via API.
+- Image upload + render in the task dialog; unauth image request → 401.
+- Browser PDF export → valid 2-page PDF, no console errors.
+- `/api/translate` en→ar → same output as the pre-upgrade baseline.
+- Login page renders with the new CSP (0 violations) and with `/api/locales` gated.
+
+### Test data handling (no secrets, fully reverted)
+
+- Temporary `databases/*.json` rows and any uploaded files were created only to exercise flows and
+  were removed with `git checkout -- databases/` and `rm -rf uploads public/images/<id>`.
+- `SESSION_SECRET` in `.env.local` was never read into logs and never modified.
+
+### Not fixed (deferred, flagged to user)
+
+- **F-003 `braces` chain** — `CVE-2026-93687` has no patched version; dev/build-time only; requires a
+  Tailwind 4 migration. Left as-is with rationale (T-023).
+
+### Result
+
+- `npm audit`: `17` → `6` vulnerabilities (all the single unfixable dev-time `braces` chain).
+- Final gates: `format:check`, `lint`, `type-check`, `test` (22 passed), `build`, `check:comments`,
+  `check:versions` — all exit 0.

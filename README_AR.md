@@ -94,7 +94,7 @@
         <li><strong>تحديد المعدل</strong> — لكل IP على نقاط المصادقة</li>
         <li><strong>التحقق من المدخلات</strong> — مخططات Zod على جميع مسارات API</li>
         <li><strong>حماية XSS</strong> — تنقية DOMPurify</li>
-        <li><strong>رؤوس الأمان</strong> — X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy</li>
+        <li><strong>رؤوس الأمان</strong> — CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy</li>
       </ul>
     </td>
   </tr>

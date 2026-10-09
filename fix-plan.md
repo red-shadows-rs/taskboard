@@ -293,3 +293,86 @@ The user granted explicit approval to proceed without further check-ins. Resolut
    over-promise). `.env.example` already recommends a long random value.
 8. **F-020: NOT CHANGED.** Needs a manual browser test first; no code change risked.
 9. **No test suite:** acknowledged; out of scope.
+
+---
+
+## Round 2 — User-directed tasks (executed)
+
+The user asked to fix the vulnerabilities first, then upgrade packages, plus CSP, `/api/locales`,
+`SESSION_SECRET`, attachments, and to add automated tests. Order was chosen to add a safety net
+(tests) first, then low-risk code fixes, then dependency upgrades one at a time.
+
+- [x] T-014 Add automated test suite
+  - File(s): `vitest.config.mts`, `src/**/*.test.ts` (5 files), `package.json` (`test` script),
+    `.github/workflows/ci.yml`
+  - Change: install `vitest@^4.1.11`; tests for pricing, text-script, validators, UI utils, rate limit
+  - Verify: `npm test`
+  - Expected output: `Test Files 5 passed`, `Tests 22 passed`
+  - Rollback: `git checkout -- package.json package-lock.json .github/workflows/ci.yml && rm -rf src/**/*.test.ts vitest.config.mts`
+  - Depends on: none
+
+- [x] T-015 (fixes F-012) Enforce minimum `SESSION_SECRET` length
+  - File(s): `src/app/api/auth/utilsAuth.ts`, `.env.example`, `README.md`, `README_AR.md`
+  - Change: throw if `SESSION_SECRET.length < 32`; document the minimum
+  - Verify: `npm run build`
+  - Expected output: exit 0
+  - Rollback: `git checkout -- src/app/api/auth/utilsAuth.ts .env.example README.md README_AR.md`
+  - Depends on: none
+
+- [x] T-016 (fixes F-007) Add a real `Content-Security-Policy`
+  - File(s): `next.config.ts`
+  - Change: build a CSP (self + Google Fonts; `unsafe-inline`/`unsafe-eval` only in dev) and set it as a
+    response header
+  - Verify: `curl -sD - -o /dev/null http://localhost:3000/login | grep -i content-security-policy`
+  - Expected output: a `Content-Security-Policy:` header; login page renders with 0 CSP violations
+  - Rollback: `git checkout -- next.config.ts`
+  - Depends on: none
+
+- [x] T-017 (fixes F-014) Require auth for `/api/locales`
+  - File(s): `src/app/api/locales/route.ts`
+  - Change: call `requireAuth()`; return 401 when unauthenticated
+  - Verify: `curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/api/locales`
+  - Expected output: `401`; login page still renders (uses `languageContext` fallback list)
+  - Rollback: `git checkout -- src/app/api/locales/route.ts`
+  - Depends on: none
+
+- [x] T-018 (fixes F-020) Private attachment storage
+  - File(s): `src/app/api/shared/storageShared.ts` (new), `src/app/api/tasks/[id]/image/route.ts`,
+    `src/app/api/images/[...path]/route.ts`, `src/app/api/tasks/[id]/route.ts`,
+    `src/components/common/tasksCommon.tsx`, `.gitignore`
+  - Change: store uploads in `uploads/` (outside `public/`, git-ignored); serve via the auth-gated
+    `/images` rewrite; mark attachment images `unoptimized`
+  - Verify: unauth `GET /images/<path>` → `401`; authed → `200 image/webp`; image renders in the task dialog
+  - Expected output: as above
+  - Rollback: `git checkout -- src/app/api .gitignore src/components/common/tasksCommon.tsx && rm src/app/api/shared/storageShared.ts`
+  - Depends on: none
+
+- [x] T-019 (fixes F-002) Upgrade `sharp` to `^0.35.5`
+  - Verify: `npm audit` (sharp clear); `npm run build`; sharp smoke test
+  - Rollback: `git checkout -- package.json package-lock.json && npm install`
+  - Depends on: T-014
+
+- [x] T-020 (fixes F-005) Upgrade `uuid` to `^11.1.1`, drop `@types/uuid`
+  - Verify: `npm run type-check`; uuid-v4 e2e via project creation
+  - Rollback: `git checkout -- package.json package-lock.json && npm install`
+  - Depends on: T-014
+
+- [x] T-021 (fixes F-001) Upgrade `jspdf` to `^4.2.1`
+  - Verify: `npm audit` (jspdf clear); browser PDF export produced a valid 2-page PDF, no console errors
+  - Rollback: `git checkout -- package.json package-lock.json && npm install`
+  - Depends on: T-014
+
+- [x] T-022 (fixes F-004) Upgrade `@huggingface/transformers` to `^4.3.1` + `sprintf-js` override
+  - Verify: identical translation output; `/api/translate` e2e
+  - Rollback: `git checkout -- package.json package-lock.json && npm install`
+  - Depends on: T-014
+
+- [ ] T-023 (fixes F-003) Migrate Tailwind CSS 3 → 4 to drop the `braces` chain — **DEFERRED**
+  - File(s): `package.json`, `tailwind.config.ts`, `postcss.config.mjs`, `src/app/globals.css`
+  - Change: migrate styling to Tailwind 4 and update `@next/eslint-plugin-next`
+  - Verify: full visual regression + `npm run build`
+  - Expected output: `npm audit` → 0 vulnerabilities
+  - Rollback: `git checkout -- package.json package-lock.json tailwind.config.ts postcss.config.mjs src/app/globals.css && npm install`
+  - Depends on: dedicated user-approved effort
+  - Reason for deferral: `braces` has **no patched version** (`CVE-2026-93687`); the chain is
+    **dev/build-time only**; the only fix is a large, risky Tailwind major migration. Not improvised.
