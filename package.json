@@ -1,7 +1,7 @@
 {
   "name": "taskboard",
   "version": "4.1.0",
-  "private": false,
+  "private": true,
   "description": "Professional task management system for teams and managers",
   "author": "Shadow-x78 - RED SHADOWS | RS",
   "license": "MIT",
