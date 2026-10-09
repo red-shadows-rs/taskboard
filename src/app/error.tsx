@@ -1,7 +1,6 @@
 "use client";
 
 import { LayoutDashboard } from "lucide-react";
-import { useEffect } from "react";
 import Link from "next/link";
 
 import {
@@ -28,11 +27,6 @@ export default function Error({
   reset: () => void;
 }) {
   const { t } = useLanguage();
-
-  useEffect(() => {
-    if (process.env.NODE_ENV === "development" && error) {
-    }
-  }, [error]);
 
   return (
     <div

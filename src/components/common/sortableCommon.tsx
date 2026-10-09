@@ -1,7 +1,7 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { TaskCard } from "@/components/common/tasksCommon";
-import { Task, User } from "@/types";
+import type { Task, User } from "@/types";
 import { cn } from "@/components/ui/utilsUi";
 
 interface SortableTaskProps {
