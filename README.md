@@ -94,7 +94,7 @@ Managing projects across bilingual teams is challenging. TaskBoard bridges the g
         <li><strong>Rate Limiting</strong> — Per-IP on auth endpoints</li>
         <li><strong>Input Validation</strong> — Zod schemas on all API routes</li>
         <li><strong>XSS Protection</strong> — DOMPurify sanitization</li>
-        <li><strong>Security Headers</strong> — X-Frame-Options, CSP, Referrer-Policy</li>
+        <li><strong>Security Headers</strong> — X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy</li>
       </ul>
     </td>
   </tr>
@@ -265,18 +265,19 @@ To report a security vulnerability, please follow our [Security Policy](./SECURI
 
 See [CHANGELOG.md](./CHANGELOG.md) for a detailed version history. This project follows [Semantic Versioning](https://semver.org/).
 
-| Version   | Date       | Highlights                                                                    |
-| --------- | ---------- | ----------------------------------------------------------------------------- |
-| **4.0.6** | 2026-05-15 | Updated author username, set GitHub repo topics                               |
-| **4.0.5** | 2026-05-14 | Fixed drag-and-drop on desktop, fixed metadata icons, removed ESLint comments |
-| 4.0.4     | 2026-05-14 | Removed ESLint disable comments, removed console logs, added missing tags     |
-| 4.0.3     | 2026-05-14 | Fixed repo links, updated branding, version bump                              |
-| 4.0.2     | 2026-05-14 | Restored original icon, added .env.example                                    |
-| 4.0.1     | 2026-05-14 | Documentation overhaul, Arabic README, improved icons, data cleanup           |
-| 4.0.0     | 2026-05-14 | Analytics, PDF export, PWA, bilingual, dark/light theme, drag & drop          |
-| 3.0.0     | 2026-04-01 | Project/section management, task CRUD, user roles, session auth               |
-| 2.0.0     | 2026-03-01 | Kanban board UI, task statuses/priorities/tags, dashboard layout              |
-| 1.0.0     | 2026-02-01 | Initial setup: Next.js App Router, login page, Tailwind CSS                   |
+| Version   | Date       | Highlights                                                                        |
+| --------- | ---------- | --------------------------------------------------------------------------------- |
+| **4.1.0** | 2026-10-09 | Single language-aware input, fully local NLLB-200 translation, security hardening |
+| **4.0.6** | 2026-05-15 | Updated author username, set GitHub repo topics                                   |
+| **4.0.5** | 2026-05-14 | Fixed drag-and-drop on desktop, fixed metadata icons, removed ESLint comments     |
+| 4.0.4     | 2026-05-14 | Removed ESLint disable comments, removed console logs, added missing tags         |
+| 4.0.3     | 2026-05-14 | Fixed repo links, updated branding, version bump                                  |
+| 4.0.2     | 2026-05-14 | Restored original icon, added .env.example                                        |
+| 4.0.1     | 2026-05-14 | Documentation overhaul, Arabic README, improved icons, data cleanup               |
+| 4.0.0     | 2026-05-14 | Analytics, PDF export, PWA, bilingual, dark/light theme, drag & drop              |
+| 3.0.0     | 2026-04-01 | Project/section management, task CRUD, user roles, session auth                   |
+| 2.0.0     | 2026-03-01 | Kanban board UI, task statuses/priorities/tags, dashboard layout                  |
+| 1.0.0     | 2026-02-01 | Initial setup: Next.js App Router, login page, Tailwind CSS                       |
 
 ---
 

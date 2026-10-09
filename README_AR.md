@@ -94,7 +94,7 @@
         <li><strong>تحديد المعدل</strong> — لكل IP على نقاط المصادقة</li>
         <li><strong>التحقق من المدخلات</strong> — مخططات Zod على جميع مسارات API</li>
         <li><strong>حماية XSS</strong> — تنقية DOMPurify</li>
-        <li><strong>رؤوس الأمان</strong> — X-Frame-Options, CSP, Referrer-Policy</li>
+        <li><strong>رؤوس الأمان</strong> — X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy</li>
       </ul>
     </td>
   </tr>
@@ -267,6 +267,7 @@ TaskBoard/
 
 | الإصدار   | التاريخ    | أبرز المميزات                                                                   |
 | --------- | ---------- | ------------------------------------------------------------------------------- |
+| **4.1.0** | 2026-10-09 | إدخال واحد حسب اللغة، ترجمة محلية بالكامل عبر NLLB-200، تقوية الأمان            |
 | **4.0.6** | 2026-05-15 | تحديث اسم المؤلف، إضافة مواضيع GitHub repo                                      |
 | **4.0.5** | 2026-05-14 | إصلاح السحب والإفلات على سطح المكتب، إصلاح أيقونات metadata، حذف تعليقات ESLint |
 | 4.0.4     | 2026-05-14 | حذف تعليقات ESLint، حذف console logs، إضافة tags المفقودة                       |
