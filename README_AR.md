@@ -30,7 +30,7 @@
 <br/>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/الإصدار-4.1.0-2563eb?style=for-the-badge" alt="الإصدار 4.1.0">
+  <img src="https://img.shields.io/badge/الإصدار-4.1.2-2563eb?style=for-the-badge" alt="الإصدار 4.1.2">
   <img src="https://img.shields.io/badge/الترخيص-MIT-10b981?style=for-the-badge" alt="ترخيص MIT">
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16">
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18">
@@ -124,6 +124,7 @@
 | **الترجمة**         | [NLLB-200](https://huggingface.co/Xenova/nllb-200-distilled-600M) عبر [transformers.js](https://huggingface.co/docs/transformers.js) | ترجمة محلية عربي↔إنجليزي   |
 | **التدقيق**         | [ESLint 9](https://eslint.org/) (flat config)                                                                                        | جودة الكود                 |
 | **التنسيق**         | [Prettier](https://prettier.io/)                                                                                                     | نمط الكود                  |
+| **الاختبار**        | [Vitest](https://vitest.dev/)                                                                                                        | اختبارات الوحدة            |
 
 ---
 
@@ -188,9 +189,10 @@ TaskBoard/
 ├── public/
 │   ├── css/                    # Font Awesome
 │   ├── fonts/                  # IBM Plex Sans Arabic (PDF)
-│   ├── images/                 # مرفقات المهام
+│   ├── images/                 # صور ثابتة
 │   ├── locales/                # الترجمة (عربي/إنجليزي)
 │   └── manifest.json           # بيان PWA
+├── uploads/                    # مرفقات المهام (مستثناة من git، تُخدَم عبر /images)
 ├── src/
 │   ├── app/
 │   │   ├── api/                # مسارات REST API
@@ -200,7 +202,7 @@ TaskBoard/
 │   │   │   ├── tasks/          # CRUD المهام + إعادة الترتيب + الصور
 │   │   │   ├── users/          # CRUD المستخدمين + إعادة الترتيب
 │   │   │   ├── translate/      # الترجمة المحلية
-│   │   │   └── shared/         # قاعدة البيانات، الوصول، تحديد المعدل، المحققات
+│   │   │   └── shared/         # قاعدة البيانات، الوصول، تحديد المعدل، المحققات، التخزين
 │   │   ├── dashboard/          # المهام، المشاريع، التحليلات، الفريق
 │   │   ├── login/              # صفحة المصادقة
 │   │   └── profile/            # الملف الشخصي
@@ -227,6 +229,7 @@ TaskBoard/
 ├── tailwind.config.ts
 ├── tsconfig.json
 ├── translation.config.json
+├── vitest.config.mts
 └── package.json
 ```
 
@@ -239,7 +242,7 @@ TaskBoard/
 - [ ] دعم تسجيل الدخول عبر OAuth2 / الشبكات الاجتماعية
 - [ ] تحديثات فورية عبر WebSocket
 - [ ] إعداد نشر Docker
-- [ ] اختبارات الوحدة والتكامل
+- [x] اختبارات الوحدة (Vitest)
 
 ---
 
@@ -279,6 +282,7 @@ TaskBoard/
 
 | الإصدار   | التاريخ    | أبرز المميزات                                                                   |
 | --------- | ---------- | ------------------------------------------------------------------------------- |
+| **4.1.2** | 2026-10-09 | إصلاحات تدقيق الأمان، CSP، مرفقات خاصة، اختبارات آلية، تحديث الاعتماديات        |
 | **4.1.0** | 2026-10-09 | إدخال واحد حسب اللغة، ترجمة محلية بالكامل عبر NLLB-200، تقوية الأمان            |
 | **4.0.6** | 2026-05-15 | تحديث اسم المؤلف، إضافة مواضيع GitHub repo                                      |
 | **4.0.5** | 2026-05-14 | إصلاح السحب والإفلات على سطح المكتب، إصلاح أيقونات metadata، حذف تعليقات ESLint |

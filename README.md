@@ -30,7 +30,7 @@
 <br/>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-4.1.0-2563eb?style=for-the-badge" alt="Version 4.1.0">
+  <img src="https://img.shields.io/badge/version-4.1.2-2563eb?style=for-the-badge" alt="Version 4.1.2">
   <img src="https://img.shields.io/badge/license-MIT-10b981?style=for-the-badge" alt="MIT License">
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16">
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18">
@@ -124,6 +124,7 @@ Managing projects across bilingual teams is challenging. TaskBoard bridges the g
 | **Translation**   | [NLLB-200](https://huggingface.co/Xenova/nllb-200-distilled-600M) via [transformers.js](https://huggingface.co/docs/transformers.js) | Local ar↔en machine translation |
 | **Linting**       | [ESLint 9](https://eslint.org/) (flat config)                                                                                        | Code quality                    |
 | **Formatting**    | [Prettier](https://prettier.io/)                                                                                                     | Code style                      |
+| **Testing**       | [Vitest](https://vitest.dev/)                                                                                                        | Unit tests                      |
 
 ---
 
@@ -189,9 +190,10 @@ TaskBoard/
 ├── public/
 │   ├── css/                    # Font Awesome
 │   ├── fonts/                  # IBM Plex Sans Arabic (PDF)
-│   ├── images/                 # Task attachments
+│   ├── images/                 # Static images
 │   ├── locales/                # i18n (en/ar)
 │   └── manifest.json           # PWA manifest
+├── uploads/                    # Task attachments (git-ignored, served via /images)
 ├── src/
 │   ├── app/
 │   │   ├── api/                # REST API routes
@@ -201,7 +203,7 @@ TaskBoard/
 │   │   │   ├── tasks/          # Task CRUD + reorder + images
 │   │   │   ├── users/          # User CRUD + reorder
 │   │   │   ├── translate/      # Local translation
-│   │   │   └── shared/         # Database, access, rate limit, validators
+│   │   │   └── shared/         # Database, access, rate limit, validators, storage
 │   │   ├── dashboard/          # Tasks, projects, analytics, team
 │   │   ├── login/              # Authentication page
 │   │   └── profile/            # User profile
@@ -228,6 +230,7 @@ TaskBoard/
 ├── tailwind.config.ts
 ├── tsconfig.json
 ├── translation.config.json
+├── vitest.config.mts
 └── package.json
 ```
 
@@ -240,7 +243,7 @@ TaskBoard/
 - [ ] OAuth2 / social login support
 - [ ] WebSocket real-time updates
 - [ ] Docker deployment configuration
-- [ ] Unit and integration tests
+- [x] Unit tests (Vitest)
 
 ---
 
@@ -279,19 +282,20 @@ To report a security vulnerability, please follow our [Security Policy](./SECURI
 
 See [CHANGELOG.md](./CHANGELOG.md) for a detailed version history. This project follows [Semantic Versioning](https://semver.org/).
 
-| Version   | Date       | Highlights                                                                        |
-| --------- | ---------- | --------------------------------------------------------------------------------- |
-| **4.1.0** | 2026-10-09 | Single language-aware input, fully local NLLB-200 translation, security hardening |
-| **4.0.6** | 2026-05-15 | Updated author username, set GitHub repo topics                                   |
-| **4.0.5** | 2026-05-14 | Fixed drag-and-drop on desktop, fixed metadata icons, removed ESLint comments     |
-| 4.0.4     | 2026-05-14 | Removed ESLint disable comments, removed console logs, added missing tags         |
-| 4.0.3     | 2026-05-14 | Fixed repo links, updated branding, version bump                                  |
-| 4.0.2     | 2026-05-14 | Restored original icon, added .env.example                                        |
-| 4.0.1     | 2026-05-14 | Documentation overhaul, Arabic README, improved icons, data cleanup               |
-| 4.0.0     | 2026-05-14 | Analytics, PDF export, PWA, bilingual, dark/light theme, drag & drop              |
-| 3.0.0     | 2026-04-01 | Project/section management, task CRUD, user roles, session auth                   |
-| 2.0.0     | 2026-03-01 | Kanban board UI, task statuses/priorities/tags, dashboard layout                  |
-| 1.0.0     | 2026-02-01 | Initial setup: Next.js App Router, login page, Tailwind CSS                       |
+| Version   | Date       | Highlights                                                                          |
+| --------- | ---------- | ----------------------------------------------------------------------------------- |
+| **4.1.2** | 2026-10-09 | Security audit fixes, CSP, private attachments, automated tests, dependency updates |
+| **4.1.0** | 2026-10-09 | Single language-aware input, fully local NLLB-200 translation, security hardening   |
+| **4.0.6** | 2026-05-15 | Updated author username, set GitHub repo topics                                     |
+| **4.0.5** | 2026-05-14 | Fixed drag-and-drop on desktop, fixed metadata icons, removed ESLint comments       |
+| 4.0.4     | 2026-05-14 | Removed ESLint disable comments, removed console logs, added missing tags           |
+| 4.0.3     | 2026-05-14 | Fixed repo links, updated branding, version bump                                    |
+| 4.0.2     | 2026-05-14 | Restored original icon, added .env.example                                          |
+| 4.0.1     | 2026-05-14 | Documentation overhaul, Arabic README, improved icons, data cleanup                 |
+| 4.0.0     | 2026-05-14 | Analytics, PDF export, PWA, bilingual, dark/light theme, drag & drop                |
+| 3.0.0     | 2026-04-01 | Project/section management, task CRUD, user roles, session auth                     |
+| 2.0.0     | 2026-03-01 | Kanban board UI, task statuses/priorities/tags, dashboard layout                    |
+| 1.0.0     | 2026-02-01 | Initial setup: Next.js App Router, login page, Tailwind CSS                         |
 
 ---
 

@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v4.1.2] - 2026-10-09
+
+### Security
+
+- Enforced a minimum length of 32 characters for `SESSION_SECRET`.
+- Rate-limit client IP detection now trusts `X-Forwarded-For` / `X-Real-IP` only when `TRUST_PROXY=true`, preventing header spoofing to evade per-IP limits.
+- Added a `Content-Security-Policy` response header alongside the existing security headers.
+- Requires authentication for the `GET /api/locales` endpoint.
+- Task attachments are now stored outside `public/` (in the git-ignored `uploads/` directory) and served only to authenticated users through the `/images/*` route.
+- Changing your own password now always requires the current password, including for leaders.
+
+### Added
+
+- Vitest unit test suite (`npm test`) covering pricing, text-script detection, API validators, UI helpers, and rate limiting; also runs in CI.
+
+### Changed
+
+- Upgraded dependencies to patched releases: `sharp`, `jspdf`, `uuid`, and `@huggingface/transformers`; pinned `postcss-selector-parser` and `sprintf-js` through `overrides`.
+
+### Fixed
+
+- Leaders now see all tasks of a project on the project detail page instead of only their assigned tasks.
+- `deleteSection` recomputes the project end date after its tasks are removed.
+- `readJSON` fails fast on corrupt JSON instead of retrying three times.
+- Avoided mutating the Zustand project array when sorting the projects list.
+
+### Removed
+
+- Dead code (an empty effect in `error.tsx`, an unused `isActive` prop) and non-banner comments in the guard shell scripts.
+
 ## [v4.1.0] - 2026-10-09
 
 ### Added
@@ -227,6 +257,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[v4.1.2]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.1.2
 [v4.1.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.1.0
 [4.0.6]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.0.6
 [4.0.5]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.0.5
