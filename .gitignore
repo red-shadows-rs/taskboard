@@ -1,26 +1,33 @@
-# Dependencies
+# ─────────────────────────────────────────────
+# TaskBoard - Git Ignore Rules
+# https://github.com/red-shadows-rs/taskboard
+# ─────────────────────────────────────────────
+
+# ── Dependencies ──
 node_modules/
 .pnpm-store/
-package-lock.json
 
-# Build outputs
+# ── Build outputs ──
 .next/
 out/
 build/
 dist/
 
-# Environment variables
+# ── Local translation models ──
+models/
+
+# ── Environment variables ──
 .env
 .env.local
 .env.*.local
 
-# Debug logs
+# ── Debug logs ──
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# IDE
+# ── Editor artifacts ──
 .vscode/
 .idea/
 *.swp
@@ -28,16 +35,16 @@ yarn-error.log*
 *~
 .kilo/
 
-# OS
+# ── OS files ──
 .DS_Store
 Thumbs.db
 
-# TypeScript
+# ── TypeScript ──
 *.tsbuildinfo
 next-env.d.ts
 
-# Vercel
+# ── Vercel ──
 .vercel
 
-# Testing
+# ── Testing ──
 coverage/

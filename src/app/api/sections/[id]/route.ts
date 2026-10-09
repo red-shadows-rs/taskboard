@@ -6,6 +6,8 @@ import {
   updateSection,
   deleteSection,
 } from "@/app/api/shared/databaseShared";
+import { canAccessSection } from "@/app/api/shared/accessShared";
+import { sectionSchema } from "@/app/api/shared/validatorsShared";
 
 import type { NextRequest } from "next/server";
 
@@ -14,12 +16,16 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    await requireAuth();
+    const user = await requireAuth();
     const { id } = await params;
     const section = await getSectionById(id);
 
     if (!section) {
       return NextResponse.json({ error: "Section not found" }, { status: 404 });
+    }
+
+    if (!(await canAccessSection(user, section))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     return NextResponse.json({ section });
@@ -41,11 +47,14 @@ export async function PATCH(
   try {
     const user = await requireAuth();
     const { id } = await params;
-    const body = await request.json();
 
     const existingSection = await getSectionById(id);
     if (!existingSection) {
       return NextResponse.json({ error: "Section not found" }, { status: 404 });
+    }
+
+    if (!(await canAccessSection(user, existingSection))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     if (user.role !== "leader" && user.role !== "client") {
@@ -57,7 +66,22 @@ export async function PATCH(
       );
     }
 
-    const section = await updateSection(id, body);
+    const body = await request.json();
+
+    const result = sectionSchema.partial().safeParse(body);
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Invalid input", details: result.error.errors },
+        { status: 400 },
+      );
+    }
+
+    const updates = { ...result.data };
+    if (user.role !== "leader") {
+      delete updates.projectId;
+    }
+
+    const section = await updateSection(id, updates);
     return NextResponse.json({ section });
   } catch (error) {
     const status =

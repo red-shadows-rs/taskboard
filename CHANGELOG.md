@@ -7,6 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v4.1.0] - 2026-10-09
+
+### Added
+
+- **Single language-aware input** for project titles, section titles, task titles, and task descriptions. Each field is now one input in the active UI language, and the other language is filled automatically.
+- **Fully local translation** powered by NLLB-200 (`Xenova/nllb-200-distilled-600M`, int8 ONNX) through `@huggingface/transformers`, running on the CPU with no cloud API.
+- `POST /api/translate` (authenticated and rate-limited) and `npm run models:download` to cache the model under `models/`.
+- `translation.config.json` as the single source of truth for the model id, quantization, and language codes.
+
+### Changed
+
+- The script of the typed text decides the outcome: Arabic input in an Arabic UI is translated to English, while Latin input in an Arabic UI is stored as-is, and vice versa. Balanced mixed text is stored as-is.
+- Task descriptions are translated per text node, so bold, italic, lists, links, and alignment are preserved; `code`, `pre`, `script`, and `style` are never translated.
+- Documentation restructured to match the Orbiscreen layout: `docs/`, `.github/` templates and CI, `README_AR.md`, `.editorconfig`, `.gitattributes`, and version/comment guard scripts.
+
+### Security
+
+- Fixed privilege escalation via mass assignment on `PATCH /api/users/[id]`, where any user could overwrite `role` or `id` on their own record.
+- Restricted `POST /api/users/reorder` and role changes to leaders.
+- Added ownership checks (project, section, task) to task, section, project, attachment, and reorder endpoints, closing cross-project IDOR.
+- Added a same-origin check for mutating API requests, proxy-aware client IP detection, a request-size limit before parsing uploads, and rate limiting on creation endpoints.
+- Replaced the upload allow-list with JPEG/PNG/GIF/WebP only and added `fs.realpath` containment for the image route.
+- Bumped Next.js to a patched release and forced a patched DOMPurify through `overrides`.
+
+### Fixed
+
+- Added missing locale keys (`common.nav.menu`, `dashboard.analytics.filters.dateRange`) that rendered as raw keys.
+- Corrected the environment example to reference NLLB-200 instead of OPUS-MT.
+
+### Removed
+
+- Unused files (`components/common/index.tsx`, `components/ui/separatorUi.tsx`), dead exports, unused locale keys, and unused dependencies (`@types/dompurify`, `@radix-ui/react-separator`, `eslint-config-next`).
+- All inline code comments; the policy is now enforced by `scripts/check-comments.sh`.
+
+- Version bumped to 4.1.0 across package.json, documentation badges, and the changelog.
+
 ## [4.0.6] - 2026-05-15
 
 ### Changed
@@ -43,7 +79,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Updated repository links** from `SHADOW-x7/taskboard` to `red-shadows-rs/TaskBoard`
+- **Updated repository links** from `SHADOW-x7/taskboard` to `red-shadows-rs/taskboard`
 - **Updated branding** from `RED SHADOWS` to `RED SHADOWS | RS`
 
 ---
@@ -191,13 +227,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[4.0.6]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.6
-[4.0.5]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.5
-[4.0.4]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.4
-[4.0.3]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.3
-[4.0.2]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.2
-[4.0.1]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.1
-[4.0.0]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v4.0.0
-[3.0.0]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v3.0.0
-[2.0.0]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v2.0.0
-[1.0.0]: https://github.com/red-shadows-rs/TaskBoard/releases/tag/v1.0.0
+[v4.1.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.1.0
+[4.0.6]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.0.6
+[4.0.5]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.0.5
+[4.0.4]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.0.4
+[4.0.3]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.0.3
+[4.0.2]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.0.2
+[4.0.1]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.0.1
+[4.0.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.0.0
+[3.0.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v3.0.0
+[2.0.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v2.0.0
+[1.0.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v1.0.0

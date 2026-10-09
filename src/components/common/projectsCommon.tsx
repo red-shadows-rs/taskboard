@@ -50,6 +50,7 @@ import {
 import { useLanguage } from "@/contexts/languageContext";
 import { useStore } from "@/contexts/storeContext";
 import { calculateProjectTotal, formatPrice } from "@/utils/pricingUtils";
+import { buildLocalizedPair } from "@/utils/translateFormUtil";
 
 import type { Project, User } from "@/types";
 import type { ProjectInput } from "@/app/api/shared/validatorsShared";
@@ -217,15 +218,12 @@ export function ProjectCard({
 interface ProjectFormProps {
   project?: Project;
   users: User[];
-  onSubmit: (data: ProjectInput) => void;
+  onSubmit: (data: ProjectInput) => void | Promise<void>;
   onCancel: () => void;
 }
 
 const projectFormSchema = z.object({
-  title: z.object({
-    en: z.string().min(3),
-    ar: z.string().min(3),
-  }),
+  titleValue: z.string().min(3),
 
   status: z.enum(["planning", "active", "completed", "on_hold"]),
   startDate: z.string(),
@@ -242,7 +240,7 @@ export function ProjectForm({
   onSubmit,
   onCancel,
 }: ProjectFormProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [selectedMembers, setSelectedMembers] = useState<string[]>(
     project?.teamMembers || [],
   );
@@ -250,13 +248,13 @@ export function ProjectForm({
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     setValue,
     watch,
   } = useForm<ProjectFormData>({
     resolver: zodResolver(projectFormSchema),
     defaultValues: {
-      title: project?.title || { en: "", ar: "" },
+      titleValue: project?.title[language] || "",
 
       status: project?.status,
       startDate: project?.startDate || "",
@@ -287,8 +285,10 @@ export function ProjectForm({
     setValue("teamMembers", newMembers);
   };
 
-  const onFormSubmit = (data: ProjectFormData) => {
-    onSubmit({ ...data, teamMembers: selectedMembers });
+  const onFormSubmit = async (data: ProjectFormData) => {
+    const title = await buildLocalizedPair(data.titleValue, language);
+    const { titleValue: _titleValue, ...rest } = data;
+    await onSubmit({ ...rest, title, teamMembers: selectedMembers });
   };
 
   return (
@@ -298,25 +298,17 @@ export function ProjectForm({
     >
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain space-y-4 px-1 -mx-1">
         <div className="space-y-1">
-          <Label htmlFor="title-en">
-            {t("dashboard.projects.form.fields.titleEn")}
+          <Label htmlFor="title">
+            {t("dashboard.projects.form.fields.title")}
           </Label>
-          <Input id="title-en" {...register("title.en")} dir="ltr" />
-          {errors.title?.en && (
+          <Input
+            id="title"
+            {...register("titleValue")}
+            dir={language === "ar" ? "rtl" : "ltr"}
+          />
+          {errors.titleValue && (
             <p className="text-sm text-red-600">
-              {t("dashboard.projects.validation.titleMinEn")}
-            </p>
-          )}
-        </div>
-
-        <div className="space-y-1">
-          <Label htmlFor="title-ar">
-            {t("dashboard.projects.form.fields.titleAr")}
-          </Label>
-          <Input id="title-ar" {...register("title.ar")} dir="rtl" />
-          {errors.title?.ar && (
-            <p className="text-sm text-red-600">
-              {t("dashboard.projects.validation.titleMinAr")}
+              {t("dashboard.projects.validation.titleMin")}
             </p>
           )}
         </div>
@@ -610,15 +602,24 @@ export function ProjectForm({
         </div>
       </div>
       <div className="flex gap-2 pt-4 shrink-0">
-        <Button type="submit" className="flex-1">
+        <Button type="submit" className="flex-1" disabled={isSubmitting}>
           {project ? (
             <Save className="h-4 w-4" />
           ) : (
             <Plus className="h-4 w-4" />
           )}
-          {project ? t("common.button.update") : t("common.button.create")}
+          {isSubmitting
+            ? t("dashboard.projects.messages.translating")
+            : project
+              ? t("common.button.update")
+              : t("common.button.create")}
         </Button>
-        <Button type="button" variant="outline" onClick={onCancel}>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onCancel}
+          disabled={isSubmitting}
+        >
           <Ban className="h-4 w-4" />
           {t("common.button.cancel")}
         </Button>

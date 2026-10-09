@@ -1,0 +1,16 @@
+# ─────────────────────────────────────────────
+# TaskBoard - Issue Template Configuration
+# https://github.com/red-shadows-rs/taskboard
+# ─────────────────────────────────────────────
+
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Community Discussions & Questions
+    url: https://github.com/red-shadows-rs/taskboard/discussions
+    about: Ask questions, get help, or discuss features with the community.
+  - name: 📖 Documentation & Architecture
+    url: https://github.com/red-shadows-rs/taskboard/tree/main/docs
+    about: Explore the architecture, local translation, and setup guides.
+  - name: 🛡️ Security Vulnerability Reporting
+    url: https://github.com/red-shadows-rs/taskboard/security/policy
+    about: Privately disclose sensitive security vulnerabilities.

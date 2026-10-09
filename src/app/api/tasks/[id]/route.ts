@@ -8,8 +8,13 @@ import {
   updateTask,
   deleteTask,
 } from "@/app/api/shared/databaseShared";
+import {
+  canAccessTask,
+  canAccessTaskSection,
+} from "@/app/api/shared/accessShared";
 import { taskSchema } from "@/app/api/shared/validatorsShared";
 
+import type { Task } from "@/types";
 import type { NextRequest } from "next/server";
 
 function isPathInside(target: string, base: string): boolean {
@@ -28,12 +33,16 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    await requireAuth();
+    const user = await requireAuth();
     const { id } = await params;
     const task = await getTaskById(id);
 
     if (!task) {
       return NextResponse.json({ error: "Task not found" }, { status: 404 });
+    }
+
+    if (!(await canAccessTask(user, task))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     return NextResponse.json({ task });
@@ -55,11 +64,21 @@ export async function PATCH(
   try {
     const user = await requireAuth();
     const { id } = await params;
-    const body = await request.json();
 
-    if (user.role !== "leader") {
-      delete body.assigneePrices;
+    const existingTask = await getTaskById(id);
+    if (!existingTask) {
+      return NextResponse.json({ error: "Task not found" }, { status: 404 });
     }
+
+    if (!(await canAccessTask(user, existingTask))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    if (user.role === "member" && !existingTask.assignedTo.includes(user.id)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    const body = await request.json();
 
     const result = taskSchema.partial().safeParse(body);
     if (!result.success) {
@@ -69,29 +88,40 @@ export async function PATCH(
       );
     }
 
-    if (result.data.attachments) {
-      const oldTask = await getTaskById(id);
-      if (oldTask && oldTask.attachments) {
-        const oldAttachments = oldTask.attachments;
-        const newAttachments = result.data.attachments;
-        const removedAttachments = oldAttachments.filter(
-          (path) => !newAttachments.includes(path),
-        );
+    const updates: Partial<Task> = { ...result.data };
 
-        if (removedAttachments.length > 0) {
-          const publicDir = path.join(process.cwd(), "public");
-          for (const attachment of removedAttachments) {
-            const imageFullPath = path.join(publicDir, attachment);
-            if (!isPathInside(imageFullPath, publicDir)) continue;
-            try {
-              await fs.unlink(imageFullPath);
-            } catch (_error) {}
-          }
+    if (user.role !== "leader") {
+      delete updates.assigneePrices;
+      delete updates.sectionId;
+    } else if (
+      updates.sectionId &&
+      updates.sectionId !== existingTask.sectionId
+    ) {
+      if (!(await canAccessTaskSection(user, updates.sectionId))) {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      }
+    }
+
+    if (updates.attachments) {
+      const oldAttachments = existingTask.attachments || [];
+      const newAttachments = updates.attachments;
+      const removedAttachments = oldAttachments.filter(
+        (attachment) => !newAttachments.includes(attachment),
+      );
+
+      if (removedAttachments.length > 0) {
+        const publicDir = path.join(process.cwd(), "public");
+        for (const attachment of removedAttachments) {
+          const imageFullPath = path.join(publicDir, attachment);
+          if (!isPathInside(imageFullPath, publicDir)) continue;
+          try {
+            await fs.unlink(imageFullPath);
+          } catch (_error) {}
         }
       }
     }
 
-    const task = await updateTask(id, result.data);
+    const task = await updateTask(id, updates);
 
     if (!task) {
       return NextResponse.json({ error: "Task not found" }, { status: 404 });
@@ -114,11 +144,26 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    await requireAuth();
+    const user = await requireAuth();
     const { id } = await params;
 
     const task = await getTaskById(id);
-    if (task && task.attachments && task.attachments.length > 0) {
+    if (!task) {
+      return NextResponse.json({ error: "Task not found" }, { status: 404 });
+    }
+
+    if (!(await canAccessTask(user, task))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    if (user.role === "member") {
+      return NextResponse.json(
+        { error: "Forbidden: members cannot delete tasks" },
+        { status: 403 },
+      );
+    }
+
+    if (task.attachments && task.attachments.length > 0) {
       const publicDir = path.join(process.cwd(), "public");
 
       for (const attachment of task.attachments) {

@@ -29,8 +29,8 @@ import NextImage from "next/image";
 import { useState, useCallback, useEffect } from "react";
 import DOMPurify from "dompurify";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { taskSchema } from "@/app/api/shared/validatorsShared";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -82,6 +82,11 @@ import type { TaskInput } from "@/app/api/shared/validatorsShared";
 import type { Task, User, Project, Section } from "@/types";
 import { exportTaskPDF } from "@/utils/pdfUtil";
 import { formatPrice, formatPricePlain } from "@/utils/pricingUtils";
+import { stripHtmlToText } from "@/utils/textScriptUtil";
+import {
+  buildLocalizedPair,
+  buildLocalizedHtmlPair,
+} from "@/utils/translateFormUtil";
 
 interface TaskDetailsDialogProps {
   task: Task;
@@ -164,6 +169,31 @@ export function TaskDetailsDialog({
                     language === "ar"
                       ? task.description.ar
                       : task.description.en,
+                    {
+                      ALLOWED_TAGS: [
+                        "p",
+                        "br",
+                        "strong",
+                        "em",
+                        "u",
+                        "s",
+                        "ul",
+                        "ol",
+                        "li",
+                        "a",
+                        "h1",
+                        "h2",
+                        "h3",
+                        "h4",
+                        "blockquote",
+                        "code",
+                        "pre",
+                        "span",
+                      ],
+                      ALLOWED_ATTR: ["href", "target", "rel", "class", "style"],
+                      ALLOWED_URI_REGEXP:
+                        /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
+                    },
                   ),
                 }}
               />
@@ -724,11 +754,29 @@ export function TaskCard({
   );
 }
 
+const taskFormSchema = z.object({
+  titleValue: z.string().min(3),
+  descriptionValue: z
+    .string()
+    .refine((value) => stripHtmlToText(value).length >= 10),
+  status: z.enum(["todo", "in_progress", "in_review", "done"]),
+  assignedTo: z.array(z.string()),
+  dueDate: z.string(),
+  createdAt: z.string().optional(),
+  priority: z.enum(["low", "medium", "high", "urgent"]),
+  sectionId: z.string(),
+  tags: z.array(z.string()),
+  attachments: z.array(z.string()),
+  assigneePrices: z.array(z.object({ userId: z.string(), price: z.number() })),
+});
+
+type TaskFormData = z.infer<typeof taskFormSchema>;
+
 export interface TaskFormProps {
   task?: Task;
   sectionId?: string;
   users: User[];
-  onSubmit: (data: TaskInput, files?: File[]) => void;
+  onSubmit: (data: TaskInput, files?: File[]) => void | Promise<void>;
   onCancel: () => void;
   currentUser?: User;
   showStatusOnly?: boolean;
@@ -778,13 +826,13 @@ export function TaskForm({
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     setValue,
-  } = useForm<TaskInput>({
-    resolver: zodResolver(taskSchema),
+  } = useForm<TaskFormData>({
+    resolver: zodResolver(taskFormSchema),
     defaultValues: {
-      title: task?.title || { en: "", ar: "" },
-      description: task?.description || { en: "", ar: "" },
+      titleValue: task?.title[language] || "",
+      descriptionValue: task?.description[language] || "",
       status: task?.status || "todo",
       assignedTo: task?.assignedTo || [],
       dueDate: task?.dueDate || "",
@@ -861,14 +909,37 @@ export function TaskForm({
     [tasks, tags],
   );
 
-  const onFormSubmit = (data: TaskInput) => {
-    const finalData = {
-      ...data,
+  const onFormSubmit = async (data: TaskFormData) => {
+    const {
+      titleValue: _titleValue,
+      descriptionValue: _descriptionValue,
+      ...rest
+    } = data;
+
+    let title: Task["title"];
+    let description: Task["description"];
+
+    if (!showStatusOnly && !isRestrictedView) {
+      title = await buildLocalizedPair(data.titleValue, language);
+      description = await buildLocalizedHtmlPair(
+        data.descriptionValue,
+        language,
+      );
+    } else {
+      title = task?.title ?? { en: "", ar: "" };
+      description = task?.description ?? { en: "", ar: "" };
+    }
+
+    const finalData: TaskInput = {
+      ...rest,
+      title,
+      description,
       assignedTo: selectedMembers,
       tags: tags,
       attachments: existingAttachments,
     };
-    onSubmit(finalData, imageFiles);
+
+    await onSubmit(finalData, imageFiles);
   };
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -925,59 +996,33 @@ export function TaskForm({
         {!showStatusOnly && !isRestrictedView && (
           <div className="space-y-4">
             <div className="space-y-1">
-              <Label htmlFor="title-en">
-                {t("dashboard.tasks.form.fields.titleEn")}
+              <Label htmlFor="title">
+                {t("dashboard.tasks.form.fields.title")}
               </Label>
-              <Input id="title-en" dir="ltr" {...register("title.en")} />
-              {errors.title?.en && (
+              <Input
+                id="title"
+                dir={language === "ar" ? "rtl" : "ltr"}
+                {...register("titleValue")}
+              />
+              {errors.titleValue && (
                 <p className="text-sm text-red-600 mt-1">
-                  {t("dashboard.tasks.validation.titleMinEn")}
+                  {t("dashboard.tasks.validation.titleMin")}
                 </p>
               )}
             </div>
 
             <div className="space-y-1">
-              <Label htmlFor="title-ar">
-                {t("dashboard.tasks.form.fields.titleAr")}
-              </Label>
-              <Input id="title-ar" dir="rtl" {...register("title.ar")} />
-              {errors.title?.ar && (
-                <p className="text-sm text-red-600 mt-1">
-                  {t("dashboard.tasks.validation.titleMinAr")}
-                </p>
-              )}
-            </div>
-
-            <div className="space-y-1">
-              <Label htmlFor="description-en">
-                {t("dashboard.tasks.form.fields.descriptionEn")}
+              <Label htmlFor="description">
+                {t("dashboard.tasks.form.fields.description")}
               </Label>
               <RichTextEditor
-                content={watch("description.en")}
+                content={watch("descriptionValue")}
                 onChange={(content) =>
-                  setValue("description.en", content, { shouldDirty: true })
+                  setValue("descriptionValue", content, { shouldDirty: true })
                 }
-                dir="ltr"
+                dir={language === "ar" ? "rtl" : "ltr"}
               />
-              {errors.description?.en && (
-                <p className="text-sm text-red-600 mt-1">
-                  {t("dashboard.tasks.validation.descriptionMin")}
-                </p>
-              )}
-            </div>
-
-            <div className="space-y-1">
-              <Label htmlFor="description-ar">
-                {t("dashboard.tasks.form.fields.descriptionAr")}
-              </Label>
-              <RichTextEditor
-                content={watch("description.ar")}
-                onChange={(content) =>
-                  setValue("description.ar", content, { shouldDirty: true })
-                }
-                dir="rtl"
-              />
-              {errors.description?.ar && (
+              {errors.descriptionValue && (
                 <p className="text-sm text-red-600 mt-1">
                   {t("dashboard.tasks.validation.descriptionMin")}
                 </p>
@@ -1534,11 +1579,20 @@ export function TaskForm({
         )}
       </div>
       <div className="flex gap-2 pt-4 shrink-0 relative z-10 bg-background border-t">
-        <Button type="submit" className="flex-1">
+        <Button type="submit" className="flex-1" disabled={isSubmitting}>
           {task ? <Save className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-          {task ? t("common.button.update") : t("common.button.create")}
+          {isSubmitting
+            ? t("dashboard.tasks.messages.translating")
+            : task
+              ? t("common.button.update")
+              : t("common.button.create")}
         </Button>
-        <Button type="button" variant="outline" onClick={onCancel}>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onCancel}
+          disabled={isSubmitting}
+        >
           <Ban className="h-4 w-4" />
           {t("common.button.cancel")}
         </Button>

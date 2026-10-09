@@ -1,0 +1,9 @@
+{
+  "modelId": "Xenova/nllb-200-distilled-600M",
+  "dtype": "q8",
+  "modelsDir": "models",
+  "flores": {
+    "ar": "arb_Arab",
+    "en": "eng_Latn"
+  }
+}

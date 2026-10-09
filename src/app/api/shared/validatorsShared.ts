@@ -7,8 +7,8 @@ export const loginSchema = z.object({
 
 export const projectSchema = z.object({
   title: z.object({
-    en: z.string().min(3, "English title must be at least 3 characters"),
-    ar: z.string().min(3, "Arabic title must be at least 3 characters"),
+    en: z.string().min(1, "English title is required"),
+    ar: z.string().min(1, "Arabic title is required"),
   }),
 
   startDate: z.string().optional().or(z.literal("")),
@@ -24,8 +24,8 @@ export const projectSchema = z.object({
 export const sectionSchema = z.object({
   projectId: z.string(),
   title: z.object({
-    en: z.string().min(3, "English title must be at least 3 characters"),
-    ar: z.string().min(3, "Arabic title must be at least 3 characters"),
+    en: z.string().min(1, "English title is required"),
+    ar: z.string().min(1, "Arabic title is required"),
   }),
   order: z.number().optional(),
 });
@@ -33,19 +33,61 @@ export const sectionSchema = z.object({
 export const userCreateSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
   role: z.enum(["leader", "member", "client"]),
+});
+
+export const userUpdateSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters").optional(),
+  email: z.string().email("Invalid email address").optional(),
+  password: z
+    .string()
+    .min(8, "Password must be at least 8 characters")
+    .optional()
+    .or(z.literal("")),
+  currentPassword: z.string().optional(),
+  role: z.enum(["leader", "member", "client"]).optional(),
+  order: z.number().optional(),
+});
+
+export const userReorderSchema = z.object({
+  updates: z.array(
+    z.object({
+      id: z.string(),
+      order: z.number(),
+      role: z.enum(["leader", "member", "client"]).optional(),
+    }),
+  ),
+});
+
+export const sectionReorderSchema = z.object({
+  updates: z.array(
+    z.object({
+      id: z.string(),
+      order: z.number(),
+    }),
+  ),
+});
+
+export const taskReorderSchema = z.object({
+  updates: z.array(
+    z.object({
+      id: z.string(),
+      order: z.number(),
+      sectionId: z.string().optional(),
+    }),
+  ),
 });
 
 export const taskSchema = z.object({
   sectionId: z.string(),
   title: z.object({
-    en: z.string().min(3, "Title must be at least 3 characters"),
-    ar: z.string().min(3, "Title must be at least 3 characters"),
+    en: z.string().min(1, "Title is required"),
+    ar: z.string().min(1, "Title is required"),
   }),
   description: z.object({
-    en: z.string().min(10, "Description must be at least 10 characters"),
-    ar: z.string().min(10, "Description must be at least 10 characters"),
+    en: z.string().min(1, "Description is required"),
+    ar: z.string().min(1, "Description is required"),
   }),
   status: z.enum(["todo", "in_progress", "in_review", "done"]),
   assignedTo: z.array(z.string()).default([]),

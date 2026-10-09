@@ -4,11 +4,14 @@ import { v4 as uuidv4 } from "uuid";
 import { requireAuth } from "@/app/api/auth/utilsAuth";
 import {
   getTasks,
+  getSections,
   createTask,
   getSectionById,
   getTasksBySectionId,
   getSectionsByProjectId,
 } from "@/app/api/shared/databaseShared";
+import { getAccessibleProjectIds } from "@/app/api/shared/accessShared";
+import { checkRateLimit } from "@/app/api/shared/rateLimitShared";
 import { taskSchema } from "@/app/api/shared/validatorsShared";
 
 import type { NextRequest } from "next/server";
@@ -28,6 +31,17 @@ export async function GET(request: NextRequest) {
 
     if (sectionId) {
       tasks = allTasks.filter((t) => t.sectionId === sectionId);
+    }
+
+    const accessibleProjectIds = await getAccessibleProjectIds(user);
+    if (accessibleProjectIds) {
+      const sections = await getSections();
+      const allowedSectionIds = new Set(
+        sections
+          .filter((section) => accessibleProjectIds.has(section.projectId))
+          .map((section) => section.id),
+      );
+      tasks = tasks.filter((task) => allowedSectionIds.has(task.sectionId));
     }
 
     if (user.role === "member") {
@@ -52,10 +66,25 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const rateLimit = checkRateLimit(request, "tasks:create", 60, 60 * 1000);
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const user = await requireAuth();
     const body = await request.json();
 
     if (body.projectId) {
+      if (user.role !== "leader") {
+        const accessibleProjectIds = await getAccessibleProjectIds(user);
+        if (
+          !accessibleProjectIds ||
+          !accessibleProjectIds.has(body.projectId as string)
+        ) {
+          return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+        }
+      }
+
       const allTasks = await getTasks();
       const projectSections = await getSectionsByProjectId(body.projectId);
       const sectionIds = projectSections.map((s) => s.id);
@@ -89,6 +118,16 @@ export async function POST(request: NextRequest) {
     const section = await getSectionById(result.data.sectionId);
     if (!section) {
       return NextResponse.json({ error: "Section not found" }, { status: 404 });
+    }
+
+    if (user.role !== "leader") {
+      const accessibleProjectIds = await getAccessibleProjectIds(user);
+      if (
+        !accessibleProjectIds ||
+        !accessibleProjectIds.has(section.projectId)
+      ) {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      }
     }
 
     const sectionTasks = await getTasksBySectionId(result.data.sectionId);

@@ -111,12 +111,9 @@ const reshapeArabic = (text: string): string => {
 
 const loadAsset = async (url: string): Promise<string> => {
   try {
+    if (url.startsWith("http")) return "";
     let targetUrl = url;
-    if (
-      !url.startsWith("http") &&
-      !url.startsWith("data:") &&
-      !url.startsWith("/")
-    ) {
+    if (!url.startsWith("data:") && !url.startsWith("/")) {
       targetUrl = "/" + url;
     }
     const response = await fetch(targetUrl);
@@ -1336,8 +1333,7 @@ export const exportTaskPDF = async (
             "FAST",
           );
           y += imgH + 10;
-        } catch (_e) {
-        }
+        } catch (_e) {}
       }
     }
   }

@@ -52,14 +52,10 @@
     "value": "القيمة",
     "fields": {
       "title": "العنوان",
-      "titleEn": "العنوان (English)",
-      "titleAr": "العنوان (عربي)",
-      "descriptionEn": "الوصف (English)",
-      "descriptionAr": "الوصف (عربي)",
+      "description": "الوصف",
       "status": "الحالة",
       "assignedTo": "إسناد إلى",
       "dueDate": "تاريخ الاستحقاق",
-      "createdAt": "تاريخ الإنشاء",
       "tags": "الوسوم",
       "addTag": "الوسم",
       "attachments": "المرفقات"
@@ -107,6 +103,7 @@
     }
   },
   "messages": {
+    "translating": "جارٍ الترجمة...",
     "success": {
       "created": "تم إنشاء المهمة بنجاح",
       "updated": "تم تحديث المهمة بنجاح",
@@ -123,8 +120,7 @@
     }
   },
   "validation": {
-    "titleMinEn": "يجب أن يتكون العنوان الإنجليزي من 3 أحرف على الأقل",
-    "titleMinAr": "يجب أن يتكون العنوان العربي من 3 أحرف على الأقل",
+    "titleMin": "يجب أن يتكون العنوان من 3 أحرف على الأقل",
     "descriptionMin": "يجب أن يتكون الوصف من 10 أحرف على الأقل"
   }
 }

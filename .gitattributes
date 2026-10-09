@@ -1,0 +1,7 @@
+# ─────────────────────────────────────────────
+# TaskBoard - Git Attributes
+# https://github.com/red-shadows-rs/taskboard
+# ─────────────────────────────────────────────
+
+package-lock.json linguist-generated=true
+*.md   linguist-detectable=true

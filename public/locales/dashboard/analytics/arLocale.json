@@ -51,7 +51,7 @@
   },
   "filters": {
     "allProjects": "كل المشاريع",
-    "byProject": "تصفية حسب المشروع"
+    "dateRange": "النطاق الزمني"
   },
   "messages": {
     "success": {
@@ -62,7 +62,6 @@
     }
   },
   "financial": {
-    "title": "النظرة المالية",
     "byProject": "التوزيع حسب المشروع",
     "byMember": "التوزيع حسب العضو",
     "projectsWithBudget": "المشاريع بميزانية",
