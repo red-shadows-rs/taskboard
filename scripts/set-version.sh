@@ -4,12 +4,6 @@
 # https://github.com/red-shadows-rs/taskboard
 # ─────────────────────────────────────────────
 
-# Rewrites the project version in every location that carries it and prepends an
-# entry to the changelog.
-
-# ── Usage ──
-# set-version.sh <version> <summary>
-
 set -euo pipefail
 cd "${REPO_ROOT:-$PWD}"
 

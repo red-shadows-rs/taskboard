@@ -4,24 +4,11 @@
 # https://github.com/red-shadows-rs/taskboard
 # ─────────────────────────────────────────────
 
-# Fails when a source file (TypeScript, TSX, JavaScript, ESM, CSS, HTML)
-# contains any comment: standalone lines, trailing remarks, or blocks.
-# The file-top credit banner (license or third-party notice) is the only
-# tolerated occurrence.
-# Configuration files (.env*, *.json, *.sh, *.yml) keep their comments and are
-# out of scope here.
-
-# ── Exit Codes ──
-# 0: policy holds, 1: violations found
-
 set -u
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
 status=0
 
-# ── Banner Skipper ──
-# Emits the file body after the leading banner block, then the caller greps
-# that body for violations.
 skip_banner='
 BEGIN { state = 0 }
 state == 0 {
@@ -45,7 +32,6 @@ state == 3 { if ($0 ~ /-->/) state = 0; next }
 state == 1 { print }
 '
 
-# ── Violation Scan ──
 while IFS= read -r file; do
     hits=$(awk "$skip_banner" "$file" 2>/dev/null \
         | grep -Pn '(^\s*//)|([^:"/]\s+//)|(^\s*/\*)|([^:"/]\s+/\*)|(^\s*<!--)')
