@@ -48,6 +48,9 @@ async function readJSON<T>(filename: string, retries = 3): Promise<T[]> {
     if (err.code === "ENOENT") {
       return [];
     }
+    if (error instanceof SyntaxError) {
+      throw error;
+    }
     if (retries > 0) {
       await new Promise((resolve) => setTimeout(resolve, 100));
       return readJSON<T>(filename, retries - 1);
@@ -114,10 +117,11 @@ export async function updateSection(
 
 export async function deleteSection(id: string): Promise<boolean> {
   const sections = await getSections();
+  const removed = sections.find((section) => section.id === id);
+
+  if (!removed) return false;
+
   const filtered = sections.filter((section) => section.id !== id);
-
-  if (filtered.length === sections.length) return false;
-
   await writeJSON("sectionsDatabase.json", filtered);
 
   const tasks = await getTasks();
@@ -125,6 +129,22 @@ export async function deleteSection(id: string): Promise<boolean> {
   if (filteredTasks.length !== tasks.length) {
     await writeJSON("tasksDatabase.json", filteredTasks);
   }
+
+  try {
+    const allSections = await getSections();
+    const allTasks = await getTasks();
+    const projectEndDate = calculateProjectEndDate(
+      removed.projectId,
+      allSections,
+      allTasks,
+    );
+    if (projectEndDate) {
+      await updateProject(removed.projectId, {
+        endDate: projectEndDate,
+        updatedAt: new Date().toISOString(),
+      });
+    }
+  } catch (_error) {}
 
   return true;
 }

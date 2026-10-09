@@ -320,7 +320,7 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
     window.location.href = `/dashboard/projects/${projectId}`;
   };
 
-  const displayedProjects =
+  let displayedProjects =
     searchTerm || (statusFilter && statusFilter !== "all")
       ? filteredProjects
       : projects;
@@ -328,7 +328,9 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
   const isDragEnabled = isDesktop && !searchTerm && statusFilter === "all";
 
   if (isDragEnabled) {
-    displayedProjects.sort((a, b) => (a.order || 0) - (b.order || 0));
+    displayedProjects = [...displayedProjects].sort(
+      (a, b) => (a.order || 0) - (b.order || 0),
+    );
   }
 
   if (!mounted) return null;
