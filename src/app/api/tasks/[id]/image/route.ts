@@ -12,6 +12,7 @@ import {
 } from "@/app/api/shared/databaseShared";
 import { canAccessTask } from "@/app/api/shared/accessShared";
 import { checkRateLimit } from "@/app/api/shared/rateLimitShared";
+import { UPLOADS_DIR } from "@/app/api/shared/storageShared";
 
 import type { NextRequest } from "next/server";
 
@@ -101,13 +102,7 @@ export async function POST(
       return NextResponse.json({ error: "Section not found" }, { status: 404 });
     }
 
-    const publicDir = path.join(process.cwd(), "public");
-    const imagesDir = path.join(
-      publicDir,
-      "images",
-      section.projectId,
-      task.sectionId,
-    );
+    const imagesDir = path.join(UPLOADS_DIR, section.projectId, task.sectionId);
 
     await fs.mkdir(imagesDir, { recursive: true });
 

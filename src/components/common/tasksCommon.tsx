@@ -222,6 +222,7 @@ export function TaskDetailsDialog({
                         className="w-full h-auto max-h-[400px] object-contain"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 800px"
+                        unoptimized
                       />
                     </a>
                   ))}
@@ -1047,6 +1048,7 @@ export function TaskForm({
                           className="[grid-area:stack] w-full h-32 object-cover"
                           loading="lazy"
                           sizes="(max-width: 768px) 50vw, 200px"
+                          unoptimized
                         />
                         <Button
                           type="button"
