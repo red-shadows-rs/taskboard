@@ -655,8 +655,8 @@ by the framework, not by an import).
 ### F-012
 
 - Severity: Low
-- Category: Config / Quality
-- File: `src/app/api/auth/utilsAuth.ts:10-16` vs `README.md:155`
+- Category: Quality
+- File: `src/app/api/auth/utilsAuth.ts:10-16`; `.env.example:14`
 - Evidence:
   ```ts
   const SESSION_SECRET = process.env.SESSION_SECRET as string;
@@ -664,10 +664,14 @@ by the framework, not by an import).
     throw new Error("SESSION_SECRET environment variable is required...");
   }
   ```
-  README states the app "refuses to boot without a strong `SESSION_SECRET` ... at least 32
-  characters", but the code only checks presence.
-- Why it is a problem: Weak/short secrets pass the check; docs over-promise.
-- Exact fix: Either enforce a minimum length in `utilsAuth.ts`, or soften the README wording.
+  `.env.example:14` says only "Use a long random value." The code checks **presence only**, not
+  strength. (Correction: an earlier draft quoted an "at least 32 characters" claim from the README;
+  that text does **not** exist in the current `README.md`/`README_AR.md` — it appears only in a
+  git-ignored `.kilo/plans/` file. The docs are accurate, not misleading.)
+- Why it is a problem: A short/weak `SESSION_SECRET` passes the startup check, weakening session
+  signing. This is a hardening suggestion, not a doc mismatch.
+- Exact fix: Optionally enforce a minimum length in `utilsAuth.ts`. Deferred (could block startup
+  for an existing short secret); `.env.example` already recommends a long random value.
 - Verification command and expected output: `npm run build` exit 0.
 - Risk of the fix: Enforcing length could reject an existing short secret and block startup.
 
