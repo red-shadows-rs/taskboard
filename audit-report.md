@@ -982,3 +982,19 @@ the loss of Next lint rules.
 Added an "Operational notes" section to `README.md` and `README_AR.md` stating that the rate
 limiter is in-memory and per-process (resets on restart, not shared across replicas), with a
 pointer to replace it with a shared store for multi-instance deployments. No behavior change.
+
+---
+
+## Final decision — F-003 accepted (option a)
+
+The user chose **option (a): accept the dev-only `braces` advisory**.
+
+- `CVE-2026-93687` has no patched version; it is reachable only through developer-controlled glob
+  patterns at build/lint time (Tailwind content globs, ESLint file globs). No runtime or
+  user-controlled input reaches `braces`.
+- The Tailwind 3 → 4 migration was **not** performed, because it would not clear the advisory
+  (it survives via `@next/eslint-plugin-next → fast-glob → micromatch → braces`) and would risk UI
+  regressions.
+- The 6 remaining `npm audit` entries are therefore **accepted and documented**, not ignored.
+
+Status: audit complete. Remaining `npm audit`: `6 high`, all the single accepted dev-time chain.

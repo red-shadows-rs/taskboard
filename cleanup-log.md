@@ -230,3 +230,8 @@ All changes were made one at a time with verification; nothing needed a revert.
 - Tailwind CSS 3 → 4 migration (no security benefit proven; would require also removing
   `@next/eslint-plugin-next` to reach 0).
 - `.env.local` `SESSION_SECRET`: never read into logs, never modified (confirmed again).
+
+### Final decision
+
+- F-003: user accepted the dev-only `braces` advisory (option a). No code or dependency change.
+  Rationale recorded in `audit-report.md`. This closes the audit.
