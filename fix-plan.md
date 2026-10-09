@@ -13,7 +13,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
 
 ## Group 1 — Security (code)
 
-- [ ] T-001 (fixes F-006)
+- [x] T-001 (fixes F-006)
   - File(s): `src/app/api/shared/rateLimitShared.ts`
   - Change: only trust `x-real-ip` when `TRUST_PROXY === "true"`.
     Before:
@@ -41,7 +41,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
 
 ## Group 2 — Bugs
 
-- [ ] T-002 (fixes F-010)
+- [x] T-002 (fixes F-010)
   - File(s): `src/app/api/shared/databaseShared.ts`
   - Change: in `readJSON` catch block, rethrow `SyntaxError` immediately instead of retrying.
     After:
@@ -66,7 +66,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
   - Rollback: `git checkout -- src/app/api/shared/databaseShared.ts`
   - Depends on: none
 
-- [ ] T-003 (fixes F-011)
+- [x] T-003 (fixes F-011)
   - File(s): `src/app/api/shared/databaseShared.ts`
   - Change: in `deleteSection`, after deleting the section's tasks, recompute and persist the
     project end date. Add inside `deleteSection` after the task cleanup:
@@ -95,7 +95,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
   - Rollback: `git checkout -- src/app/api/shared/databaseShared.ts`
   - Depends on: T-002
 
-- [ ] T-004 (fixes F-016)
+- [x] T-004 (fixes F-016)
   - File(s): `src/components/pages/projectsPage.tsx`
   - Change: sort a copy instead of the store array.
     Before:
@@ -120,7 +120,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
 
 ## Group 3 — Config
 
-- [ ] T-005 (fixes F-022)
+- [x] T-005 (fixes F-022)
   - File(s): `package.json`
   - Change: `"private": false` → `"private": true` (line 4).
   - Verify: `node -e "process.exit(require('./package.json').private === true ? 0 : 1)"`
@@ -128,7 +128,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
   - Rollback: `git checkout -- package.json`
   - Depends on: none
 
-- [ ] T-006 (fixes F-012) — docs-only option
+- [x] T-006 (fixes F-012) — CANCELLED: on verification the README did not actually over-promise; F-012 corrected to a hardening suggestion. No doc change needed.
   - File(s): `README.md`
   - Change: soften the `SESSION_SECRET` wording to match the code (presence check only), or add
     "recommended: at least 32 characters" instead of claiming enforcement. (The alternative —
@@ -138,7 +138,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
   - Rollback: `git checkout -- README.md`
   - Depends on: none
 
-- [ ] T-007 (fixes F-007) — docs-only option
+- [x] T-007 (fixes F-007) — docs-only option
   - File(s): `README.md`
   - Change: correct the security-headers claim so it lists only the headers actually set in
     `next.config.ts` (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`,
@@ -148,7 +148,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
   - Rollback: `git checkout -- README.md`
   - Depends on: T-006
 
-- [ ] T-008 (fixes F-017)
+- [x] T-008 (fixes F-017)
   - File(s): `README.md` (and `README_AR.md` if its table is also stale)
   - Change: add the missing `4.1.0` (and `4.1.1`) rows to the changelog table(s), matching
     `CHANGELOG.md`.
@@ -159,7 +159,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
 
 ## Group 4 — Dead code
 
-- [ ] T-009 (fixes F-008)
+- [x] T-009 (fixes F-008)
   - File(s): `src/app/error.tsx`
   - Change: remove the empty effect block (lines 32-35) and remove the now-unused `useEffect`
     import (line 4). Keep `error` (still used at line 70).
@@ -178,7 +178,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
   - Rollback: `git checkout -- src/app/error.tsx`
   - Depends on: none
 
-- [ ] T-010 (fixes F-015)
+- [x] T-010 (fixes F-015)
   - File(s): `src/components/pages/membersPage.tsx`
   - Change: remove the unused `isActive?: boolean;` field from `SortableMemberCard`'s prop type
     (line ~140) and remove `isActive={activeId === user.id}` from the call site (line ~796).
@@ -187,7 +187,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
   - Rollback: `git checkout -- src/components/pages/membersPage.tsx`
   - Depends on: none
 
-- [ ] T-011 (fixes F-021)
+- [x] T-011 (fixes F-021)
   - File(s): `src/components/common/sortableCommon.tsx`
   - Change: `import { Task, User } from "@/types";` → `import type { Task, User } from "@/types";`
   - Verify: `npm run lint && npm run type-check`
@@ -210,7 +210,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
 
 - `src/**` and `scripts/download-models.mjs` already contain **no** comments (policy guard
   `npm run check:comments` → "comment policy holds"). No task.
-- [ ] T-012 (fixes the `.sh` policy conflict) — **GATED on user decision #6**
+- [x] T-012 (fixes the `.sh` policy conflict) — executed on explicit user approval
   - File(s): `scripts/check-comments.sh`, `scripts/check-versions.sh`, `scripts/set-version.sh`
   - Change: if approved, remove all non-banner `#` comments, keeping the shebang and the
     credit/attribution banner at the top of each file. Do **not** touch `#` inside the awk
@@ -231,7 +231,7 @@ Work top-to-bottom; run the Verify command after every task; tick the checkbox; 
 
 ## Group 8 — Final verification (Phase 8)
 
-- [ ] T-013 (final)
+- [x] T-013 (final)
   - File(s): none
   - Change: run the full baseline and diff review.
   - Verify:
@@ -269,3 +269,27 @@ These are **not** in the executable sequence until the user decides.
    (T-006).
 8. **F-020 attachment images.** Requires a manual UI test (upload + render) before any fix.
 9. **No test suite.** Out of scope; recorded for awareness.
+
+---
+
+## Decisions (resolved)
+
+The user granted explicit approval to proceed without further check-ins. Resolutions:
+
+1. **Dependency upgrades (F-001…F-005): DEFERRED.** Not upgraded. The audit's own rule is "do not
+   upgrade automatically"; every available fix is a breaking major version. `npm audit fix --force`
+   was **not** run. Recorded for a dedicated upgrade effort.
+2. **CSP (F-007): docs-only.** README/README_AR corrected to list the headers actually set. No CSP
+   header added (avoids breaking Radix/Tailwind inline styles).
+3. **Leader task visibility (F-009): FIXED.** Leaders now receive all tasks of a project; members
+   still receive only their assigned tasks.
+4. **Gate `/api/locales` (F-014): NOT CHANGED.** Gating it would break login-page translations,
+   which load before a session exists. Left public; low-sensitivity disclosure accepted.
+5. **Leader own-password check (F-013): FIXED.** Any user (including a leader) changing **their own**
+   password must supply the current password; a leader changing another user still does not.
+6. **`scripts/*.sh` comments (T-012): REMOVED** (non-banner comments), keeping shebang and the
+   credit/attribution banner.
+7. **`SESSION_SECRET` length (F-012): NO CHANGE.** F-012 evidence was corrected (README did not
+   over-promise). `.env.example` already recommends a long random value.
+8. **F-020: NOT CHANGED.** Needs a manual browser test first; no code change risked.
+9. **No test suite:** acknowledged; out of scope.
