@@ -931,3 +931,54 @@ verification command. Commits are on branch `audit-cleanup`.
   all **dev/build-time** dependencies, and **unfixable** because the advisory has no patched version.
   The only remediation is migrating Tailwind CSS 3 → 4 (a large breaking styling change) and
   replacing the ESLint plugin's glob chain. Deferred to a dedicated, separately-tested migration.
+
+---
+
+## Round 3 — F-003 re-investigation and F-018 (user-approved)
+
+### F-003 — final determination: not fixable without a regression
+
+The user approved the Tailwind 4 migration. Before executing, the dependency graph was proven
+empirically: the `braces` chain does **not** come only from Tailwind.
+
+```
+$ mkdir /tmp/kilo/probe && cd /tmp/kilo/probe
+$ cat > package.json   # only: "@next/eslint-plugin-next": "16.4.0"
+$ npm install --package-lock-only
+$ npm audit
+braces  *
+Severity: high
+braces vulnerable to stack-exhaustion denial of service through deeply nested patterns
+node_modules/braces
+  micromatch  >=0.2.0   Depends on vulnerable versions of braces
+    fast-glob  *         Depends on vulnerable versions of micromatch
+      @next/eslint-plugin-next  >=14.3.0-canary.0   Depends on vulnerable versions of fast-glob
+4 high severity vulnerabilities
+```
+
+Chain (all current latest versions):
+`@next/eslint-plugin-next@16.4.0` → `fast-glob@3.3.1` (pinned exact) → `micromatch@^4.0.4`
+(resolves `4.0.8`, latest) → `braces@^3.0.3` (resolves `3.0.3`, **latest, no patch**).
+
+Consequences:
+
+1. Migrating Tailwind 3 → 4 removes Tailwind's own `chokidar`/`braces` copies but the advisory
+   **remains** via the ESLint plugin chain. The stated goal (clear the advisory) is not achieved.
+2. Full elimination would require **also removing `@next/eslint-plugin-next`**, which is actively
+   used (`eslint.config.mjs:1,20,32-33` — `nextPlugin.configs.recommended` and
+   `core-web-vitals`). That is a real loss of Next-specific lint coverage.
+3. The advisory (`CVE-2026-93687`) is **dev/build-time only** — `braces` only ever parses
+   developer-controlled glob patterns (Tailwind content globs, ESLint file globs). No runtime or
+   user-controlled input reaches it, and `npm audit` reports it under devDependencies.
+
+**Decision:** the Tailwind 4 migration was **not performed**. It would add real UI-regression risk
+across 40+ component files while leaving the advisory in place. Two options remain for the user:
+(a) accept the dev-only advisory (recommended), or (b) perform the Tailwind 4 migration **and**
+remove `@next/eslint-plugin-next` to reach `npm audit` 0, accepting the styling-migration risk and
+the loss of Next lint rules.
+
+### F-018 — rate limiter scope (documented)
+
+Added an "Operational notes" section to `README.md` and `README_AR.md` stating that the rate
+limiter is in-memory and per-process (resets on restart, not shared across replicas), with a
+pointer to replace it with a shared store for multi-instance deployments. No behavior change.

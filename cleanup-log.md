@@ -206,3 +206,27 @@ All changes were made one at a time with verification; nothing needed a revert.
 - `npm audit`: `17` → `6` vulnerabilities (all the single unfixable dev-time `braces` chain).
 - Final gates: `format:check`, `lint`, `type-check`, `test` (22 passed), `build`, `check:comments`,
   `check:versions` — all exit 0.
+
+---
+
+## Round 3 — F-003 re-investigation and F-018 (2026-10-09)
+
+### F-018 — documented
+
+- `README.md` / `README_AR.md`: added "Operational notes" covering the in-memory, per-process rate
+  limiter, the `TRUST_PROXY` requirement, and private `uploads/`. Documentation only; no code change.
+
+### F-003 — no change (migration cancelled on evidence)
+
+- Ran an isolated probe in `/tmp/kilo/probe` installing **only** `@next/eslint-plugin-next@16.4.0`:
+  `npm audit` reported **4 high** advisories, proving `braces@3.0.3` (no patch) is pulled by
+  `@next/eslint-plugin-next → fast-glob@3.3.1 → micromatch@4.0.8 → braces`.
+- Therefore the approved Tailwind 4 migration would **not** clear the advisory and would add
+  UI-regression risk. It was **not executed**.
+- No files deleted, no code removed, no dependency changed in this round.
+
+### Not performed (deliberate)
+
+- Tailwind CSS 3 → 4 migration (no security benefit proven; would require also removing
+  `@next/eslint-plugin-next` to reach 0).
+- `.env.local` `SESSION_SECRET`: never read into logs, never modified (confirmed again).
