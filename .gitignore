@@ -16,6 +16,9 @@ dist/
 # ── Local translation models ──
 models/
 
+# ── User uploads ──
+uploads/
+
 # ── Environment variables ──
 .env
 .env.local

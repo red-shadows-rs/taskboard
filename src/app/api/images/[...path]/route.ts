@@ -3,6 +3,7 @@ import path from "path";
 import { NextRequest, NextResponse } from "next/server";
 
 import { requireAuth } from "@/app/api/auth/utilsAuth";
+import { UPLOADS_DIR } from "@/app/api/shared/storageShared";
 
 export async function GET(
   _request: NextRequest,
@@ -12,7 +13,7 @@ export async function GET(
     await requireAuth();
     const { path: pathArray } = await params;
 
-    const baseDir = path.resolve(process.cwd(), "public", "images");
+    const baseDir = path.resolve(UPLOADS_DIR);
     const filePath = path.resolve(baseDir, ...pathArray);
 
     if (!filePath.startsWith(baseDir + path.sep)) {
@@ -61,7 +62,10 @@ export async function GET(
         "Cache-Control": "public, max-age=31536000, immutable",
       },
     });
-  } catch (_error) {
+  } catch (error) {
+    if (error instanceof Error && error.message === "Unauthorized") {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

@@ -13,6 +13,10 @@ import {
   canAccessTaskSection,
 } from "@/app/api/shared/accessShared";
 import { taskSchema } from "@/app/api/shared/validatorsShared";
+import {
+  resolveAttachmentPath,
+  UPLOADS_DIR,
+} from "@/app/api/shared/storageShared";
 
 import type { Task } from "@/types";
 import type { NextRequest } from "next/server";
@@ -110,10 +114,9 @@ export async function PATCH(
       );
 
       if (removedAttachments.length > 0) {
-        const publicDir = path.join(process.cwd(), "public");
         for (const attachment of removedAttachments) {
-          const imageFullPath = path.join(publicDir, attachment);
-          if (!isPathInside(imageFullPath, publicDir)) continue;
+          const imageFullPath = resolveAttachmentPath(attachment);
+          if (!isPathInside(imageFullPath, UPLOADS_DIR)) continue;
           try {
             await fs.unlink(imageFullPath);
           } catch (_error) {}
@@ -164,11 +167,9 @@ export async function DELETE(
     }
 
     if (task.attachments && task.attachments.length > 0) {
-      const publicDir = path.join(process.cwd(), "public");
-
       for (const attachment of task.attachments) {
-        const imageFullPath = path.join(publicDir, attachment);
-        if (!isPathInside(imageFullPath, publicDir)) continue;
+        const imageFullPath = resolveAttachmentPath(attachment);
+        if (!isPathInside(imageFullPath, UPLOADS_DIR)) continue;
         try {
           await fs.unlink(imageFullPath);
         } catch (_error) {}
@@ -177,8 +178,8 @@ export async function DELETE(
       try {
         const firstImagePath = task.attachments[0];
         if (firstImagePath) {
-          const taskDir = path.dirname(path.join(publicDir, firstImagePath));
-          if (!isPathInside(taskDir, publicDir))
+          const taskDir = path.dirname(resolveAttachmentPath(firstImagePath));
+          if (!isPathInside(taskDir, UPLOADS_DIR))
             throw new Error("Invalid path");
           const files = await fs.readdir(taskDir);
           if (files.length === 0) {
