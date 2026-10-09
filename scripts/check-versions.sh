@@ -4,12 +4,6 @@
 # https://github.com/red-shadows-rs/taskboard
 # ─────────────────────────────────────────────
 
-# Verifies that every place the project records its version agrees with
-# package.json.
-
-# ── Exit Codes ──
-# 0: all locations agree, 1: one or more mismatches
-
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
