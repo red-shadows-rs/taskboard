@@ -80,7 +80,8 @@ export async function PATCH(
         return NextResponse.json({ error: "User not found" }, { status: 404 });
       }
 
-      if (currentUser.role !== "leader") {
+      const isSelfChange = currentUser.id === id;
+      if (isSelfChange) {
         if (!currentPassword) {
           return NextResponse.json(
             { error: "Current password is required" },
