@@ -93,8 +93,6 @@ export async function POST(request: NextRequest) {
 
       if (user.role === "member") {
         tasks = tasks.filter((task) => task.assignedTo.includes(user.id));
-      } else if (user.role === "leader") {
-        tasks = tasks.filter((task) => task.assignedTo.includes(user.id));
       }
 
       return NextResponse.json({ tasks });
