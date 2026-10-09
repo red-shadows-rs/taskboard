@@ -1,5 +1,24 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV !== "production";
+
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "form-action 'self'",
+  "img-src 'self' data: blob:",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  isDev
+    ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+    : "script-src 'self' 'unsafe-inline'",
+  isDev ? "connect-src 'self' ws: wss:" : "connect-src 'self'",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+].join("; ");
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   serverExternalPackages: ["@huggingface/transformers", "onnxruntime-node"],
@@ -16,6 +35,10 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: [
+          {
+            key: "Content-Security-Policy",
+            value: contentSecurityPolicy,
+          },
           {
             key: "X-Frame-Options",
             value: "DENY",
