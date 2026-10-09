@@ -1,0 +1,58 @@
+# ─────────────────────────────────────────────
+# TaskBoard - CI Workflow
+# https://github.com/red-shadows-rs/taskboard
+# ─────────────────────────────────────────────
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  SESSION_SECRET: ci-build-session-secret-not-used-at-runtime
+
+jobs:
+  build:
+    name: Format, lint, type-check & build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # ── Toolchain ──
+      - name: Set up Node.js
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # ── Policy & Consistency ──
+      - name: Enforce code comment policy
+        run: ./scripts/check-comments.sh
+      - name: Check version consistency
+        run: ./scripts/check-versions.sh
+
+      # ── Quality Gates ──
+      - name: Check formatting
+        run: npm run format:check
+      - name: Lint
+        run: npm run lint
+      - name: Type-check
+        run: npm run type-check
+
+      # ── Build ──
+      - name: Build
+        run: npm run build

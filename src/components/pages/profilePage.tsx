@@ -135,7 +135,10 @@ export default function Profile({ user: initialUser }: ProfileProps) {
         const passwordResponse = await fetch(`/api/users/${user.id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ password: data.newPassword }),
+          body: JSON.stringify({
+            password: data.newPassword,
+            currentPassword: data.currentPassword,
+          }),
         });
 
         if (passwordResponse.ok) {

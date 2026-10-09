@@ -8,8 +8,25 @@ type RateLimitRecord = {
 const store = new Map<string, RateLimitRecord>();
 
 function getClientIp(request: NextRequest): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  return forwarded?.split(",")[0]?.trim() || "unknown";
+  if (process.env.TRUST_PROXY === "true") {
+    const forwarded = request.headers.get("x-forwarded-for");
+    const first = forwarded?.split(",")[0]?.trim();
+    if (first) return first;
+  }
+
+  const realIp = request.headers.get("x-real-ip");
+  if (realIp) return realIp.trim();
+
+  return "unknown";
+}
+
+function cleanup(now: number): void {
+  if (store.size < 10000) return;
+  for (const [key, record] of store) {
+    if (now > record.resetTime) {
+      store.delete(key);
+    }
+  }
 }
 
 export function checkRateLimit(
@@ -21,6 +38,8 @@ export function checkRateLimit(
   const ip = getClientIp(request);
   const key = `${keyPrefix}:${ip}`;
   const now = Date.now();
+
+  cleanup(now);
 
   const record = store.get(key);
   if (!record || now > record.resetTime) {

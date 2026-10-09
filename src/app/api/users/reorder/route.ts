@@ -1,21 +1,31 @@
 import { NextResponse } from "next/server";
+
 import { requireAuth } from "@/app/api/auth/utilsAuth";
 import { reorderUsers } from "@/app/api/shared/databaseShared";
+import { userReorderSchema } from "@/app/api/shared/validatorsShared";
 
 export async function POST(request: Request) {
   try {
-    await requireAuth();
-    const body = await request.json();
-    const { updates } = body;
+    const user = await requireAuth();
 
-    if (!Array.isArray(updates)) {
+    if (user.role !== "leader") {
       return NextResponse.json(
-        { error: "Invalid updates format" },
+        { error: "Forbidden: Only leaders can reorder users" },
+        { status: 403 },
+      );
+    }
+
+    const body = await request.json();
+    const result = userReorderSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Invalid input", details: result.error.errors },
         { status: 400 },
       );
     }
 
-    await reorderUsers(updates);
+    await reorderUsers(result.data.updates);
 
     return NextResponse.json({ success: true });
   } catch (error) {

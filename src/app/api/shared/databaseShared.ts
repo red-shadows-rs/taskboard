@@ -257,27 +257,6 @@ export async function getSectionsByProjectId(
   return sections.filter((section) => section.projectId === projectId);
 }
 
-export async function getProjectWithDetails(projectId: string): Promise<{
-  project: Project;
-  sections: Array<{ section: Section; tasks: Task[] }>;
-} | null> {
-  const project = await getProjectById(projectId);
-  if (!project) return null;
-
-  const sections = await getSectionsByProjectId(projectId);
-  const allTasks = await getTasks();
-
-  const sectionsWithTasks = sections.map((section) => ({
-    section,
-    tasks: allTasks.filter((t) => t.sectionId === section.id),
-  }));
-
-  return {
-    project,
-    sections: sectionsWithTasks,
-  };
-}
-
 export async function createTask(task: Task): Promise<Task> {
   const tasks = await getTasks();
   tasks.push(task);

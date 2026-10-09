@@ -10,9 +10,14 @@ import {
   updateTask,
   getSectionById,
 } from "@/app/api/shared/databaseShared";
+import { canAccessTask } from "@/app/api/shared/accessShared";
 import { checkRateLimit } from "@/app/api/shared/rateLimitShared";
 
 import type { NextRequest } from "next/server";
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+const MAX_FILES = 10;
+const MAX_TOTAL_SIZE = MAX_FILES * MAX_FILE_SIZE + 1024 * 1024;
 
 export async function POST(
   request: NextRequest,
@@ -27,12 +32,28 @@ export async function POST(
       );
     }
 
-    await requireAuth();
+    const user = await requireAuth();
     const { id: taskId } = await params;
+
+    const contentLength = Number(request.headers.get("content-length") || "0");
+    if (contentLength > MAX_TOTAL_SIZE) {
+      return NextResponse.json({ error: "Request too large" }, { status: 413 });
+    }
 
     const task = await getTaskById(taskId);
     if (!task) {
       return NextResponse.json({ error: "Task not found" }, { status: 404 });
+    }
+
+    if (!(await canAccessTask(user, task))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    if (user.role === "member") {
+      return NextResponse.json(
+        { error: "Forbidden: members cannot upload attachments" },
+        { status: 403 },
+      );
     }
 
     const formData = await request.formData();
@@ -41,9 +62,6 @@ export async function POST(
     if (!files || files.length === 0) {
       return NextResponse.json({ error: "No files uploaded" }, { status: 400 });
     }
-
-    const MAX_FILE_SIZE = 5 * 1024 * 1024;
-    const MAX_FILES = 10;
 
     if (files.length > MAX_FILES) {
       return NextResponse.json(
@@ -57,7 +75,6 @@ export async function POST(
       "image/png",
       "image/gif",
       "image/webp",
-      "image/svg+xml",
     ];
 
     for (const file of files) {
@@ -72,7 +89,7 @@ export async function POST(
       if (!allowedMimeTypes.includes(file.type)) {
         return NextResponse.json(
           {
-            error: `Invalid file type: ${file.type}. Allowed: JPEG, PNG, GIF, WebP, SVG`,
+            error: `Invalid file type: ${file.type}. Allowed: JPEG, PNG, GIF, WebP`,
           },
           { status: 400 },
         );

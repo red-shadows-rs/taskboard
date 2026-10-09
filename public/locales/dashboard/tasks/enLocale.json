@@ -52,14 +52,10 @@
     "value": "Value",
     "fields": {
       "title": "Title",
-      "titleEn": "Title (English)",
-      "titleAr": "Title (Arabic)",
-      "descriptionEn": "Description (English)",
-      "descriptionAr": "Description (Arabic)",
+      "description": "Description",
       "status": "Status",
       "assignedTo": "Assign To",
       "dueDate": "Due Date",
-      "createdAt": "Created At",
       "tags": "Tags",
       "addTag": "Tag",
       "attachments": "Attachments"
@@ -107,6 +103,7 @@
     }
   },
   "messages": {
+    "translating": "Translating...",
     "success": {
       "created": "Task created successfully",
       "updated": "Task updated successfully",
@@ -123,8 +120,7 @@
     }
   },
   "validation": {
-    "titleMinEn": "English title must be at least 3 characters",
-    "titleMinAr": "Arabic title must be at least 3 characters",
+    "titleMin": "Title must be at least 3 characters",
     "descriptionMin": "Description must be at least 10 characters"
   }
 }

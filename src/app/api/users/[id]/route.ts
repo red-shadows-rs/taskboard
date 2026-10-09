@@ -10,7 +10,9 @@ import {
   updateUser,
   deleteUser,
 } from "@/app/api/shared/databaseShared";
+import { userUpdateSchema } from "@/app/api/shared/validatorsShared";
 
+import type { User } from "@/types";
 import type { NextRequest } from "next/server";
 
 export async function GET(
@@ -52,19 +54,41 @@ export async function PATCH(
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    const updates: Record<string, unknown> = { ...body };
+    const result = userUpdateSchema.safeParse(body);
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Invalid input", details: result.error.errors },
+        { status: 400 },
+      );
+    }
 
-    if (body.password) {
+    const { currentPassword, ...rest } = result.data;
+    const updates: Partial<User> = { ...rest };
+
+    if (currentUser.role !== "leader") {
+      delete updates.role;
+      delete updates.order;
+    }
+
+    if (updates.password === "") {
+      delete updates.password;
+    }
+
+    if (updates.password) {
       const user = await getUserById(id);
       if (!user) {
         return NextResponse.json({ error: "User not found" }, { status: 404 });
       }
 
-      if (body.currentPassword) {
-        const isValid = await verifyPassword(
-          body.currentPassword,
-          user.password,
-        );
+      if (currentUser.role !== "leader") {
+        if (!currentPassword) {
+          return NextResponse.json(
+            { error: "Current password is required" },
+            { status: 400 },
+          );
+        }
+
+        const isValid = await verifyPassword(currentPassword, user.password);
         if (!isValid) {
           return NextResponse.json(
             { error: "Current password is incorrect" },
@@ -73,8 +97,7 @@ export async function PATCH(
         }
       }
 
-      updates.password = await hashPassword(body.password);
-      delete updates.currentPassword;
+      updates.password = await hashPassword(updates.password);
     }
 
     const user = await updateUser(id, updates);

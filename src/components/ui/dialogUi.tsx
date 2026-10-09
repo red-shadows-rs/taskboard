@@ -68,20 +68,6 @@ const DialogHeader = ({
 );
 DialogHeader.displayName = "DialogHeader";
 
-const DialogFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2 rtl:sm:flex-row-reverse shrink-0",
-      className,
-    )}
-    {...props}
-  />
-);
-DialogFooter.displayName = "DialogFooter";
-
 const DialogBody = ({
   className,
   ...props
@@ -128,7 +114,6 @@ export {
   DialogTrigger,
   DialogContent,
   DialogHeader,
-  DialogFooter,
   DialogBody,
   DialogTitle,
   DialogDescription,

@@ -21,6 +21,7 @@ import {
 import { Input } from "@/components/ui/inputUi";
 import { Label } from "@/components/ui/labelUi";
 import { useLanguage } from "@/contexts/languageContext";
+import { buildLocalizedPair } from "@/utils/translateFormUtil";
 
 import type { Section, User, Project } from "@/types";
 import type { SectionInput } from "@/app/api/shared/validatorsShared";
@@ -208,19 +209,16 @@ export { SectionCard };
 
 interface SectionFormProps {
   section?: Section;
-  onSubmit: (data: SectionInput) => void;
+  onSubmit: (data: SectionInput) => void | Promise<void>;
   onCancel: () => void;
 }
 
 export function SectionForm({ section, onSubmit, onCancel }: SectionFormProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const sectionFormSchema = z.object({
     projectId: z.string(),
-    title: z.object({
-      en: z.string().min(3, t("dashboard.projects.validation.titleMinEn")),
-      ar: z.string().min(3, t("dashboard.projects.validation.titleMinAr")),
-    }),
+    titleValue: z.string().min(3, t("dashboard.projects.validation.titleMin")),
     order: z.number().optional(),
   });
 
@@ -228,21 +226,30 @@ export function SectionForm({ section, onSubmit, onCancel }: SectionFormProps) {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<SectionInput>({
+  } = useForm<{
+    projectId: string;
+    titleValue: string;
+    order?: number;
+  }>({
     resolver: zodResolver(sectionFormSchema),
     defaultValues: section
       ? {
-          title: section.title,
+          titleValue: section.title[language],
           projectId: section.projectId,
         }
       : {
           projectId: "",
-          title: { en: "", ar: "" },
+          titleValue: "",
         },
   });
 
-  const handleFormSubmit = (data: SectionInput) => {
-    onSubmit(data);
+  const handleFormSubmit = async (data: {
+    projectId: string;
+    titleValue: string;
+    order?: number;
+  }) => {
+    const title = await buildLocalizedPair(data.titleValue, language);
+    await onSubmit({ projectId: data.projectId, title, order: data.order });
   };
 
   return (
@@ -252,25 +259,17 @@ export function SectionForm({ section, onSubmit, onCancel }: SectionFormProps) {
     >
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain space-y-4 px-1 -mx-1 py-4">
         <div className="space-y-1">
-          <Label htmlFor="title-en">
-            {t("dashboard.projects.form.fields.titleEn")}
+          <Label htmlFor="title">
+            {t("dashboard.projects.form.fields.title")}
           </Label>
-          <Input id="title-en" dir="ltr" {...register("title.en")} />
-          {errors.title?.en && (
+          <Input
+            id="title"
+            dir={language === "ar" ? "rtl" : "ltr"}
+            {...register("titleValue")}
+          />
+          {errors.titleValue && (
             <p className="text-sm text-red-600 mt-1">
-              {t("dashboard.projects.validation.titleMinEn")}
-            </p>
-          )}
-        </div>
-
-        <div className="space-y-1">
-          <Label htmlFor="title-ar">
-            {t("dashboard.projects.form.fields.titleAr")}
-          </Label>
-          <Input id="title-ar" dir="rtl" {...register("title.ar")} />
-          {errors.title?.ar && (
-            <p className="text-sm text-red-600 mt-1">
-              {t("dashboard.projects.validation.titleMinAr")}
+              {t("dashboard.projects.validation.titleMin")}
             </p>
           )}
         </div>
@@ -282,9 +281,18 @@ export function SectionForm({ section, onSubmit, onCancel }: SectionFormProps) {
           ) : (
             <Plus className="h-4 w-4" />
           )}
-          {section ? t("common.button.update") : t("common.button.create")}
+          {isSubmitting
+            ? t("dashboard.projects.messages.translating")
+            : section
+              ? t("common.button.update")
+              : t("common.button.create")}
         </Button>
-        <Button type="button" variant="outline" onClick={onCancel}>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onCancel}
+          disabled={isSubmitting}
+        >
           <Ban className="h-4 w-4" />
           {t("common.button.cancel")}
         </Button>

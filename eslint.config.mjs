@@ -42,5 +42,11 @@ export default tseslint.config(
         },
       ],
     },
+  },
+  {
+    files: ["src/app/layout.tsx"],
+    rules: {
+      "@next/next/no-css-tags": "off",
+    },
   }
 );

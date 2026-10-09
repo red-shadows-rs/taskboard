@@ -1,21 +1,48 @@
 import { NextResponse } from "next/server";
+
 import { requireAuth } from "@/app/api/auth/utilsAuth";
-import { reorderTasks } from "@/app/api/shared/databaseShared";
+import { reorderTasks, getTaskById } from "@/app/api/shared/databaseShared";
+import {
+  canAccessTask,
+  canAccessTaskSection,
+} from "@/app/api/shared/accessShared";
+import { taskReorderSchema } from "@/app/api/shared/validatorsShared";
 
 export async function POST(request: Request) {
   try {
-    await requireAuth();
-    const body = await request.json();
-    const { updates } = body;
+    const user = await requireAuth();
 
-    if (!Array.isArray(updates)) {
+    if (user.role === "member") {
       return NextResponse.json(
-        { error: "Invalid updates format" },
+        { error: "Forbidden: Only leaders and clients can reorder tasks" },
+        { status: 403 },
+      );
+    }
+
+    const body = await request.json();
+    const result = taskReorderSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Invalid input", details: result.error.errors },
         { status: 400 },
       );
     }
 
-    await reorderTasks(updates);
+    for (const update of result.data.updates) {
+      const task = await getTaskById(update.id);
+      if (!(await canAccessTask(user, task))) {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      }
+      if (
+        update.sectionId &&
+        !(await canAccessTaskSection(user, update.sectionId))
+      ) {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      }
+    }
+
+    await reorderTasks(result.data.updates);
 
     return NextResponse.json({ success: true });
   } catch (error) {

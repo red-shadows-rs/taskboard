@@ -7,22 +7,30 @@ import {
   createSection,
   getSectionsByProjectId,
 } from "@/app/api/shared/databaseShared";
+import { getAccessibleProjectIds } from "@/app/api/shared/accessShared";
+import { checkRateLimit } from "@/app/api/shared/rateLimitShared";
 import { sectionSchema } from "@/app/api/shared/validatorsShared";
 
 import type { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
-    await requireAuth();
+    const user = await requireAuth();
     const { searchParams } = new URL(request.url);
     const projectId = searchParams.get("projectId");
 
-    const allSections = await getSections();
+    const accessibleProjectIds = await getAccessibleProjectIds(user);
 
-    let sections = allSections;
+    let sections = await getSections();
+
+    if (accessibleProjectIds) {
+      sections = sections.filter((section) =>
+        accessibleProjectIds.has(section.projectId),
+      );
+    }
 
     if (projectId) {
-      sections = allSections.filter((s) => s.projectId === projectId);
+      sections = sections.filter((section) => section.projectId === projectId);
     }
 
     return NextResponse.json({ sections });
@@ -39,6 +47,11 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const rateLimit = checkRateLimit(request, "sections:create", 60, 60 * 1000);
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const user = await requireAuth();
 
     if (user.role !== "leader" && user.role !== "client") {
@@ -56,6 +69,16 @@ export async function POST(request: NextRequest) {
         { error: "Invalid input", details: result.error.errors },
         { status: 400 },
       );
+    }
+
+    if (user.role !== "leader") {
+      const accessibleProjectIds = await getAccessibleProjectIds(user);
+      if (
+        !accessibleProjectIds ||
+        !accessibleProjectIds.has(result.data.projectId)
+      ) {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      }
     }
 
     const projectSections = await getSectionsByProjectId(result.data.projectId);

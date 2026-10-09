@@ -7,6 +7,7 @@ import {
   requireLeaderOrClient,
 } from "@/app/api/auth/utilsAuth";
 import { getUsers, createUser } from "@/app/api/shared/databaseShared";
+import { checkRateLimit } from "@/app/api/shared/rateLimitShared";
 import { userCreateSchema } from "@/app/api/shared/validatorsShared";
 
 import type { NextRequest } from "next/server";
@@ -33,7 +34,12 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    await requireLeaderOrClient();
+    const rateLimit = checkRateLimit(request, "users:create", 30, 60 * 1000);
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
+    const currentUser = await requireLeaderOrClient();
     const body = await request.json();
 
     const result = userCreateSchema.safeParse(body);
@@ -41,6 +47,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: "Invalid input", details: result.error.errors },
         { status: 400 },
+      );
+    }
+
+    if (currentUser.role === "client" && result.data.role === "leader") {
+      return NextResponse.json(
+        { error: "Forbidden: clients cannot create leader accounts" },
+        { status: 403 },
       );
     }
 

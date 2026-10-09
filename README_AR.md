@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/red-shadows-rs/TaskBoard/blob/main/README.md">English</a>
+  <a href="https://github.com/red-shadows-rs/taskboard/blob/main/README.md">English</a>
   &nbsp;&bull;&nbsp;
   <a href="#-المميزات">المميزات</a>
   &nbsp;&bull;&nbsp;
@@ -30,7 +30,7 @@
 <br/>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/الإصدار-4.0.6-2563eb?style=for-the-badge" alt="الإصدار 4.0.6">
+  <img src="https://img.shields.io/badge/الإصدار-4.1.0-2563eb?style=for-the-badge" alt="الإصدار 4.1.0">
   <img src="https://img.shields.io/badge/الترخيص-MIT-10b981?style=for-the-badge" alt="ترخيص MIT">
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16">
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18">
@@ -80,6 +80,7 @@
       <h3>🎨 تجربة المستخدم</h3>
       <ul>
         <li><strong>ثنائي اللغة (عربي/إنجليزي)</strong> — دعم كامل للغة العربية مع خطوط Cairo/Inter</li>
+        <li><strong>ترجمة محلية</strong> — حقل واحد لكل عنوان، وتُملأ اللغة الأخرى بموديل يعمل دون اتصال على المعالج</li>
         <li><strong>الوضع الداكن/الفاتح</strong> — تنسيق HSL متكيف مع النظام</li>
         <li><strong>محرر نصوص منسق</strong> — Tiptap مع محاذاة النص والتسطير</li>
         <li><strong>تطبيق ويب تقدمي (PWA)</strong> — قابل للتثبيت مع بيان تشغيل</li>
@@ -103,25 +104,26 @@
 
 ## 🚀 التقنيات المستخدمة
 
-| الفئة               | التقنية                                                                                                           | الغرض                      |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| **الإطار**          | [Next.js 16](https://nextjs.org/)                                                                                 | App Router + Turbopack     |
-| **الواجهة**         | [React 18](https://react.dev/) + [Radix UI](https://www.radix-ui.com/)                                            | مكونات أساسية              |
-| **التنسيق**         | [Tailwind CSS 3](https://tailwindcss.com/)                                                                        | CSS بالأدوات المساعدة      |
-| **اللغة**           | [TypeScript 5](https://www.typescriptlang.org/)                                                                   | أمان الأنواع               |
-| **السحب والإفلات**  | [dnd-kit](https://dndkit.com/)                                                                                    | إعادة ترتيب كانبان         |
-| **النص المنسق**     | [Tiptap](https://tiptap.dev/)                                                                                     | وصف المهام                 |
-| **النماذج**         | [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)                                         | التحقق                     |
-| **الحالة**          | [Zustand](https://zustand.docs.pmnd.rs/)                                                                          | حالة واجهة المستخدم العامة |
-| **الرسوم البيانية** | [Recharts](https://recharts.org/)                                                                                 | التحليلات                  |
-| **PDF**             | [jsPDF](https://github.com/parallax/jsPDF) + [jspdf-autotable](https://github.com/simonbengtsson/jsPDF-AutoTable) | التصدير                    |
-| **المصادقة**        | [bcryptjs](https://github.com/dcodeIO/bcrypt.js) + HMAC-SHA256                                                    | الجلسات                    |
-| **الحركات**         | [Framer Motion](https://www.framer.com/motion/)                                                                   | الانتقالات                 |
-| **الإشعارات**       | [react-hot-toast](https://react-hot-toast.com/)                                                                   | تنبيهات منبثقة             |
-| **التواريخ**        | [date-fns](https://date-fns.org/) + [react-day-picker](https://react-day-picker.js.org/)                          | معالجة التواريخ            |
-| **الأيقونات**       | [Lucide React](https://lucide.dev/) + [Font Awesome 6](https://fontawesome.com/)                                  | الأيقونات                  |
-| **التدقيق**         | [ESLint 9](https://eslint.org/) (flat config)                                                                     | جودة الكود                 |
-| **التنسيق**         | [Prettier](https://prettier.io/)                                                                                  | نمط الكود                  |
+| الفئة               | التقنية                                                                                                                              | الغرض                      |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
+| **الإطار**          | [Next.js 16](https://nextjs.org/)                                                                                                    | App Router + Turbopack     |
+| **الواجهة**         | [React 18](https://react.dev/) + [Radix UI](https://www.radix-ui.com/)                                                               | مكونات أساسية              |
+| **التنسيق**         | [Tailwind CSS 3](https://tailwindcss.com/)                                                                                           | CSS بالأدوات المساعدة      |
+| **اللغة**           | [TypeScript 5](https://www.typescriptlang.org/)                                                                                      | أمان الأنواع               |
+| **السحب والإفلات**  | [dnd-kit](https://dndkit.com/)                                                                                                       | إعادة ترتيب كانبان         |
+| **النص المنسق**     | [Tiptap](https://tiptap.dev/)                                                                                                        | وصف المهام                 |
+| **النماذج**         | [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)                                                            | التحقق                     |
+| **الحالة**          | [Zustand](https://zustand.docs.pmnd.rs/)                                                                                             | حالة واجهة المستخدم العامة |
+| **الرسوم البيانية** | [Recharts](https://recharts.org/)                                                                                                    | التحليلات                  |
+| **PDF**             | [jsPDF](https://github.com/parallax/jsPDF) + [jspdf-autotable](https://github.com/simonbengtsson/jsPDF-AutoTable)                    | التصدير                    |
+| **المصادقة**        | [bcryptjs](https://github.com/dcodeIO/bcrypt.js) + HMAC-SHA256                                                                       | الجلسات                    |
+| **الحركات**         | [Framer Motion](https://www.framer.com/motion/)                                                                                      | الانتقالات                 |
+| **الإشعارات**       | [react-hot-toast](https://react-hot-toast.com/)                                                                                      | تنبيهات منبثقة             |
+| **التواريخ**        | [date-fns](https://date-fns.org/) + [react-day-picker](https://react-day-picker.js.org/)                                             | معالجة التواريخ            |
+| **الأيقونات**       | [Lucide React](https://lucide.dev/) + [Font Awesome 6](https://fontawesome.com/)                                                     | الأيقونات                  |
+| **الترجمة**         | [NLLB-200](https://huggingface.co/Xenova/nllb-200-distilled-600M) عبر [transformers.js](https://huggingface.co/docs/transformers.js) | ترجمة محلية عربي↔إنجليزي   |
+| **التدقيق**         | [ESLint 9](https://eslint.org/) (flat config)                                                                                        | جودة الكود                 |
+| **التنسيق**         | [Prettier](https://prettier.io/)                                                                                                     | نمط الكود                  |
 
 ---
 
@@ -135,9 +137,10 @@
 ### البدء السريع
 
 ```bash
-git clone https://github.com/red-shadows-rs/TaskBoard.git
+git clone https://github.com/red-shadows-rs/taskboard.git
 cd taskboard
 npm install
+npm run models:download
 cp .env.example .env.local
 npm run dev
 ```
@@ -146,24 +149,30 @@ npm run dev
 
 ### متغيرات البيئة
 
-| المتغير          | مطلوب | الافتراضي     | الوصف                   |
-| ---------------- | ----- | ------------- | ----------------------- |
-| `NODE_ENV`       | نعم   | `development` | وضع البيئة              |
-| `SESSION_SECRET` | نعم   | —             | مفتاح توقيع HMAC-SHA256 |
+| المتغير                  | مطلوب | الافتراضي     | الوصف                      |
+| ------------------------ | ----- | ------------- | -------------------------- |
+| `NODE_ENV`               | نعم   | `development` | وضع البيئة                 |
+| `SESSION_SECRET`         | نعم   | —             | مفتاح توقيع HMAC-SHA256    |
+| `TRUST_PROXY`            | لا    | `false`       | الثقة بـ `X-Forwarded-For` |
+| `TRANSLATION_ENABLED`    | لا    | `true`        | تفعيل الترجمة التلقائية    |
+| `TRANSLATION_MODELS_DIR` | لا    | `./models`    | مجلد موديل ONNX            |
 
 ### الأوامر المتاحة
 
-| الأمر                  | الوصف                             |
-| ---------------------- | --------------------------------- |
-| `npm run dev`          | تشغيل خادم التطوير مع Turbopack   |
-| `npm run build`        | بناء للإنتاج                      |
-| `npm start`            | تشغيل خادم الإنتاج                |
-| `npm run lint`         | تشغيل ESLint                      |
-| `npm run lint:fix`     | إصلاح تلقائي لمشاكل التنسيق       |
-| `npm run format`       | تنسيق مع Prettier                 |
-| `npm run format:check` | التحقق من التنسيق                 |
-| `npm run type-check`   | التحقق من أنواع TypeScript        |
-| `npm run validate`     | تحقق كامل (تنسيق + تدقيق + أنواع) |
+| الأمر                     | الوصف                             |
+| ------------------------- | --------------------------------- |
+| `npm run dev`             | تشغيل خادم التطوير مع Turbopack   |
+| `npm run build`           | بناء للإنتاج                      |
+| `npm start`               | تشغيل خادم الإنتاج                |
+| `npm run models:download` | تحميل موديل الترجمة المحلي        |
+| `npm run lint`            | تشغيل ESLint                      |
+| `npm run lint:fix`        | إصلاح تلقائي لمشاكل التنسيق       |
+| `npm run format`          | تنسيق مع Prettier                 |
+| `npm run format:check`    | التحقق من التنسيق                 |
+| `npm run type-check`      | التحقق من أنواع TypeScript        |
+| `npm run validate`        | تحقق كامل (تنسيق + تدقيق + أنواع) |
+| `npm run check:comments`  | فرض سياسة منع التعليقات           |
+| `npm run check:versions`  | التحقق من اتساق الإصدار           |
 
 ---
 
@@ -190,7 +199,8 @@ TaskBoard/
 │   │   │   ├── sections/       # CRUD الأقسام + إعادة الترتيب
 │   │   │   ├── tasks/          # CRUD المهام + إعادة الترتيب + الصور
 │   │   │   ├── users/          # CRUD المستخدمين + إعادة الترتيب
-│   │   │   └── shared/         # قاعدة البيانات، تحديد المعدل، المحققات
+│   │   │   ├── translate/      # الترجمة المحلية
+│   │   │   └── shared/         # قاعدة البيانات، الوصول، تحديد المعدل، المحققات
 │   │   ├── dashboard/          # المهام، المشاريع، التحليلات، الفريق
 │   │   ├── login/              # صفحة المصادقة
 │   │   └── profile/            # الملف الشخصي
@@ -200,18 +210,23 @@ TaskBoard/
 │   │   ├── pages/              # مكونات على مستوى الصفحات
 │   │   └── ui/                 # مكونات واجهة أساسية
 │   ├── contexts/               # اللغة + متجر Zustand
+│   ├── lib/                    # تشغيل الترجمة المحلية
 │   ├── types/                  # واجهات TypeScript
-│   └── utils/                  # تصدير PDF، التسعير
+│   ├── utils/                  # تصدير PDF، التسعير، الترجمة
+│   └── proxy.ts                # حارس نفس الأصل لطلبات API
+├── docs/                       # أدلة المعمارية والترجمة
+├── scripts/                    # تحميل الموديل، حراس الإصدار والتعليقات
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── CODE_OF_CONDUCT.md
 ├── SECURITY.md
 ├── LICENSE
 ├── README.md
-├── README.ar.md
+├── README_AR.md
 ├── next.config.ts
 ├── tailwind.config.ts
 ├── tsconfig.json
+├── translation.config.json
 └── package.json
 ```
 
@@ -250,18 +265,18 @@ TaskBoard/
 
 اطلع على [CHANGELOG.md](./CHANGELOG.md) لسجل مفصل بالإصدارات. يتبع هذا المشروع [الإصدارات الدلالية](https://semver.org/).
 
-| الإصدار   | التاريخ    | أبرز المميزات                                                               |
-| --------- | ---------- | --------------------------------------------------------------------------- |
-| **4.0.6** | 2026-05-15 | تحديث اسم المؤلف، إضافة مواضيع GitHub repo                              |
+| الإصدار   | التاريخ    | أبرز المميزات                                                                   |
+| --------- | ---------- | ------------------------------------------------------------------------------- |
+| **4.0.6** | 2026-05-15 | تحديث اسم المؤلف، إضافة مواضيع GitHub repo                                      |
 | **4.0.5** | 2026-05-14 | إصلاح السحب والإفلات على سطح المكتب، إصلاح أيقونات metadata، حذف تعليقات ESLint |
-| 4.0.4     | 2026-05-14 | حذف تعليقات ESLint، حذف console logs، إضافة tags المفقودة              |
-| 4.0.3     | 2026-05-14 | إصلاح روابط المستودع، تحديث العلامة التجارية، رفع الإصدار               |
-| 4.0.2     | 2026-05-14 | استعادة الأيقونة الأصلية، إضافة .env.example                             |
-| 4.0.1     | 2026-05-14 | تجديد التوثيق، README بالعربية، تحسين الأيقونات، تنظيف البيانات         |
-| 4.0.0     | 2026-05-14 | التحليلات، تصدير PDF، PWA، ثنائي اللغة، الوضع الداكن/الفاتح، السحب والإفلات |
-| 3.0.0     | 2026-04-01 | إدارة المشاريع/الأقسام، CRUD المهام، أدوار المستخدمين، مصادقة الجلسات       |
-| 2.0.0     | 2026-03-01 | واجهة كانبان، حالات/أولويات/وسوم المهام، تخطيط لوحة التحكم                  |
-| 1.0.0     | 2026-02-01 | الإعداد الأولي: Next.js App Router، صفحة الدخول، Tailwind CSS               |
+| 4.0.4     | 2026-05-14 | حذف تعليقات ESLint، حذف console logs، إضافة tags المفقودة                       |
+| 4.0.3     | 2026-05-14 | إصلاح روابط المستودع، تحديث العلامة التجارية، رفع الإصدار                       |
+| 4.0.2     | 2026-05-14 | استعادة الأيقونة الأصلية، إضافة .env.example                                    |
+| 4.0.1     | 2026-05-14 | تجديد التوثيق، README بالعربية، تحسين الأيقونات، تنظيف البيانات                 |
+| 4.0.0     | 2026-05-14 | التحليلات، تصدير PDF، PWA، ثنائي اللغة، الوضع الداكن/الفاتح، السحب والإفلات     |
+| 3.0.0     | 2026-04-01 | إدارة المشاريع/الأقسام، CRUD المهام، أدوار المستخدمين، مصادقة الجلسات           |
+| 2.0.0     | 2026-03-01 | واجهة كانبان، حالات/أولويات/وسوم المهام، تخطيط لوحة التحكم                      |
+| 1.0.0     | 2026-02-01 | الإعداد الأولي: Next.js App Router، صفحة الدخول، Tailwind CSS                   |
 
 ---
 

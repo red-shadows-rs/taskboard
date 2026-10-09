@@ -14,8 +14,6 @@
   },
   "card": {
     "title": "Title",
-    "members": "Members",
-    "endDate": "End Date",
     "actions": {
       "export": "Export Report"
     }
@@ -28,8 +26,7 @@
   "teamMembers": "Team Members",
   "form": {
     "fields": {
-      "titleEn": "Title (English)",
-      "titleAr": "Title (Arabic)",
+      "title": "Title",
       "status": "Status",
       "startDate": "Start Date",
       "endDate": "End Date",
@@ -66,6 +63,7 @@
     "on_hold": "On Hold"
   },
   "messages": {
+    "translating": "Translating...",
     "success": {
       "created": "Project created successfully",
       "updated": "Project updated successfully",
@@ -81,7 +79,6 @@
     }
   },
   "validation": {
-    "titleMinEn": "English title must be at least 3 characters",
-    "titleMinAr": "Arabic title must be at least 3 characters"
+    "titleMin": "Title must be at least 3 characters"
   }
 }

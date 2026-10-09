@@ -51,7 +51,7 @@
   },
   "filters": {
     "allProjects": "All Projects",
-    "byProject": "Filter by Project"
+    "dateRange": "Date Range"
   },
   "messages": {
     "success": {
@@ -62,7 +62,6 @@
     }
   },
   "financial": {
-    "title": "Financial Overview",
     "byProject": "Distribution by Project",
     "byMember": "Distribution by Member",
     "projectsWithBudget": "Projects with Budget",

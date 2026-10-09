@@ -6,6 +6,7 @@ import {
   updateProject,
   deleteProject,
 } from "@/app/api/shared/databaseShared";
+import { canAccessProject } from "@/app/api/shared/accessShared";
 import { projectSchema } from "@/app/api/shared/validatorsShared";
 
 import type { NextRequest } from "next/server";
@@ -23,7 +24,7 @@ export async function GET(
       return NextResponse.json({ error: "Project not found" }, { status: 404 });
     }
 
-    if (user.role === "member" && !project.teamMembers.includes(user.id)) {
+    if (!canAccessProject(user, project)) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -47,6 +48,15 @@ export async function PATCH(
     const user = await requireAuth();
     const { id } = await params;
 
+    const existingProject = await getProjectById(id);
+    if (!existingProject) {
+      return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    }
+
+    if (!canAccessProject(user, existingProject)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
     if (user.role === "member") {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
@@ -61,7 +71,12 @@ export async function PATCH(
       );
     }
 
-    const project = await updateProject(id, result.data);
+    const updates = { ...result.data };
+    if (user.role !== "leader") {
+      delete updates.teamMembers;
+    }
+
+    const project = await updateProject(id, updates);
 
     if (!project) {
       return NextResponse.json({ error: "Project not found" }, { status: 404 });

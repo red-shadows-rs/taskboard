@@ -7,7 +7,8 @@
     "tasks": "Tasks",
     "projects": "Projects",
     "profile": "Profile",
-    "logout": "Logout"
+    "logout": "Logout",
+    "menu": "Menu"
   },
   "role": {
     "leader": "Leader",

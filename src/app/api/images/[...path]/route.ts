@@ -19,14 +19,21 @@ export async function GET(
       return new NextResponse("Forbidden", { status: 403 });
     }
 
+    let realPath: string;
+    let realBaseDir: string;
     try {
-      await fs.access(filePath);
+      realPath = await fs.realpath(filePath);
+      realBaseDir = await fs.realpath(baseDir);
     } catch {
       return new NextResponse("File not found", { status: 404 });
     }
 
-    const fileBuffer = await fs.readFile(filePath);
-    const ext = path.extname(filePath).toLowerCase();
+    if (!realPath.startsWith(realBaseDir + path.sep)) {
+      return new NextResponse("Forbidden", { status: 403 });
+    }
+
+    const fileBuffer = await fs.readFile(realPath);
+    const ext = path.extname(realPath).toLowerCase();
     let contentType = "application/octet-stream";
 
     switch (ext) {

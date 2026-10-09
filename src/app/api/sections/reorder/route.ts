@@ -1,21 +1,42 @@
 import { NextResponse } from "next/server";
+
 import { requireAuth } from "@/app/api/auth/utilsAuth";
-import { reorderSections } from "@/app/api/shared/databaseShared";
+import {
+  reorderSections,
+  getSectionById,
+} from "@/app/api/shared/databaseShared";
+import { canAccessSection } from "@/app/api/shared/accessShared";
+import { sectionReorderSchema } from "@/app/api/shared/validatorsShared";
 
 export async function POST(request: Request) {
   try {
-    await requireAuth();
-    const body = await request.json();
-    const { updates } = body;
+    const user = await requireAuth();
 
-    if (!Array.isArray(updates)) {
+    if (user.role === "member") {
       return NextResponse.json(
-        { error: "Invalid updates format" },
+        { error: "Forbidden: Only leaders and clients can reorder sections" },
+        { status: 403 },
+      );
+    }
+
+    const body = await request.json();
+    const result = sectionReorderSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Invalid input", details: result.error.errors },
         { status: 400 },
       );
     }
 
-    await reorderSections(updates);
+    for (const update of result.data.updates) {
+      const section = await getSectionById(update.id);
+      if (!(await canAccessSection(user, section))) {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      }
+    }
+
+    await reorderSections(result.data.updates);
 
     return NextResponse.json({ success: true });
   } catch (error) {

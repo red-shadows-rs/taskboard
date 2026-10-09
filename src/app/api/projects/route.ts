@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { requireAuth } from "@/app/api/auth/utilsAuth";
 import { getProjects, createProject } from "@/app/api/shared/databaseShared";
+import { checkRateLimit } from "@/app/api/shared/rateLimitShared";
 import { projectSchema } from "@/app/api/shared/validatorsShared";
 
 import type { NextRequest } from "next/server";
@@ -33,6 +34,11 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+    const rateLimit = checkRateLimit(request, "projects:create", 60, 60 * 1000);
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const user = await requireAuth();
 
     if (user.role !== "leader") {

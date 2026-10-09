@@ -11,5 +11,4 @@ export * from "./popoverUi";
 export * from "./selectUi";
 export * from "./tabsUi";
 export * from "./utilsUi";
-export * from "./separatorUi";
 export * from "./avatarUi";
