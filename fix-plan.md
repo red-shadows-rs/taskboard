@@ -376,3 +376,25 @@ The user asked to fix the vulnerabilities first, then upgrade packages, plus CSP
   - Depends on: dedicated user-approved effort
   - Reason for deferral: `braces` has **no patched version** (`CVE-2026-93687`); the chain is
     **dev/build-time only**; the only fix is a large, risky Tailwind major migration. Not improvised.
+
+---
+
+## Round 3 — F-003 re-investigation, F-018 (user-approved)
+
+- [x] T-024 (fixes F-018) Document the rate limiter's scope
+  - File(s): `README.md`, `README_AR.md`
+  - Change: add an "Operational notes" section: in-memory/per-process limiter, reset on restart,
+    not shared across replicas; note on `TRUST_PROXY`; note on `uploads/` privacy
+  - Verify: `npm run format:check`
+  - Expected output: exit 0
+  - Rollback: `git checkout -- README.md README_AR.md`
+  - Depends on: none
+
+- [~] T-023 (fixes F-003) Tailwind 3 → 4 migration — **CANCELLED after empirical proof**
+  - Reason: the `braces` advisory survives via `@next/eslint-plugin-next → fast-glob → micromatch
+→ braces` even with Tailwind 4 (proven in an isolated `/tmp` probe: 4 high advisories with the
+    ESLint plugin alone). The migration would risk UI regressions without clearing the advisory.
+  - Remaining options (need user decision):
+    (a) accept the dev-only advisory — recommended;
+    (b) migrate Tailwind 4 **and** remove `@next/eslint-plugin-next` to reach 0 (styling risk +
+    loss of Next lint rules).

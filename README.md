@@ -260,6 +260,19 @@ We welcome contributions. Please read our [Contributing Guide](./CONTRIBUTING.md
 
 To report a security vulnerability, please follow our [Security Policy](./SECURITY.md). Do not open a public issue.
 
+### Operational notes
+
+- **Rate limiting is in-memory and per-process.** Counters live in a `Map` inside the running
+  server, so they reset on restart and are not shared across instances. This is intended for the
+  default single-instance, self-hosted deployment. If you run multiple replicas behind a load
+  balancer, replace the limiter in `src/app/api/shared/rateLimitShared.ts` with a shared store
+  (for example Redis).
+- **Reverse proxy headers.** Client IP detection only trusts `X-Forwarded-For` / `X-Real-IP` when
+  `TRUST_PROXY=true`. Set it only when the app is genuinely behind a trusted proxy, otherwise a
+  direct client could spoof those headers to evade per-IP limits.
+- **Uploads** are stored under `uploads/` (git-ignored, outside `public/`) and served only to
+  authenticated users through the `/images/*` route.
+
 ---
 
 ## 📝 Changelog
