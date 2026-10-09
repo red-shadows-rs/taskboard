@@ -8,10 +8,17 @@ import type { User } from "@/types";
 
 const SESSION_COOKIE = "taskboard_session";
 const SESSION_SECRET = process.env.SESSION_SECRET as string;
+const SESSION_SECRET_MIN_LENGTH = 32;
 
 if (!SESSION_SECRET) {
   throw new Error(
     "SESSION_SECRET environment variable is required. Set a strong random secret in .env.local",
+  );
+}
+
+if (SESSION_SECRET.length < SESSION_SECRET_MIN_LENGTH) {
+  throw new Error(
+    `SESSION_SECRET must be at least ${SESSION_SECRET_MIN_LENGTH} characters long.`,
   );
 }
 

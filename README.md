@@ -149,13 +149,13 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Environment Variables
 
-| Variable                 | Required | Default       | Description                          |
-| ------------------------ | -------- | ------------- | ------------------------------------ |
-| `NODE_ENV`               | Yes      | `development` | Environment mode                     |
-| `SESSION_SECRET`         | Yes      | —             | HMAC-SHA256 signing key              |
-| `TRUST_PROXY`            | No       | `false`       | Trust `X-Forwarded-For` from a proxy |
-| `TRANSLATION_ENABLED`    | No       | `true`        | Enable automatic translation         |
-| `TRANSLATION_MODELS_DIR` | No       | `./models`    | Directory holding the ONNX model     |
+| Variable                 | Required | Default       | Description                            |
+| ------------------------ | -------- | ------------- | -------------------------------------- |
+| `NODE_ENV`               | Yes      | `development` | Environment mode                       |
+| `SESSION_SECRET`         | Yes      | —             | HMAC-SHA256 signing key (min 32 chars) |
+| `TRUST_PROXY`            | No       | `false`       | Trust `X-Forwarded-For` from a proxy   |
+| `TRANSLATION_ENABLED`    | No       | `true`        | Enable automatic translation           |
+| `TRANSLATION_MODELS_DIR` | No       | `./models`    | Directory holding the ONNX model       |
 
 ### Available Scripts
 

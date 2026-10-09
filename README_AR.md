@@ -149,13 +149,13 @@ npm run dev
 
 ### متغيرات البيئة
 
-| المتغير                  | مطلوب | الافتراضي     | الوصف                      |
-| ------------------------ | ----- | ------------- | -------------------------- |
-| `NODE_ENV`               | نعم   | `development` | وضع البيئة                 |
-| `SESSION_SECRET`         | نعم   | —             | مفتاح توقيع HMAC-SHA256    |
-| `TRUST_PROXY`            | لا    | `false`       | الثقة بـ `X-Forwarded-For` |
-| `TRANSLATION_ENABLED`    | لا    | `true`        | تفعيل الترجمة التلقائية    |
-| `TRANSLATION_MODELS_DIR` | لا    | `./models`    | مجلد موديل ONNX            |
+| المتغير                  | مطلوب | الافتراضي     | الوصف                                       |
+| ------------------------ | ----- | ------------- | ------------------------------------------- |
+| `NODE_ENV`               | نعم   | `development` | وضع البيئة                                  |
+| `SESSION_SECRET`         | نعم   | —             | مفتاح توقيع HMAC-SHA256 (32 حرفاً كحد أدنى) |
+| `TRUST_PROXY`            | لا    | `false`       | الثقة بـ `X-Forwarded-For`                  |
+| `TRANSLATION_ENABLED`    | لا    | `true`        | تفعيل الترجمة التلقائية                     |
+| `TRANSLATION_MODELS_DIR` | لا    | `./models`    | مجلد موديل ONNX                             |
 
 ### الأوامر المتاحة
 
