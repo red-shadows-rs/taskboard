@@ -137,7 +137,6 @@ const SortableMemberCard = memo(function SortableMemberCard({
   onDeleteMember: (id: string) => Promise<void>;
   isDragDisabled: boolean;
   t: (key: string) => string;
-  isActive?: boolean;
 }) {
   const {
     attributes,
@@ -793,7 +792,6 @@ export function MembersManagement({
                         isDragDisabled={
                           currentUser.role !== "leader" || isMobile
                         }
-                        isActive={activeId === user.id}
                         t={t}
                       />
                     ))}
