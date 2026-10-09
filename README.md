@@ -94,7 +94,7 @@ Managing projects across bilingual teams is challenging. TaskBoard bridges the g
         <li><strong>Rate Limiting</strong> — Per-IP on auth endpoints</li>
         <li><strong>Input Validation</strong> — Zod schemas on all API routes</li>
         <li><strong>XSS Protection</strong> — DOMPurify sanitization</li>
-        <li><strong>Security Headers</strong> — X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy</li>
+        <li><strong>Security Headers</strong> — CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy</li>
       </ul>
     </td>
   </tr>
@@ -170,6 +170,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | `npm run format`          | Format with Prettier                    |
 | `npm run format:check`    | Check formatting                        |
 | `npm run type-check`      | TypeScript type checking                |
+| `npm test`                | Run the Vitest test suite               |
 | `npm run validate`        | Full validation (format + lint + types) |
 | `npm run check:comments`  | Enforce the no-comments policy          |
 | `npm run check:versions`  | Verify version consistency              |

@@ -52,6 +52,8 @@ jobs:
         run: npm run lint
       - name: Type-check
         run: npm run type-check
+      - name: Test
+        run: npm test
 
       # ── Build ──
       - name: Build
