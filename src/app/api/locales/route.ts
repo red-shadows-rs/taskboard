@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+import { requireAuth } from "@/app/api/auth/utilsAuth";
+
 export const dynamic = "force-dynamic";
 
 const LOCALES_DIR = path.join(process.cwd(), "public", "locales");
@@ -37,12 +39,17 @@ function getLocaleDirectories(dir: string, baseDir: string = ""): string[] {
 
 export async function GET() {
   try {
+    await requireAuth();
+
     const paths = getLocaleDirectories(LOCALES_DIR);
     return NextResponse.json(paths);
-  } catch (_error) {
+  } catch (error) {
+    const unauthorized =
+      error instanceof Error && error.message === "Unauthorized";
+
     return NextResponse.json(
-      { error: "Failed to scan locales" },
-      { status: 500 },
+      { error: unauthorized ? "Unauthorized" : "Failed to scan locales" },
+      { status: unauthorized ? 401 : 500 },
     );
   }
 }
