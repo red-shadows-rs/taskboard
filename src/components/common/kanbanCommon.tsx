@@ -201,13 +201,13 @@ const KanbanBoard = memo(function KanbanBoard({
   }, [tasks]);
 
   useEffect(() => {
-    const checkMobile = () => {
+    const updateIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
   }, []);
 
   const isTaskDragDisabled = (task: Task) => {

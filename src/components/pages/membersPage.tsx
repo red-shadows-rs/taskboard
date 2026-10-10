@@ -297,13 +297,13 @@ export function MembersManagement({
   }, [users]);
 
   useEffect(() => {
-    const checkMobile = () => {
+    const updateIsMobile = () => {
       setIsMobile(window.innerWidth < 1024);
     };
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
   }, []);
 
   const sensors = useSensors(
