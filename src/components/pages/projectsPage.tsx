@@ -140,10 +140,10 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
 
   const [activeDragId, setActiveDragId] = useState<string | null>(null);
   const [isDesktop, setIsDesktop] = useState(true);
-  const [mounted, setMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setIsMounted(true);
   }, []);
 
   useEffect(() => {
@@ -333,7 +333,7 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
     );
   }
 
-  if (!mounted) return null;
+  if (!isMounted) return null;
 
   return (
     <>

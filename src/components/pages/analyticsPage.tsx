@@ -66,10 +66,10 @@ export default function Analytics({ user }: AnalyticsProps) {
   const [sections, setSections] = useState<Section[]>([]);
   const [dateRange, setDateRange] = useState<DateRange>("all");
   const [selectedProject, setSelectedProject] = useState<string>("all");
-  const [mounted, setMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setIsMounted(true);
   }, []);
 
   const filterTasksByDate = useCallback(
@@ -217,7 +217,7 @@ export default function Analytics({ user }: AnalyticsProps) {
     [language],
   );
 
-  if (!mounted) return null;
+  if (!isMounted) return null;
 
   return (
     <main className="flex-1 w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-8 2xl:px-8 py-8">

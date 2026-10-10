@@ -75,10 +75,10 @@ export function Dashboard({
   const [statusFilter, setLocalStatusFilter] = useState<string>("all");
   const [projectFilter, setProjectFilter] = useState<string>("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const [mounted, setMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setIsMounted(true);
   }, []);
 
   const fetchUsers = useCallback(async () => {
@@ -290,7 +290,7 @@ export function Dashboard({
     [updateSection, fetchSections, t],
   );
 
-  if (!mounted) return null;
+  if (!isMounted) return null;
 
   return (
     <>
