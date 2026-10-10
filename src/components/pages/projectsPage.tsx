@@ -147,13 +147,13 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
   }, []);
 
   useEffect(() => {
-    const checkIsDesktop = () => {
+    const updateIsDesktop = () => {
       setIsDesktop(window.innerWidth >= 1024);
     };
-    checkIsDesktop();
-    window.addEventListener("resize", checkIsDesktop);
+    updateIsDesktop();
+    window.addEventListener("resize", updateIsDesktop);
     return () => {
-      window.removeEventListener("resize", checkIsDesktop);
+      window.removeEventListener("resize", updateIsDesktop);
     };
   }, []);
 
