@@ -946,7 +946,9 @@ export function MembersManagement({
                     />
                     <button
                       type="button"
-                      onClick={() => setIsEditPasswordVisible(!isEditPasswordVisible)}
+                      onClick={() =>
+                        setIsEditPasswordVisible(!isEditPasswordVisible)
+                      }
                       className="absolute ltr:right-3 rtl:left-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                       tabIndex={-1}
                     >
