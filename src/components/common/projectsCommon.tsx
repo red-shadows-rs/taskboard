@@ -179,7 +179,10 @@ export function ProjectCard({
         </CardContent>
       </Card>
 
-      <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+      <AlertDialog
+        open={isDeleteDialogOpen}
+        onOpenChange={setIsDeleteDialogOpen}
+      >
         <AlertDialogContent
           onPointerDownOutside={(e: Event) => e.preventDefault()}
         >
