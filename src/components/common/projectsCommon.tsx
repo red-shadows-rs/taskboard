@@ -80,7 +80,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const { t, language } = useLanguage();
   const { tasks, sections } = useStore();
-  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
   const teamMembersCount = project.teamMembers?.length || 0;
   const projectTotal = calculateProjectTotal(project.id, sections, tasks);
@@ -151,7 +151,7 @@ export function ProjectCard({
                   className="h-8 w-8 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/50 dark:hover:text-red-400"
                   onClick={(e) => {
                     e.stopPropagation();
-                    setShowDeleteDialog(true);
+                    setIsDeleteDialogOpen(true);
                   }}
                   aria-label={t("common.button.delete")}
                 >
@@ -179,7 +179,7 @@ export function ProjectCard({
         </CardContent>
       </Card>
 
-      <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+      <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
         <AlertDialogContent
           onPointerDownOutside={(e: Event) => e.preventDefault()}
         >
