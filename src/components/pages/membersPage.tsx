@@ -485,7 +485,7 @@ export function MembersManagement({
   const [selectedRole, setSelectedRole] = useState<UserRole | "all">("all");
   const [editingMember, setEditingMember] = useState<User | null>(null);
   const [isEditMemberDialogOpen, setIsEditMemberDialogOpen] = useState(false);
-  const [showEditPassword, setShowEditPassword] = useState(false);
+  const [isEditPasswordVisible, setIsEditPasswordVisible] = useState(false);
 
   const usersArray = Array.isArray(localUsers) ? localUsers : [];
   const filteredUsers = usersArray.filter((user) => {
@@ -933,7 +933,7 @@ export function MembersManagement({
                   <div className="relative">
                     <Input
                       id="edit-password"
-                      type={showEditPassword ? "text" : "password"}
+                      type={isEditPasswordVisible ? "text" : "password"}
                       placeholder={t("dashboard.team.placeholders.leaveBlank")}
                       value={editingMember.password || ""}
                       onChange={(e) =>
@@ -946,11 +946,11 @@ export function MembersManagement({
                     />
                     <button
                       type="button"
-                      onClick={() => setShowEditPassword(!showEditPassword)}
+                      onClick={() => setIsEditPasswordVisible(!isEditPasswordVisible)}
                       className="absolute ltr:right-3 rtl:left-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                       tabIndex={-1}
                     >
-                      {showEditPassword ? (
+                      {isEditPasswordVisible ? (
                         <EyeOff className="h-4 w-4" />
                       ) : (
                         <Eye className="h-4 w-4" />
