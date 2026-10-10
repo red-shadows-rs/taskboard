@@ -33,7 +33,7 @@ import type { LoginInput } from "@/app/api/shared/validatorsShared";
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const { t } = useLanguage();
   const setUser = useStore((state) => state.setUser);
   const router = useRouter();
@@ -181,18 +181,18 @@ export default function LoginPage() {
                 <div className="relative">
                   <Input
                     id="password"
-                    type={showPassword ? "text" : "password"}
+                    type={isPasswordVisible ? "text" : "password"}
                     autoComplete="current-password"
                     {...register("password", { required: false })}
                     className="ltr:pr-10 rtl:pl-10"
                   />
                   <button
                     type="button"
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setIsPasswordVisible(!isPasswordVisible)}
                     className="absolute ltr:right-3 rtl:left-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                     tabIndex={-1}
                   >
-                    {showPassword ? (
+                    {isPasswordVisible ? (
                       <EyeOff className="h-4 w-4" />
                     ) : (
                       <Eye className="h-4 w-4" />

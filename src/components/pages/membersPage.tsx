@@ -472,7 +472,7 @@ export function MembersManagement({
 
   const [searchQuery, setSearchQuery] = useState("");
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [newMember, setNewMember] = useState({
     name: "",
     email: "",
@@ -666,7 +666,7 @@ export function MembersManagement({
                     <div className="relative">
                       <Input
                         id="password"
-                        type={showPassword ? "text" : "password"}
+                        type={isPasswordVisible ? "text" : "password"}
                         value={newMember.password}
                         onChange={(e) =>
                           setNewMember({
@@ -678,11 +678,11 @@ export function MembersManagement({
                       />
                       <button
                         type="button"
-                        onClick={() => setShowPassword(!showPassword)}
+                        onClick={() => setIsPasswordVisible(!isPasswordVisible)}
                         className="absolute ltr:right-3 rtl:left-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                         tabIndex={-1}
                       >
-                        {showPassword ? (
+                        {isPasswordVisible ? (
                           <EyeOff className="h-4 w-4" />
                         ) : (
                           <Eye className="h-4 w-4" />
