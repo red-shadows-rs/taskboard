@@ -28,20 +28,6 @@ const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
   serverExternalPackages: ["better-sqlite3"],
-  async redirects() {
-    return [
-      {
-        source: "/dashboard",
-        destination: "/tasks",
-        permanent: true,
-      },
-      {
-        source: "/dashboard/:path*",
-        destination: "/:path*",
-        permanent: true,
-      },
-    ];
-  },
   async rewrites() {
     return [
       {

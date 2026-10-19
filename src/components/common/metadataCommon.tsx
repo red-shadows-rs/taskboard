@@ -14,25 +14,15 @@ export function DynamicMetadata() {
 
     if (pathname === "/login") {
       titleKey = "auth.meta.title";
-    } else if (
-      pathname === "/tasks" ||
-      pathname === "/dashboard/tasks" ||
-      pathname === "/dashboard"
-    ) {
+    } else if (pathname === "/tasks") {
       titleKey = "dashboard.tasks.meta.title";
-    } else if (
-      pathname === "/analytics" ||
-      pathname === "/dashboard/analytics"
-    ) {
+    } else if (pathname === "/analytics") {
       titleKey = "dashboard.analytics.meta.title";
-    } else if (pathname === "/team" || pathname === "/dashboard/team") {
+    } else if (pathname === "/team") {
       titleKey = "dashboard.team.meta.title";
     } else if (pathname === "/profile") {
       titleKey = "profile.meta.title";
-    } else if (
-      pathname?.startsWith("/projects") ||
-      pathname?.startsWith("/dashboard/projects")
-    ) {
+    } else if (pathname?.startsWith("/projects")) {
       titleKey = "dashboard.projects.meta.title";
     }
 
