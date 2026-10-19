@@ -1,314 +1,303 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="public/favicon.svg">
-    <img alt="TaskBoard" src="public/favicon.svg" width="96" height="96">
-  </picture>
-</p>
+<div align="center">
 
-<h1 align="center">تاسك بورد</h1>
+<a href="https://github.com/red-shadows-rs/taskboard">
+  <img src="public/favicon.svg" alt="TaskBoard Logo" width="120" />
+</a>
 
-<p align="center">
-  <strong>نظام إدارة مهام احترافي للفرق والمدراء</strong>
-</p>
+# تاسك بورد (TaskBoard)
 
-<p align="center">
-  <a href="https://github.com/red-shadows-rs/taskboard/blob/main/README.md">English</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-المميزات">المميزات</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-التقنيات-المستخدمة">التقنيات</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-بدء-الاستخدام">بدء الاستخدام</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-هيكل-المشروع">الهيكل</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-المساهمة">المساهمة</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-الترخيص">الترخيص</a>
-</p>
+منصة إدارة مهام ومشاريع بنمط كانبان ذاتية الاستضافة مع محرك SQLite WAL، وبيئة تجريبية معزولة للديمو، وحسابات تسعير المهام، وواجهة ثنائية اللغة (عربي / إنجليزي).
 
-<br/>
+[![الإصدار](https://img.shields.io/badge/الإصدار-4.2.0-2563eb?style=for-the-badge)](CHANGELOG.md)
+[![الترخيص](https://img.shields.io/badge/الترخيص-MIT-10b981?style=for-the-badge)](LICENSE)
+![تايب سكريبت](https://img.shields.io/badge/تايب_سكريبت-5%2B-3178c6?style=for-the-badge&logo=typescript)
+![Next.js](https://img.shields.io/badge/next.js-16-000000?style=for-the-badge&logo=next.js)
+![المنصة](https://img.shields.io/badge/المنصة-لينكس%20%7C%20استضافة_ذاتية-9333ea?style=for-the-badge&logo=linux)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/الإصدار-4.1.2-2563eb?style=for-the-badge" alt="الإصدار 4.1.2">
-  <img src="https://img.shields.io/badge/الترخيص-MIT-10b981?style=for-the-badge" alt="ترخيص MIT">
-  <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16">
-  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18">
-  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 5">
-  <img src="https://img.shields.io/badge/Tailwind-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 3">
-</p>
-
-<br/>
+</div>
 
 ---
 
-## لماذا تاسك بورد؟
+## اللغة
 
-إدارة المشاريع عبر فرق ثنائية اللغة أمر صعب. تاسك بورد يسد هذه الفجوة بواجهة كانبان تدعم اللغتين العربية والإنجليزية بشكل أصلي — من التخطيط من اليمين لليسار إلى وصف المهام ثنائي اللغة. مبني على Next.js 16 مع تركيز على الأداء، الأمان، وتجربة المطور.
-
-- **ثنائي اللغة بطبيعته** — كل ميزة تعمل بالعربية والإنجليزية، ليست إضافة لاحقة
-- **مكتفٍ ذاتياً** — قاعدة بيانات مبنية على ملفات JSON تعني عدم الحاجة لاعتماديات خارجية
-- **جاهز للإنتاج** — تحديد معدل الطلبات، رؤوس أمان، حماية XSS، ومصادقة بالجلسات
-- **تصدير كل شيء** — إنشاء تقارير PDF للمشاريع، المهام، والتحليلات مع دعم الخطوط العربية
+<a href="README.md">🇬🇧 English</a> · <a href="README_AR.md">🇸🇦 العربية</a>
 
 ---
 
-## ✨ المميزات
+## جدول المحتويات
 
-<table>
-  <tr>
-    <td width="50%">
-      <h3>🎯 الأساسية</h3>
-      <ul>
-        <li><strong>لوحة كانبان</strong> — سحب وإفلات المهام عبر أقسام قابلة للتخصيص</li>
-        <li><strong>إدارة المشاريع</strong> — إنشاء، تعديل، وتتبع المشاريع مع حالاتها</li>
-        <li><strong>إدارة المهام</strong> — وصف نصي منسق، مرفقات، وسوم، أولويات</li>
-        <li><strong>إدارة الفريق</strong> — صلاحيات مبنية على الأدوار: قائد، عضو، عميل</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <h3>📊 التحليلات والتقارير</h3>
-      <ul>
-        <li><strong>لوحة التحليلات</strong> — رسوم بيانية تفاعلية عبر Recharts</li>
-        <li><strong>تصدير PDF</strong> — تقارير للمشاريع، الأقسام، المهام، والتحليلات</li>
-        <li><strong>تتبع التقدم</strong> — مؤشرات بصرية لحالة المشاريع والمهام</li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3>🎨 تجربة المستخدم</h3>
-      <ul>
-        <li><strong>ثنائي اللغة (عربي/إنجليزي)</strong> — دعم كامل للغة العربية مع خطوط Cairo/Inter</li>
-        <li><strong>ترجمة محلية</strong> — حقل واحد لكل عنوان، وتُملأ اللغة الأخرى بموديل يعمل دون اتصال على المعالج</li>
-        <li><strong>الوضع الداكن/الفاتح</strong> — تنسيق HSL متكيف مع النظام</li>
-        <li><strong>محرر نصوص منسق</strong> — Tiptap مع محاذاة النص والتسطير</li>
-        <li><strong>تطبيق ويب تقدمي (PWA)</strong> — قابل للتثبيت مع بيان تشغيل</li>
-        <li><strong>متجاوب</strong> — محسّن للحاسوب، الجهاز اللوحي، والجوال</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <h3>🔒 الأمان</h3>
-      <ul>
-        <li><strong>مصادقة الجلسات</strong> — bcrypt + HMAC-SHA256 مع httpOnly cookies</li>
-        <li><strong>تحديد المعدل</strong> — لكل IP على نقاط المصادقة</li>
-        <li><strong>التحقق من المدخلات</strong> — مخططات Zod على جميع مسارات API</li>
-        <li><strong>حماية XSS</strong> — تنقية DOMPurify</li>
-        <li><strong>رؤوس الأمان</strong> — CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+- [نظرة عامة](#overview)
+- [الديمو الحي](#live-demo)
+- [المقارنة مع المنصات الأخرى](#comparison)
+- [الميزات الرئيسية](#features)
+- [معمارية النظام](#architecture)
+- [حزمة التقنيات](#tech-stack)
+- [هيكلية المشروع](#project-structure)
+- [المتطلبات](#requirements)
+- [البدء السريع](#quick-start)
+- [الأوامر المتاحة](#commands)
+- [التوثيق الشامل](#documentation)
+- [المساهمة](#contributing)
+- [الترخيص](#license)
 
 ---
 
-## 🚀 التقنيات المستخدمة
+<a id="live-demo"></a>
 
-| الفئة               | التقنية                                                                                                                              | الغرض                      |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
-| **الإطار**          | [Next.js 16](https://nextjs.org/)                                                                                                    | App Router + Turbopack     |
-| **الواجهة**         | [React 18](https://react.dev/) + [Radix UI](https://www.radix-ui.com/)                                                               | مكونات أساسية              |
-| **التنسيق**         | [Tailwind CSS 3](https://tailwindcss.com/)                                                                                           | CSS بالأدوات المساعدة      |
-| **اللغة**           | [TypeScript 5](https://www.typescriptlang.org/)                                                                                      | أمان الأنواع               |
-| **السحب والإفلات**  | [dnd-kit](https://dndkit.com/)                                                                                                       | إعادة ترتيب كانبان         |
-| **النص المنسق**     | [Tiptap](https://tiptap.dev/)                                                                                                        | وصف المهام                 |
-| **النماذج**         | [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)                                                            | التحقق                     |
-| **الحالة**          | [Zustand](https://zustand.docs.pmnd.rs/)                                                                                             | حالة واجهة المستخدم العامة |
-| **الرسوم البيانية** | [Recharts](https://recharts.org/)                                                                                                    | التحليلات                  |
-| **PDF**             | [jsPDF](https://github.com/parallax/jsPDF) + [jspdf-autotable](https://github.com/simonbengtsson/jsPDF-AutoTable)                    | التصدير                    |
-| **المصادقة**        | [bcryptjs](https://github.com/dcodeIO/bcrypt.js) + HMAC-SHA256                                                                       | الجلسات                    |
-| **الحركات**         | [Framer Motion](https://www.framer.com/motion/)                                                                                      | الانتقالات                 |
-| **الإشعارات**       | [react-hot-toast](https://react-hot-toast.com/)                                                                                      | تنبيهات منبثقة             |
-| **التواريخ**        | [date-fns](https://date-fns.org/) + [react-day-picker](https://react-day-picker.js.org/)                                             | معالجة التواريخ            |
-| **الأيقونات**       | [Lucide React](https://lucide.dev/) + [Font Awesome 6](https://fontawesome.com/)                                                     | الأيقونات                  |
-| **الترجمة**         | [NLLB-200](https://huggingface.co/Xenova/nllb-200-distilled-600M) عبر [transformers.js](https://huggingface.co/docs/transformers.js) | ترجمة محلية عربي↔إنجليزي   |
-| **التدقيق**         | [ESLint 9](https://eslint.org/) (flat config)                                                                                        | جودة الكود                 |
-| **التنسيق**         | [Prettier](https://prettier.io/)                                                                                                     | نمط الكود                  |
-| **الاختبار**        | [Vitest](https://vitest.dev/)                                                                                                        | اختبارات الوحدة            |
+## الديمو الحي
+
+جرّب TaskBoard في بيئة تجريبية تفاعلية بالكامل ومعزولة، مهيأة مسبقاً بمشاريع ومهام ولوحات كانبان وأعضاء فريق باللغتين العربية والإنجليزية:
+
+<div align="center">
+
+[![تجربة الديمو الحي](https://img.shields.io/badge/الديمو_الحي-دخول_فوري-059669?style=for-the-badge&logo=rocket)](https://taskboard.red-shadows-rs.com/demo)
+
+**[تشغيل الديمو الحي](https://taskboard.red-shadows-rs.com/demo)** (تسجيل دخول فوري بنقرة واحدة - لا يلزم التسجيل أو كلمة المرور)
+
+</div>
 
 ---
 
-## 📦 بدء الاستخدام
+<a id="overview"></a>
 
-### المتطلبات الأساسية
+## نظرة عامة
 
-- **Node.js** >= 20
-- **npm** >= 10
+منصة **TaskBoard** هي نظام ذاتي الاستضافة ومتكامل لإدارة المهام والمشاريع بنمط كانبان، مصمم خصيصاً للفرق الهندسية وشركات تطوير البرمجيات والمؤسسات. يستبدل النظام الأدوات السحابية المغلقة والمشتتة (مثل Trello و Jira و Asana) ببيئة عمل موحدة ومستقلة تعمل بالكامل على خادمك الخاص دون **أي اعتمادية على خدمات سحابية خارجية (Zero SaaS Dependencies)**.
 
-### البدء السريع
+يعمل النظام بواسطة Next.js 16 App Router، وقاعدة بيانات SQLite 3 بوضع WAL فائق السرعة عبر Drizzle ORM، مع دعم حقيقي لتخطيطات RTL/LTR وخط القاهرة الأصيل، مما يوفر سلاسة فائقة في إدارة المهام، وتتبع التكاليف ومعدلات أسعار الأعضاء، والتقارير المالية، وتصدير ملفات PDF.
+
+---
+
+<a id="comparison"></a>
+
+## المقارنة مع المنصات الأخرى
+
+| الميزة                              |    Trello     |      Jira       |      Asana      |     Monday      |        **TaskBoard**         |
+| :---------------------------------- | :-----------: | :-------------: | :-------------: | :-------------: | :--------------------------: |
+| استضافة ذاتية واستقلالية سحابية     |   ❌ سحابي    |    ❌ سحابي     |    ❌ سحابي     |    ❌ سحابي     |      ✅ Docker / Linux       |
+| طباعة عربية أصيلة بدعم كامل للـ RTL |    ⚠️ بسيط    |     ⚠️ بسيط     |   ❌ LTR فقط    |   ❌ LTR فقط    |   ✅ خط القاهرة و RTL كامل   |
+| ميزانيات وأسعار مخصصة لكل منفّذ     |      ❌       | ⚠️ إضافة مدفوعة | ⚠️ إضافة مدفوعة | ⚠️ إضافة مدفوعة |        ✅ مدمج أصلياً        |
+| حقول إدخال ثنائية اللغة متزامنة     |      ❌       |       ❌        |       ❌        |       ❌        |      ✅ عربي / إنجليزي       |
+| تخزين محلي سريع بواسطة SQLite WAL   |    ❌ مغلق    |    ❌ سحابي     |    ❌ سحابي     |    ❌ سحابي     |    ✅ SQLite 3 (وضع WAL)     |
+| بيئة ديمو معزولة تفاعلية فورية      |      ❌       |       ❌        |       ❌        |       ❌        |        ✅ بنقرة واحدة        |
+| اشتراكات شهرية مدفوعة               | ❌ \$5-17/شهر |  ❌ \$8-15/شهر  | ❌ \$11-25/شهر  |  ❌ \$9-19/شهر  | ✅ مجاني ومفتوح المصدر (MIT) |
+
+---
+
+<a id="features"></a>
+
+## الميزات الرئيسية
+
+- **لوحة كانبان تفاعلية:** سحب وإفلات المهام بين مراحل المشروع مع استشعار مرن للتصادم وتحديثات تفاؤلية فورية.
+- **ثنائي اللغة من الأساس:** دعم أصيل للغة العربية والإنجليزية عبر النظام كاملاً، مع حقول مستقلة متزامنة للعناوين والوصف التحريري.
+- **بيئة ديمو معزولة تماماً:** وصول فوري عبر المسار `/demo` بقاعدة بيانات SQLite معزولة (`taskboard-demo.sqlite`) تضمن عدم لمس بيانات الإنتاج أبداً مع إمكانية إعادة الضبط بضغطة زر.
+- **تسعير مهام منفذي الفريق:** ربط أسعار مالية مخصصة لكل عضو في المهمة واحتساب الميزانيات التراكمية للمشروع تلقائياً.
+- **إدارة صلاحيات مبنية على الأدوار:** حدود أمان دقيقة بين القائد (`leader`) والعضو (`member`) والعميل (`client`) محمية بكلمات مرور Bcrypt وتوقيعات HMAC-SHA256.
+- **تقارير وتصدير PDF:** إنشاء وطباعة تقارير شاملة للمشاريع والمهام والتحليلات بخط القاهرة المدمج دون الحاجة للاتصال بالإنترنت.
+- **مرفقات خاصة وآمنة:** تخزين المرفقات والصور خارج المجلد العام وتقديمها حصرياً للمستخدمين المصادقين.
+
+---
+
+<a id="architecture"></a>
+
+## معمارية النظام
+
+يعمل TaskBoard كتطبيق حاوية Next.js موحد يتصل مباشرة بمحرك قاعدة بيانات SQLite المدمج:
+
+```mermaid
+flowchart TD
+    subgraph Client ["أجهزة العملاء"]
+        DESK["متصفح سطح المكتب (إدارة وفريق)"]
+        MOB["متصفح الجوال (واجهة لمسية)"]
+        DEMO["زائر البيئة التجريبية (/demo)"]
+    end
+
+    subgraph AppServer ["حاوية تطبيق Next.js (taskboard-app)"]
+        ROUTER["موجه التطبيق ومسارات API"]
+        AUTH["محرك الجلسات Bcrypt + HMAC-SHA256"]
+        PROXY["فحص أصل الطلب وترويسات الأمان"]
+        RATE["محدد معدل الطلبات في الذاكرة"]
+        PDF["منشئ تقارير PDF بخط القاهرة"]
+        DB_CONTEXT["موجه السياق الديناميكي المعزول"]
+    end
+
+    subgraph Storage ["التخزين الدائم (/app/data)"]
+        DB[("قاعدة بيانات SQLite 3 (وضع WAL)")]
+        DEMO_DB[("قاعدة بيانات الديمو (taskboard-demo.sqlite)")]
+        FILES["مجلد المرفقات الخاص (/app/uploads)"]
+    end
+
+    DESK --> ROUTER
+    MOB --> ROUTER
+    DEMO --> ROUTER
+
+    ROUTER --> PROXY
+    PROXY --> RATE
+    RATE --> AUTH
+    AUTH --> DB_CONTEXT
+
+    DB_CONTEXT -->|طلب إنتاجي| DB
+    DB_CONTEXT -->|taskboard_demo=1| DEMO_DB
+    ROUTER --> FILES
+```
+
+---
+
+<a id="tech-stack"></a>
+
+## حزمة التقنيات
+
+| الطبقة              | التقنية المستخدمة                                              |
+| :------------------ | :------------------------------------------------------------- |
+| **إطار العمل**      | Next.js 16 (App Router / Turbopack)، React 18، TypeScript صارم |
+| **قاعدة البيانات**  | SQLite 3 عبر `better-sqlite3` مع Drizzle ORM                   |
+| **التصميم**         | Tailwind CSS v3 مع مكونات Radix UI وتخطيطات RTL المنطقية       |
+| **الخطوط**          | خط القاهرة (Cairo) للعربية و Inter للإنجليزية مدمجة دون اتصال  |
+| **محرك كانبان**     | `@dnd-kit/core` و `@dnd-kit/sortable`                          |
+| **تصدير PDF**       | jsPDF مع جداول autotable وتشكيل خطوط الفكتور                   |
+| **الأمان والتشفير** | Node.js `crypto` (HMAC-SHA256) مع `bcryptjs`                   |
+| **حزمة الاختبارات** | Vitest (اختبارات الوحدة والتكامل)                              |
+
+---
+
+<a id="project-structure"></a>
+
+## هيكلية المشروع
+
+```
+taskboard/
+├── data/                       # قواعد بيانات SQLite الدائمة (وضع WAL)
+├── docs/                       # وثائق المعمارية والنشر والواجهات واستكشاف الأخطاء
+├── drizzle/                    # لقطات ترحيل Drizzle ORM بصيغة SQL
+├── nginx/                      # تكوين خادم Nginx الوسيط العكسي للإنتاج
+├── public/                     # الأصول الثابتة والأيقونات وملفات الترجمة JSON
+├── scripts/                    # أدوات حراسة السياسات والتحقق من الإصدارات
+├── src/
+│   ├── app/                    # صفحات App Router والمسارات البرمجية API
+│   ├── components/             # مكونات واجهة المستخدم ولوحات كانبان والنماذج
+│   ├── contexts/               # مزودات سياق اللغة وحالة المتجر
+│   ├── db/                     # مخطط Drizzle وإدارة الاتصال وبيانات الديمو
+│   ├── types/                  # تعريفات الأنواع في TypeScript
+│   └── utils/                  # أدوات تصدير PDF وحساب الأسعار والتطهير
+├── docker-compose.yml          # إدارة وتشغيل حاويات الإنتاج
+├── Dockerfile                  # بناء حاوية الإنتاج متعدد المراحل
+├── package.json                # حزم المشروع ومشغل السكربتات
+└── tsconfig.json               # إعدادات TypeScript الصارمة
+```
+
+---
+
+<a id="requirements"></a>
+
+## المتطلبات
+
+- **بيئة التشغيل:** Node.js >= 20.9 (يوصى بـ Node 22 LTS)
+- **مدير الحزم:** npm >= 10
+- **قاعدة البيانات:** SQLite 3 (تدار ذاتياً عبر `better-sqlite3`)
+- **الحاويات (اختياري):** Docker Engine >= 24.0 و Docker Compose v2
+
+---
+
+<a id="quick-start"></a>
+
+## البدء السريع
+
+### 1. الاستنساخ والتثبيت
 
 ```bash
 git clone https://github.com/red-shadows-rs/taskboard.git
 cd taskboard
 npm install
-npm run models:download
+```
+
+### 2. تكوين البيئة
+
+```bash
 cp .env.example .env.local
+# توليد مفتاح الجلسة:
+openssl rand -base64 48
+```
+
+قم بفتح `.env.local` وضع المفتاح المولد في `SESSION_SECRET=<المفتاح>`.
+
+### 3. تهيئة وبذر قاعدة البيانات
+
+```bash
+# تشغيل الترحيل وبذر البيانات الافتراضية
+npm run db:migrate
+npm run db:seed
+```
+
+### 4. تشغيل خادم التطوير
+
+```bash
 npm run dev
 ```
 
-افتح [http://localhost:3000](http://localhost:3000) في متصفحك.
-
-### متغيرات البيئة
-
-| المتغير                  | مطلوب | الافتراضي     | الوصف                                       |
-| ------------------------ | ----- | ------------- | ------------------------------------------- |
-| `NODE_ENV`               | نعم   | `development` | وضع البيئة                                  |
-| `SESSION_SECRET`         | نعم   | —             | مفتاح توقيع HMAC-SHA256 (32 حرفاً كحد أدنى) |
-| `TRUST_PROXY`            | لا    | `false`       | الثقة بـ `X-Forwarded-For`                  |
-| `TRANSLATION_ENABLED`    | لا    | `true`        | تفعيل الترجمة التلقائية                     |
-| `TRANSLATION_MODELS_DIR` | لا    | `./models`    | مجلد موديل ONNX                             |
-
-### الأوامر المتاحة
-
-| الأمر                     | الوصف                             |
-| ------------------------- | --------------------------------- |
-| `npm run dev`             | تشغيل خادم التطوير مع Turbopack   |
-| `npm run build`           | بناء للإنتاج                      |
-| `npm start`               | تشغيل خادم الإنتاج                |
-| `npm run models:download` | تحميل موديل الترجمة المحلي        |
-| `npm run lint`            | تشغيل ESLint                      |
-| `npm run lint:fix`        | إصلاح تلقائي لمشاكل التنسيق       |
-| `npm run format`          | تنسيق مع Prettier                 |
-| `npm run format:check`    | التحقق من التنسيق                 |
-| `npm run type-check`      | التحقق من أنواع TypeScript        |
-| `npm run validate`        | تحقق كامل (تنسيق + تدقيق + أنواع) |
-| `npm run check:comments`  | فرض سياسة منع التعليقات           |
-| `npm run check:versions`  | التحقق من اتساق الإصدار           |
+افتح الرابط [http://localhost:3000](http://localhost:3000) وسجل الدخول بالحساب الافتراضي أو انقر على **تشغيل الديمو الحي**.
 
 ---
 
-## 📁 هيكل المشروع
+<a id="commands"></a>
 
-```
-TaskBoard/
-├── databases/                  # قاعدة بيانات JSON
-│   ├── projectsDatabase.json
-│   ├── sectionsDatabase.json
-│   ├── tasksDatabase.json
-│   └── usersDatabase.json
-├── public/
-│   ├── css/                    # Font Awesome
-│   ├── fonts/                  # IBM Plex Sans Arabic (PDF)
-│   ├── images/                 # صور ثابتة
-│   ├── locales/                # الترجمة (عربي/إنجليزي)
-│   └── manifest.json           # بيان PWA
-├── uploads/                    # مرفقات المهام (مستثناة من git، تُخدَم عبر /images)
-├── src/
-│   ├── app/
-│   │   ├── api/                # مسارات REST API
-│   │   │   ├── auth/           # تسجيل الدخول، الخروج، الجلسة
-│   │   │   ├── projects/       # CRUD المشاريع
-│   │   │   ├── sections/       # CRUD الأقسام + إعادة الترتيب
-│   │   │   ├── tasks/          # CRUD المهام + إعادة الترتيب + الصور
-│   │   │   ├── users/          # CRUD المستخدمين + إعادة الترتيب
-│   │   │   ├── translate/      # الترجمة المحلية
-│   │   │   └── shared/         # قاعدة البيانات، الوصول، تحديد المعدل، المحققات، التخزين
-│   │   ├── dashboard/          # المهام، المشاريع، التحليلات، الفريق
-│   │   ├── login/              # صفحة المصادقة
-│   │   └── profile/            # الملف الشخصي
-│   ├── components/
-│   │   ├── common/             # منطق مشترك
-│   │   ├── layouts/            # الشريط العلوي، التذييل
-│   │   ├── pages/              # مكونات على مستوى الصفحات
-│   │   └── ui/                 # مكونات واجهة أساسية
-│   ├── contexts/               # اللغة + متجر Zustand
-│   ├── lib/                    # تشغيل الترجمة المحلية
-│   ├── types/                  # واجهات TypeScript
-│   ├── utils/                  # تصدير PDF، التسعير، الترجمة
-│   └── proxy.ts                # حارس نفس الأصل لطلبات API
-├── docs/                       # أدلة المعمارية والترجمة
-├── scripts/                    # تحميل الموديل، حراس الإصدار والتعليقات
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── CODE_OF_CONDUCT.md
-├── SECURITY.md
-├── LICENSE
-├── README.md
-├── README_AR.md
-├── next.config.ts
-├── tailwind.config.ts
-├── tsconfig.json
-├── translation.config.json
-├── vitest.config.mts
-└── package.json
-```
+## الأوامر المتاحة
+
+| الأمر                    | الوصف                                      |
+| :----------------------- | :----------------------------------------- |
+| `npm run dev`            | تشغيل خادم التطوير بواسطة Turbopack        |
+| `npm run build`          | بناء ملفات الإنتاج المجمعة (Standalone)    |
+| `npm start`              | تشغيل خادم الإنتاج المستقل                 |
+| `npm run type-check`     | فحص الأنواع بواسطة مجمع TypeScript         |
+| `npm run lint`           | إجراء التحليل الساكن للكود عبر ESLint      |
+| `npm run check:comments` | فرض سياسة خلو الكود من التعليقات الداخلية  |
+| `npm run check:versions` | التحقق من تطابق أرقام الإصدارات في الملفات |
+| `npm test`               | تشغيل حزمة اختبارات Vitest                 |
+| `npm run db:generate`    | توليد ترحيلات SQL من المخطط البرمجي        |
+| `npm run db:migrate`     | تنفيذ ترحيلات وتهيئة قاعدة بيانات SQLite   |
+| `npm run db:seed`        | بذر البيانات التجريبية وبيانات الأدمن      |
 
 ---
 
-## 🗺️ خارطة الطريق
+<a id="documentation"></a>
 
-- [ ] دمج قاعدة بيانات حقيقية (PostgreSQL / SQLite)
-- [ ] إشعارات بريد إلكتروني لتعيينات المهام
-- [ ] دعم تسجيل الدخول عبر OAuth2 / الشبكات الاجتماعية
-- [ ] تحديثات فورية عبر WebSocket
-- [ ] إعداد نشر Docker
-- [x] اختبارات الوحدة (Vitest)
+## التوثيق الشامل
 
----
-
-## 🤝 المساهمة
-
-نرحب بالمساهمات. يرجى قراءة [دليل المساهمة](./CONTRIBUTING.md) و[مدونة السلوك](./CODE_OF_CONDUCT.md) قبل تقديم طلب سحب.
-
-1. قم بعمل fork للمستودع
-2. أنشئ فرعاً للميزة (`git checkout -b feature/ميزة-رائعة`)
-3. قم بعمل commit للتغييرات (`git commit -m 'إضافة ميزة رائعة'`)
-4. ادفع إلى الفرع (`git push origin feature/ميزة-رائعة`)
-5. افتح طلب سحب (Pull Request)
+| المستند                                             | الوصف                                                               |
+| --------------------------------------------------- | ------------------------------------------------------------------- |
+| [ARCHITECTURE_AR.md](docs/ARCHITECTURE_AR.md)       | معمارية النظام، تصميم قاعدة البيانات، ومحرك كانبان                  |
+| [DEPLOYMENT_AR.md](docs/DEPLOYMENT_AR.md)           | دليل النشر الإنتاجي عبر Docker Compose وخادم Nginx والنسخ الاحتياطي |
+| [API_SPEC_AR.md](docs/API_SPEC_AR.md)               | دليل مسارات REST API ومخططات الطلبات وفحص السلامة                   |
+| [TROUBLESHOOTING_AR.md](docs/TROUBLESHOOTING_AR.md) | الإجراءات التشخيصية الشائعة وحلول المشكلات التشغيلية                |
 
 ---
 
-## 🔒 الأمان
+<a id="contributing"></a>
 
-للإبلاغ عن ثغرة أمنية، يرجى اتباع [سياسة الأمان](./SECURITY.md) الخاصة بنا. لا تفتح مشكلة عامة.
+## المساهمة
 
-### ملاحظات تشغيلية
+1. قم بعمل Fork للمستودع وأنشئ فرعاً جديداً (`feature/` أو `fix/` أو `docs/`).
+2. تأكد من اجتياز جميع الفحوصات: `npm run validate` و `npm run check:comments`.
+3. أضف سجلاً في ملف `CHANGELOG.md`.
+4. اكتب الكوميت بالصيغة القياسية: `taskboard | <نوع>: <الوصف>` وافتح Pull Request.
 
-- **تحديد المعدل (Rate limiting) داخل الذاكرة ولكل عملية على حدة.** تُحفظ العدادات في `Map` داخل
-  الخادم، لذا تُصفَّر عند إعادة التشغيل ولا تُشارَك بين النسخ. هذا مقصود للنشر الافتراضي أحادي
-  النسخة المستضاف ذاتياً. إذا شغّلت عدة نسخ خلف موازن أحمال، استبدل المحدِّد في
-  `src/app/api/shared/rateLimitShared.ts` بمخزن مشترك (مثل Redis).
-- **ترويسات الوسيط العكسي.** لا يُوثق بترويسات `X-Forwarded-For` / `X-Real-IP` إلا عند ضبط
-  `TRUST_PROXY=true`. اضبطه فقط عندما يكون التطبيق خلف وسيط عكسي موثوق، وإلا يمكن لعميل مباشر
-  انتحال هذه الترويسات لتجاوز الحدود.
-- **المرفقات** تُخزَّن في `uploads/` (مستثناة من git وخارج `public/`) وتُخدَم للمستخدمين
-  الموثّقين فقط عبر مسار `/images/*`.
+راجع [إرشادات المساهمة](CONTRIBUTING.md) و [ميثاق السلوك](CODE_OF_CONDUCT.md).
 
 ---
 
-## 📝 سجل التغييرات
+<a id="license"></a>
 
-اطلع على [CHANGELOG.md](./CHANGELOG.md) لسجل مفصل بالإصدارات. يتبع هذا المشروع [الإصدارات الدلالية](https://semver.org/).
+## الترخيص
 
-| الإصدار   | التاريخ    | أبرز المميزات                                                                   |
-| --------- | ---------- | ------------------------------------------------------------------------------- |
-| **4.1.2** | 2026-10-09 | إصلاحات تدقيق الأمان، CSP، مرفقات خاصة، اختبارات آلية، تحديث الاعتماديات        |
-| **4.1.0** | 2026-10-09 | إدخال واحد حسب اللغة، ترجمة محلية بالكامل عبر NLLB-200، تقوية الأمان            |
-| **4.0.6** | 2026-05-15 | تحديث اسم المؤلف، إضافة مواضيع GitHub repo                                      |
-| **4.0.5** | 2026-05-14 | إصلاح السحب والإفلات على سطح المكتب، إصلاح أيقونات metadata، حذف تعليقات ESLint |
-| 4.0.4     | 2026-05-14 | حذف تعليقات ESLint، حذف console logs، إضافة tags المفقودة                       |
-| 4.0.3     | 2026-05-14 | إصلاح روابط المستودع، تحديث العلامة التجارية، رفع الإصدار                       |
-| 4.0.2     | 2026-05-14 | استعادة الأيقونة الأصلية، إضافة .env.example                                    |
-| 4.0.1     | 2026-05-14 | تجديد التوثيق، README بالعربية، تحسين الأيقونات، تنظيف البيانات                 |
-| 4.0.0     | 2026-05-14 | التحليلات، تصدير PDF، PWA، ثنائي اللغة، الوضع الداكن/الفاتح، السحب والإفلات     |
-| 3.0.0     | 2026-04-01 | إدارة المشاريع/الأقسام، CRUD المهام، أدوار المستخدمين، مصادقة الجلسات           |
-| 2.0.0     | 2026-03-01 | واجهة كانبان، حالات/أولويات/وسوم المهام، تخطيط لوحة التحكم                      |
-| 1.0.0     | 2026-02-01 | الإعداد الأولي: Next.js App Router، صفحة الدخول، Tailwind CSS                   |
+مرخص تحت [ترخيص MIT](LICENSE).
 
 ---
 
-## 📄 الترخيص
+<div align="center">
 
-هذا المشروع مرخص تحت [رخصة MIT](./LICENSE).
+صُنع بواسطة <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> (<a href="https://github.com/shadow-x78">shadow-x78</a>) ·
+[سجل التغييرات](CHANGELOG.md) ·
+[سياسة الأمان](SECURITY.md)
 
----
+<sub>&copy; 2026 TaskBoard - RED SHADOWS | RS (shadow-x78)</sub>
 
-## 👤 المؤلف
-
-[**Shadow-x78**](https://github.com/Shadow-x78) — RED SHADOWS | RS
-
----
-
-<p align="center">
-  <sub>صُنع بـ ❤️ من <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a></sub>
-</p>
+</div>
