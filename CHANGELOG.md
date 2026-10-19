@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v4.2.1] - 2026-10-20
+
+### Fixed
+
+- **Turbopack Build Dynamic Tracing**: Statically scoped legacy database archive paths (`databases/*.json`) inside `migrateLegacyJson()` in `src/db/index.ts` and scoped task attachment uploads in `src/app/api/tasks/[id]/image/route.ts` to eliminate dynamic directory tracing warnings.
+- **Unused Import Removal**: Removed unused `UPLOADS_DIR` import from `@/app/api/shared/storageShared` in image route.
+
+### Removed
+
+- **Obsolete Migration Tooling**: Pruned `scripts/migrate-production-data.ts` and `public/images/.gitkeep` after successful remote data migration.
+- **Audit Deliverables Untracked**: Removed working session reports (`audit-report.md`, `fix-plan.md`, `cleanup-log.md`, `handoff.md`) from git index.
+
+- Version bumped to 4.2.1 across package.json, documentation badges, and the changelog.
+
 ## [v4.2.0] - 2026-10-20
 
 ### Added
@@ -278,6 +292,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[v4.2.1]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.2.1
 [v4.2.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.2.0
 [v4.1.2]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.1.2
 [v4.1.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.1.0
