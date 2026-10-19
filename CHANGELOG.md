@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v4.2.3] - 2026-10-20
+
+### Changed
+
+- **Comprehensive Documentation Suite Realignment**: Aligned all technical guides in `docs/` (`API_SPEC`, `ARCHITECTURE`, `DEPLOYMENT`, `TROUBLESHOOTING` in English and Arabic) with the Orbiscreen design language and standardized 4-line boxed header banners.
+- **Community & Governance Overhaul**: Updated `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` with strict zero-inline-comment policy rules, contributor standards, and vulnerability disclosure SLAs.
+- **README Suite Redesign**: Enhanced `README.md` and `README_AR.md` with centered badges, interactive collapsible FAQ sections, stack comparison tables, and `Built by shadow-x78` attribution footer.
+
+- Version bumped to 4.2.3 across package.json, documentation badges, and the changelog.
+
 ## [v4.2.2] - 2026-10-20
 
 ### Changed
@@ -301,6 +311,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[v4.2.3]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.2.3
 [v4.2.2]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.2.2
 [v4.2.1]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.2.1
 [v4.2.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.2.0
