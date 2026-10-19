@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────
-# TaskBoard - CI Workflow
+# Taskboard - CI Workflow
 # https://github.com/red-shadows-rs/taskboard
 # ─────────────────────────────────────────────
 
@@ -22,16 +22,16 @@ env:
   SESSION_SECRET: ci-build-session-secret-not-used-at-runtime
 
 jobs:
-  build:
-    name: Format, lint, type-check & build
+  check:
+    name: Check, Test & Build
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/checkout@v4
 
       # ── Toolchain ──
       - name: Set up Node.js
-        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
@@ -46,15 +46,14 @@ jobs:
         run: ./scripts/check-versions.sh
 
       # ── Quality Gates ──
-      - name: Check formatting
-        run: npm run format:check
-      - name: Lint
-        run: npm run lint
-      - name: Type-check
-        run: npm run type-check
-      - name: Test
-        run: npm test
+      - name: Quality & Policy Check
+        run: npm run check
 
       # ── Build ──
       - name: Build
         run: npm run build
+
+      # ── Security Audit ──
+      - name: Security audit
+        run: npm audit --omit=dev
+        continue-on-error: true

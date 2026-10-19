@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Vitest Configuration
+// Taskboard - Vitest Configuration
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 
@@ -14,6 +14,6 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    include: ["src/**/*.test.ts"],
+    include: ["src/**/*.test.ts", "scripts/**/*.test.ts"],
   },
 });

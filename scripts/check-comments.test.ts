@@ -1,0 +1,19 @@
+// ─────────────────────────────────────────────
+// Taskboard - Comment Policy Verification Tests
+// https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
+
+import { describe, expect, it } from "vitest";
+import { execFileSync } from "node:child_process";
+import { join } from "node:path";
+
+describe("Comment Policy Script", () => {
+  it("passes check-comments.sh with exit code 0", () => {
+    const scriptPath = join(process.cwd(), "scripts", "check-comments.sh");
+    const output = execFileSync("bash", [scriptPath], {
+      encoding: "utf-8",
+    });
+
+    expect(output).toContain("comment policy holds");
+  });
+});
