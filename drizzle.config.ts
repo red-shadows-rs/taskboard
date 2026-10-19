@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Drizzle Configuration
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import { defineConfig } from "drizzle-kit";
 

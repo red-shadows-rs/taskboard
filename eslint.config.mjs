@@ -1,4 +1,10 @@
+// ─────────────────────────────────────────────
+// TaskBoard - ESLint Configuration
+// https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
+
 import nextPlugin from "@next/eslint-plugin-next";
+
 import reactPlugin from "eslint-plugin-react";
 import hooksPlugin from "eslint-plugin-react-hooks";
 import tseslint from "typescript-eslint";

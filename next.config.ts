@@ -1,3 +1,8 @@
+// ─────────────────────────────────────────────
+// TaskBoard - Next.js Configuration
+// https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
+
 import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV !== "production";

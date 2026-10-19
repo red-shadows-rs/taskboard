@@ -1,10 +1,14 @@
+// ─────────────────────────────────────────────
+// TaskBoard - Tailwind CSS Configuration
+// https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
+
 import typography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: ["class"],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],

@@ -1,3 +1,8 @@
+// ─────────────────────────────────────────────
+// TaskBoard - Vitest Configuration
+// https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
+
 import { defineConfig } from "vitest/config";
 import { fileURLToPath } from "node:url";
 

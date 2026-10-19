@@ -1,9 +1,22 @@
-node_modules
-.next
-.git
-data
-databases
-uploads
-*.sqlite*
-.env.local
+# ─────────────────────────────────────────────
+# TaskBoard - Docker Build Ignore Rules
+# https://github.com/red-shadows-rs/taskboard
+# ─────────────────────────────────────────────
 
+# ── Dependencies ──
+node_modules/
+
+# ── Build outputs ──
+.next/
+
+# ── Git metadata ──
+.git/
+
+# ── Runtime databases & uploads ──
+data/
+databases/
+uploads/
+*.sqlite*
+
+# ── Environment variables ──
+.env.local
