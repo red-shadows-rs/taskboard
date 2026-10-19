@@ -471,7 +471,7 @@ export function Navbar({ user }: NavbarProps) {
               </span>
             </div>
 
-            <DropdownMenu>
+            <DropdownMenu dir={language === "ar" ? "rtl" : "ltr"}>
               <DropdownMenuTrigger asChild suppressHydrationWarning>
                 <Button
                   variant="ghost"
@@ -484,10 +484,11 @@ export function Navbar({ user }: NavbarProps) {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align={language === "ar" ? "start" : "end"}
+                dir={language === "ar" ? "rtl" : "ltr"}
                 className="w-56"
               >
                 <DropdownMenuLabel>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col rtl:text-right ltr:text-left">
                     <span className="text-sm font-medium">{user.name}</span>
                     <span className="text-xs text-muted-foreground">
                       {user.email}
@@ -498,24 +499,20 @@ export function Navbar({ user }: NavbarProps) {
                 <DropdownMenuItem asChild>
                   <Link
                     href="/profile"
-                    className="cursor-pointer"
+                    className="flex items-center gap-2 cursor-pointer w-full"
                     onClick={(e) => handleNavigation(e, "/profile")}
                   >
-                    <UserIcon
-                      className={`h-4 w-4 ${language === "ar" ? "scale-x-[-1]" : ""}`}
-                    />
-                    {t("common.nav.profile")}
+                    <UserIcon className="h-4 w-4" />
+                    <span>{t("common.nav.profile")}</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   onClick={handleLogout}
-                  className="text-red-600 cursor-pointer"
+                  className="flex items-center gap-2 text-red-600 cursor-pointer w-full"
                 >
-                  <LogOut
-                    className={`h-4 w-4 ${language === "ar" ? "scale-x-[-1]" : ""}`}
-                  />
-                  {t("common.nav.logout")}
+                  <LogOut className="h-4 w-4" />
+                  <span>{t("common.nav.logout")}</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

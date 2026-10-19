@@ -1,12 +1,12 @@
 {
-  "appName": "TaskBoard",
+  "appName": "Taskboard",
   "appDescription": "لوحة تحكم لإدارة المهام",
   "nav": {
     "analytics": "التحليلات",
     "team": "الفريق",
     "tasks": "المهام",
     "projects": "المشاريع",
-    "profile": "الملف الشخصي",
+    "profile": "الحساب",
     "logout": "تسجيل الخروج",
     "menu": "القائمة"
   },
@@ -37,14 +37,14 @@
     "downloadPDF": "تصدير التقرير"
   },
   "notFound": {
-    "title": "غير موجود - TaskBoard",
+    "title": "غير موجود - Taskboard",
     "heading": "404",
     "subheading": "الصفحة غير موجودة",
     "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
     "returnHome": "العودة للصفحة الرئيسية"
   },
   "errorPage": {
-    "title": "خطأ داخلي في الخادم - TaskBoard",
+    "title": "خطأ داخلي في الخادم - Taskboard",
     "description": "حدث خطأ ما!",
     "defaultMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
     "tryAgain": "حاول مرة أخرى",
@@ -57,7 +57,7 @@
     "failedToMoveTask": "فشل نقل المهمة"
   },
   "footer": {
-    "copyright": "© {year} TaskBoard. جميع الحقوق محفوظة."
+    "copyright": "© {year} Taskboard. جميع الحقوق محفوظة."
   },
   "stats": {
     "totalTasks": "إجمالي المهام",
@@ -87,7 +87,7 @@
   },
   "demo": {
     "badge": "بيئة تجريبية",
-    "description": "أنت تستكشف TaskBoard في بيئة تجريبية معزولة. التعديلات لن تؤثر على البيانات الحقيقية.",
+    "description": "أنت تستكشف Taskboard في بيئة تجريبية معزولة. التعديلات لن تؤثر على البيانات الحقيقية.",
     "resetButton": "إعادة ضبط الديمو",
     "resetting": "جارٍ إعادة الضبط...",
     "resetSuccess": "تمت إعادة ضبط بيانات الديمو إلى الحالة الافتراضية",

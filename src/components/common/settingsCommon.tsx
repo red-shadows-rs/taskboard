@@ -102,7 +102,7 @@ export function ThemeToggle() {
   return (
     <>
       {isChanging && <Loading fullScreen />}
-      <DropdownMenu>
+      <DropdownMenu dir={language === "ar" ? "rtl" : "ltr"}>
         <DropdownMenuTrigger asChild suppressHydrationWarning>
           <Button
             variant="outline"
@@ -116,7 +116,10 @@ export function ThemeToggle() {
             <span className="sr-only">{t("common.theme.toggle")}</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align={language === "ar" ? "start" : "end"}>
+        <DropdownMenuContent
+          align={language === "ar" ? "start" : "end"}
+          dir={language === "ar" ? "rtl" : "ltr"}
+        >
           <DropdownMenuItem
             onClick={() => handleThemeChange("light")}
             className="cursor-pointer"
@@ -157,7 +160,7 @@ export function LanguageToggle() {
   return (
     <>
       {isChanging && <Loading fullScreen />}
-      <DropdownMenu>
+      <DropdownMenu dir={language === "ar" ? "rtl" : "ltr"}>
         <DropdownMenuTrigger asChild suppressHydrationWarning>
           <Button
             variant="outline"
@@ -170,7 +173,10 @@ export function LanguageToggle() {
             <span className="sr-only">{t("common.language.toggle")}</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align={language === "ar" ? "start" : "end"}>
+        <DropdownMenuContent
+          align={language === "ar" ? "start" : "end"}
+          dir={language === "ar" ? "rtl" : "ltr"}
+        >
           <DropdownMenuItem
             onClick={() => handleLanguageChange("en")}
             className={`cursor-pointer ${language === "en" ? "bg-primary/10" : ""}`}
