@@ -26,7 +26,17 @@ export async function GET(
       realPath = await fs.realpath(filePath);
       realBaseDir = await fs.realpath(baseDir);
     } catch {
-      return new NextResponse("File not found", { status: 404 });
+      if (pathArray[0] !== "images") {
+        const candidate = path.resolve(baseDir, "images", ...pathArray);
+        try {
+          realPath = await fs.realpath(candidate);
+          realBaseDir = await fs.realpath(baseDir);
+        } catch {
+          return new NextResponse("File not found", { status: 404 });
+        }
+      } else {
+        return new NextResponse("File not found", { status: 404 });
+      }
     }
 
     if (!realPath.startsWith(realBaseDir + path.sep)) {

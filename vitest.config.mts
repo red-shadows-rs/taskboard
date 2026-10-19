@@ -15,5 +15,8 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["src/**/*.test.ts", "scripts/**/*.test.ts"],
+    env: {
+      SESSION_SECRET: "test-session-secret-key-that-is-at-least-32-chars-long",
+    },
   },
 });
