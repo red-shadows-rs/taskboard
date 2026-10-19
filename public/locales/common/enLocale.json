@@ -1,5 +1,5 @@
 {
-  "appName": "TaskBoard",
+  "appName": "Taskboard",
   "appDescription": "A task management dashboard",
   "nav": {
     "analytics": "Analytics",
@@ -37,14 +37,14 @@
     "downloadPDF": "Download PDF"
   },
   "notFound": {
-    "title": "Not Found - TaskBoard",
+    "title": "Not Found - Taskboard",
     "heading": "404",
     "subheading": "Page Not Found",
     "description": "The page you are looking for doesn't exist or has been moved.",
     "returnHome": "Return Home"
   },
   "errorPage": {
-    "title": "Internal Server Error - TaskBoard",
+    "title": "Internal Server Error - Taskboard",
     "description": "Something went wrong!",
     "defaultMessage": "An unexpected error occurred. Please try again.",
     "tryAgain": "Try Again",
@@ -57,7 +57,7 @@
     "failedToMoveTask": "Failed to move task"
   },
   "footer": {
-    "copyright": "© {year} TaskBoard. All rights reserved."
+    "copyright": "© {year} Taskboard. All rights reserved."
   },
   "stats": {
     "totalTasks": "Total Tasks",
@@ -87,7 +87,7 @@
   },
   "demo": {
     "badge": "DEMO SANDBOX",
-    "description": "You are exploring TaskBoard in an isolated demo sandbox. Data changes will not affect production.",
+    "description": "You are exploring Taskboard in an isolated demo sandbox. Data changes will not affect production.",
     "resetButton": "Reset Demo",
     "resetting": "Resetting...",
     "resetSuccess": "Demo data has been reset to default state",

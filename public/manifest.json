@@ -1,6 +1,6 @@
 {
-  "name": "TaskBoard - Task Management System",
-  "short_name": "TaskBoard",
+  "name": "Taskboard - Task Management System",
+  "short_name": "Taskboard",
   "description": "Professional task management system for teams and managers",
   "start_url": "/",
   "display": "standalone",
