@@ -1,4 +1,39 @@
-# Security Policy
+<div align="center">
+
+# Security Policy - TaskBoard
+
+[![Version](https://img.shields.io/badge/version-4.2.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-MIT-10b981?style=flat-square)](LICENSE)
+![TypeScript](https://img.shields.io/badge/typescript-5%2B-3178c6?style=flat-square&logo=typescript)
+![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Self--Hosted-9333ea?style=flat-square&logo=linux)
+
+</div>
+
+---
+
+## Table of Contents
+
+- [Supported Versions](#supported-versions)
+- [Reporting a Vulnerability](#reporting)
+- [Response Timeline](#response-timeline)
+- [Disclosure Policy](#disclosure)
+- [Security Best Practices](#security-best-practices)
+- [Acknowledgments](#acknowledgments)
+
+---
+
+<a id="supported-versions"></a>
+
+## Supported Versions
+
+| Version | Supported |
+| ------- | --------- |
+| 4.x     | Yes       |
+| < 4.0   | No        |
+
+---
+
+<a id="reporting"></a>
 
 ## Reporting a Vulnerability
 
@@ -14,13 +49,21 @@ If you discover a security vulnerability in TaskBoard, please report it responsi
 - Potential impact
 - Any suggested fixes (if available)
 
-### Response Timeline
+---
+
+<a id="response-timeline"></a>
+
+## Response Timeline
 
 - **Acknowledgment**: Within 48 hours of receipt
 - **Status Update**: Within 5 business days
 - **Resolution**: We aim to resolve critical issues within 30 days
 
-### Disclosure Policy
+---
+
+<a id="disclosure"></a>
+
+## Disclosure Policy
 
 We follow a coordinated disclosure process:
 
@@ -29,12 +72,9 @@ We follow a coordinated disclosure process:
 3. A security release is published
 4. Public disclosure follows after users have had time to update
 
-## Supported Versions
+---
 
-| Version | Supported |
-| ------- | --------- |
-| 4.x     | Yes       |
-| < 4.0   | No        |
+<a id="security-best-practices"></a>
 
 ## Security Best Practices
 
@@ -47,6 +87,21 @@ TaskBoard implements several security measures:
 - **XSS Protection**: DOMPurify sanitization on user-generated content
 - **Security Headers**: X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
 
+---
+
+<a id="acknowledgments"></a>
+
 ## Acknowledgments
 
 We appreciate the security research community's efforts in making TaskBoard more secure. Responsible disclosures will be acknowledged (with permission) in our release notes.
+
+---
+
+<div align="center">
+
+Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
+[Back to README](README.md)
+
+<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+
+</div>
