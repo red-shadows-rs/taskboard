@@ -1,0 +1,8 @@
+node_modules
+.next
+.git
+data
+databases
+uploads
+*.sqlite*
+.env.local
