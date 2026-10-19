@@ -1,6 +1,6 @@
 <div align="center">
 
-# API Specification - TaskBoard
+# API Specification - Taskboard
 
 [![Version](https://img.shields.io/badge/version-4.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-10b981?style=flat-square)](../LICENSE)
@@ -17,7 +17,7 @@
 
 ---
 
-This document outlines the REST API endpoints, payload schemas, security requirements, and response structures supported by TaskBoard.
+This document outlines the REST API endpoints, payload schemas, security requirements, and response structures supported by Taskboard.
 
 ---
 
@@ -223,6 +223,6 @@ Serves uploaded task attachments stored in the isolated `/uploads` volume. Unaut
 Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Back to README](../README.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard (shadow-x78)</sub>
 
 </div>

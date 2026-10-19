@@ -1,6 +1,6 @@
 <div align="center">
 
-# دليل استكشاف الأخطاء وإصلاحها - TaskBoard
+# دليل استكشاف الأخطاء وإصلاحها - Taskboard
 
 [![Version](https://img.shields.io/badge/الإصدار-4.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/الترخيص-MIT-10b981?style=flat-square)](../LICENSE)
@@ -17,7 +17,7 @@
 
 ---
 
-يوضح هذا الدليل الإجراءات التشخيصية الشائعة وحلول المشكلات التشغيلية لمنصة TaskBoard.
+يوضح هذا الدليل الإجراءات التشخيصية الشائعة وحلول المشكلات التشغيلية لمنصة Taskboard.
 
 ---
 
@@ -144,6 +144,6 @@ sudo systemctl restart taskboard
 بُني بواسطة <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [العودة إلى README](../README_AR.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard (shadow-x78)</sub>
 
 </div>

@@ -1,6 +1,6 @@
 <div align="center">
 
-# دليل النشر والتشغيل للإنتاج - TaskBoard
+# دليل النشر والتشغيل للإنتاج - Taskboard
 
 [![Version](https://img.shields.io/badge/الإصدار-4.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/الترخيص-MIT-10b981?style=flat-square)](../LICENSE)
@@ -17,7 +17,7 @@
 
 ---
 
-يوضح هذا الدليل كيفية نشر وتشغيل منصة TaskBoard في بيئة الإنتاج على خوادم لينكس باستخدام Docker Compose أو كخدمة Node.js مستقلة، مع إعداد خادم Nginx كوسيط عكسي وإدارة النسخ الاحتياطي لقاعدة بيانات SQLite.
+يوضح هذا الدليل كيفية نشر وتشغيل منصة Taskboard في بيئة الإنتاج على خوادم لينكس باستخدام Docker Compose أو كخدمة Node.js مستقلة، مع إعداد خادم Nginx كوسيط عكسي وإدارة النسخ الاحتياطي لقاعدة بيانات SQLite.
 
 ---
 
@@ -131,7 +131,7 @@ npm run build
 
 ```ini
 [Unit]
-Description=TaskBoard Standalone Application
+Description=Taskboard Standalone Application
 After=network.target
 
 [Service]
@@ -246,6 +246,6 @@ find "$BACKUP_DIR" -type f -mtime +14 -delete
 بُني بواسطة <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [العودة إلى README](../README_AR.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard (shadow-x78)</sub>
 
 </div>

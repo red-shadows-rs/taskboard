@@ -1,6 +1,6 @@
 <div align="center">
 
-# Production Deployment Guide - TaskBoard
+# Production Deployment Guide - Taskboard
 
 [![Version](https://img.shields.io/badge/version-4.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-10b981?style=flat-square)](../LICENSE)
@@ -17,7 +17,7 @@
 
 ---
 
-This guide outlines deploying TaskBoard into production using Docker Compose or standalone Node.js, combined with Nginx as a TLS termination reverse proxy and local SQLite volume persistence.
+This guide outlines deploying Taskboard into production using Docker Compose or standalone Node.js, combined with Nginx as a TLS termination reverse proxy and local SQLite volume persistence.
 
 ---
 
@@ -131,7 +131,7 @@ Create `/etc/systemd/system/taskboard.service`:
 
 ```ini
 [Unit]
-Description=TaskBoard Standalone Application
+Description=Taskboard Standalone Application
 After=network.target
 
 [Service]
@@ -262,6 +262,6 @@ docker compose up -d --no-deps app
 Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Back to README](../README.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard (shadow-x78)</sub>
 
 </div>

@@ -1,10 +1,10 @@
 <div align="center">
 
 <a href="https://github.com/red-shadows-rs/taskboard">
-  <img src="public/favicon.svg" alt="TaskBoard Logo" width="120" />
+  <img src="public/favicon.svg" alt="Taskboard Logo" width="120" />
 </a>
 
-# TaskBoard
+# Taskboard
 
 Self-hosted Kanban project management platform with SQLite WAL engine, isolated live demo sandbox, task pricing calculation, and bidirectional Arabic/English typography.
 
@@ -47,7 +47,7 @@ Self-hosted Kanban project management platform with SQLite WAL engine, isolated 
 
 ## Live Demo
 
-Experience TaskBoard in a fully functional, interactive sandbox pre-populated with bilingual projects, tasks, Kanban boards, and team members:
+Experience Taskboard in a fully functional, interactive sandbox pre-populated with bilingual projects, tasks, Kanban boards, and team members:
 
 <div align="center">
 
@@ -63,9 +63,9 @@ Experience TaskBoard in a fully functional, interactive sandbox pre-populated wi
 
 ## Overview
 
-**TaskBoard** is a self-hosted, all-in-one task and project management platform designed for engineering teams, software agencies, and enterprises. It replaces fragmented proprietary cloud boards (Trello, Jira, Asana) with a unified, air-gapped system running entirely on your own infrastructure with **zero external SaaS dependencies**.
+**Taskboard** is a self-hosted, all-in-one task and project management platform designed for engineering teams, software agencies, and enterprises. It replaces fragmented proprietary cloud boards (Trello, Jira, Asana) with a unified, air-gapped system running entirely on your own infrastructure with **zero external SaaS dependencies**.
 
-Powered by Next.js 16 App Router, SQLite 3 (via Drizzle ORM) in WAL mode, and native bidirectional Cairo/Inter typography, TaskBoard delivers lightning-fast task workflows, member hourly rate tracking, project analytics, and PDF reporting out of the box.
+Powered by Next.js 16 App Router, SQLite 3 (via Drizzle ORM) in WAL mode, and native bidirectional Cairo/Inter typography, Taskboard delivers lightning-fast task workflows, member hourly rate tracking, project analytics, and PDF reporting out of the box.
 
 ---
 
@@ -73,7 +73,7 @@ Powered by Next.js 16 App Router, SQLite 3 (via Drizzle ORM) in WAL mode, and na
 
 ## Comparison
 
-| Capability                      |     Trello     |     Jira      |     Asana     |    Monday    |        **TaskBoard**        |
+| Capability                      |     Trello     |     Jira      |     Asana     |    Monday    |        **Taskboard**        |
 | :------------------------------ | :------------: | :-----------: | :-----------: | :----------: | :-------------------------: |
 | Self-Hosted & Air-Gapped        |    ❌ SaaS     | ❌ Cloud only |    ❌ SaaS    |   ❌ SaaS    |      ✅ Docker / Linux      |
 | Arabic RTL Native Typography    |    ⚠️ Basic    |   ⚠️ Basic    |  ❌ LTR only  | ❌ LTR only  |  ✅ Cairo font & Full RTL   |
@@ -103,7 +103,7 @@ Powered by Next.js 16 App Router, SQLite 3 (via Drizzle ORM) in WAL mode, and na
 
 ## System Architecture
 
-TaskBoard operates as an integrated containerized Next.js application communicating with an embedded SQLite database engine:
+Taskboard operates as an integrated containerized Next.js application communicating with an embedded SQLite database engine:
 
 ```mermaid
 flowchart TD
@@ -264,33 +264,33 @@ Open [http://localhost:3000](http://localhost:3000) and sign in using the bootst
 ## FAQ
 
 <details>
-<summary><b>Does TaskBoard require an external database server or cloud connection?</b></summary>
+<summary><b>Does Taskboard require an external database server or cloud connection?</b></summary>
 <br>
-No. TaskBoard embeds SQLite 3 with Write-Ahead Logging (WAL) enabled directly via Better-SQLite3 and Drizzle ORM. All data is persisted locally in the mounted <code>data/</code> volume without needing PostgreSQL, MySQL, or internet access.
+No. Taskboard embeds SQLite 3 with Write-Ahead Logging (WAL) enabled directly via Better-SQLite3 and Drizzle ORM. All data is persisted locally in the mounted <code>data/</code> volume without needing PostgreSQL, MySQL, or internet access.
 </details>
 
 <details>
 <summary><b>How is the live demo sandbox isolated from production data?</b></summary>
 <br>
-When a visitor accesses <code>/demo</code>, TaskBoard establishes an isolated demo session bound to a separate sandbox database (<code>taskboard-demo.sqlite</code>) via AsyncLocalStorage. Modifications made in the demo sandbox never mutate or read production data.
+When a visitor accesses <code>/demo</code>, Taskboard establishes an isolated demo session bound to a separate sandbox database (<code>taskboard-demo.sqlite</code>) via AsyncLocalStorage. Modifications made in the demo sandbox never mutate or read production data.
 </details>
 
 <details>
-<summary><b>Can TaskBoard track assignee hourly rates and project costs?</b></summary>
+<summary><b>Can Taskboard track assignee hourly rates and project costs?</b></summary>
 <br>
-Yes. TaskBoard features a built-in financial calculation engine. Leaders can configure monetary rates per assignee and monitor aggregate project budgets with live currency formatting for SAR and USD.
+Yes. Taskboard features a built-in financial calculation engine. Leaders can configure monetary rates per assignee and monitor aggregate project budgets with live currency formatting for SAR and USD.
 </details>
 
 <details>
-<summary><b>How does TaskBoard handle bilingual Arabic and English content?</b></summary>
+<summary><b>How does Taskboard handle bilingual Arabic and English content?</b></summary>
 <br>
 Every task, section, and project provides dedicated side-by-side inputs for Arabic and English titles and rich text descriptions. When switching languages, the UI smoothly mirrors between RTL and LTR with native Cairo and Inter font families.
 </details>
 
 <details>
-<summary><b>How do I deploy TaskBoard in production?</b></summary>
+<summary><b>How do I deploy Taskboard in production?</b></summary>
 <br>
-TaskBoard ships with an optimized multi-stage Dockerfile and a production Docker Compose specification. Simply run <code>docker compose up -d</code> behind the provided Nginx reverse proxy configuration.
+Taskboard ships with an optimized multi-stage Dockerfile and a production Docker Compose specification. Simply run <code>docker compose up -d</code> behind the provided Nginx reverse proxy configuration.
 </details>
 
 ---
@@ -335,6 +335,6 @@ Built by <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> (<a hr
 [Changelog](CHANGELOG.md) ·
 [Security](SECURITY.md)
 
-<sub>&copy; 2026 TaskBoard - RED SHADOWS | RS (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard - RED SHADOWS | RS (shadow-x78)</sub>
 
 </div>

@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest a change or enhancement for TaskBoard
+about: Suggest a change or enhancement for Taskboard
 title: "[feat] "
 labels: enhancement
 assignees: ""

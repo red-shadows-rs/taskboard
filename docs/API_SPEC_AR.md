@@ -1,6 +1,6 @@
 <div align="center">
 
-# دليل واجهات البرمجة (API Specification) - TaskBoard
+# دليل واجهات البرمجة (API Specification) - Taskboard
 
 [![Version](https://img.shields.io/badge/الإصدار-4.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/الترخيص-MIT-10b981?style=flat-square)](../LICENSE)
@@ -17,7 +17,7 @@
 
 ---
 
-يوضح هذا المستند تفاصيل مسارات واجهات REST API، ومخططات البيانات، والمتطلبات الأمنية، وحالات الاستجابة لمنصة TaskBoard.
+يوضح هذا المستند تفاصيل مسارات واجهات REST API، ومخططات البيانات، والمتطلبات الأمنية، وحالات الاستجابة لمنصة Taskboard.
 
 ---
 
@@ -177,6 +177,6 @@
 بُني بواسطة <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [العودة إلى README](../README_AR.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard (shadow-x78)</sub>
 
 </div>

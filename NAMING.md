@@ -1,6 +1,6 @@
-# Naming Conventions — TaskBoard
+# Naming Conventions — Taskboard
 
-This document records the naming conventions TaskBoard already follows. It is based on evidence gathered by the naming audit (counts over the tracked `src/` tree, Next.js 16.4.0, React 18, TypeScript 5). New code must match these rules.
+This document records the naming conventions Taskboard already follows. It is based on evidence gathered by the naming audit (counts over the tracked `src/` tree, Next.js 16.4.0, React 18, TypeScript 5). New code must match these rules.
 
 ## Conventions by kind
 

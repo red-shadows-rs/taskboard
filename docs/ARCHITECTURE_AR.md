@@ -1,6 +1,6 @@
 <div align="center">
 
-# دليل المواصفات المعمارية - TaskBoard
+# دليل المواصفات المعمارية - Taskboard
 
 [![Version](https://img.shields.io/badge/الإصدار-4.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/الترخيص-MIT-10b981?style=flat-square)](../LICENSE)
@@ -17,7 +17,7 @@
 
 ---
 
-نظام **TaskBoard** هو منصة متقدمة لإدارة المهام والمشاريع بنمط كانبان (Kanban)، صُممت خصيصاً للفرق الهندسية والمؤسسات والشركات التقنية. يعتمد النظام على Next.js App Router وقاعدة بيانات SQLite مدمجة ومُدارة بواسطة Drizzle ORM، مع دعم حقيقي وكامل للواجهات ثنائية الاتجاه (RTL/LTR)، موفراً بديلاً آمناً ومستقلاً عن الخدمات السحابية الخارجية.
+نظام **Taskboard** هو منصة متقدمة لإدارة المهام والمشاريع بنمط كانبان (Kanban)، صُممت خصيصاً للفرق الهندسية والمؤسسات والشركات التقنية. يعتمد النظام على Next.js App Router وقاعدة بيانات SQLite مدمجة ومُدارة بواسطة Drizzle ORM، مع دعم حقيقي وكامل للواجهات ثنائية الاتجاه (RTL/LTR)، موفراً بديلاً آمناً ومستقلاً عن الخدمات السحابية الخارجية.
 
 ---
 
@@ -170,6 +170,6 @@ sequenceDiagram
 بُني بواسطة <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [العودة إلى README](../README_AR.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard (shadow-x78)</sub>
 
 </div>

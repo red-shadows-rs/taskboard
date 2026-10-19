@@ -1,6 +1,6 @@
 <div align="center">
 
-# Security Policy - TaskBoard
+# Security Policy - Taskboard
 
 [![Version](https://img.shields.io/badge/version-4.2.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-10b981?style=flat-square)](LICENSE)
@@ -37,7 +37,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in TaskBoard, please report it responsibly.
+If you discover a security vulnerability in Taskboard, please report it responsibly.
 
 **Do not open a public issue.** Instead, send a detailed report to the project maintainers.
 
@@ -78,7 +78,7 @@ We follow a coordinated disclosure process:
 
 ## Security Best Practices
 
-TaskBoard implements several security measures:
+Taskboard implements several security measures:
 
 - **Session Management**: HMAC-SHA256 signed httpOnly cookies with 7-day expiry
 - **Password Hashing**: bcrypt with salt rounds
@@ -93,7 +93,7 @@ TaskBoard implements several security measures:
 
 ## Acknowledgments
 
-We appreciate the security research community's efforts in making TaskBoard more secure. Responsible disclosures will be acknowledged (with permission) in our release notes.
+We appreciate the security research community's efforts in making Taskboard more secure. Responsible disclosures will be acknowledged (with permission) in our release notes.
 
 ---
 
@@ -102,6 +102,6 @@ We appreciate the security research community's efforts in making TaskBoard more
 Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Back to README](README.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard (shadow-x78)</sub>
 
 </div>

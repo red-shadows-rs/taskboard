@@ -1,6 +1,6 @@
 <div align="center">
 
-# Architecture Specification - TaskBoard
+# Architecture Specification - Taskboard
 
 [![Version](https://img.shields.io/badge/version-4.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-10b981?style=flat-square)](../LICENSE)
@@ -17,7 +17,7 @@
 
 ---
 
-TaskBoard is a high-performance, self-hosted project and task management platform engineered for engineering teams, agencies, and enterprises. Built with Next.js App Router, SQLite (via Drizzle ORM), and strict bidirectional RTL/LTR interfaces, TaskBoard replaces fragmented external SaaS boards with an air-gapped, zero-cloud system under your complete control.
+Taskboard is a high-performance, self-hosted project and task management platform engineered for engineering teams, agencies, and enterprises. Built with Next.js App Router, SQLite (via Drizzle ORM), and strict bidirectional RTL/LTR interfaces, Taskboard replaces fragmented external SaaS boards with an air-gapped, zero-cloud system under your complete control.
 
 ---
 
@@ -94,7 +94,7 @@ flowchart TD
 
 ## Database Engine & WAL Persistence
 
-TaskBoard utilizes SQLite 3 managed through **Drizzle ORM** and **better-sqlite3**.
+Taskboard utilizes SQLite 3 managed through **Drizzle ORM** and **better-sqlite3**.
 
 ### Performance Pragmas
 
@@ -117,7 +117,7 @@ Upon each database connection, the engine enforces:
 
 ## Isolated Live Demo Sandbox
 
-To provide prospective teams with an instant evaluation environment without contaminating production data, TaskBoard implements scoped database routing:
+To provide prospective teams with an instant evaluation environment without contaminating production data, Taskboard implements scoped database routing:
 
 ```mermaid
 sequenceDiagram
@@ -175,7 +175,7 @@ Where `signature = HMAC-SHA256(sessionData, SESSION_SECRET)` verified with const
 
 ## Financial & Pricing Calculation Engine
 
-TaskBoard provides leaders with project financial oversight:
+Taskboard provides leaders with project financial oversight:
 
 - **Assignee Rates:** Every task can associate customized monetary rates per assignee.
 - **Project Total Aggregation:** Dynamically rolls up completed, in-progress, and planned task values into project budgets.
@@ -199,6 +199,6 @@ Exporting project summaries and task sheets is handled via **jsPDF** and **jspdf
 Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Back to README](../README.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard (shadow-x78)</sub>
 
 </div>

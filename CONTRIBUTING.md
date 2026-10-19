@@ -1,6 +1,6 @@
 <div align="center">
 
-# Contributing to TaskBoard
+# Contributing to Taskboard
 
 [![Version](https://img.shields.io/badge/version-4.2.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-10b981?style=flat-square)](LICENSE)
@@ -11,7 +11,7 @@
 
 ---
 
-Contributions to TaskBoard are welcome. Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Contributions to Taskboard are welcome. Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ---
 
@@ -38,7 +38,7 @@ Contributions to TaskBoard are welcome. Please note that this project is release
 
 ```ts
 // ─────────────────────────────────────────────
-// TaskBoard - <File Description or Component>
+// Taskboard - <File Description or Component>
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 ```
@@ -129,7 +129,7 @@ A release is ONE commit containing the pending work plus the version bump:
 3. Commit and tag:
    ```bash
    git commit -m "taskboard | vX.Y.Z | release: official vX.Y.Z production release"
-   git tag -a vX.Y.Z -m "TaskBoard vX.Y.Z"
+   git tag -a vX.Y.Z -m "Taskboard vX.Y.Z"
    ```
 
 ---
@@ -139,6 +139,6 @@ A release is ONE commit containing the pending work plus the version bump:
 Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Back to README](README.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard (shadow-x78)</sub>
 
 </div>

@@ -1,6 +1,6 @@
 <div align="center">
 
-# Troubleshooting Guide - TaskBoard
+# Troubleshooting Guide - Taskboard
 
 [![Version](https://img.shields.io/badge/version-4.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-10b981?style=flat-square)](../LICENSE)
@@ -17,7 +17,7 @@
 
 ---
 
-This document outlines common diagnostic procedures, error resolutions, and operational fixes for TaskBoard deployments.
+This document outlines common diagnostic procedures, error resolutions, and operational fixes for Taskboard deployments.
 
 ---
 
@@ -120,7 +120,7 @@ proxy_set_header X-Forwarded-Proto $scheme;
 **Fix:**
 
 1. Rate limit tokens reside in-memory and reset automatically after 15 minutes.
-2. To reset immediately, restart the TaskBoard process:
+2. To reset immediately, restart the Taskboard process:
 
 ```bash
 # Docker Compose:
@@ -163,6 +163,6 @@ Ensure drag handles specify `touch-action: none` and use activation constraints 
 Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Back to README](../README.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 Taskboard (shadow-x78)</sub>
 
 </div>
