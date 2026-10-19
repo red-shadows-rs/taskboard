@@ -1,3 +1,8 @@
+// ─────────────────────────────────────────────
+// TaskBoard - Security Proxy Middleware
+// https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
+
 import { NextResponse } from "next/server";
 
 import type { NextRequest } from "next/server";

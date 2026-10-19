@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Dashboard Layout
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";

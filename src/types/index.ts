@@ -1,4 +1,10 @@
+// ─────────────────────────────────────────────
+// TaskBoard - Domain Interfaces and Types
+// https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
+
 export type TaskStatus = "todo" | "in_progress" | "in_review" | "done";
+
 export type UserRole = "leader" | "client" | "member";
 export type Priority = "low" | "medium" | "high" | "urgent";
 export type ProjectStatus = "planning" | "active" | "completed" | "on_hold";

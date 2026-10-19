@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Demo Banner Layout Component
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 "use client";
 

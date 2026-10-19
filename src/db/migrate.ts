@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Database Migration Runner
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import { getMainInstance, getDemoInstance } from "@/db";
 

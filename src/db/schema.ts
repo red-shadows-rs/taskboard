@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Database Schema
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import {
   integer,

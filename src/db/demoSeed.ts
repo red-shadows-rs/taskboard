@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Demo Sandbox Seed Dataset
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import type {
   NewUserRow,

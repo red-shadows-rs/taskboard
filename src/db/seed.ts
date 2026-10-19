@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Database Seeder
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import { getMainInstance, getDemoInstance, seedDemoData } from "@/db";
 
