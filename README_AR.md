@@ -36,6 +36,7 @@
 - [المتطلبات](#requirements)
 - [البدء السريع](#quick-start)
 - [الأوامر المتاحة](#commands)
+- [الأسئلة الشائعة](#faq)
 - [التوثيق الشامل](#documentation)
 - [المساهمة](#contributing)
 - [الترخيص](#license)
@@ -258,6 +259,42 @@ npm run dev
 
 ---
 
+<a id="faq"></a>
+
+## الأسئلة الشائعة
+
+<details>
+<summary><b>هل يتطلب TaskBoard خادم قاعدة بيانات خارجي أو اتصالاً سحابياً؟</b></summary>
+<br>
+لا. يعتمد TaskBoard على محرك SQLite 3 مدمج مع تفعيل وضع Write-Ahead Logging (WAL) عبر Better-SQLite3 و Drizzle ORM. تُحفظ كافة البيانات محلياً في مجلد <code>data/</code> دون الحاجة إلى PostgreSQL أو MySQL أو أي خدمات سحابية خارجية.
+</details>
+
+<details>
+<summary><b>كيف يتم عزل بيئة الديمو التجريبية عن البيانات الفعلية؟</b></summary>
+<br>
+عند الدخول عبر مسار <code>/demo</code>، ينشئ النظام جلسة تجريبية مستقلة ترتبط بقاعدة بيانات معزولة تماماً (<code>taskboard-demo.sqlite</code>) باستخدام AsyncLocalStorage. لا يمكن لأي تعديل في الديمو التأثير على بيانات الإنتاج.
+</details>
+
+<details>
+<summary><b>هل يدعم TaskBoard احتساب تكاليف المهام وأسعار الأعضاء؟</b></summary>
+<br>
+نعم. يحتوي TaskBoard على محرك تسعير مدمج يتيح للمدراء تعيين أسعار للمهام حسب العضو المكلف ومتابعة إجمالي ميزانيات المشاريع مع دعم العملات (الريال السعودي والدولار الأمريكي).
+</details>
+
+<details>
+<summary><b>كيف يتعامل النظام مع المحتوى ثنائي اللغة (العربية والإنجليزية)؟</b></summary>
+<br>
+يتضمن كل مشروع وقسم ومهمة حقول إدخال مستقلة ومزدوجة لكل من العنوان والوصف باللغتين، مع دعم كامل لانعكاس الواجهة (RTL/LTR) وخطوط Cairo و Inter الأصلية.
+</details>
+
+<details>
+<summary><b>كيف أقوم بنشر وتشغيل TaskBoard في بيئة الإنتاج؟</b></summary>
+<br>
+يوفر المشروع ملف Dockerfile متعدد المراحل وإعدادات Docker Compose متكاملة. كل ما عليك فعله هو تشغيل <code>docker compose up -d</code> خلف Nginx باستخدام ملفات التكوين المرفقة.
+</details>
+
+---
+
 <a id="documentation"></a>
 
 ## التوثيق الشامل
@@ -294,10 +331,10 @@ npm run dev
 
 <div align="center">
 
-صُنع بواسطة <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> (<a href="https://github.com/shadow-x78">shadow-x78</a>) ·
+بُني بواسطة <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [سجل التغييرات](CHANGELOG.md) ·
 [سياسة الأمان](SECURITY.md)
 
-<sub>&copy; 2026 TaskBoard - RED SHADOWS | RS (shadow-x78)</sub>
+<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
 
 </div>

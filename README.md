@@ -36,6 +36,7 @@ Self-hosted Kanban project management platform with SQLite WAL engine, isolated 
 - [Requirements](#requirements)
 - [Quick Start](#quick-start)
 - [Available Commands](#commands)
+- [FAQ](#faq)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
 - [License](#license)
@@ -258,6 +259,42 @@ Open [http://localhost:3000](http://localhost:3000) and sign in using the bootst
 
 ---
 
+<a id="faq"></a>
+
+## FAQ
+
+<details>
+<summary><b>Does TaskBoard require an external database server or cloud connection?</b></summary>
+<br>
+No. TaskBoard embeds SQLite 3 with Write-Ahead Logging (WAL) enabled directly via Better-SQLite3 and Drizzle ORM. All data is persisted locally in the mounted <code>data/</code> volume without needing PostgreSQL, MySQL, or internet access.
+</details>
+
+<details>
+<summary><b>How is the live demo sandbox isolated from production data?</b></summary>
+<br>
+When a visitor accesses <code>/demo</code>, TaskBoard establishes an isolated demo session bound to a separate sandbox database (<code>taskboard-demo.sqlite</code>) via AsyncLocalStorage. Modifications made in the demo sandbox never mutate or read production data.
+</details>
+
+<details>
+<summary><b>Can TaskBoard track assignee hourly rates and project costs?</b></summary>
+<br>
+Yes. TaskBoard features a built-in financial calculation engine. Leaders can configure monetary rates per assignee and monitor aggregate project budgets with live currency formatting for SAR and USD.
+</details>
+
+<details>
+<summary><b>How does TaskBoard handle bilingual Arabic and English content?</b></summary>
+<br>
+Every task, section, and project provides dedicated side-by-side inputs for Arabic and English titles and rich text descriptions. When switching languages, the UI smoothly mirrors between RTL and LTR with native Cairo and Inter font families.
+</details>
+
+<details>
+<summary><b>How do I deploy TaskBoard in production?</b></summary>
+<br>
+TaskBoard ships with an optimized multi-stage Dockerfile and a production Docker Compose specification. Simply run <code>docker compose up -d</code> behind the provided Nginx reverse proxy configuration.
+</details>
+
+---
+
 <a id="documentation"></a>
 
 ## Documentation
@@ -294,10 +331,10 @@ Distributed under the [MIT License](LICENSE).
 
 <div align="center">
 
-Built by <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> (<a href="https://github.com/shadow-x78">shadow-x78</a>) ·
+Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Changelog](CHANGELOG.md) ·
 [Security](SECURITY.md)
 
-<sub>&copy; 2026 TaskBoard - RED SHADOWS | RS (shadow-x78)</sub>
+<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
 
 </div>
