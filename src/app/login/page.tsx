@@ -1,7 +1,15 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Eye, EyeOff, LayoutDashboard, Rocket } from "lucide-react";
+import {
+  ArrowRight,
+  Eye,
+  EyeOff,
+  LayoutDashboard,
+  Lock,
+  LogIn,
+  Mail,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -129,7 +137,7 @@ export default function LoginPage() {
     >
       <PageTitle title="login" />
 
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <nav className="border-b bg-transparent" suppressHydrationWarning>
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <LayoutDashboard className="h-6 w-6 text-primary" />
@@ -156,16 +164,19 @@ export default function LoginPage() {
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-1">
-                <Label htmlFor="email">
-                  <i className="fas fa-envelope ltr:mr-2 rtl:ml-2" />
-                  {t("auth.form.fields.email")}
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  autoComplete="email"
-                  {...register("email", { required: false })}
-                />
+                <Label htmlFor="email">{t("auth.form.fields.email")}</Label>
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3 text-muted-foreground">
+                    <Mail className="h-4 w-4" />
+                  </div>
+                  <Input
+                    id="email"
+                    type="email"
+                    autoComplete="email"
+                    className="ltr:pl-9 rtl:pr-9"
+                    {...register("email", { required: false })}
+                  />
+                </div>
                 {errors.email && (
                   <p className="text-sm text-red-600 mt-1">
                     {getErrorMessage(errors.email.message)}
@@ -175,21 +186,23 @@ export default function LoginPage() {
 
               <div className="space-y-1">
                 <Label htmlFor="password">
-                  <i className="fas fa-lock ltr:mr-2 rtl:ml-2" />
                   {t("auth.form.fields.password")}
                 </Label>
                 <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3 text-muted-foreground">
+                    <Lock className="h-4 w-4" />
+                  </div>
                   <Input
                     id="password"
                     type={isPasswordVisible ? "text" : "password"}
                     autoComplete="current-password"
                     {...register("password", { required: false })}
-                    className="ltr:pr-10 rtl:pl-10"
+                    className="ltr:pl-9 ltr:pr-10 rtl:pr-9 rtl:pl-10"
                   />
                   <button
                     type="button"
                     onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-                    className="absolute ltr:right-3 rtl:left-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                    className="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-3 rtl:pl-3 text-muted-foreground hover:text-foreground transition-colors"
                     tabIndex={-1}
                   >
                     {isPasswordVisible ? (
@@ -206,18 +219,20 @@ export default function LoginPage() {
                 )}
               </div>
 
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <Button
+                type="submit"
+                className="w-full gap-2"
+                disabled={isLoading}
+              >
                 {isLoading ? (
                   <>
                     <Loading size="sm" />
-                    <span className="ltr:ml-2 rtl:mr-2">
-                      {t("auth.form.actions.loading")}
-                    </span>
+                    <span>{t("auth.form.actions.loading")}</span>
                   </>
                 ) : (
                   <>
-                    <i className="fas fa-sign-in-alt ltr:mr-2 rtl:ml-2" />
-                    {t("auth.form.actions.submit")}
+                    <LogIn className="h-4 w-4" />
+                    <span>{t("auth.form.actions.submit")}</span>
                   </>
                 )}
               </Button>
@@ -228,8 +243,8 @@ export default function LoginPage() {
                 <span className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-2 text-muted-foreground font-mono">
-                  Demo
+                <span className="bg-card px-2 text-muted-foreground">
+                  {t("common.or")}
                 </span>
               </div>
             </div>
@@ -237,12 +252,12 @@ export default function LoginPage() {
             <Button
               type="button"
               variant="outline"
-              className="w-full gap-2 border-emerald-500/40 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-medium"
+              className="w-full gap-2 border-border bg-card py-2.5 text-foreground hover:bg-accent hover:text-accent-foreground font-medium shadow-sm transition-colors"
               onClick={() => {
                 window.location.href = "/demo";
               }}
             >
-              <Rocket className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+              <ArrowRight className="h-4 w-4 text-primary shrink-0 rtl:rotate-180" />
               <span>{t("common.demo.tryDemo")}</span>
             </Button>
             <p className="mt-2 text-center text-xs text-muted-foreground">

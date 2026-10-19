@@ -43,10 +43,9 @@ export function DemoBanner() {
   };
 
   return (
-    <div className="relative z-40 flex flex-wrap items-center justify-between gap-3 border-b border-border bg-card/95 px-4 py-2 text-xs text-foreground sm:px-6 shadow-sm">
+    <div className="relative z-40 flex flex-wrap items-center justify-between gap-3 border-b border-border bg-card/90 px-4 py-2 text-xs text-foreground sm:px-6">
       <div className="flex min-w-0 flex-1 items-center gap-2.5">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[11px] font-semibold tracking-wider text-emerald-600 dark:text-emerald-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+        <span className="inline-flex h-5 items-center rounded border border-border/80 bg-muted/60 px-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
           {t("common.demo.badge")}
         </span>
         <span className="truncate text-muted-foreground sm:inline">
