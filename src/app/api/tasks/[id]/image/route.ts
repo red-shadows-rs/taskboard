@@ -12,7 +12,6 @@ import {
 } from "@/app/api/shared/databaseShared";
 import { canAccessTask } from "@/app/api/shared/accessShared";
 import { checkRateLimit } from "@/app/api/shared/rateLimitShared";
-import { UPLOADS_DIR } from "@/app/api/shared/storageShared";
 
 import type { NextRequest } from "next/server";
 
@@ -102,7 +101,13 @@ export async function POST(
       return NextResponse.json({ error: "Section not found" }, { status: 404 });
     }
 
-    const imagesDir = path.join(UPLOADS_DIR, section.projectId, task.sectionId);
+    const imagesDir = path.join(
+      process.cwd(),
+      "uploads",
+      "images",
+      section.projectId,
+      task.sectionId,
+    );
 
     await fs.mkdir(imagesDir, { recursive: true });
 
@@ -119,7 +124,14 @@ export async function POST(
       const relativePath = path
         .join("images", section.projectId, task.sectionId, filename)
         .replace(/\\/g, "/");
-      const fullPath = path.join(imagesDir, filename);
+      const fullPath = path.join(
+        process.cwd(),
+        "uploads",
+        "images",
+        section.projectId,
+        task.sectionId,
+        filename,
+      );
 
       const fileBuffer = Buffer.from(new Uint8Array(await file.arrayBuffer()));
       let buffer: Buffer = fileBuffer;

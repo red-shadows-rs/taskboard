@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Database Manager
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import { AsyncLocalStorage } from "node:async_hooks";
 import { existsSync, mkdirSync, readFileSync, renameSync } from "node:fs";
@@ -281,9 +283,16 @@ function migrateLegacyJson(target: DbInstance): void {
 
     const archiveDir = join(legacyDir, "archive");
     mkdirSync(archiveDir, { recursive: true });
-    for (const file of [usersFile, projectsFile, sectionsFile, tasksFile]) {
+    const legacyFilenames = [
+      "usersDatabase.json",
+      "projectsDatabase.json",
+      "sectionsDatabase.json",
+      "tasksDatabase.json",
+    ] as const;
+    for (const name of legacyFilenames) {
+      const file = join(process.cwd(), "databases", name);
       if (existsSync(file)) {
-        const dest = join(archiveDir, file.slice(legacyDir.length + 1));
+        const dest = join(archiveDir, name);
         renameSync(file, dest);
       }
     }
