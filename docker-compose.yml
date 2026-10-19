@@ -7,7 +7,7 @@ services:
   app:
     build: .
     restart: unless-stopped
-    env_file: .env.local
+    env_file: .env
     environment:
       - PORT=3000
       - HOSTNAME=0.0.0.0
@@ -15,6 +15,7 @@ services:
     volumes:
       - ./data:/app/data
       - ./uploads:/app/uploads
+    ipc: host
     healthcheck:
       test:
         [
@@ -28,4 +29,5 @@ services:
       retries: 3
       start_period: 20s
     ports:
-      - "127.0.0.1:${HOST_PORT:-3000}:3000"
+      - "127.0.0.1:${HOST_PORT:-6001}:3000"
+
