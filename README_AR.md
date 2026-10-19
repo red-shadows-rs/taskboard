@@ -37,7 +37,7 @@
 - [البدء السريع](#quick-start)
 - [الأوامر المتاحة](#commands)
 - [الأسئلة الشائعة](#faq)
-- [التوثيق الشامل](#documentation)
+- [التوثيق](#documentation)
 - [المساهمة](#contributing)
 - [الترخيص](#license)
 
@@ -297,14 +297,18 @@ npm run dev
 
 <a id="documentation"></a>
 
-## التوثيق الشامل
+## التوثيق
 
-| المستند                                             | الوصف                                                               |
-| --------------------------------------------------- | ------------------------------------------------------------------- |
+<div dir="rtl" align="right">
+
+| الوثيقة                                             | الوصف                                                               |
+| :-------------------------------------------------- | :------------------------------------------------------------------ |
 | [ARCHITECTURE_AR.md](docs/ARCHITECTURE_AR.md)       | معمارية النظام، تصميم قاعدة البيانات، ومحرك كانبان                  |
 | [DEPLOYMENT_AR.md](docs/DEPLOYMENT_AR.md)           | دليل النشر الإنتاجي عبر Docker Compose وخادم Nginx والنسخ الاحتياطي |
 | [API_SPEC_AR.md](docs/API_SPEC_AR.md)               | دليل مسارات REST API ومخططات الطلبات وفحص السلامة                   |
 | [TROUBLESHOOTING_AR.md](docs/TROUBLESHOOTING_AR.md) | الإجراءات التشخيصية الشائعة وحلول المشكلات التشغيلية                |
+
+</div>
 
 ---
 
@@ -331,10 +335,10 @@ npm run dev
 
 <div align="center">
 
-بُني بواسطة <a href="https://github.com/shadow-x78">shadow-x78</a> ·
+صُنع بواسطة <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> (<a href="https://github.com/shadow-x78">shadow-x78</a>) ·
 [سجل التغييرات](CHANGELOG.md) ·
 [سياسة الأمان](SECURITY.md)
 
-<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
+<sub>&copy; 2026 TaskBoard - RED SHADOWS | RS (shadow-x78)</sub>
 
 </div>
