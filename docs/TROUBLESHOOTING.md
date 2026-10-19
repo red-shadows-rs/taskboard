@@ -160,6 +160,9 @@ Ensure drag handles specify `touch-action: none` and use activation constraints 
 
 <div align="center">
 
-Built by <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> (<a href="https://github.com/shadow-x78">shadow-x78</a>)
+Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
+[Back to README](../README.md)
+
+<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
 
 </div>

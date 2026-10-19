@@ -174,6 +174,9 @@
 
 <div align="center">
 
-صُنع بواسطة <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> (<a href="https://github.com/shadow-x78">shadow-x78</a>)
+بُني بواسطة <a href="https://github.com/shadow-x78">shadow-x78</a> ·
+[العودة إلى README](../README_AR.md)
+
+<sub>&copy; 2026 TaskBoard (shadow-x78)</sub>
 
 </div>
