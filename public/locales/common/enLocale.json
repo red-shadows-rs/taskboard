@@ -84,5 +84,15 @@
     "in_progress": "In Progress",
     "in_review": "In Review",
     "done": "Done"
+  },
+  "demo": {
+    "badge": "DEMO SANDBOX",
+    "description": "You are exploring TaskBoard in an isolated demo sandbox. Data changes will not affect production.",
+    "resetButton": "Reset Demo",
+    "resetting": "Resetting...",
+    "resetSuccess": "Demo data has been reset to default state",
+    "exitButton": "Exit Demo",
+    "tryDemo": "Launch Live Demo",
+    "instantAccess": "Instant one-click access with pre-seeded projects and tasks"
   }
 }
