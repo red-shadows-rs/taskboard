@@ -16,6 +16,7 @@ dist/
 # ── Local Runtime Data & Databases ──
 data/
 databases/archive/
+remote_data/
 *.db
 *.db-*
 *.sqlite

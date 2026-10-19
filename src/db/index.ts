@@ -216,6 +216,32 @@ function migrateLegacyJson(target: DbInstance): void {
           .run();
       }
 
+      const existingProjectIds = new Set(
+        projectsData.map((p: { id: string }) => p.id),
+      );
+      const fallbackUserId = usersData[0]?.id || "system";
+      for (const s of sectionsData) {
+        if (!existingProjectIds.has(s.projectId)) {
+          existingProjectIds.add(s.projectId);
+          tx.insert(schema.projects)
+            .values({
+              id: s.projectId,
+              titleEn: "Archived Project (Recovered)",
+              titleAr: "مشروع مؤرشف (مسترد)",
+              startDate: new Date().toISOString(),
+              endDate: null,
+              status: "completed",
+              teamMembers: "[]",
+              color: "#6b7280",
+              createdBy: fallbackUserId,
+              createdAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString(),
+              order: 999,
+            })
+            .run();
+        }
+      }
+
       for (const s of sectionsData) {
         tx.insert(schema.sections)
           .values({
