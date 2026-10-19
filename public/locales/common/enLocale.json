@@ -1,6 +1,7 @@
 {
   "appName": "Taskboard",
   "appDescription": "A task management dashboard",
+  "or": "or",
   "nav": {
     "analytics": "Analytics",
     "team": "Team",
@@ -37,14 +38,14 @@
     "downloadPDF": "Download PDF"
   },
   "notFound": {
-    "title": "Not Found - Taskboard",
+    "title": "Not Found ∣ Taskboard",
     "heading": "404",
     "subheading": "Page Not Found",
     "description": "The page you are looking for doesn't exist or has been moved.",
     "returnHome": "Return Home"
   },
   "errorPage": {
-    "title": "Internal Server Error - Taskboard",
+    "title": "Internal Server Error ∣ Taskboard",
     "description": "Something went wrong!",
     "defaultMessage": "An unexpected error occurred. Please try again.",
     "tryAgain": "Try Again",
