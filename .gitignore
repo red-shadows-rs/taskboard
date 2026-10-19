@@ -13,8 +13,14 @@ out/
 build/
 dist/
 
-# ── Local translation models ──
-models/
+# ── Local Runtime Data & Databases ──
+data/
+databases/archive/
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+tmp/
 
 # ── User uploads ──
 uploads/
