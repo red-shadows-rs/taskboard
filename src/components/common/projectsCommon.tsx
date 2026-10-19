@@ -50,7 +50,6 @@ import {
 import { useLanguage } from "@/contexts/languageContext";
 import { useStore } from "@/contexts/storeContext";
 import { calculateProjectTotal, formatPrice } from "@/utils/pricingUtils";
-import { buildLocalizedPair } from "@/utils/translateFormUtil";
 
 import type { Project, User } from "@/types";
 import type { ProjectInput } from "@/app/api/shared/validatorsShared";
@@ -226,8 +225,10 @@ interface ProjectFormProps {
 }
 
 const projectFormSchema = z.object({
-  titleValue: z.string().min(3),
-
+  title: z.object({
+    en: z.string().min(3),
+    ar: z.string().min(3),
+  }),
   status: z.enum(["planning", "active", "completed", "on_hold"]),
   startDate: z.string(),
   endDate: z.string().optional(),
@@ -243,7 +244,7 @@ export function ProjectForm({
   onSubmit,
   onCancel,
 }: ProjectFormProps) {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const [selectedMembers, setSelectedMembers] = useState<string[]>(
     project?.teamMembers || [],
   );
@@ -257,8 +258,7 @@ export function ProjectForm({
   } = useForm<ProjectFormData>({
     resolver: zodResolver(projectFormSchema),
     defaultValues: {
-      titleValue: project?.title[language] || "",
-
+      title: project?.title || { en: "", ar: "" },
       status: project?.status,
       startDate: project?.startDate || "",
       endDate: project?.endDate || "",
@@ -289,9 +289,7 @@ export function ProjectForm({
   };
 
   const onFormSubmit = async (data: ProjectFormData) => {
-    const title = await buildLocalizedPair(data.titleValue, language);
-    const { titleValue: _titleValue, ...rest } = data;
-    await onSubmit({ ...rest, title, teamMembers: selectedMembers });
+    await onSubmit({ ...data, teamMembers: selectedMembers });
   };
 
   return (
@@ -301,17 +299,25 @@ export function ProjectForm({
     >
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain space-y-4 px-1 -mx-1">
         <div className="space-y-1">
-          <Label htmlFor="title">
-            {t("dashboard.projects.form.fields.title")}
+          <Label htmlFor="title-en">
+            {t("dashboard.projects.form.fields.titleEn")}
           </Label>
-          <Input
-            id="title"
-            {...register("titleValue")}
-            dir={language === "ar" ? "rtl" : "ltr"}
-          />
-          {errors.titleValue && (
+          <Input id="title-en" {...register("title.en")} dir="ltr" />
+          {errors.title?.en && (
             <p className="text-sm text-red-600">
-              {t("dashboard.projects.validation.titleMin")}
+              {t("dashboard.projects.validation.titleMinEn")}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-1">
+          <Label htmlFor="title-ar">
+            {t("dashboard.projects.form.fields.titleAr")}
+          </Label>
+          <Input id="title-ar" {...register("title.ar")} dir="rtl" />
+          {errors.title?.ar && (
+            <p className="text-sm text-red-600">
+              {t("dashboard.projects.validation.titleMinAr")}
             </p>
           )}
         </div>
@@ -611,11 +617,7 @@ export function ProjectForm({
           ) : (
             <Plus className="h-4 w-4" />
           )}
-          {isSubmitting
-            ? t("dashboard.projects.messages.translating")
-            : project
-              ? t("common.button.update")
-              : t("common.button.create")}
+          {project ? t("common.button.update") : t("common.button.create")}
         </Button>
         <Button
           type="button"

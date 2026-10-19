@@ -82,11 +82,6 @@ import type { TaskInput } from "@/app/api/shared/validatorsShared";
 import type { Task, User, Project, Section } from "@/types";
 import { exportTaskPDF } from "@/utils/pdfUtil";
 import { formatPrice, formatPricePlain } from "@/utils/pricingUtils";
-import { stripHtmlToText } from "@/utils/textScriptUtil";
-import {
-  buildLocalizedPair,
-  buildLocalizedHtmlPair,
-} from "@/utils/translateFormUtil";
 
 interface TaskDetailsDialogProps {
   task: Task;
@@ -758,11 +753,17 @@ export function TaskCard({
   );
 }
 
+const stripHtml = (html: string) => html.replace(/<[^>]*>/g, "").trim();
+
 const taskFormSchema = z.object({
-  titleValue: z.string().min(3),
-  descriptionValue: z
-    .string()
-    .refine((value) => stripHtmlToText(value).length >= 10),
+  title: z.object({
+    en: z.string().min(3),
+    ar: z.string().min(3),
+  }),
+  description: z.object({
+    en: z.string().refine((value) => stripHtml(value).length >= 10),
+    ar: z.string().refine((value) => stripHtml(value).length >= 10),
+  }),
   status: z.enum(["todo", "in_progress", "in_review", "done"]),
   assignedTo: z.array(z.string()),
   dueDate: z.string(),
@@ -835,8 +836,8 @@ export function TaskForm({
   } = useForm<TaskFormData>({
     resolver: zodResolver(taskFormSchema),
     defaultValues: {
-      titleValue: task?.title[language] || "",
-      descriptionValue: task?.description[language] || "",
+      title: task?.title || { en: "", ar: "" },
+      description: task?.description || { en: "", ar: "" },
       status: task?.status || "todo",
       assignedTo: task?.assignedTo || [],
       dueDate: task?.dueDate || "",
@@ -914,30 +915,8 @@ export function TaskForm({
   );
 
   const onFormSubmit = async (data: TaskFormData) => {
-    const {
-      titleValue: _titleValue,
-      descriptionValue: _descriptionValue,
-      ...rest
-    } = data;
-
-    let title: Task["title"];
-    let description: Task["description"];
-
-    if (!showStatusOnly && !isRestrictedView) {
-      title = await buildLocalizedPair(data.titleValue, language);
-      description = await buildLocalizedHtmlPair(
-        data.descriptionValue,
-        language,
-      );
-    } else {
-      title = task?.title ?? { en: "", ar: "" };
-      description = task?.description ?? { en: "", ar: "" };
-    }
-
     const finalData: TaskInput = {
-      ...rest,
-      title,
-      description,
+      ...data,
       assignedTo: selectedMembers,
       tags: tags,
       attachments: existingAttachments,
@@ -1000,33 +979,59 @@ export function TaskForm({
         {!showStatusOnly && !isRestrictedView && (
           <div className="space-y-4">
             <div className="space-y-1">
-              <Label htmlFor="title">
-                {t("dashboard.tasks.form.fields.title")}
+              <Label htmlFor="title-en">
+                {t("dashboard.tasks.form.fields.titleEn")}
               </Label>
-              <Input
-                id="title"
-                dir={language === "ar" ? "rtl" : "ltr"}
-                {...register("titleValue")}
-              />
-              {errors.titleValue && (
+              <Input id="title-en" dir="ltr" {...register("title.en")} />
+              {errors.title?.en && (
                 <p className="text-sm text-red-600 mt-1">
-                  {t("dashboard.tasks.validation.titleMin")}
+                  {t("dashboard.tasks.validation.titleMinEn")}
                 </p>
               )}
             </div>
 
             <div className="space-y-1">
-              <Label htmlFor="description">
-                {t("dashboard.tasks.form.fields.description")}
+              <Label htmlFor="title-ar">
+                {t("dashboard.tasks.form.fields.titleAr")}
+              </Label>
+              <Input id="title-ar" dir="rtl" {...register("title.ar")} />
+              {errors.title?.ar && (
+                <p className="text-sm text-red-600 mt-1">
+                  {t("dashboard.tasks.validation.titleMinAr")}
+                </p>
+              )}
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor="description-en">
+                {t("dashboard.tasks.form.fields.descriptionEn")}
               </Label>
               <RichTextEditor
-                content={watch("descriptionValue")}
+                content={watch("description.en")}
                 onChange={(content) =>
-                  setValue("descriptionValue", content, { shouldDirty: true })
+                  setValue("description.en", content, { shouldDirty: true })
                 }
-                dir={language === "ar" ? "rtl" : "ltr"}
+                dir="ltr"
               />
-              {errors.descriptionValue && (
+              {errors.description?.en && (
+                <p className="text-sm text-red-600 mt-1">
+                  {t("dashboard.tasks.validation.descriptionMin")}
+                </p>
+              )}
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor="description-ar">
+                {t("dashboard.tasks.form.fields.descriptionAr")}
+              </Label>
+              <RichTextEditor
+                content={watch("description.ar")}
+                onChange={(content) =>
+                  setValue("description.ar", content, { shouldDirty: true })
+                }
+                dir="rtl"
+              />
+              {errors.description?.ar && (
                 <p className="text-sm text-red-600 mt-1">
                   {t("dashboard.tasks.validation.descriptionMin")}
                 </p>
@@ -1586,11 +1591,7 @@ export function TaskForm({
       <div className="flex gap-2 pt-4 shrink-0 relative z-10 bg-background border-t">
         <Button type="submit" className="flex-1" disabled={isSubmitting}>
           {task ? <Save className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-          {isSubmitting
-            ? t("dashboard.tasks.messages.translating")
-            : task
-              ? t("common.button.update")
-              : t("common.button.create")}
+          {task ? t("common.button.update") : t("common.button.create")}
         </Button>
         <Button
           type="button"

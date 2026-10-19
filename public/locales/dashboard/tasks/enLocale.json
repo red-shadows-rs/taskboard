@@ -52,7 +52,11 @@
     "value": "Value",
     "fields": {
       "title": "Title",
+      "titleEn": "Title (English)",
+      "titleAr": "Title (Arabic)",
       "description": "Description",
+      "descriptionEn": "Description (English)",
+      "descriptionAr": "Description (Arabic)",
       "status": "Status",
       "assignedTo": "Assign To",
       "dueDate": "Due Date",
@@ -121,6 +125,8 @@
   },
   "validation": {
     "titleMin": "Title must be at least 3 characters",
+    "titleMinEn": "English title must be at least 3 characters",
+    "titleMinAr": "Arabic title must be at least 3 characters",
     "descriptionMin": "Description must be at least 10 characters"
   }
 }
