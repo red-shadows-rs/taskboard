@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Eye, EyeOff, LayoutDashboard } from "lucide-react";
+import { Eye, EyeOff, LayoutDashboard, Rocket } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -222,6 +222,32 @@ export default function LoginPage() {
                 )}
               </Button>
             </form>
+
+            <div className="relative my-4">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t border-border" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-card px-2 text-muted-foreground font-mono">
+                  Demo
+                </span>
+              </div>
+            </div>
+
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full gap-2 border-emerald-500/40 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-medium"
+              onClick={() => {
+                window.location.href = "/demo";
+              }}
+            >
+              <Rocket className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+              <span>{t("common.demo.tryDemo")}</span>
+            </Button>
+            <p className="mt-2 text-center text-xs text-muted-foreground">
+              {t("common.demo.instantAccess")}
+            </p>
           </CardContent>
         </Card>
       </div>
