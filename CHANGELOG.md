@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v4.2.0] - 2026-10-20
+
+### Added
+
+- **SQLite & Drizzle ORM Storage Engine**: Full migration from unstructured JSON flat files to ACID-compliant SQLite (`data/taskboard.sqlite`) with write-ahead logging (WAL), foreign key integrity, and automated schema migrations via Drizzle ORM.
+- **Automated Legacy JSON Database Migration**: Transparent one-time importer moving legacy data from `databases/*.json` into SQLite on first startup, archiving old files to `databases/archive/`.
+- **Isolated Live Demo Sandbox System**: Self-contained demo environment (`/demo`) with dedicated SQLite instance (`taskboard-demo.sqlite`), zero state pollution to production, sticky demo banner with instant Reset and Exit actions, and one-click access from the login page.
+- **Health Check Endpoint**: `GET /api/health` providing database connectivity status, uptime, timestamp, and version telemetry.
+- **Production Docker & Nginx Orchestration**: Multi-stage lightweight `Dockerfile` based on `node:22-bookworm-slim`, production `docker-compose.yml` with persistent data volumes, and hardened Nginx reverse proxy configurations with caching and WebSocket support.
+- **Enterprise Bilingual Documentation Suite**: Complete architectural and operational guides in English and Arabic (`ARCHITECTURE.md`, `DEPLOYMENT.md`, `API_SPEC.md`, `TROUBLESHOOTING.md`).
+
+### Changed
+
+- **Restored Dual Bilingual Inputs**: Returned explicit, dedicated Arabic and English input fields across task titles, task descriptions (rich-text editors), project titles, and section titles with independent validation.
+- **Comprehensive README Overhaul**: Redesigned `README.md` and `README_AR.md` mirroring Dossier design language with interactive demo badges, Mermaid architecture diagrams, stack comparison matrices, and CLI command tables.
+- **Lint Configuration**: Updated ESLint configuration to target project root uniformly (`eslint .`).
+
+### Removed
+
+- **Local Machine Learning Translation Stack**: Fully removed heavy `@huggingface/transformers` runtime, NLLB-200 ONNX models, background download workers, and associated translation endpoints (`/api/translate`) to reduce memory footprint and CPU overhead.
+
 ## [v4.1.2] - 2026-10-09
 
 ### Security
@@ -257,6 +278,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[v4.2.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.2.0
 [v4.1.2]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.1.2
 [v4.1.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.1.0
 [4.0.6]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.0.6
