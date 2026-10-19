@@ -4,7 +4,7 @@
   "private": true,
   "description": "Professional task management system for teams and managers",
   "author": "Shadow-x78 - RED SHADOWS | RS",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "overrides": {
     "@types/react": "18.2.79",
     "@types/react-dom": "18.2.25",

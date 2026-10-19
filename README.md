@@ -9,7 +9,7 @@
 Self-hosted Kanban project management platform with SQLite WAL engine, isolated live demo sandbox, task pricing calculation, and bidirectional Arabic/English typography.
 
 [![Version](https://img.shields.io/badge/version-4.2.3-2563eb?style=for-the-badge)](CHANGELOG.md)
-[![License](https://img.shields.io/badge/license-MIT-10b981?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/badge/license-GPL--3.0-dc2626?style=for-the-badge)](LICENSE)
 ![TypeScript](https://img.shields.io/badge/typescript-5%2B-3178c6?style=for-the-badge&logo=typescript)
 ![Next.js](https://img.shields.io/badge/next.js-16-000000?style=for-the-badge&logo=next.js)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Self--Hosted-9333ea?style=for-the-badge&logo=linux)
@@ -325,7 +325,7 @@ Read the [Contributing Guidelines](CONTRIBUTING.md) and the [Code of Conduct](CO
 
 ## License
 
-Distributed under the [MIT License](LICENSE).
+Distributed under the [GNU General Public License v3.0](LICENSE).
 
 ---
 

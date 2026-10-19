@@ -3,7 +3,7 @@
 # دليل المواصفات المعمارية - Taskboard
 
 [![Version](https://img.shields.io/badge/الإصدار-4.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
-[![License](https://img.shields.io/badge/الترخيص-MIT-10b981?style=flat-square)](../LICENSE)
+[![License](https://img.shields.io/badge/الترخيص-GPL--3.0-dc2626?style=flat-square)](../LICENSE)
 ![TypeScript](https://img.shields.io/badge/تايب_سScript-5%2B-3178c6?style=flat-square&logo=typescript)
 ![Platform](https://img.shields.io/badge/المنصة-لينكس%20%7C%20استضافة_ذاتية-9333ea?style=flat-square&logo=linux)
 

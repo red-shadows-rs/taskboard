@@ -3,7 +3,7 @@
 # دليل النشر والتشغيل للإنتاج - Taskboard
 
 [![Version](https://img.shields.io/badge/الإصدار-4.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
-[![License](https://img.shields.io/badge/الترخيص-MIT-10b981?style=flat-square)](../LICENSE)
+[![License](https://img.shields.io/badge/الترخيص-GPL--3.0-dc2626?style=flat-square)](../LICENSE)
 ![Docker](https://img.shields.io/badge/دوكر-جاهز-2496ed?style=flat-square&logo=docker)
 ![Platform](https://img.shields.io/badge/المنصة-لينكس%20%7C%20استضافة_ذاتية-9333ea?style=flat-square&logo=linux)
 

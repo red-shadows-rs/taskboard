@@ -9,7 +9,7 @@
 منصة إدارة مهام ومشاريع بنمط كانبان ذاتية الاستضافة مع محرك SQLite WAL، وبيئة تجريبية معزولة للديمو، وحسابات تسعير المهام، وواجهة ثنائية اللغة (عربي / إنجليزي).
 
 [![الإصدار](https://img.shields.io/badge/الإصدار-4.2.3-2563eb?style=for-the-badge)](CHANGELOG.md)
-[![الترخيص](https://img.shields.io/badge/الترخيص-MIT-10b981?style=for-the-badge)](LICENSE)
+[![الترخيص](https://img.shields.io/badge/الترخيص-GPL--3.0-dc2626?style=for-the-badge)](LICENSE)
 ![تايب سكريبت](https://img.shields.io/badge/تايب_سكريبت-5%2B-3178c6?style=for-the-badge&logo=typescript)
 ![Next.js](https://img.shields.io/badge/next.js-16-000000?style=for-the-badge&logo=next.js)
 ![المنصة](https://img.shields.io/badge/المنصة-لينكس%20%7C%20استضافة_ذاتية-9333ea?style=for-the-badge&logo=linux)
@@ -329,7 +329,7 @@ npm run dev
 
 ## الترخيص
 
-مرخص تحت [ترخيص MIT](LICENSE).
+مرخص تحت [رخصة جنو العمومية v3.0 (GPL-3.0)](LICENSE).
 
 ---
 
