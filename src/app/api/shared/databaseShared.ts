@@ -1,21 +1,133 @@
-import { promises as fs } from "fs";
-import path from "path";
+// TaskBoard - Database Shared Operations
+// https://github.com/red-shadows-rs/taskboard
 
-import type { Section, User, Project, Task, UserRole } from "@/types";
+import { asc, eq } from "drizzle-orm";
+import { getDemoInstance, getInstance } from "@/db";
+import * as schema from "@/db/schema";
+import type {
+  Section,
+  User,
+  Project,
+  Task,
+  UserRole,
+  ProjectStatus,
+  Priority,
+  TaskStatus,
+} from "@/types";
 
-const dataDir = path.join(process.cwd(), "databases");
+async function getActiveDb() {
+  try {
+    const { cookies } = await import("next/headers");
+    const cookieStore = await cookies();
+    if (cookieStore.get("taskboard_demo")?.value === "1") {
+      return getDemoInstance().db;
+    }
+  } catch {}
+  return getInstance().db;
+}
+
+function toUser(row: schema.UserRow): User {
+  return {
+    id: row.id,
+    name: row.name,
+    email: row.email,
+    password: row.password,
+    role: row.role as UserRole,
+    order: row.order ?? undefined,
+  };
+}
+
+function toProject(row: schema.ProjectRow): Project {
+  let teamMembers: string[] = [];
+  try {
+    teamMembers = JSON.parse(row.teamMembers || "[]");
+  } catch {}
+  return {
+    id: row.id,
+    title: {
+      en: row.titleEn,
+      ar: row.titleAr,
+    },
+    startDate: row.startDate,
+    endDate: row.endDate ?? undefined,
+    status: row.status as ProjectStatus,
+    teamMembers,
+    color: row.color ?? undefined,
+    createdBy: row.createdBy,
+    createdAt: row.createdAt,
+    updatedAt: row.updatedAt,
+    order: row.order ?? undefined,
+  };
+}
+
+function toSection(row: schema.SectionRow): Section {
+  return {
+    id: row.id,
+    projectId: row.projectId,
+    title: {
+      en: row.titleEn,
+      ar: row.titleAr,
+    },
+    order: row.order ?? undefined,
+  };
+}
+
+function toTask(row: schema.TaskRow): Task {
+  let assignedTo: string[] = [];
+  let tags: string[] = [];
+  let attachments: string[] = [];
+  let assigneePrices: { userId: string; price: number }[] = [];
+  try {
+    assignedTo = JSON.parse(row.assignedTo || "[]");
+  } catch {}
+  try {
+    tags = JSON.parse(row.tags || "[]");
+  } catch {}
+  try {
+    attachments = JSON.parse(row.attachments || "[]");
+  } catch {}
+  try {
+    assigneePrices = JSON.parse(row.assigneePrices || "[]");
+  } catch {}
+
+  return {
+    id: row.id,
+    sectionId: row.sectionId,
+    title: {
+      en: row.titleEn,
+      ar: row.titleAr,
+    },
+    description: {
+      en: row.descriptionEn,
+      ar: row.descriptionAr,
+    },
+    status: row.status as TaskStatus,
+    assignedTo,
+    dueDate: row.dueDate,
+    priority: row.priority as Priority,
+    tags,
+    order: row.order ?? undefined,
+    attachments,
+    createdAt: row.createdAt,
+    updatedAt: row.updatedAt,
+    completedAt: row.completedAt ?? undefined,
+    assigneePrices,
+  };
+}
 
 function calculateProjectEndDate(
   projectId: string,
-  sections: Section[],
-  tasks: Task[],
+  sectionsList: Section[],
+  tasksList: Task[],
 ): string | undefined {
   try {
-    const projectSections = sections.filter((s) => s.projectId === projectId);
+    const projectSections = sectionsList.filter(
+      (s) => s.projectId === projectId,
+    );
     if (projectSections.length === 0) return undefined;
 
     const sectionIds = projectSections.map((s) => s.id);
-    const validTasks = tasks.filter(
+    const validTasks = tasksList.filter(
       (t) => t.sectionId && sectionIds.includes(t.sectionId) && t.dueDate,
     );
 
@@ -33,50 +145,42 @@ function calculateProjectEndDate(
     if (!latestDate || isNaN(latestDate.getTime())) return undefined;
 
     return latestDate.toISOString();
-  } catch (_error) {
+  } catch {
     return undefined;
   }
 }
 
-async function readJSON<T>(filename: string, retries = 3): Promise<T[]> {
-  try {
-    const filePath = path.join(dataDir, filename);
-    const data = await fs.readFile(filePath, "utf-8");
-    return JSON.parse(data);
-  } catch (error: unknown) {
-    const err = error as { code?: string };
-    if (err.code === "ENOENT") {
-      return [];
-    }
-    if (error instanceof SyntaxError) {
-      throw error;
-    }
-    if (retries > 0) {
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      return readJSON<T>(filename, retries - 1);
-    }
-    throw error;
-  }
-}
-
-async function writeJSON<T>(filename: string, data: T[]): Promise<void> {
-  const filePath = path.join(dataDir, filename);
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
-}
-
 export async function getSections(): Promise<Section[]> {
-  return readJSON<Section>("sectionsDatabase.json");
+  const db = await getActiveDb();
+  const rows = db
+    .select()
+    .from(schema.sections)
+    .orderBy(asc(schema.sections.order))
+    .all();
+  return rows.map(toSection);
 }
 
 export async function getSectionById(id: string): Promise<Section | null> {
-  const sections = await getSections();
-  return sections.find((section) => section.id === id) || null;
+  const db = await getActiveDb();
+  const row = db
+    .select()
+    .from(schema.sections)
+    .where(eq(schema.sections.id, id))
+    .get();
+  return row ? toSection(row) : null;
 }
 
 export async function createSection(section: Section): Promise<Section> {
-  const sections = await getSections();
-  sections.push(section);
-  await writeJSON("sectionsDatabase.json", sections);
+  const db = await getActiveDb();
+  db.insert(schema.sections)
+    .values({
+      id: section.id,
+      projectId: section.projectId,
+      titleEn: section.title.en,
+      titleAr: section.title.ar,
+      order: section.order ?? null,
+    })
+    .run();
 
   try {
     const allSections = await getSections();
@@ -92,7 +196,7 @@ export async function createSection(section: Section): Promise<Section> {
         updatedAt: new Date().toISOString(),
       });
     }
-  } catch (_error) {}
+  } catch {}
 
   return section;
 }
@@ -101,72 +205,88 @@ export async function updateSection(
   id: string,
   updates: Partial<Section>,
 ): Promise<Section | null> {
-  const sections = await getSections();
-  const index = sections.findIndex((section) => section.id === id);
+  const db = await getActiveDb();
+  const values: Partial<schema.NewSectionRow> = {};
+  if (updates.projectId !== undefined) values.projectId = updates.projectId;
+  if (updates.title?.en !== undefined) values.titleEn = updates.title.en;
+  if (updates.title?.ar !== undefined) values.titleAr = updates.title.ar;
+  if (updates.order !== undefined) values.order = updates.order;
 
-  if (index === -1) return null;
+  db.update(schema.sections)
+    .set(values)
+    .where(eq(schema.sections.id, id))
+    .run();
 
-  sections[index] = {
-    ...sections[index],
-    ...updates,
-  };
-  await writeJSON("sectionsDatabase.json", sections);
-
-  return sections[index];
+  return getSectionById(id);
 }
 
 export async function deleteSection(id: string): Promise<boolean> {
-  const sections = await getSections();
-  const removed = sections.find((section) => section.id === id);
+  const db = await getActiveDb();
+  const existing = await getSectionById(id);
+  if (!existing) return false;
 
-  if (!removed) return false;
-
-  const filtered = sections.filter((section) => section.id !== id);
-  await writeJSON("sectionsDatabase.json", filtered);
-
-  const tasks = await getTasks();
-  const filteredTasks = tasks.filter((task) => task.sectionId !== id);
-  if (filteredTasks.length !== tasks.length) {
-    await writeJSON("tasksDatabase.json", filteredTasks);
-  }
+  db.delete(schema.tasks).where(eq(schema.tasks.sectionId, id)).run();
+  db.delete(schema.sections).where(eq(schema.sections.id, id)).run();
 
   try {
     const allSections = await getSections();
     const allTasks = await getTasks();
     const projectEndDate = calculateProjectEndDate(
-      removed.projectId,
+      existing.projectId,
       allSections,
       allTasks,
     );
-    if (projectEndDate) {
-      await updateProject(removed.projectId, {
-        endDate: projectEndDate,
-        updatedAt: new Date().toISOString(),
-      });
-    }
-  } catch (_error) {}
+    await updateProject(existing.projectId, {
+      endDate: projectEndDate,
+      updatedAt: new Date().toISOString(),
+    });
+  } catch {}
 
   return true;
 }
 
 export async function getUsers(): Promise<User[]> {
-  return readJSON<User>("usersDatabase.json");
+  const db = await getActiveDb();
+  const rows = db
+    .select()
+    .from(schema.users)
+    .orderBy(asc(schema.users.order))
+    .all();
+  return rows.map(toUser);
 }
 
 export async function getUserById(id: string): Promise<User | null> {
-  const users = await getUsers();
-  return users.find((user) => user.id === id) || null;
+  const db = await getActiveDb();
+  const row = db
+    .select()
+    .from(schema.users)
+    .where(eq(schema.users.id, id))
+    .get();
+  return row ? toUser(row) : null;
 }
 
 export async function getUserByEmail(email: string): Promise<User | null> {
-  const users = await getUsers();
-  return users.find((user) => user.email === email) || null;
+  const db = await getActiveDb();
+  const row = db
+    .select()
+    .from(schema.users)
+    .where(eq(schema.users.email, email.toLowerCase()))
+    .get();
+  return row ? toUser(row) : null;
 }
 
 export async function createUser(user: User): Promise<User> {
-  const users = await getUsers();
-  users.push(user);
-  await writeJSON("usersDatabase.json", users);
+  const db = await getActiveDb();
+  db.insert(schema.users)
+    .values({
+      id: user.id,
+      name: user.name,
+      email: user.email.toLowerCase(),
+      password: user.password,
+      role: user.role,
+      order: user.order ?? null,
+    })
+    .run();
   return user;
 }
 
@@ -174,39 +294,63 @@ export async function updateUser(
   id: string,
   updates: Partial<User>,
 ): Promise<User | null> {
-  const users = await getUsers();
-  const index = users.findIndex((user) => user.id === id);
+  const db = await getActiveDb();
+  const values: Partial<schema.NewUserRow> = {};
+  if (updates.name !== undefined) values.name = updates.name;
+  if (updates.email !== undefined) values.email = updates.email.toLowerCase();
+  if (updates.password !== undefined) values.password = updates.password;
+  if (updates.role !== undefined) values.role = updates.role;
+  if (updates.order !== undefined) values.order = updates.order;
 
-  if (index === -1) return null;
+  db.update(schema.users).set(values).where(eq(schema.users.id, id)).run();
 
-  users[index] = { ...users[index], ...updates };
-  await writeJSON("usersDatabase.json", users);
-  return users[index];
+  return getUserById(id);
 }
 
 export async function deleteUser(id: string): Promise<boolean> {
-  const users = await getUsers();
-  const filtered = users.filter((user) => user.id !== id);
-
-  if (filtered.length === users.length) return false;
-
-  await writeJSON("usersDatabase.json", filtered);
-  return true;
+  const db = await getActiveDb();
+  const res = db.delete(schema.users).where(eq(schema.users.id, id)).run();
+  return res.changes > 0;
 }
 
 export async function getProjects(): Promise<Project[]> {
-  return readJSON<Project>("projectsDatabase.json");
+  const db = await getActiveDb();
+  const rows = db
+    .select()
+    .from(schema.projects)
+    .orderBy(asc(schema.projects.order))
+    .all();
+  return rows.map(toProject);
 }
 
 export async function getProjectById(id: string): Promise<Project | null> {
-  const projects = await getProjects();
-  return projects.find((project) => project.id === id) || null;
+  const db = await getActiveDb();
+  const row = db
+    .select()
+    .from(schema.projects)
+    .where(eq(schema.projects.id, id))
+    .get();
+  return row ? toProject(row) : null;
 }
 
 export async function createProject(project: Project): Promise<Project> {
-  const projects = await getProjects();
-  projects.push(project);
-  await writeJSON("projectsDatabase.json", projects);
+  const db = await getActiveDb();
+  db.insert(schema.projects)
+    .values({
+      id: project.id,
+      titleEn: project.title.en,
+      titleAr: project.title.ar,
+      startDate: project.startDate,
+      endDate: project.endDate ?? null,
+      status: project.status,
+      teamMembers: JSON.stringify(project.teamMembers || []),
+      color: project.color ?? null,
+      createdBy: project.createdBy,
+      createdAt: project.createdAt,
+      updatedAt: project.updatedAt,
+      order: project.order ?? null,
+    })
+    .run();
   return project;
 }
 
@@ -214,74 +358,112 @@ export async function updateProject(
   id: string,
   updates: Partial<Project>,
 ): Promise<Project | null> {
-  const projects = await getProjects();
-  const index = projects.findIndex((project) => project.id === id);
+  const db = await getActiveDb();
+  const values: Partial<schema.NewProjectRow> = {};
+  if (updates.title?.en !== undefined) values.titleEn = updates.title.en;
+  if (updates.title?.ar !== undefined) values.titleAr = updates.title.ar;
+  if (updates.startDate !== undefined) values.startDate = updates.startDate;
+  if (updates.endDate !== undefined) values.endDate = updates.endDate;
+  if (updates.status !== undefined) values.status = updates.status;
+  if (updates.teamMembers !== undefined)
+    values.teamMembers = JSON.stringify(updates.teamMembers);
+  if (updates.color !== undefined) values.color = updates.color;
+  if (updates.updatedAt !== undefined) values.updatedAt = updates.updatedAt;
+  if (updates.order !== undefined) values.order = updates.order;
 
-  if (index === -1) return null;
+  db.update(schema.projects)
+    .set(values)
+    .where(eq(schema.projects.id, id))
+    .run();
 
-  projects[index] = { ...projects[index], ...updates };
-  await writeJSON("projectsDatabase.json", projects);
-  return projects[index];
+  return getProjectById(id);
 }
 
 export async function deleteProject(id: string): Promise<boolean> {
-  const projects = await getProjects();
-  const filtered = projects.filter((project) => project.id !== id);
+  const db = await getActiveDb();
+  const existing = await getProjectById(id);
+  if (!existing) return false;
 
-  if (filtered.length === projects.length) return false;
-
-  await writeJSON("projectsDatabase.json", filtered);
-
-  const sections = await getSections();
-  const projectSections = sections.filter(
-    (section) => section.projectId === id,
-  );
-
-  if (projectSections.length > 0) {
-    const filteredSections = sections.filter(
-      (section) => section.projectId !== id,
-    );
-    await writeJSON("sectionsDatabase.json", filteredSections);
-
-    const tasks = await getTasks();
-    const sectionIds = projectSections.map((s) => s.id);
-    const filteredTasks = tasks.filter(
-      (task) => !sectionIds.includes(task.sectionId),
-    );
-    if (filteredTasks.length !== tasks.length) {
-      await writeJSON("tasksDatabase.json", filteredTasks);
-    }
+  const projectSections = await getSectionsByProjectId(id);
+  for (const s of projectSections) {
+    db.delete(schema.tasks).where(eq(schema.tasks.sectionId, s.id)).run();
   }
+  db.delete(schema.sections).where(eq(schema.sections.projectId, id)).run();
+  const res = db
+    .delete(schema.projects)
+    .where(eq(schema.projects.id, id))
+    .run();
 
-  return true;
+  return res.changes > 0;
 }
 
 export async function getTasks(): Promise<Task[]> {
-  return readJSON<Task>("tasksDatabase.json");
+  const db = await getActiveDb();
+  const rows = db
+    .select()
+    .from(schema.tasks)
+    .orderBy(asc(schema.tasks.order))
+    .all();
+  return rows.map(toTask);
 }
 
 export async function getTaskById(id: string): Promise<Task | null> {
-  const tasks = await getTasks();
-  return tasks.find((task) => task.id === id) || null;
+  const db = await getActiveDb();
+  const row = db
+    .select()
+    .from(schema.tasks)
+    .where(eq(schema.tasks.id, id))
+    .get();
+  return row ? toTask(row) : null;
 }
 
 export async function getTasksBySectionId(sectionId: string): Promise<Task[]> {
-  const tasks = await getTasks();
-  return tasks.filter((task) => task.sectionId === sectionId);
+  const db = await getActiveDb();
+  const rows = db
+    .select()
+    .from(schema.tasks)
+    .where(eq(schema.tasks.sectionId, sectionId))
+    .orderBy(asc(schema.tasks.order))
+    .all();
+  return rows.map(toTask);
 }
 
 export async function getSectionsByProjectId(
   projectId: string,
 ): Promise<Section[]> {
-  const sections = await getSections();
-  return sections.filter((section) => section.projectId === projectId);
+  const db = await getActiveDb();
+  const rows = db
+    .select()
+    .from(schema.sections)
+    .where(eq(schema.sections.projectId, projectId))
+    .orderBy(asc(schema.sections.order))
+    .all();
+  return rows.map(toSection);
 }
 
 export async function createTask(task: Task): Promise<Task> {
-  const tasks = await getTasks();
-  tasks.push(task);
-  await writeJSON("tasksDatabase.json", tasks);
-
+  const db = await getActiveDb();
+  db.insert(schema.tasks)
+    .values({
+      id: task.id,
+      sectionId: task.sectionId,
+      titleEn: task.title.en,
+      titleAr: task.title.ar,
+      descriptionEn: task.description.en,
+      descriptionAr: task.description.ar,
+      status: task.status,
+      assignedTo: JSON.stringify(task.assignedTo || []),
+      dueDate: task.dueDate,
+      priority: task.priority,
+      tags: JSON.stringify(task.tags || []),
+      order: task.order ?? null,
+      attachments: JSON.stringify(task.attachments || []),
+      createdAt: task.createdAt,
+      updatedAt: task.updatedAt,
+      completedAt: task.completedAt ?? null,
+      assigneePrices: JSON.stringify(task.assigneePrices || []),
+    })
+    .run();
   return task;
 }
 
@@ -289,90 +471,92 @@ export async function updateTask(
   id: string,
   updates: Partial<Task>,
 ): Promise<Task | null> {
-  const tasks = await getTasks();
-  const index = tasks.findIndex((t) => t.id === id);
+  const db = await getActiveDb();
+  const values: Partial<schema.NewTaskRow> = {};
+  if (updates.sectionId !== undefined) values.sectionId = updates.sectionId;
+  if (updates.title?.en !== undefined) values.titleEn = updates.title.en;
+  if (updates.title?.ar !== undefined) values.titleAr = updates.title.ar;
+  if (updates.description?.en !== undefined)
+    values.descriptionEn = updates.description.en;
+  if (updates.description?.ar !== undefined)
+    values.descriptionAr = updates.description.ar;
+  if (updates.status !== undefined) values.status = updates.status;
+  if (updates.assignedTo !== undefined)
+    values.assignedTo = JSON.stringify(updates.assignedTo);
+  if (updates.dueDate !== undefined) values.dueDate = updates.dueDate;
+  if (updates.priority !== undefined) values.priority = updates.priority;
+  if (updates.tags !== undefined) values.tags = JSON.stringify(updates.tags);
+  if (updates.order !== undefined) values.order = updates.order;
+  if (updates.attachments !== undefined)
+    values.attachments = JSON.stringify(updates.attachments);
+  if (updates.completedAt !== undefined)
+    values.completedAt = updates.completedAt;
+  if (updates.assigneePrices !== undefined) {
+    values.assigneePrices = JSON.stringify(updates.assigneePrices);
+  }
+  values.updatedAt = new Date().toISOString();
 
-  if (index === -1) return null;
+  db.update(schema.tasks).set(values).where(eq(schema.tasks.id, id)).run();
 
-  tasks[index] = {
-    ...tasks[index],
-    ...updates,
-    updatedAt: new Date().toISOString(),
-  };
-  await writeJSON("tasksDatabase.json", tasks);
-
-  return tasks[index];
+  return getTaskById(id);
 }
 
 export async function deleteTask(id: string): Promise<boolean> {
-  const tasks = await getTasks();
-  const filtered = tasks.filter((task) => task.id !== id);
-
-  if (filtered.length === tasks.length) return false;
-
-  await writeJSON("tasksDatabase.json", filtered);
-  return true;
+  const db = await getActiveDb();
+  const res = db.delete(schema.tasks).where(eq(schema.tasks.id, id)).run();
+  return res.changes > 0;
 }
 
 export async function reorderSections(
   updates: { id: string; order: number }[],
 ): Promise<void> {
-  const sections = await getSections();
-  let changed = false;
-
-  updates.forEach((update) => {
-    const section = sections.find((s) => s.id === update.id);
-    if (section) {
-      section.order = update.order;
-      changed = true;
+  const db = await getActiveDb();
+  db.transaction((tx) => {
+    for (const update of updates) {
+      tx.update(schema.sections)
+        .set({ order: update.order })
+        .where(eq(schema.sections.id, update.id))
+        .run();
     }
   });
-
-  if (changed) {
-    await writeJSON("sectionsDatabase.json", sections);
-  }
 }
 
 export async function reorderTasks(
   updates: { id: string; order: number; sectionId?: string }[],
 ): Promise<void> {
-  const tasks = await getTasks();
-  let changed = false;
-
-  updates.forEach((update) => {
-    const task = tasks.find((t) => t.id === update.id);
-    if (task) {
-      task.order = update.order;
+  const db = await getActiveDb();
+  db.transaction((tx) => {
+    for (const update of updates) {
+      const setValues: { order: number; sectionId?: string } = {
+        order: update.order,
+      };
       if (update.sectionId) {
-        task.sectionId = update.sectionId;
+        setValues.sectionId = update.sectionId;
       }
-      changed = true;
+      tx.update(schema.tasks)
+        .set(setValues)
+        .where(eq(schema.tasks.id, update.id))
+        .run();
     }
   });
-
-  if (changed) {
-    await writeJSON("tasksDatabase.json", tasks);
-  }
 }
 
 export async function reorderUsers(
   updates: { id: string; order: number; role?: string }[],
 ): Promise<void> {
-  const users = await getUsers();
-  let changed = false;
-
-  updates.forEach((update) => {
-    const user = users.find((u) => u.id === update.id);
-    if (user) {
-      user.order = update.order;
+  const db = await getActiveDb();
+  db.transaction((tx) => {
+    for (const update of updates) {
+      const setValues: { order: number; role?: UserRole } = {
+        order: update.order,
+      };
       if (update.role) {
-        user.role = update.role as UserRole;
+        setValues.role = update.role as UserRole;
       }
-      changed = true;
+      tx.update(schema.users)
+        .set(setValues)
+        .where(eq(schema.users.id, update.id))
+        .run();
     }
   });
-
-  if (changed) {
-    await writeJSON("usersDatabase.json", users);
-  }
 }
