@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v4.2.2] - 2026-10-20
+
+### Changed
+
+- **Standardized Boxed File Credit Headers**: Added uniform 4-line boxed comment header followed by a single blank line across all configurations (`drizzle.config.ts`, `eslint.config.mjs`, `next.config.ts`, `postcss.config.mjs`, `tailwind.config.ts`, `vitest.config.mts`, `.dockerignore`, `nginx/taskboard-proxy.conf`), and TypeScript source files (`src/app/api/...`, `src/db/...`, `src/proxy.ts`, `src/types/index.ts`) matching the Orbiscreen project specification.
+- **Strict Comment Policy Compliance**: Maintained zero inline comments across all source and test files, verified through automated pre-commit policy enforcement (`scripts/check-comments.sh`).
+
+- Version bumped to 4.2.2 across package.json, documentation badges, and the changelog.
+
 ## [v4.2.1] - 2026-10-20
 
 ### Fixed
@@ -292,6 +301,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[v4.2.2]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.2.2
 [v4.2.1]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.2.1
 [v4.2.0]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.2.0
 [v4.1.2]: https://github.com/red-shadows-rs/taskboard/releases/tag/v4.1.2
