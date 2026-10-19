@@ -11,7 +11,7 @@ import { LanguageProvider } from "@/contexts/languageContext";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "TaskBoard - Task Management System",
+  title: "Taskboard - Task Management System",
   description: "Professional task management system for teams and managers",
   icons: {
     icon: "/favicon.svg",

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Database Migration Runner
+// Taskboard - Database Migration Runner
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

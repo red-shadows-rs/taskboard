@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Database Manager
+// Taskboard - Database Manager
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

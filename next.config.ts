@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Next.js Configuration
+// Taskboard - Next.js Configuration
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

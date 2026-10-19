@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Database Shared Operations
+// Taskboard - Database Shared Operations
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

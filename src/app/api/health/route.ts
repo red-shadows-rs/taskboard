@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Health Check Route Handler
+// Taskboard - Health Check Route Handler
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

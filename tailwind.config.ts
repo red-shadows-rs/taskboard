@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Tailwind CSS Configuration
+// Taskboard - Tailwind CSS Configuration
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

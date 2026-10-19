@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Demo Banner Layout Component
+// Taskboard - Demo Banner Layout Component
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

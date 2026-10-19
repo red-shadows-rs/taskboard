@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ─────────────────────────────────────────────
-# TaskBoard - Version Consistency Check
+# Taskboard - Version Consistency Check
 # https://github.com/red-shadows-rs/taskboard
 # ─────────────────────────────────────────────
 

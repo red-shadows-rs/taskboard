@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Drizzle Configuration
+// Taskboard - Drizzle Configuration
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

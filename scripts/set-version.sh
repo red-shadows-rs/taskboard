@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ─────────────────────────────────────────────
-# TaskBoard - Version Synchronization
+# Taskboard - Version Synchronization
 # https://github.com/red-shadows-rs/taskboard
 # ─────────────────────────────────────────────
 

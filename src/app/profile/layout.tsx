@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Profile Layout
+// Taskboard - Profile Layout
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

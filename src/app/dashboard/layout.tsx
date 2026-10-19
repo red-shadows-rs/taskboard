@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Dashboard Layout
+// Taskboard - Dashboard Layout
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

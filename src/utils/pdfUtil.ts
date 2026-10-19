@@ -513,7 +513,7 @@ const ensureSpace = (
   }
   return y;
 };
-const drawTaskBoardLogo = (doc: jsPDF, x: number, y: number, size: number) => {
+const drawTaskboardLogo = (doc: jsPDF, x: number, y: number, size: number) => {
   const s = size / 24;
   doc.setDrawColor(255, 255, 255);
   doc.setLineWidth(2 * s);
@@ -559,7 +559,7 @@ const drawHeader = (
   const logoSize = 25;
   const logoX = isRTL ? pw - MARGIN - logoSize + 4 : MARGIN - 4;
   const logoY = 6;
-  drawTaskBoardLogo(doc, logoX, logoY, logoSize);
+  drawTaskboardLogo(doc, logoX, logoY, logoSize);
 
   doc.setTextColor(...C.PRIMARY_FG);
   setFont(doc, "bold");
@@ -600,7 +600,7 @@ const drawFooter = (
 
   doc.text(String(pageNum), pw / 2, y, { align: "center" });
 
-  const brand = "TaskBoard";
+  const brand = "Taskboard";
   doc.text(brand, isRTL ? pw - MARGIN : MARGIN, y, {
     align: isRTL ? "right" : "left",
   });
@@ -989,7 +989,7 @@ export const exportProjectPDF = async (
   }
 
   doc.save(
-    `TaskBoard_Project_${project.title.en.replace(/\s+/g, "_")}_${language.toUpperCase()}.pdf`,
+    `Taskboard_Project_${project.title.en.replace(/\s+/g, "_")}_${language.toUpperCase()}.pdf`,
   );
 };
 
@@ -1114,7 +1114,7 @@ export const exportSectionPDF = async (
   }
 
   doc.save(
-    `TaskBoard_Section_${section.title.en.replace(/\s+/g, "_")}_${language.toUpperCase()}.pdf`,
+    `Taskboard_Section_${section.title.en.replace(/\s+/g, "_")}_${language.toUpperCase()}.pdf`,
   );
 };
 
@@ -1339,7 +1339,7 @@ export const exportTaskPDF = async (
   }
 
   doc.save(
-    `TaskBoard_Task_${task.title.en.replace(/\s+/g, "_")}_${language.toUpperCase()}.pdf`,
+    `Taskboard_Task_${task.title.en.replace(/\s+/g, "_")}_${language.toUpperCase()}.pdf`,
   );
 };
 
@@ -1621,6 +1621,6 @@ export const exportAnalyticsPDF = async (
     }[dateRange] || dateRange;
 
   doc.save(
-    `TaskBoard_Analytics_Report_${rangeLabel}_${language.toUpperCase()}.pdf`,
+    `Taskboard_Analytics_Report_${rangeLabel}_${language.toUpperCase()}.pdf`,
   );
 };

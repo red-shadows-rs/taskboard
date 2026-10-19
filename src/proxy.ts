@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Security Proxy Middleware
+// Taskboard - Security Proxy Middleware
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

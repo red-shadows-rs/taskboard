@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Demo Exit Route Handler
+// Taskboard - Demo Exit Route Handler
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

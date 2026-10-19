@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ─────────────────────────────────────────────
-# TaskBoard - Code Comment Policy Guard
+# Taskboard - Code Comment Policy Guard
 # https://github.com/red-shadows-rs/taskboard
 # ─────────────────────────────────────────────
 

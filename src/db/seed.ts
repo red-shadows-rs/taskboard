@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Database Seeder
+// Taskboard - Database Seeder
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

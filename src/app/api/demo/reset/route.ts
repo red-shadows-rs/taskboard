@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Demo Reset Route Handler
+// Taskboard - Demo Reset Route Handler
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

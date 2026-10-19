@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────
-# TaskBoard - Multi-Stage Production Container Specification
+# Taskboard - Multi-Stage Production Container Specification
 # https://github.com/red-shadows-rs/taskboard
 # ─────────────────────────────────────────────
 

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Domain Interfaces and Types
+// Taskboard - Domain Interfaces and Types
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

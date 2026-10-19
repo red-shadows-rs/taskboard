@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Database Schema
+// Taskboard - Database Schema
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

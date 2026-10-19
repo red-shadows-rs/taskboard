@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - PostCSS Configuration
+// Taskboard - PostCSS Configuration
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

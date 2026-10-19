@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - Demo Sandbox Seed Dataset
+// Taskboard - Demo Sandbox Seed Dataset
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// TaskBoard - ESLint Configuration
+// Taskboard - ESLint Configuration
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 
