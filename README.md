@@ -1,316 +1,303 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="public/favicon.svg">
-    <img alt="TaskBoard" src="public/favicon.svg" width="96" height="96">
-  </picture>
-</p>
+<div align="center">
 
-<h1 align="center">TaskBoard</h1>
+<a href="https://github.com/red-shadows-rs/taskboard">
+  <img src="public/favicon.svg" alt="TaskBoard Logo" width="120" />
+</a>
 
-<p align="center">
-  <strong>Professional Task Management System for Teams &amp; Managers</strong>
-</p>
+# TaskBoard
 
-<p align="center">
-  <a href="https://github.com/red-shadows-rs/taskboard/blob/main/README_AR.md">العربية</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-features">Features</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-tech-stack">Tech Stack</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-getting-started">Getting Started</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-project-structure">Structure</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-contributing">Contributing</a>
-  &nbsp;&bull;&nbsp;
-  <a href="#-license">License</a>
-</p>
+Self-hosted Kanban project management platform with SQLite WAL engine, isolated live demo sandbox, task pricing calculation, and bidirectional Arabic/English typography.
 
-<br/>
+[![Version](https://img.shields.io/badge/version-4.2.0-2563eb?style=for-the-badge)](CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-MIT-10b981?style=for-the-badge)](LICENSE)
+![TypeScript](https://img.shields.io/badge/typescript-5%2B-3178c6?style=for-the-badge&logo=typescript)
+![Next.js](https://img.shields.io/badge/next.js-16-000000?style=for-the-badge&logo=next.js)
+![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Self--Hosted-9333ea?style=for-the-badge&logo=linux)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/version-4.1.2-2563eb?style=for-the-badge" alt="Version 4.1.2">
-  <img src="https://img.shields.io/badge/license-MIT-10b981?style=for-the-badge" alt="MIT License">
-  <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16">
-  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18">
-  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 5">
-  <img src="https://img.shields.io/badge/Tailwind-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 3">
-</p>
-
-<br/>
+</div>
 
 ---
 
-## Why TaskBoard?
+## Language
 
-Managing projects across bilingual teams is challenging. TaskBoard bridges the gap with a Kanban-style interface that supports both English and Arabic natively — from RTL layout to bilingual task descriptions. Built on Next.js 16 with a focus on performance, security, and developer experience.
-
-- **Bilingual by Design** — Every feature works in English and Arabic, not as an afterthought
-- **Self-Contained** — JSON file-based database means zero external dependencies; deploy anywhere
-- **Production-Ready** — Rate limiting, security headers, XSS protection, and session-based auth out of the box
-- **Export Everything** — Generate PDF reports for projects, tasks, and analytics with bilingual font support
+<a href="README.md">🇬🇧 English</a> · <a href="README_AR.md">🇸🇦 العربية</a>
 
 ---
 
-## ✨ Features
+## Table of Contents
 
-<table>
-  <tr>
-    <td width="50%">
-      <h3>🎯 Core</h3>
-      <ul>
-        <li><strong>Kanban Board</strong> — Drag-and-drop tasks across customizable sections</li>
-        <li><strong>Project Management</strong> — Create, edit, and track projects with statuses</li>
-        <li><strong>Task Management</strong> — Rich text descriptions, attachments, tags, priorities</li>
-        <li><strong>Team Management</strong> — Role-based access: leader, member, client</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <h3>📊 Analytics & Reporting</h3>
-      <ul>
-        <li><strong>Analytics Dashboard</strong> — Interactive charts via Recharts</li>
-        <li><strong>PDF Export</strong> — Projects, sections, tasks, and analytics reports</li>
-        <li><strong>Progress Tracking</strong> — Visual indicators for project and task status</li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3>🎨 User Experience</h3>
-      <ul>
-        <li><strong>Bilingual (EN/AR)</strong> — Full RTL support with Cairo/Inter fonts</li>
-        <li><strong>Local Translation</strong> — One input per field; the other language is filled by an offline CPU model</li>
-        <li><strong>Dark/Light Theme</strong> — System-aware HSL-based theming</li>
-        <li><strong>Rich Text Editor</strong> — Tiptap with text alignment and underline</li>
-        <li><strong>PWA Ready</strong> — Installable with offline manifest</li>
-        <li><strong>Responsive</strong> — Desktop, tablet, and mobile optimized</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <h3>🔒 Security</h3>
-      <ul>
-        <li><strong>Session Auth</strong> — bcrypt + HMAC-SHA256 httpOnly cookies</li>
-        <li><strong>Rate Limiting</strong> — Per-IP on auth endpoints</li>
-        <li><strong>Input Validation</strong> — Zod schemas on all API routes</li>
-        <li><strong>XSS Protection</strong> — DOMPurify sanitization</li>
-        <li><strong>Security Headers</strong> — CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+- [Overview](#overview)
+- [Live Demo](#live-demo)
+- [Comparison](#comparison)
+- [Key Features](#features)
+- [System Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Requirements](#requirements)
+- [Quick Start](#quick-start)
+- [Available Commands](#commands)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## 🚀 Tech Stack
+<a id="live-demo"></a>
 
-| Category          | Technology                                                                                                                           | Purpose                         |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- |
-| **Framework**     | [Next.js 16](https://nextjs.org/)                                                                                                    | App Router + Turbopack          |
-| **UI**            | [React 18](https://react.dev/) + [Radix UI](https://www.radix-ui.com/)                                                               | Component primitives            |
-| **Styling**       | [Tailwind CSS 3](https://tailwindcss.com/)                                                                                           | Utility-first CSS               |
-| **Language**      | [TypeScript 5](https://www.typescriptlang.org/)                                                                                      | Type safety                     |
-| **Drag & Drop**   | [dnd-kit](https://dndkit.com/)                                                                                                       | Kanban reordering               |
-| **Rich Text**     | [Tiptap](https://tiptap.dev/)                                                                                                        | Task descriptions               |
-| **Forms**         | [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)                                                            | Validation                      |
-| **State**         | [Zustand](https://zustand.docs.pmnd.rs/)                                                                                             | Global UI state                 |
-| **Charts**        | [Recharts](https://recharts.org/)                                                                                                    | Analytics                       |
-| **PDF**           | [jsPDF](https://github.com/parallax/jsPDF) + [jspdf-autotable](https://github.com/simonbengtsson/jsPDF-AutoTable)                    | Export                          |
-| **Auth**          | [bcryptjs](https://github.com/dcodeIO/bcrypt.js) + HMAC-SHA256                                                                       | Sessions                        |
-| **Animations**    | [Framer Motion](https://www.framer.com/motion/)                                                                                      | Transitions                     |
-| **Notifications** | [react-hot-toast](https://react-hot-toast.com/)                                                                                      | Toast alerts                    |
-| **Dates**         | [date-fns](https://date-fns.org/) + [react-day-picker](https://react-day-picker.js.org/)                                             | Date handling                   |
-| **Icons**         | [Lucide React](https://lucide.dev/) + [Font Awesome 6](https://fontawesome.com/)                                                     | Iconography                     |
-| **Translation**   | [NLLB-200](https://huggingface.co/Xenova/nllb-200-distilled-600M) via [transformers.js](https://huggingface.co/docs/transformers.js) | Local ar↔en machine translation |
-| **Linting**       | [ESLint 9](https://eslint.org/) (flat config)                                                                                        | Code quality                    |
-| **Formatting**    | [Prettier](https://prettier.io/)                                                                                                     | Code style                      |
-| **Testing**       | [Vitest](https://vitest.dev/)                                                                                                        | Unit tests                      |
+## Live Demo
+
+Experience TaskBoard in a fully functional, interactive sandbox pre-populated with bilingual projects, tasks, Kanban boards, and team members:
+
+<div align="center">
+
+[![Try Live Demo](https://img.shields.io/badge/Live_Demo-Instant_Access-059669?style=for-the-badge&logo=rocket)](https://taskboard.red-shadows-rs.com/demo)
+
+**[Launch Live Demo](https://taskboard.red-shadows-rs.com/demo)** (One-click instant login - no registration required)
+
+</div>
 
 ---
 
-## 📦 Getting Started
+<a id="overview"></a>
 
-### Prerequisites
+## Overview
 
-- **Node.js** >= 20
-- **npm** >= 10
+**TaskBoard** is a self-hosted, all-in-one task and project management platform designed for engineering teams, software agencies, and enterprises. It replaces fragmented proprietary cloud boards (Trello, Jira, Asana) with a unified, air-gapped system running entirely on your own infrastructure with **zero external SaaS dependencies**.
 
-### Quick Start
+Powered by Next.js 16 App Router, SQLite 3 (via Drizzle ORM) in WAL mode, and native bidirectional Cairo/Inter typography, TaskBoard delivers lightning-fast task workflows, member hourly rate tracking, project analytics, and PDF reporting out of the box.
+
+---
+
+<a id="comparison"></a>
+
+## Comparison
+
+| Capability                      |     Trello     |     Jira      |     Asana     |    Monday    |        **TaskBoard**        |
+| :------------------------------ | :------------: | :-----------: | :-----------: | :----------: | :-------------------------: |
+| Self-Hosted & Air-Gapped        |    ❌ SaaS     | ❌ Cloud only |    ❌ SaaS    |   ❌ SaaS    |      ✅ Docker / Linux      |
+| Arabic RTL Native Typography    |    ⚠️ Basic    |   ⚠️ Basic    |  ❌ LTR only  | ❌ LTR only  |  ✅ Cairo font & Full RTL   |
+| Task Assignee Rates & Budgets   |       ❌       |   ⚠️ Add-on   |   ⚠️ Add-on   |  ⚠️ Add-on   |     ✅ Native built-in      |
+| Side-by-Side Bilingual Entities |       ❌       |      ❌       |      ❌       |      ❌      |     ✅ Arabic / English     |
+| High-Speed SQLite Storage       | ❌ Proprietary |   ❌ Cloud    |   ❌ Cloud    |   ❌ Cloud   |   ✅ SQLite 3 (WAL mode)    |
+| Isolated Demo Sandbox Mode      |       ❌       |      ❌       |      ❌       |      ❌      |    ✅ Instant one-click     |
+| External Subscriptions Required |  ❌ \$5-17/mo  | ❌ \$8-15/mo  | ❌ \$11-25/mo | ❌ \$9-19/mo | ✅ Free & Open Source (MIT) |
+
+---
+
+<a id="features"></a>
+
+## Key Features
+
+- **Interactive Kanban Board:** Drag-and-drop tasks across customizable project stages with smooth collision detection and optimistic UI updates.
+- **Bilingual by Design:** Native support for Arabic and English throughout the entire application, featuring dedicated side-by-side inputs for titles and rich text descriptions.
+- **Isolated Live Demo Sandbox:** Instant one-click evaluation at `/demo` using an isolated SQLite database (`taskboard-demo.sqlite`) that never alters production files.
+- **Task Assignee Pricing & Budgeting:** Associate custom hourly/fixed monetary values with task assignees and monitor rolling project totals.
+- **Enterprise Role-Based Access Control:** Strict permission boundaries for `leader`, `member`, and `client` roles, secured by bcrypt and HMAC-SHA256 session signatures.
+- **Reporting & PDF Export:** Export comprehensive bilingual project, section, task, and analytics summaries with embedded Cairo typography.
+- **Private Attachment Storage:** Uploaded task attachments are stored securely outside the web root and served exclusively to authenticated users.
+
+---
+
+<a id="architecture"></a>
+
+## System Architecture
+
+TaskBoard operates as an integrated containerized Next.js application communicating with an embedded SQLite database engine:
+
+```mermaid
+flowchart TD
+    subgraph Client ["Client Devices"]
+        DESK["Web Browser (Admin & Team)"]
+        MOB["Mobile Browser (Touch Interface)"]
+        DEMO["Demo Sandbox User (/demo)"]
+    end
+
+    subgraph AppServer ["Next.js Application Container (taskboard-app)"]
+        ROUTER["App Router & Route Handlers"]
+        AUTH["Bcrypt + HMAC-SHA256 Sessions"]
+        PROXY["Proxy & Security Headers Guard"]
+        RATE["Rate Limiter (Token Bucket)"]
+        PDF["jsPDF Cairo Typography Shaper"]
+        DB_CONTEXT["AsyncLocalStorage Database Context"]
+    end
+
+    subgraph Storage ["Persistent Volume (/app/data)"]
+        DB[("SQLite 3 Database (WAL Mode)")]
+        DEMO_DB[("Demo Database (taskboard-demo.sqlite)")]
+        FILES["Storage Directory (/app/uploads)"]
+    end
+
+    DESK --> ROUTER
+    MOB --> ROUTER
+    DEMO --> ROUTER
+
+    ROUTER --> PROXY
+    PROXY --> RATE
+    RATE --> AUTH
+    AUTH --> DB_CONTEXT
+
+    DB_CONTEXT -->|Standard Request| DB
+    DB_CONTEXT -->|taskboard_demo=1| DEMO_DB
+    ROUTER --> FILES
+```
+
+---
+
+<a id="tech-stack"></a>
+
+## Tech Stack
+
+| Layer             | Technology                                                       |
+| :---------------- | :--------------------------------------------------------------- |
+| **Framework**     | Next.js 16 (App Router / Turbopack), React 18, TypeScript strict |
+| **Database**      | SQLite 3 via `better-sqlite3` + Drizzle ORM                      |
+| **Styling**       | Tailwind CSS v3, Radix UI primitives, logical RTL utilities      |
+| **Typography**    | Cairo (Arabic) & Inter (English) bundled TrueType fonts          |
+| **Kanban Core**   | `@dnd-kit/core` & `@dnd-kit/sortable`                            |
+| **PDF Rendering** | jsPDF with embedded vector shaping and autotable layouts         |
+| **Cryptography**  | Node.js `crypto` (HMAC-SHA256) + `bcryptjs`                      |
+| **Test Suite**    | Vitest (unit & integration tests)                                |
+
+---
+
+<a id="project-structure"></a>
+
+## Project Structure
+
+```
+taskboard/
+├── data/                       # Persistent SQLite databases (WAL mode)
+├── docs/                       # Architecture, Deployment, API, and Troubleshooting specifications
+├── drizzle/                    # Drizzle ORM SQL migration snapshots
+├── nginx/                      # Production Nginx reverse proxy configuration
+├── public/                     # Static assets, icons, and locale JSON files
+├── scripts/                    # Shell guards (check-comments, check-versions, set-version)
+├── src/
+│   ├── app/                    # App Router pages, layouts, and API routes
+│   ├── components/             # Reusable UI components (Kanban, forms, layouts)
+│   ├── contexts/               # Language and store context providers
+│   ├── db/                     # Drizzle ORM schema, connection manager, and demo seed
+│   ├── types/                  # TypeScript interface declarations
+│   └── utils/                  # PDF export, pricing math, and sanitization utilities
+├── docker-compose.yml          # Production container orchestration
+├── Dockerfile                  # Multi-stage production container build
+├── package.json                # Project dependencies and script runner
+└── tsconfig.json               # Strict TypeScript configuration
+```
+
+---
+
+<a id="requirements"></a>
+
+## Requirements
+
+- **Runtime:** Node.js >= 20.9 (Node 22 LTS recommended)
+- **Package Manager:** npm >= 10
+- **Database:** SQLite 3 (handled transparently via `better-sqlite3`)
+- **Containerization (Optional):** Docker Engine >= 24.0, Docker Compose v2
+
+---
+
+<a id="quick-start"></a>
+
+## Quick Start
+
+### 1. Clone & Install
 
 ```bash
 git clone https://github.com/red-shadows-rs/taskboard.git
 cd taskboard
 npm install
-npm run models:download
+```
+
+### 2. Environment Configuration
+
+```bash
 cp .env.example .env.local
+# Generate SESSION_SECRET:
+openssl rand -base64 48
+```
+
+Edit `.env.local` and set `SESSION_SECRET=<generated_key>`.
+
+### 3. Initialize Database & Seed
+
+```bash
+# Run database migrations and seed default data
+npm run db:migrate
+npm run db:seed
+```
+
+### 4. Start Development Server
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Environment Variables
-
-| Variable                 | Required | Default       | Description                            |
-| ------------------------ | -------- | ------------- | -------------------------------------- |
-| `NODE_ENV`               | Yes      | `development` | Environment mode                       |
-| `SESSION_SECRET`         | Yes      | —             | HMAC-SHA256 signing key (min 32 chars) |
-| `TRUST_PROXY`            | No       | `false`       | Trust `X-Forwarded-For` from a proxy   |
-| `TRANSLATION_ENABLED`    | No       | `true`        | Enable automatic translation           |
-| `TRANSLATION_MODELS_DIR` | No       | `./models`    | Directory holding the ONNX model       |
-
-### Available Scripts
-
-| Command                   | Description                             |
-| ------------------------- | --------------------------------------- |
-| `npm run dev`             | Start dev server with Turbopack         |
-| `npm run build`           | Production build                        |
-| `npm start`               | Start production server                 |
-| `npm run models:download` | Download the local translation model    |
-| `npm run lint`            | Run ESLint                              |
-| `npm run lint:fix`        | Auto-fix lint issues                    |
-| `npm run format`          | Format with Prettier                    |
-| `npm run format:check`    | Check formatting                        |
-| `npm run type-check`      | TypeScript type checking                |
-| `npm test`                | Run the Vitest test suite               |
-| `npm run validate`        | Full validation (format + lint + types) |
-| `npm run check:comments`  | Enforce the no-comments policy          |
-| `npm run check:versions`  | Verify version consistency              |
+Open [http://localhost:3000](http://localhost:3000) and sign in using the bootstrap credentials or click **Launch Live Demo**.
 
 ---
 
-## 📁 Project Structure
+<a id="commands"></a>
 
-```
-TaskBoard/
-├── databases/                  # JSON file-based database
-│   ├── projectsDatabase.json
-│   ├── sectionsDatabase.json
-│   ├── tasksDatabase.json
-│   └── usersDatabase.json
-├── public/
-│   ├── css/                    # Font Awesome
-│   ├── fonts/                  # IBM Plex Sans Arabic (PDF)
-│   ├── images/                 # Static images
-│   ├── locales/                # i18n (en/ar)
-│   └── manifest.json           # PWA manifest
-├── uploads/                    # Task attachments (git-ignored, served via /images)
-├── src/
-│   ├── app/
-│   │   ├── api/                # REST API routes
-│   │   │   ├── auth/           # Login, logout, session
-│   │   │   ├── projects/       # Project CRUD
-│   │   │   ├── sections/       # Section CRUD + reorder
-│   │   │   ├── tasks/          # Task CRUD + reorder + images
-│   │   │   ├── users/          # User CRUD + reorder
-│   │   │   ├── translate/      # Local translation
-│   │   │   └── shared/         # Database, access, rate limit, validators, storage
-│   │   ├── dashboard/          # Tasks, projects, analytics, team
-│   │   ├── login/              # Authentication page
-│   │   └── profile/            # User profile
-│   ├── components/
-│   │   ├── common/             # Shared logic
-│   │   ├── layouts/            # Navbar, footer
-│   │   ├── pages/              # Page-level components
-│   │   └── ui/                 # UI primitives (shadcn/ui-style)
-│   ├── contexts/               # Language + Zustand store
-│   ├── lib/                    # Local translation runtime
-│   ├── types/                  # TypeScript interfaces
-│   ├── utils/                  # PDF export, pricing, translation
-│   └── proxy.ts                # Same-origin guard for API requests
-├── docs/                       # Architecture and translation guides
-├── scripts/                    # Model download, version & comment guards
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── CODE_OF_CONDUCT.md
-├── SECURITY.md
-├── LICENSE
-├── README.md
-├── README_AR.md
-├── next.config.ts
-├── tailwind.config.ts
-├── tsconfig.json
-├── translation.config.json
-├── vitest.config.mts
-└── package.json
-```
+## Available Commands
+
+| Command                  | Description                                    |
+| :----------------------- | :--------------------------------------------- |
+| `npm run dev`            | Start development server with Turbopack        |
+| `npm run build`          | Compile Next.js production standalone build    |
+| `npm start`              | Start standalone production server             |
+| `npm run type-check`     | Run TypeScript compiler strict validation      |
+| `npm run lint`           | Run ESLint static code analysis                |
+| `npm run check:comments` | Enforce code comment policy guard              |
+| `npm run check:versions` | Validate version consistency across files      |
+| `npm test`               | Run Vitest unit and integration test suite     |
+| `npm run db:generate`    | Generate SQL migrations from schema            |
+| `npm run db:migrate`     | Execute database migrations and initialization |
+| `npm run db:seed`        | Seed initial admin and demo datasets           |
 
 ---
 
-## 🗺️ Roadmap
+<a id="documentation"></a>
 
-- [ ] Real database integration (PostgreSQL / SQLite)
-- [ ] Email notifications for task assignments
-- [ ] OAuth2 / social login support
-- [ ] WebSocket real-time updates
-- [ ] Docker deployment configuration
-- [x] Unit tests (Vitest)
+## Documentation
 
----
-
-## 🤝 Contributing
-
-We welcome contributions. Please read our [Contributing Guide](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md) before submitting a pull request.
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+| Document                                      | Description                                                     |
+| --------------------------------------------- | --------------------------------------------------------------- |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md)       | System topology, database design, and Kanban state machine      |
+| [DEPLOYMENT.md](docs/DEPLOYMENT.md)           | Production Docker Compose, Nginx SSL reverse proxy, and backups |
+| [API_SPEC.md](docs/API_SPEC.md)               | REST API endpoints, payload schemas, and health check routes    |
+| [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Common diagnostic procedures and operational fixes              |
 
 ---
 
-## 🔒 Security
+<a id="contributing"></a>
 
-To report a security vulnerability, please follow our [Security Policy](./SECURITY.md). Do not open a public issue.
+## Contributing
 
-### Operational notes
+1. Fork the repository and create a branch (`feature/`, `fix/`, `docs/`, `chore/`).
+2. Ensure all verification checks pass: `npm run validate` and `npm run check:comments`.
+3. Add a `CHANGELOG.md` entry.
+4. Commit as `taskboard | <type>: <description>` and open a pull request against `main`.
 
-- **Rate limiting is in-memory and per-process.** Counters live in a `Map` inside the running
-  server, so they reset on restart and are not shared across instances. This is intended for the
-  default single-instance, self-hosted deployment. If you run multiple replicas behind a load
-  balancer, replace the limiter in `src/app/api/shared/rateLimitShared.ts` with a shared store
-  (for example Redis).
-- **Reverse proxy headers.** Client IP detection only trusts `X-Forwarded-For` / `X-Real-IP` when
-  `TRUST_PROXY=true`. Set it only when the app is genuinely behind a trusted proxy, otherwise a
-  direct client could spoof those headers to evade per-IP limits.
-- **Uploads** are stored under `uploads/` (git-ignored, outside `public/`) and served only to
-  authenticated users through the `/images/*` route.
+Read the [Contributing Guidelines](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Report problems through [GitHub Issues](https://github.com/red-shadows-rs/taskboard/issues).
 
 ---
 
-## 📝 Changelog
+<a id="license"></a>
 
-See [CHANGELOG.md](./CHANGELOG.md) for a detailed version history. This project follows [Semantic Versioning](https://semver.org/).
+## License
 
-| Version   | Date       | Highlights                                                                          |
-| --------- | ---------- | ----------------------------------------------------------------------------------- |
-| **4.1.2** | 2026-10-09 | Security audit fixes, CSP, private attachments, automated tests, dependency updates |
-| **4.1.0** | 2026-10-09 | Single language-aware input, fully local NLLB-200 translation, security hardening   |
-| **4.0.6** | 2026-05-15 | Updated author username, set GitHub repo topics                                     |
-| **4.0.5** | 2026-05-14 | Fixed drag-and-drop on desktop, fixed metadata icons, removed ESLint comments       |
-| 4.0.4     | 2026-05-14 | Removed ESLint disable comments, removed console logs, added missing tags           |
-| 4.0.3     | 2026-05-14 | Fixed repo links, updated branding, version bump                                    |
-| 4.0.2     | 2026-05-14 | Restored original icon, added .env.example                                          |
-| 4.0.1     | 2026-05-14 | Documentation overhaul, Arabic README, improved icons, data cleanup                 |
-| 4.0.0     | 2026-05-14 | Analytics, PDF export, PWA, bilingual, dark/light theme, drag & drop                |
-| 3.0.0     | 2026-04-01 | Project/section management, task CRUD, user roles, session auth                     |
-| 2.0.0     | 2026-03-01 | Kanban board UI, task statuses/priorities/tags, dashboard layout                    |
-| 1.0.0     | 2026-02-01 | Initial setup: Next.js App Router, login page, Tailwind CSS                         |
+Distributed under the [MIT License](LICENSE).
 
 ---
 
-## 📄 License
+<div align="center">
 
-This project is licensed under the [MIT License](./LICENSE).
+Built by <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> (<a href="https://github.com/shadow-x78">shadow-x78</a>) ·
+[Changelog](CHANGELOG.md) ·
+[Security](SECURITY.md)
 
----
+<sub>&copy; 2026 TaskBoard - RED SHADOWS | RS (shadow-x78)</sub>
 
-## 👤 Author
-
-[**Shadow-x78**](https://github.com/Shadow-x78) — RED SHADOWS | RS
-
----
-
-<p align="center">
-  <sub>Built with ❤️ by <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a></sub>
-</p>
+</div>
