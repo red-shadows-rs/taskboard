@@ -54,7 +54,7 @@ export default function LoginPage() {
         });
 
         if (response.ok) {
-          router.replace("/dashboard/tasks");
+          router.replace("/tasks");
           return;
         }
       } catch (_error) {
@@ -111,7 +111,7 @@ export default function LoginPage() {
       const { user } = await response.json();
       setUser(user);
 
-      const redirectUrl = "/dashboard/tasks";
+      const redirectUrl = "/tasks";
 
       window.location.assign(redirectUrl);
     } catch (error: unknown) {

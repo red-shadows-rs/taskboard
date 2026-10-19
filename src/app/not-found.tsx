@@ -57,7 +57,7 @@ export default function NotFound() {
             <p className="text-muted-foreground">
               {t("common.notFound.description")}
             </p>
-            <Link href="/dashboard/tasks" className="block">
+            <Link href="/tasks" className="block">
               <Button className="w-full">
                 <i className="fas fa-home ltr:mr-2 rtl:ml-2" />
                 {t("common.notFound.returnHome")}

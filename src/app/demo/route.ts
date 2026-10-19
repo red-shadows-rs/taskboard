@@ -38,7 +38,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   const proto = request.headers.get("x-forwarded-proto") ?? "http";
   const baseUrl = host ? `${proto}://${host}` : request.url;
 
-  const targetUrl = new URL("/dashboard/tasks", baseUrl);
+  const targetUrl = new URL("/tasks", baseUrl);
   const response = NextResponse.redirect(targetUrl, 303);
 
   response.cookies.set("taskboard_session", signedSession, {

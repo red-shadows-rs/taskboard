@@ -77,7 +77,7 @@ Used by Docker health checks and external monitoring probes.
 Provides instant, one-click sandbox authentication without credentials.
 
 - **Auth:** None (Public)
-- **Response:** `303 See Other` &rarr; Redirects to `/dashboard/tasks` with `taskboard_session` and `taskboard_demo=1` cookies.
+- **Response:** `303 See Other` &rarr; Redirects to `/tasks` with `taskboard_session` and `taskboard_demo=1` cookies.
 
 <a id="demo-reset"></a>
 

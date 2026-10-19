@@ -317,7 +317,7 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
   };
 
   const handleViewProject = (projectId: string) => {
-    window.location.href = `/dashboard/projects/${projectId}`;
+    window.location.href = `/projects/${projectId}`;
   };
 
   let displayedProjects =

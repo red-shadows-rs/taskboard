@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// Taskboard - Dashboard Layout
+// Taskboard - App Layout
 // https://github.com/red-shadows-rs/taskboard
 // ─────────────────────────────────────────────
 
@@ -10,7 +10,7 @@ import { DemoBanner } from "@/components/layouts/demoBannerLayout";
 import { Footer } from "@/components/layouts/footerLayout";
 import { Navbar } from "@/components/layouts/navbarLayout";
 
-export default async function DashboardLayout({
+export default async function AppLayout({
   children,
 }: {
   children: React.ReactNode;

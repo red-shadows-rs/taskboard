@@ -713,8 +713,8 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
         <div className="mb-6 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
           <div className="flex items-center gap-3">
             <Link
-              href="/dashboard/projects"
-              onClick={(e) => handleNavigation(e, "/dashboard/projects")}
+              href="/projects"
+              onClick={(e) => handleNavigation(e, "/projects")}
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             >
               <ArrowLeft className="h-4 w-4 rtl:rotate-180" />

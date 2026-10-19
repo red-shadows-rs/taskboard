@@ -1,18 +1,18 @@
 import { redirect } from "next/navigation";
 
 import { getSession } from "@/app/api/auth/utilsAuth";
-import { Dashboard } from "@/components/common/dashboardCommon";
+import AnalyticsPage from "@/components/pages/analyticsPage";
 
 export const dynamic = "force-dynamic";
 
-export default async function TasksPage() {
+export default async function Analytics() {
   const user = await getSession();
 
   if (!user) {
     redirect("/login");
   }
   if (user.role === "client") {
-    redirect("/dashboard/projects");
+    redirect("/projects");
   }
-  return <Dashboard user={user} showCharts={false} dataMode="tasks" />;
+  return <AnalyticsPage user={user} />;
 }

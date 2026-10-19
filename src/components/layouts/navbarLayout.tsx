@@ -107,16 +107,16 @@ export function Navbar({ user }: NavbarProps) {
                   {user.role === "leader" ? (
                     <>
                       <Link
-                        href="/dashboard/tasks"
+                        href="/tasks"
                         onClick={(e) => {
-                          handleNavigation(e, "/dashboard/tasks");
+                          handleNavigation(e, "/tasks");
                           setIsSheetOpen(false);
                         }}
                       >
                         <Button
                           variant="ghost"
                           className={`w-full justify-start ${
-                            pathname === "/dashboard/tasks"
+                            pathname === "/tasks"
                               ? "bg-primary/10 text-primary font-semibold"
                               : ""
                           }`}
@@ -126,16 +126,16 @@ export function Navbar({ user }: NavbarProps) {
                         </Button>
                       </Link>
                       <Link
-                        href="/dashboard/projects"
+                        href="/projects"
                         onClick={(e) => {
-                          handleNavigation(e, "/dashboard/projects");
+                          handleNavigation(e, "/projects");
                           setIsSheetOpen(false);
                         }}
                       >
                         <Button
                           variant="ghost"
                           className={`w-full justify-start ${
-                            pathname?.startsWith("/dashboard/projects")
+                            pathname?.startsWith("/projects")
                               ? "bg-primary/10 text-primary font-semibold"
                               : ""
                           }`}
@@ -145,16 +145,16 @@ export function Navbar({ user }: NavbarProps) {
                         </Button>
                       </Link>
                       <Link
-                        href="/dashboard/analytics"
+                        href="/analytics"
                         onClick={(e) => {
-                          handleNavigation(e, "/dashboard/analytics");
+                          handleNavigation(e, "/analytics");
                           setIsSheetOpen(false);
                         }}
                       >
                         <Button
                           variant="ghost"
                           className={`w-full justify-start ${
-                            pathname === "/dashboard/analytics"
+                            pathname === "/analytics"
                               ? "bg-primary/10 text-primary font-semibold"
                               : ""
                           }`}
@@ -164,16 +164,16 @@ export function Navbar({ user }: NavbarProps) {
                         </Button>
                       </Link>
                       <Link
-                        href="/dashboard/team"
+                        href="/team"
                         onClick={(e) => {
-                          handleNavigation(e, "/dashboard/team");
+                          handleNavigation(e, "/team");
                           setIsSheetOpen(false);
                         }}
                       >
                         <Button
                           variant="ghost"
                           className={`w-full justify-start ${
-                            pathname === "/dashboard/team"
+                            pathname === "/team"
                               ? "bg-primary/10 text-primary font-semibold"
                               : ""
                           }`}
@@ -186,16 +186,16 @@ export function Navbar({ user }: NavbarProps) {
                   ) : user.role === "client" ? (
                     <>
                       <Link
-                        href="/dashboard/projects"
+                        href="/projects"
                         onClick={(e) => {
-                          handleNavigation(e, "/dashboard/projects");
+                          handleNavigation(e, "/projects");
                           setIsSheetOpen(false);
                         }}
                       >
                         <Button
                           variant="ghost"
                           className={`w-full justify-start ${
-                            pathname?.startsWith("/dashboard/projects")
+                            pathname?.startsWith("/projects")
                               ? "bg-primary/10 text-primary font-semibold"
                               : ""
                           }`}
@@ -206,16 +206,16 @@ export function Navbar({ user }: NavbarProps) {
                       </Link>
 
                       <Link
-                        href="/dashboard/team"
+                        href="/team"
                         onClick={(e) => {
-                          handleNavigation(e, "/dashboard/team");
+                          handleNavigation(e, "/team");
                           setIsSheetOpen(false);
                         }}
                       >
                         <Button
                           variant="ghost"
                           className={`w-full justify-start ${
-                            pathname === "/dashboard/team"
+                            pathname === "/team"
                               ? "bg-primary/10 text-primary font-semibold"
                               : ""
                           }`}
@@ -228,16 +228,16 @@ export function Navbar({ user }: NavbarProps) {
                   ) : (
                     <>
                       <Link
-                        href="/dashboard/tasks"
+                        href="/tasks"
                         onClick={(e) => {
-                          handleNavigation(e, "/dashboard/tasks");
+                          handleNavigation(e, "/tasks");
                           setIsSheetOpen(false);
                         }}
                       >
                         <Button
                           variant="ghost"
                           className={`w-full justify-start ${
-                            pathname === "/dashboard/tasks"
+                            pathname === "/tasks"
                               ? "bg-primary/10 text-primary font-semibold"
                               : ""
                           }`}
@@ -247,16 +247,16 @@ export function Navbar({ user }: NavbarProps) {
                         </Button>
                       </Link>
                       <Link
-                        href="/dashboard/analytics"
+                        href="/analytics"
                         onClick={(e) => {
-                          handleNavigation(e, "/dashboard/analytics");
+                          handleNavigation(e, "/analytics");
                           setIsSheetOpen(false);
                         }}
                       >
                         <Button
                           variant="ghost"
                           className={`w-full justify-start ${
-                            pathname === "/dashboard/analytics"
+                            pathname === "/analytics"
                               ? "bg-primary/10 text-primary font-semibold"
                               : ""
                           }`}
@@ -266,16 +266,16 @@ export function Navbar({ user }: NavbarProps) {
                         </Button>
                       </Link>
                       <Link
-                        href="/dashboard/team"
+                        href="/team"
                         onClick={(e) => {
-                          handleNavigation(e, "/dashboard/team");
+                          handleNavigation(e, "/team");
                           setIsSheetOpen(false);
                         }}
                       >
                         <Button
                           variant="ghost"
                           className={`w-full justify-start ${
-                            pathname === "/dashboard/team"
+                            pathname === "/team"
                               ? "bg-primary/10 text-primary font-semibold"
                               : ""
                           }`}
@@ -291,9 +291,9 @@ export function Navbar({ user }: NavbarProps) {
             </Sheet>
 
             <Link
-              href="/dashboard/tasks"
+              href="/tasks"
               className="flex items-center gap-2"
-              onClick={(e) => handleNavigation(e, "/dashboard/tasks")}
+              onClick={(e) => handleNavigation(e, "/tasks")}
             >
               <LayoutDashboard className="h-6 w-6 text-primary ltr:mr-2 rtl:ml-2" />
               <span className="font-bold text-xl hidden lg:inline-block">
@@ -305,13 +305,13 @@ export function Navbar({ user }: NavbarProps) {
               {user.role === "leader" ? (
                 <>
                   <Link
-                    href="/dashboard/tasks"
-                    onClick={(e) => handleNavigation(e, "/dashboard/tasks")}
+                    href="/tasks"
+                    onClick={(e) => handleNavigation(e, "/tasks")}
                   >
                     <Button
                       variant="ghost"
                       className={`hover:bg-primary/10 hover:text-primary transition-colors ${
-                        pathname === "/dashboard/tasks"
+                        pathname === "/tasks"
                           ? "bg-primary/10 text-primary font-semibold"
                           : ""
                       }`}
@@ -321,13 +321,13 @@ export function Navbar({ user }: NavbarProps) {
                     </Button>
                   </Link>
                   <Link
-                    href="/dashboard/projects"
-                    onClick={(e) => handleNavigation(e, "/dashboard/projects")}
+                    href="/projects"
+                    onClick={(e) => handleNavigation(e, "/projects")}
                   >
                     <Button
                       variant="ghost"
                       className={`hover:bg-primary/10 hover:text-primary transition-colors ${
-                        pathname?.startsWith("/dashboard/projects")
+                        pathname?.startsWith("/projects")
                           ? "bg-primary/10 text-primary font-semibold"
                           : ""
                       }`}
@@ -337,13 +337,13 @@ export function Navbar({ user }: NavbarProps) {
                     </Button>
                   </Link>
                   <Link
-                    href="/dashboard/analytics"
-                    onClick={(e) => handleNavigation(e, "/dashboard/analytics")}
+                    href="/analytics"
+                    onClick={(e) => handleNavigation(e, "/analytics")}
                   >
                     <Button
                       variant="ghost"
                       className={`hover:bg-primary/10 hover:text-primary transition-colors ${
-                        pathname === "/dashboard/analytics"
+                        pathname === "/analytics"
                           ? "bg-primary/10 text-primary font-semibold"
                           : ""
                       }`}
@@ -353,13 +353,13 @@ export function Navbar({ user }: NavbarProps) {
                     </Button>
                   </Link>
                   <Link
-                    href="/dashboard/team"
-                    onClick={(e) => handleNavigation(e, "/dashboard/team")}
+                    href="/team"
+                    onClick={(e) => handleNavigation(e, "/team")}
                   >
                     <Button
                       variant="ghost"
                       className={`hover:bg-primary/10 hover:text-primary transition-colors ${
-                        pathname === "/dashboard/team"
+                        pathname === "/team"
                           ? "bg-primary/10 text-primary font-semibold"
                           : ""
                       }`}
@@ -372,13 +372,13 @@ export function Navbar({ user }: NavbarProps) {
               ) : user.role === "client" ? (
                 <>
                   <Link
-                    href="/dashboard/projects"
-                    onClick={(e) => handleNavigation(e, "/dashboard/projects")}
+                    href="/projects"
+                    onClick={(e) => handleNavigation(e, "/projects")}
                   >
                     <Button
                       variant="ghost"
                       className={`hover:bg-primary/10 hover:text-primary transition-colors ${
-                        pathname?.startsWith("/dashboard/projects")
+                        pathname?.startsWith("/projects")
                           ? "bg-primary/10 text-primary font-semibold"
                           : ""
                       }`}
@@ -389,13 +389,13 @@ export function Navbar({ user }: NavbarProps) {
                   </Link>
 
                   <Link
-                    href="/dashboard/team"
-                    onClick={(e) => handleNavigation(e, "/dashboard/team")}
+                    href="/team"
+                    onClick={(e) => handleNavigation(e, "/team")}
                   >
                     <Button
                       variant="ghost"
                       className={`hover:bg-primary/10 hover:text-primary transition-colors ${
-                        pathname === "/dashboard/team"
+                        pathname === "/team"
                           ? "bg-primary/10 text-primary font-semibold"
                           : ""
                       }`}
@@ -408,13 +408,13 @@ export function Navbar({ user }: NavbarProps) {
               ) : (
                 <>
                   <Link
-                    href="/dashboard/tasks"
-                    onClick={(e) => handleNavigation(e, "/dashboard/tasks")}
+                    href="/tasks"
+                    onClick={(e) => handleNavigation(e, "/tasks")}
                   >
                     <Button
                       variant="ghost"
                       className={`hover:bg-primary/10 hover:text-primary transition-colors ${
-                        pathname === "/dashboard/tasks"
+                        pathname === "/tasks"
                           ? "bg-primary/10 text-primary font-semibold"
                           : ""
                       }`}
@@ -424,13 +424,13 @@ export function Navbar({ user }: NavbarProps) {
                     </Button>
                   </Link>
                   <Link
-                    href="/dashboard/analytics"
-                    onClick={(e) => handleNavigation(e, "/dashboard/analytics")}
+                    href="/analytics"
+                    onClick={(e) => handleNavigation(e, "/analytics")}
                   >
                     <Button
                       variant="ghost"
                       className={`hover:bg-primary/10 hover:text-primary transition-colors ${
-                        pathname === "/dashboard/analytics"
+                        pathname === "/analytics"
                           ? "bg-primary/10 text-primary font-semibold"
                           : ""
                       }`}
@@ -440,13 +440,13 @@ export function Navbar({ user }: NavbarProps) {
                     </Button>
                   </Link>
                   <Link
-                    href="/dashboard/team"
-                    onClick={(e) => handleNavigation(e, "/dashboard/team")}
+                    href="/team"
+                    onClick={(e) => handleNavigation(e, "/team")}
                   >
                     <Button
                       variant="ghost"
                       className={`hover:bg-primary/10 hover:text-primary transition-colors ${
-                        pathname === "/dashboard/team"
+                        pathname === "/team"
                           ? "bg-primary/10 text-primary font-semibold"
                           : ""
                       }`}

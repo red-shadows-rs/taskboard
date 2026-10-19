@@ -13,7 +13,7 @@ export default async function Projects() {
   }
 
   if (user.role !== "leader" && user.role !== "client") {
-    redirect("/dashboard/tasks");
+    redirect("/tasks");
   }
 
   return <ProjectsPage user={user} />;

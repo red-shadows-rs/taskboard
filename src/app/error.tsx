@@ -71,7 +71,7 @@ export default function Error({
               >
                 {t("common.errorPage.tryAgain")}
               </Button>
-              <Link href="/dashboard/tasks" className="block">
+              <Link href="/tasks" className="block">
                 <Button variant="outline" className="w-full">
                   <i className="fas fa-home ltr:mr-2 rtl:ml-2" />
                   {t("common.errorPage.returnHome")}
