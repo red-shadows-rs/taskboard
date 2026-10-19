@@ -27,6 +27,8 @@
   "form": {
     "fields": {
       "title": "Title",
+      "titleEn": "Title (English)",
+      "titleAr": "Title (Arabic)",
       "status": "Status",
       "startDate": "Start Date",
       "endDate": "End Date",
@@ -79,6 +81,8 @@
     }
   },
   "validation": {
-    "titleMin": "Title must be at least 3 characters"
+    "titleMin": "Title must be at least 3 characters",
+    "titleMinEn": "English title must be at least 3 characters",
+    "titleMinAr": "Arabic title must be at least 3 characters"
   }
 }

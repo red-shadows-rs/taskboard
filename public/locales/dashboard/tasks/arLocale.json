@@ -52,7 +52,11 @@
     "value": "القيمة",
     "fields": {
       "title": "العنوان",
+      "titleEn": "العنوان (English)",
+      "titleAr": "العنوان (عربي)",
       "description": "الوصف",
+      "descriptionEn": "الوصف (English)",
+      "descriptionAr": "الوصف (عربي)",
       "status": "الحالة",
       "assignedTo": "إسناد إلى",
       "dueDate": "تاريخ الاستحقاق",
@@ -121,6 +125,8 @@
   },
   "validation": {
     "titleMin": "يجب أن يتكون العنوان من 3 أحرف على الأقل",
+    "titleMinEn": "يجب أن يتكون العنوان الإنجليزي من 3 أحرف على الأقل",
+    "titleMinAr": "يجب أن يتكون العنوان العربي من 3 أحرف على الأقل",
     "descriptionMin": "يجب أن يتكون الوصف من 10 أحرف على الأقل"
   }
 }

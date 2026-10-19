@@ -21,7 +21,6 @@ import {
 import { Input } from "@/components/ui/inputUi";
 import { Label } from "@/components/ui/labelUi";
 import { useLanguage } from "@/contexts/languageContext";
-import { buildLocalizedPair } from "@/utils/translateFormUtil";
 
 import type { Section, User, Project } from "@/types";
 import type { SectionInput } from "@/app/api/shared/validatorsShared";
@@ -214,11 +213,14 @@ interface SectionFormProps {
 }
 
 export function SectionForm({ section, onSubmit, onCancel }: SectionFormProps) {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   const sectionFormSchema = z.object({
     projectId: z.string(),
-    titleValue: z.string().min(3, t("dashboard.projects.validation.titleMin")),
+    title: z.object({
+      en: z.string().min(3, t("dashboard.projects.validation.titleMinEn")),
+      ar: z.string().min(3, t("dashboard.projects.validation.titleMinAr")),
+    }),
     order: z.number().optional(),
   });
 
@@ -226,30 +228,21 @@ export function SectionForm({ section, onSubmit, onCancel }: SectionFormProps) {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<{
-    projectId: string;
-    titleValue: string;
-    order?: number;
-  }>({
+  } = useForm<SectionInput>({
     resolver: zodResolver(sectionFormSchema),
     defaultValues: section
       ? {
-          titleValue: section.title[language],
+          title: section.title,
           projectId: section.projectId,
         }
       : {
           projectId: "",
-          titleValue: "",
+          title: { en: "", ar: "" },
         },
   });
 
-  const handleFormSubmit = async (data: {
-    projectId: string;
-    titleValue: string;
-    order?: number;
-  }) => {
-    const title = await buildLocalizedPair(data.titleValue, language);
-    await onSubmit({ projectId: data.projectId, title, order: data.order });
+  const handleFormSubmit = async (data: SectionInput) => {
+    await onSubmit(data);
   };
 
   return (
@@ -259,17 +252,25 @@ export function SectionForm({ section, onSubmit, onCancel }: SectionFormProps) {
     >
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain space-y-4 px-1 -mx-1 py-4">
         <div className="space-y-1">
-          <Label htmlFor="title">
-            {t("dashboard.projects.form.fields.title")}
+          <Label htmlFor="title-en">
+            {t("dashboard.projects.form.fields.titleEn")}
           </Label>
-          <Input
-            id="title"
-            dir={language === "ar" ? "rtl" : "ltr"}
-            {...register("titleValue")}
-          />
-          {errors.titleValue && (
+          <Input id="title-en" dir="ltr" {...register("title.en")} />
+          {errors.title?.en && (
             <p className="text-sm text-red-600 mt-1">
-              {t("dashboard.projects.validation.titleMin")}
+              {t("dashboard.projects.validation.titleMinEn")}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-1">
+          <Label htmlFor="title-ar">
+            {t("dashboard.projects.form.fields.titleAr")}
+          </Label>
+          <Input id="title-ar" dir="rtl" {...register("title.ar")} />
+          {errors.title?.ar && (
+            <p className="text-sm text-red-600 mt-1">
+              {t("dashboard.projects.validation.titleMinAr")}
             </p>
           )}
         </div>
@@ -281,11 +282,7 @@ export function SectionForm({ section, onSubmit, onCancel }: SectionFormProps) {
           ) : (
             <Plus className="h-4 w-4" />
           )}
-          {isSubmitting
-            ? t("dashboard.projects.messages.translating")
-            : section
-              ? t("common.button.update")
-              : t("common.button.create")}
+          {section ? t("common.button.update") : t("common.button.create")}
         </Button>
         <Button
           type="button"
