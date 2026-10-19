@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Demo Reset Route Handler
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import { NextResponse } from "next/server";
 import { resetDemoDatabase } from "@/db";

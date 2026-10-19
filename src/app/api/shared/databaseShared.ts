@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Database Shared Operations
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import { asc, eq } from "drizzle-orm";
 import { getDemoInstance, getInstance } from "@/db";

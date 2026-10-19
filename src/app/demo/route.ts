@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Live Demo Route Handler
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import { NextResponse } from "next/server";
 import { signSession } from "@/app/api/auth/utilsAuth";

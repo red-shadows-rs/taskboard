@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Health Check Route Handler
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import { NextResponse } from "next/server";
 import { getMainInstance } from "@/db";

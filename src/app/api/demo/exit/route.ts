@@ -1,5 +1,7 @@
+// ─────────────────────────────────────────────
 // TaskBoard - Demo Exit Route Handler
 // https://github.com/red-shadows-rs/taskboard
+// ─────────────────────────────────────────────
 
 import { NextResponse } from "next/server";
 
