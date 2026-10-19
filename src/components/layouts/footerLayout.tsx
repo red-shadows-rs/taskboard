@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/contexts/languageContext";
 
 export function Footer() {
@@ -7,16 +8,31 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-8 2xl:px-8 py-6">
-        <div className="flex items-center justify-center">
-          <p className="text-sm text-muted-foreground">
-            {t("common.footer.copyright").replace(
-              "{year}",
-              currentYear.toString(),
-            )}
-          </p>
-        </div>
+    <footer className="border-t bg-transparent">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-xs text-muted-foreground">
+          {t("common.footer.copyright").replace(
+            "{year}",
+            currentYear.toString(),
+          )}
+        </p>
+        <a
+          href="https://red-shadows-rs.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <Image
+            src="/red-shadows-logo.png"
+            alt="RED SHADOWS | RS"
+            width={512}
+            height={353}
+            className="h-4 w-auto"
+          />
+          <span dir="ltr" className="font-medium">
+            RED SHADOWS | RS
+          </span>
+        </a>
       </div>
     </footer>
   );

@@ -76,7 +76,7 @@ export function Navbar({ user }: NavbarProps) {
   return (
     <>
       {isNavigating && <Loading fullScreen />}
-      <nav className="border-b bg-background" suppressHydrationWarning>
+      <nav className="border-b bg-transparent" suppressHydrationWarning>
         <div
           className="w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-8 2xl:px-8 py-3 flex items-center justify-between"
           suppressHydrationWarning
