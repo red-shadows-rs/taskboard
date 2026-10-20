@@ -132,12 +132,12 @@ export default function LoginPage() {
 
   return (
     <div
-      className="min-h-screen flex flex-col bg-gradient-to-br from-primary/5 via-background to-background"
+      className="min-h-screen flex flex-col bg-background"
       suppressHydrationWarning
     >
       <PageTitle title="login" />
 
-      <nav className="border-b bg-transparent" suppressHydrationWarning>
+      <nav className="bg-transparent" suppressHydrationWarning>
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <LayoutDashboard className="h-6 w-6 text-primary" />
@@ -257,8 +257,8 @@ export default function LoginPage() {
                 window.location.href = "/demo";
               }}
             >
-              <ArrowRight className="h-4 w-4 text-primary shrink-0 rtl:rotate-180" />
               <span>{t("common.demo.tryDemo")}</span>
+              <ArrowRight className="h-4 w-4 text-primary shrink-0 rtl:rotate-180" />
             </Button>
             <p className="mt-2 text-center text-xs text-muted-foreground">
               {t("common.demo.instantAccess")}

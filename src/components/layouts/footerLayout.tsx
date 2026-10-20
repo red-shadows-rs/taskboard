@@ -3,12 +3,12 @@
 import Image from "next/image";
 import { useLanguage } from "@/contexts/languageContext";
 
-export function Footer() {
+export function Footer({ bordered = false }: { bordered?: boolean }) {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t bg-transparent">
+    <footer className={`bg-transparent ${bordered ? "border-t" : ""}`}>
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-3">
         <p className="text-xs text-muted-foreground">
           {t("common.footer.copyright").replace(
