@@ -124,21 +124,21 @@ export function ThemeToggle() {
             onClick={() => handleThemeChange("light")}
             className="cursor-pointer"
           >
-            <Sun className="ltr:mr-2 rtl:ml-2 h-4 w-4" />
+            <Sun className="h-4 w-4" />
             {t("common.theme.light")}
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => handleThemeChange("dark")}
             className="cursor-pointer"
           >
-            <Moon className="ltr:mr-2 rtl:ml-2 h-4 w-4" />
+            <Moon className="h-4 w-4" />
             {t("common.theme.dark")}
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => handleThemeChange("system")}
             className="cursor-pointer"
           >
-            <Monitor className="ltr:mr-2 rtl:ml-2 h-4 w-4" />
+            <Monitor className="h-4 w-4" />
             {t("common.theme.system")}
           </DropdownMenuItem>
         </DropdownMenuContent>

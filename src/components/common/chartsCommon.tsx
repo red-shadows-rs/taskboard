@@ -78,8 +78,8 @@ class ChartErrorBoundary extends React.Component<
     if (this.state.hasError) {
       return (
         this.props.fallback || (
-          <div className="flex items-center justify-center h-[350px] text-muted-foreground text-sm border rounded-lg bg-muted/30">
-            <AlertCircle className="h-5 w-5 ltr:mr-2 rtl:ml-2" />
+          <div className="flex items-center justify-center gap-2 h-[350px] text-muted-foreground text-sm border rounded-lg bg-muted/30">
+            <AlertCircle className="h-5 w-5" />
             <span>Chart failed to load</span>
           </div>
         )

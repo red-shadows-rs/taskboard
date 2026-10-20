@@ -20,7 +20,7 @@
   },
   "pdf": {
     "title": "Project Report",
-    "sectionTitle": "Section Report"
+    "sectionTitle": "Stage Report"
   },
   "startDate": "Start Date",
   "teamMembers": "Team Members",
@@ -31,7 +31,7 @@
       "titleAr": "Title (Arabic)",
       "status": "Status",
       "startDate": "Start Date",
-      "endDate": "End Date",
+      "endDate": "Target End Date",
       "teamMembers": "Team Members"
     },
     "labels": {

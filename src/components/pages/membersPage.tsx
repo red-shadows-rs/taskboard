@@ -209,11 +209,11 @@ const SortableMemberCard = memo(function SortableMemberCard({
           <div className="flex items-center justify-between">
             <div
               className={cn(
-                "inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold pointer-events-none",
+                "inline-flex items-center gap-1.5 rounded-md px-2.5 py-0.5 text-xs font-semibold pointer-events-none",
                 getRoleColor(user.role),
               )}
             >
-              <Shield className="h-3 w-3 ltr:mr-1 rtl:ml-1" />
+              <Shield className="h-3 w-3" />
               {t(`common.role.${user.role}`)}
             </div>
           </div>
@@ -229,7 +229,7 @@ const SortableMemberCard = memo(function SortableMemberCard({
                   onEditClick(user);
                 }}
               >
-                <Edit className="h-3 w-3 ltr:mr-1 rtl:ml-1" />
+                <Edit className="h-3 w-3" />
                 {t("common.button.edit")}
               </Button>
 
@@ -836,8 +836,8 @@ export function MembersManagement({
                     </CardHeader>
                     <CardContent className="space-y-3 pb-6">
                       <div className="flex items-center justify-between">
-                        <div className="inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold pointer-events-none border">
-                          <Shield className="h-3 w-3 ltr:mr-1 rtl:ml-1" />
+                        <div className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-0.5 text-xs font-semibold pointer-events-none border">
+                          <Shield className="h-3 w-3" />
                           {t(`common.role.${user.role}`)}
                         </div>
                       </div>

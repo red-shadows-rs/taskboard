@@ -95,7 +95,7 @@ export function ProjectCard({
             <div className="flex items-center gap-2 overflow-hidden flex-1">
               {!isDragDisabled && dragListeners && (
                 <div
-                  className="cursor-grab active:cursor-grabbing text-muted-foreground/50 hover:text-muted-foreground p-1 -ml-1"
+                  className="cursor-grab active:cursor-grabbing text-muted-foreground/50 hover:text-muted-foreground p-1 -ms-1"
                   {...dragListeners}
                   {...dragAttributes}
                   onClick={(e) => e.stopPropagation()}
@@ -131,7 +131,7 @@ export function ProjectCard({
             </div>
 
             {currentUser && currentUser.role === "leader" && (
-              <div className="flex items-center gap-1 -mr-2">
+              <div className="flex items-center gap-1 -me-2">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -392,11 +392,11 @@ export function ProjectForm({
                 <PopoverTrigger asChild>
                   <Button
                     variant={"outline"}
-                    className={`w-full justify-start text-left font-normal flex-1 ${
+                    className={`w-full justify-start text-start font-normal flex-1 ${
                       !watch("startDate") && "text-muted-foreground"
                     }`}
                   >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    <CalendarIcon className="h-4 w-4 shrink-0" />
                     {watch("startDate") ? (
                       format(new Date(watch("startDate")!), "MM/dd/yyyy")
                     ) : (
@@ -447,11 +447,11 @@ export function ProjectForm({
                 <PopoverTrigger asChild>
                   <Button
                     variant={"outline"}
-                    className={`w-full justify-start text-left font-normal flex-1 ${
+                    className={`w-full justify-start text-start font-normal flex-1 ${
                       !watch("endDate") && "text-muted-foreground"
                     }`}
                   >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    <CalendarIcon className="h-4 w-4 shrink-0" />
                     {watch("endDate") ? (
                       format(new Date(watch("endDate")!), "MM/dd/yyyy")
                     ) : (

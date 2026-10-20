@@ -142,7 +142,7 @@ export function ProjectSection({
           <div className="flex items-center gap-3">
             {!isDragDisabled && (
               <div
-                className="cursor-move text-muted-foreground/50 hover:text-muted-foreground mr-2"
+                className="cursor-move text-muted-foreground/50 hover:text-muted-foreground"
                 {...attributes}
                 {...listeners}
                 onClick={(e) => e.stopPropagation()}
@@ -153,7 +153,9 @@ export function ProjectSection({
             <div
               className={cn(
                 "transition-transform duration-300",
-                expandedSections.has(section.id) ? "rotate-90" : "",
+                expandedSections.has(section.id)
+                  ? "rotate-90"
+                  : "rtl:rotate-180",
               )}
             >
               <ChevronRight className="h-5 w-5 text-muted-foreground" />

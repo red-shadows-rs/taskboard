@@ -64,8 +64,8 @@
   "financial": {
     "byProject": "التوزيع حسب المشروع",
     "byMember": "التوزيع حسب العضو",
-    "projectsWithBudget": "المشاريع بميزانية",
-    "paidMembers": "الأعضاء المدفوعون",
+    "projectsWithBudget": "المشاريع ذات التكلفة",
+    "paidMembers": "الأعضاء ذوو التكاليف",
     "noData": "لا توجد بيانات مالية متاحة",
     "details": "تفاصيل التوزيع المالي",
     "nameLabel": "الاسم",

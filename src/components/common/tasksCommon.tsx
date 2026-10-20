@@ -557,7 +557,7 @@ export function TaskCard({
                       : undefined
                   }
                 >
-                  <Folder className="ltr:mr-1 rtl:ml-1 h-3 w-3" />
+                  <Folder className="h-3 w-3" />
                   {language === "ar"
                     ? associatedProject.title.ar
                     : associatedProject.title.en}
@@ -572,14 +572,14 @@ export function TaskCard({
               )}
             >
               <Badge className={getStatusColor(task.status)} variant="outline">
-                <Activity className="ltr:mr-1 rtl:ml-1 h-3 w-3" />
+                <Activity className="h-3 w-3" />
                 {t(`common.status.${task.status}`)}
               </Badge>
               <Badge
                 className={getPriorityColor(task.priority)}
                 variant="outline"
               >
-                <Flag className="ltr:mr-1 rtl:ml-1 h-3 w-3" />
+                <Flag className="h-3 w-3" />
                 {t(`tasks.priority.${task.priority}`)}
               </Badge>
               {(task.assigneePrices ?? []).reduce((s, ap) => s + ap.price, 0) >
@@ -588,7 +588,7 @@ export function TaskCard({
                   className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
                   variant="outline"
                 >
-                  <DollarSign className="ltr:mr-1 rtl:ml-1 h-3 w-3" />
+                  <DollarSign className="h-3 w-3" />
                   {formatPrice(
                     (task.assigneePrices ?? []).reduce(
                       (s, ap) => s + ap.price,
@@ -1058,7 +1058,7 @@ export function TaskForm({
                           type="button"
                           variant="destructive"
                           size="icon"
-                          className="[grid-area:stack] place-self-start self-start mt-2 ltr:justify-self-end ltr:mr-2 rtl:justify-self-start rtl:ml-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="[grid-area:stack] place-self-start self-start mt-2 justify-self-end me-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
                           onClick={(e) => {
                             e.stopPropagation();
                             removeExistingAttachment(index);
@@ -1086,7 +1086,7 @@ export function TaskForm({
                           type="button"
                           variant="destructive"
                           size="icon"
-                          className="[grid-area:stack] place-self-start self-start mt-2 ltr:justify-self-end ltr:mr-2 rtl:justify-self-start rtl:ml-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="[grid-area:stack] place-self-start self-start mt-2 justify-self-end me-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
                           onClick={(e) => {
                             e.stopPropagation();
                             removeNewFile(index);
@@ -1262,11 +1262,11 @@ export function TaskForm({
                   <Button
                     variant={"outline"}
                     className={cn(
-                      "w-full justify-start text-left font-normal flex-1",
+                      "w-full justify-start text-start font-normal flex-1",
                       !selectedDate && "text-muted-foreground",
                     )}
                   >
-                    <Calendar className="ltr:mr-2 rtl:ml-2 h-4 w-4" />
+                    <Calendar className="h-4 w-4 shrink-0" />
                     {selectedDate ? (
                       format(selectedDate, "PPP", {
                         locale: language === "ar" ? ar : undefined,

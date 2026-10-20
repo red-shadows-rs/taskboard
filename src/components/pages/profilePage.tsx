@@ -178,7 +178,7 @@ export default function Profile({ user: initialUser }: ProfileProps) {
                   </div>
                   <div className="flex items-center justify-center">
                     <Badge className={cn(getRoleColor(user.role))}>
-                      <Shield className="h-3 w-3 ltr:mr-1.5 rtl:ml-1.5" />
+                      <Shield className="h-3 w-3" />
                       {t(`common.role.${user.role}`)}
                     </Badge>
                   </div>
@@ -291,9 +291,9 @@ export default function Profile({ user: initialUser }: ProfileProps) {
                     className="w-full"
                   >
                     {isSubmitting ? (
-                      <Loader2 className="h-4 w-4 animate-spin ltr:mr-2 rtl:ml-2" />
+                      <Loader2 className="h-4 w-4 animate-spin" />
                     ) : (
-                      <Save className="h-4 w-4 ltr:mr-2 rtl:ml-2" />
+                      <Save className="h-4 w-4" />
                     )}
                     {t("common.button.save")}
                   </Button>

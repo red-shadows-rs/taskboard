@@ -73,7 +73,7 @@ export default function Error({
               </Button>
               <Link href="/tasks" className="block">
                 <Button variant="outline" className="w-full">
-                  <i className="fas fa-home ltr:mr-2 rtl:ml-2" />
+                  <i className="fas fa-home" />
                   {t("common.errorPage.returnHome")}
                 </Button>
               </Link>

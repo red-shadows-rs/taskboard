@@ -1,6 +1,14 @@
 "use client";
 
-import { ArrowLeft, Plus, Search, FileText, Trash2, Ban } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronRight,
+  Plus,
+  Search,
+  FileText,
+  Trash2,
+  Ban,
+} from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { usePathname } from "next/navigation";
@@ -711,15 +719,16 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
         <PageTitle title="projects" />
 
         <div className="mb-6 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 flex-wrap">
             <Link
               href="/projects"
               onClick={(e) => handleNavigation(e, "/projects")}
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+              className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors text-sm font-medium"
             >
               <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
               <span>{t("projects.header.title")}</span>
             </Link>
+            <ChevronRight className="h-4 w-4 text-muted-foreground/50 rtl:rotate-180 shrink-0" />
             <h1 className="text-2xl font-bold tracking-tight">
               {language === "ar" ? project.title.ar : project.title.en}
             </h1>
@@ -729,7 +738,7 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
           </div>
           <div className="flex gap-2">
             <Button variant="outline" size="sm" onClick={handleExportProject}>
-              <FileText className="h-4 w-4 ltr:mr-2 rtl:ml-2" />
+              <FileText className="h-4 w-4 shrink-0" />
               {t("projects.card.actions.export")}
             </Button>
           </div>

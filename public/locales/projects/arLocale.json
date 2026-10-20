@@ -20,9 +20,9 @@
   },
   "pdf": {
     "title": "تقرير المشروع",
-    "sectionTitle": "تقرير القسم"
+    "sectionTitle": "تقرير المرحلة"
   },
-  "startDate": "تاريخ البداية",
+  "startDate": "تاريخ البدء",
   "teamMembers": "أعضاء الفريق",
   "form": {
     "fields": {
@@ -30,8 +30,8 @@
       "titleEn": "العنوان (English)",
       "titleAr": "العنوان (عربي)",
       "status": "الحالة",
-      "startDate": "تاريخ البداية",
-      "endDate": "تاريخ النهاية",
+      "startDate": "تاريخ البدء",
+      "endDate": "تاريخ الانتهاء المستهدف",
       "teamMembers": "أعضاء الفريق"
     },
     "labels": {
@@ -40,8 +40,8 @@
     }
   },
   "placeholders": {
-    "selectStartDate": "اختر تاريخ البداية",
-    "selectEndDate": "اختر تاريخ النهاية"
+    "selectStartDate": "اختر تاريخ البدء",
+    "selectEndDate": "اختر تاريخ الانتهاء"
   },
   "modals": {
     "create": {
@@ -59,10 +59,10 @@
   },
   "status": {
     "label": "الحالة",
-    "planning": "تخطيط",
+    "planning": "قيد التخطيط",
     "active": "نشط",
     "completed": "مكتمل",
-    "on_hold": "معلق"
+    "on_hold": "معلق مؤقتاً"
   },
   "messages": {
     "translating": "جارٍ الترجمة...",

@@ -295,7 +295,7 @@ export function Navbar({ user }: NavbarProps) {
               className="flex items-center gap-2"
               onClick={(e) => handleNavigation(e, "/tasks")}
             >
-              <LayoutDashboard className="h-6 w-6 text-primary ltr:mr-2 rtl:ml-2" />
+              <LayoutDashboard className="h-6 w-6 text-primary" />
               <span className="font-bold text-xl hidden lg:inline-block">
                 {t("common.appName")}
               </span>

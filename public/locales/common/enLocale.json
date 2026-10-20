@@ -52,9 +52,9 @@
     "returnHome": "Return Home"
   },
   "apiErrors": {
-    "failedToUpdateSection": "Failed to update section",
+    "failedToUpdateSection": "Failed to update stage",
     "failedToUpdateProjectOrder": "Failed to update project order",
-    "failedToUpdateSectionOrder": "Failed to update section order",
+    "failedToUpdateSectionOrder": "Failed to update stage order",
     "failedToMoveTask": "Failed to move task"
   },
   "footer": {
@@ -70,7 +70,7 @@
     "activeProjects": "Active Projects",
     "teamMembers": "Team Members",
     "completionRate": "Completion Rate",
-    "totalPrice": "Total Price",
+    "totalPrice": "Total Cost",
     "tasks": "Tasks",
     "completed": "Completed",
     "inProgress": "In Progress"

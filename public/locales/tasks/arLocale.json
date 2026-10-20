@@ -6,32 +6,32 @@
     "title": "المهام"
   },
   "sections": {
-    "title": "الأقسام"
+    "title": "المراحل"
   },
   "table": {
     "title": "المهام"
   },
   "filters": {
-    "search": "بحث عن المهام...",
-    "searchSections": "بحث عن الأقسام..."
+    "search": "بحث في المهام...",
+    "searchSections": "بحث في المراحل..."
   },
   "list": {
     "noTasks": "لا توجد مهام بعد",
     "createButton": "إنشاء مهمة",
-    "editSection": "تعديل القسم",
-    "createSection": "إنشاء قسم",
-    "actionItems": "المهام",
+    "editSection": "تعديل المرحلة",
+    "createSection": "إضافة مرحلة",
+    "actionItems": "قائمة المهام",
     "noTags": "لا توجد وسوم",
-    "section": "القسم",
-    "assigned": "المكلفين"
+    "section": "المرحلة",
+    "assigned": "المُسنَد إليه"
   },
   "card": {
     "title": "العنوان",
     "description": "الوصف",
     "status": "الحالة",
     "priority": "الأولوية",
-    "price": "السعر",
-    "assignee": "المكلفين",
+    "price": "التكلفة",
+    "assignee": "المُسنَد إليه",
     "dueDate": "تاريخ الاستحقاق",
     "createdAt": "تاريخ الإنشاء",
     "tags": "الوسوم",
@@ -58,7 +58,7 @@
       "descriptionEn": "الوصف (English)",
       "descriptionAr": "الوصف (عربي)",
       "status": "الحالة",
-      "assignedTo": "إسناد إلى",
+      "assignedTo": "المُسنَد إليه",
       "dueDate": "تاريخ الاستحقاق",
       "tags": "الوسوم",
       "addTag": "الوسم",
@@ -94,16 +94,16 @@
       "description": "هل أنت متأكد من حذف هذه المهمة؟"
     },
     "createSection": {
-      "title": "إنشاء قسم جديد",
-      "description": "أضف قسماً لتنظيم مهامك"
+      "title": "إضافة مرحلة جديدة",
+      "description": "أضف مرحلة لتنظيم وإدارة مهام المشروع"
     },
     "editSection": {
-      "title": "تعديل القسم",
-      "description": "تحديث بيانات القسم"
+      "title": "تعديل المرحلة",
+      "description": "تحديث بيانات المرحلة الحالية"
     },
     "deleteSection": {
-      "title": "حذف القسم",
-      "description": "هل أنت متأكد من حذف هذا القسم؟"
+      "title": "حذف المرحلة",
+      "description": "هل أنت متأكد من حذف هذه المرحلة وجميع مهامها؟"
     }
   },
   "messages": {
@@ -119,7 +119,7 @@
       "createFailed": "فشل إنشاء المهمة",
       "updateFailed": "فشل تحديث المهمة",
       "deleteFailed": "فشل حذف المهمة",
-      "uploadFailed": "فشل رفع الصورة",
+      "uploadFailed": "فشل رفع المرفق",
       "exportFailed": "فشل تصدير التقرير"
     }
   },

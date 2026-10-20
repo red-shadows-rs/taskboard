@@ -59,7 +59,7 @@ export default function NotFound() {
             </p>
             <Link href="/tasks" className="block">
               <Button className="w-full">
-                <i className="fas fa-home ltr:mr-2 rtl:ml-2" />
+                <i className="fas fa-home" />
                 {t("common.notFound.returnHome")}
               </Button>
             </Link>

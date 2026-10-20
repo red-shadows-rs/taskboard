@@ -6,31 +6,31 @@
     "title": "Tasks"
   },
   "sections": {
-    "title": "Sections"
+    "title": "Stages"
   },
   "table": {
     "title": "Tasks"
   },
   "filters": {
     "search": "Search tasks...",
-    "searchSections": "Search sections..."
+    "searchSections": "Search stages..."
   },
   "list": {
     "noTasks": "No tasks yet",
     "createButton": "Create Task",
-    "editSection": "Edit Section",
-    "createSection": "Create Section",
+    "editSection": "Edit Stage",
+    "createSection": "Add Stage",
     "actionItems": "Action Items",
     "noTags": "No tags",
-    "section": "Section",
-    "assigned": "Assigned"
+    "section": "Stage",
+    "assigned": "Assignee"
   },
   "card": {
     "title": "Title",
     "description": "Description",
     "status": "Status",
     "priority": "Priority",
-    "price": "Price",
+    "price": "Cost",
     "assignee": "Assignee",
     "dueDate": "Due Date",
     "createdAt": "Created At",
@@ -94,16 +94,16 @@
       "description": "Are you sure you want to delete this task?"
     },
     "createSection": {
-      "title": "Create New Section",
-      "description": "Add a section to organize your tasks"
+      "title": "Add New Stage",
+      "description": "Add a project stage to organize tasks"
     },
     "editSection": {
-      "title": "Edit Section",
-      "description": "Update section details"
+      "title": "Edit Stage",
+      "description": "Update stage details"
     },
     "deleteSection": {
-      "title": "Delete Section",
-      "description": "Are you sure you want to delete this section?"
+      "title": "Delete Stage",
+      "description": "Are you sure you want to delete this stage?"
     }
   },
   "messages": {

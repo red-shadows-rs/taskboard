@@ -52,9 +52,9 @@
     "returnHome": "العودة للصفحة الرئيسية"
   },
   "apiErrors": {
-    "failedToUpdateSection": "فشل تحديث القسم",
+    "failedToUpdateSection": "فشل تحديث المرحلة",
     "failedToUpdateProjectOrder": "فشل تحديث ترتيب المشروع",
-    "failedToUpdateSectionOrder": "فشل تحديث ترتيب القسم",
+    "failedToUpdateSectionOrder": "فشل تحديث ترتيب المرحلة",
     "failedToMoveTask": "فشل نقل المهمة"
   },
   "footer": {
@@ -70,7 +70,7 @@
     "activeProjects": "المشاريع النشطة",
     "teamMembers": "أعضاء الفريق",
     "completionRate": "نسبة الإنجاز",
-    "totalPrice": "السعر الإجمالي",
+    "totalPrice": "إجمالي التكلفة",
     "tasks": "المهام",
     "completed": "مكتملة",
     "inProgress": "قيد التنفيذ"
@@ -81,7 +81,7 @@
   },
   "status": {
     "label": "الحالة",
-    "todo": "للعمل",
+    "todo": "قيد الانتظار",
     "in_progress": "قيد التنفيذ",
     "in_review": "قيد المراجعة",
     "done": "مكتملة"
@@ -100,7 +100,7 @@
     "search": "بحث...",
     "project": "تصفية حسب المشروع",
     "status": "تصفية حسب الحالة",
-    "allProjects": "كل المشاريع",
-    "allStatuses": "كل الحالات"
+    "allProjects": "جميع المشاريع",
+    "allStatuses": "جميع الحالات"
   }
 }
