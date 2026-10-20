@@ -824,7 +824,7 @@ export const exportProjectPDF = async (
     doc,
     pw,
     isRTL,
-    translations("dashboard.projects.pdf.title"),
+    translations("projects.pdf.title"),
     projectTitle,
   );
 
@@ -886,21 +886,20 @@ export const exportProjectPDF = async (
 
   y = drawInfoCard(doc, y, pw, isRTL, [
     {
-      label: translations("dashboard.projects.status.label"),
+      label: translations("projects.status.label"),
       value:
-        translations(`dashboard.projects.status.${project.status}`) ||
-        project.status,
+        translations(`projects.status.${project.status}`) || project.status,
     },
     {
-      label: translations("dashboard.projects.startDate"),
+      label: translations("projects.startDate"),
       value: formatDate(project.startDate, isRTL),
     },
     {
-      label: translations("dashboard.projects.form.fields.endDate"),
+      label: translations("projects.form.fields.endDate"),
       value: project.endDate ? formatDate(project.endDate, isRTL) : "-",
     },
     {
-      label: translations("dashboard.projects.teamMembers"),
+      label: translations("projects.teamMembers"),
       value:
         project.teamMembers
           .filter((id) => {
@@ -917,7 +916,7 @@ export const exportProjectPDF = async (
     y = ensureSpace(doc, y, 40, ph);
     y = drawSectionTitle(
       doc,
-      translations("dashboard.tasks.sections.title"),
+      translations("tasks.sections.title"),
       y,
       pw,
       isRTL,
@@ -933,10 +932,7 @@ export const exportProjectPDF = async (
 
     y = drawTable(
       doc,
-      [
-        translations("dashboard.tasks.table.title"),
-        translations("dashboard.tasks.header.title"),
-      ],
+      [translations("tasks.table.title"), translations("tasks.header.title")],
       sectionRows,
       y,
       isRTL,
@@ -947,13 +943,7 @@ export const exportProjectPDF = async (
 
   if (projectTasks.length > 0) {
     y = ensureSpace(doc, y, 40, ph);
-    y = drawSectionTitle(
-      doc,
-      translations("dashboard.tasks.header.title"),
-      y,
-      pw,
-      isRTL,
-    );
+    y = drawSectionTitle(doc, translations("tasks.header.title"), y, pw, isRTL);
 
     const taskRows = projectTasks.map((task) => {
       const taskTitle = isRTL ? task.title.ar : task.title.en;
@@ -964,8 +954,7 @@ export const exportProjectPDF = async (
       return [
         taskTitle,
         translations(`common.status.${task.status}`) || task.status,
-        translations(`dashboard.tasks.priority.${task.priority}`) ||
-          task.priority,
+        translations(`tasks.priority.${task.priority}`) || task.priority,
         formatDate(task.dueDate, isRTL),
         assignedNames || "-",
       ];
@@ -974,11 +963,11 @@ export const exportProjectPDF = async (
     drawTable(
       doc,
       [
-        translations("dashboard.tasks.card.title"),
+        translations("tasks.card.title"),
         translations("common.status.label"),
-        translations("dashboard.tasks.priority.label"),
-        translations("dashboard.tasks.card.dueDate"),
-        translations("dashboard.tasks.card.assignee"),
+        translations("tasks.priority.label"),
+        translations("tasks.card.dueDate"),
+        translations("tasks.card.assignee"),
       ],
       taskRows,
       y,
@@ -1016,7 +1005,7 @@ export const exportSectionPDF = async (
     doc,
     pw,
     isRTL,
-    translations("dashboard.projects.pdf.sectionTitle"),
+    translations("projects.pdf.sectionTitle"),
     projectTitle ? `${sectionTitle} - ${projectTitle}` : sectionTitle,
   );
 
@@ -1072,13 +1061,7 @@ export const exportSectionPDF = async (
   y += cardH + 10;
 
   if (tasks.length > 0) {
-    y = drawSectionTitle(
-      doc,
-      translations("dashboard.tasks.header.title"),
-      y,
-      pw,
-      isRTL,
-    );
+    y = drawSectionTitle(doc, translations("tasks.header.title"), y, pw, isRTL);
 
     const taskRows = tasks.map((task) => {
       const taskTitle = isRTL ? task.title.ar : task.title.en;
@@ -1089,8 +1072,7 @@ export const exportSectionPDF = async (
       return [
         taskTitle,
         translations(`common.status.${task.status}`) || task.status,
-        translations(`dashboard.tasks.priority.${task.priority}`) ||
-          task.priority,
+        translations(`tasks.priority.${task.priority}`) || task.priority,
         formatDate(task.dueDate, isRTL),
         assignedNames || "-",
       ];
@@ -1099,11 +1081,11 @@ export const exportSectionPDF = async (
     drawTable(
       doc,
       [
-        translations("dashboard.tasks.card.title"),
+        translations("tasks.card.title"),
         translations("common.status.label"),
-        translations("dashboard.tasks.priority.label"),
-        translations("dashboard.tasks.card.dueDate"),
-        translations("dashboard.tasks.card.assignee"),
+        translations("tasks.priority.label"),
+        translations("tasks.card.dueDate"),
+        translations("tasks.card.assignee"),
       ],
       taskRows,
       y,
@@ -1146,7 +1128,7 @@ export const exportTaskPDF = async (
     doc,
     pw,
     isRTL,
-    translations("dashboard.tasks.pdf.title"),
+    translations("tasks.pdf.title"),
     taskTitle,
   );
 
@@ -1154,13 +1136,13 @@ export const exportTaskPDF = async (
     const contextFields: { label: string; value: string }[] = [];
     if (projectTitle) {
       contextFields.push({
-        label: translations("dashboard.projects.card.title"),
+        label: translations("projects.card.title"),
         value: projectTitle,
       });
     }
     if (sectionTitle) {
       contextFields.push({
-        label: translations("dashboard.tasks.list.section"),
+        label: translations("tasks.list.section"),
         value: sectionTitle,
       });
     }
@@ -1169,7 +1151,7 @@ export const exportTaskPDF = async (
 
   y = drawSectionTitle(
     doc,
-    translations("dashboard.tasks.form.fields.title"),
+    translations("tasks.form.fields.title"),
     y,
     pw,
     isRTL,
@@ -1181,13 +1163,11 @@ export const exportTaskPDF = async (
       value: translations(`common.status.${task.status}`) || task.status,
     },
     {
-      label: translations("dashboard.tasks.priority.label"),
-      value:
-        translations(`dashboard.tasks.priority.${task.priority}`) ||
-        task.priority,
+      label: translations("tasks.priority.label"),
+      value: translations(`tasks.priority.${task.priority}`) || task.priority,
     },
     {
-      label: translations("dashboard.tasks.list.assigned"),
+      label: translations("tasks.list.assigned"),
       value:
         task.assignedTo
           .map((id) => getUserName(id, users))
@@ -1195,7 +1175,7 @@ export const exportTaskPDF = async (
           .join(", ") || "-",
     },
     {
-      label: translations("dashboard.tasks.card.price"),
+      label: translations("tasks.card.price"),
       value:
         (task.assigneePrices ?? [])
           .map((ap) => {
@@ -1205,15 +1185,15 @@ export const exportTaskPDF = async (
           .join("\n") || "$0.00",
     },
     {
-      label: translations("dashboard.tasks.card.dueDate"),
+      label: translations("tasks.card.dueDate"),
       value: formatDate(task.dueDate, isRTL),
     },
     {
-      label: translations("dashboard.tasks.card.tags"),
+      label: translations("tasks.card.tags"),
       value: task.tags?.join(", ") || "-",
     },
     {
-      label: translations("dashboard.tasks.card.createdAt"),
+      label: translations("tasks.card.createdAt"),
       value: formatDate(task.createdAt, isRTL),
     },
   ];
@@ -1222,10 +1202,7 @@ export const exportTaskPDF = async (
 
   y = drawTable(
     doc,
-    [
-      translations("dashboard.tasks.form.field"),
-      translations("dashboard.tasks.form.value"),
-    ],
+    [translations("tasks.form.field"), translations("tasks.form.value")],
     detailsTableData,
     y,
     isRTL,
@@ -1255,7 +1232,7 @@ export const exportTaskPDF = async (
 
   y = drawSectionTitle(
     doc,
-    translations("dashboard.tasks.card.description"),
+    translations("tasks.card.description"),
     y,
     pw,
     isRTL,
@@ -1283,7 +1260,7 @@ export const exportTaskPDF = async (
     y = 20;
     y = drawSectionTitle(
       doc,
-      translations("dashboard.tasks.card.attachments"),
+      translations("tasks.card.attachments"),
       y,
       pw,
       isRTL,
@@ -1365,18 +1342,18 @@ export const exportAnalyticsPDF = async (
 
   const dateRangeText =
     {
-      all: translations("dashboard.analytics.dateRange.all"),
-      "1d": translations("dashboard.analytics.dateRange.1d"),
-      "7d": translations("dashboard.analytics.dateRange.7d"),
-      "30d": translations("dashboard.analytics.dateRange.30d"),
-      "90d": translations("dashboard.analytics.dateRange.90d"),
+      all: translations("analytics.dateRange.all"),
+      "1d": translations("analytics.dateRange.1d"),
+      "7d": translations("analytics.dateRange.7d"),
+      "30d": translations("analytics.dateRange.30d"),
+      "90d": translations("analytics.dateRange.90d"),
     }[dateRange] || dateRange;
 
   let y = drawHeader(
     doc,
     pw,
     isRTL,
-    translations("dashboard.analytics.header.title"),
+    translations("analytics.header.title"),
     dateRangeText,
   );
 
@@ -1433,7 +1410,7 @@ export const exportAnalyticsPDF = async (
 
   y = drawSectionTitle(
     doc,
-    translations("dashboard.analytics.trends.byStatus"),
+    translations("analytics.trends.byStatus"),
     y,
     pw,
     isRTL,
@@ -1462,8 +1439,8 @@ export const exportAnalyticsPDF = async (
     doc,
     [
       translations("common.status.label"),
-      translations("dashboard.analytics.labels.tasks"),
-      translations("dashboard.analytics.labels.percentage"),
+      translations("analytics.labels.tasks"),
+      translations("analytics.labels.percentage"),
     ],
     statusData.map((item) => [
       item.status,
@@ -1479,7 +1456,7 @@ export const exportAnalyticsPDF = async (
   y = ensureSpace(doc, y, 40, ph);
   y = drawSectionTitle(
     doc,
-    translations("dashboard.analytics.trends.byPriority"),
+    translations("analytics.trends.byPriority"),
     y,
     pw,
     isRTL,
@@ -1487,19 +1464,19 @@ export const exportAnalyticsPDF = async (
 
   const priorityData = [
     {
-      priority: translations("dashboard.tasks.priority.low"),
+      priority: translations("tasks.priority.low"),
       count: tasks.filter((t) => t.priority === "low").length,
     },
     {
-      priority: translations("dashboard.tasks.priority.medium"),
+      priority: translations("tasks.priority.medium"),
       count: tasks.filter((t) => t.priority === "medium").length,
     },
     {
-      priority: translations("dashboard.tasks.priority.high"),
+      priority: translations("tasks.priority.high"),
       count: tasks.filter((t) => t.priority === "high").length,
     },
     {
-      priority: translations("dashboard.tasks.priority.urgent"),
+      priority: translations("tasks.priority.urgent"),
       count: tasks.filter((t) => t.priority === "urgent").length,
     },
   ];
@@ -1507,9 +1484,9 @@ export const exportAnalyticsPDF = async (
   y = drawTable(
     doc,
     [
-      translations("dashboard.tasks.priority.label"),
-      translations("dashboard.analytics.labels.tasks"),
-      translations("dashboard.analytics.labels.percentage"),
+      translations("tasks.priority.label"),
+      translations("analytics.labels.tasks"),
+      translations("analytics.labels.percentage"),
     ],
     priorityData.map((item) => [
       item.priority,
@@ -1525,7 +1502,7 @@ export const exportAnalyticsPDF = async (
   y = ensureSpace(doc, y, 40, ph);
   y = drawSectionTitle(
     doc,
-    translations("dashboard.analytics.projects.title"),
+    translations("analytics.projects.title"),
     y,
     pw,
     isRTL,
@@ -1546,7 +1523,7 @@ export const exportAnalyticsPDF = async (
   y = drawTable(
     doc,
     [
-      translations("dashboard.projects.card.title"),
+      translations("projects.card.title"),
       translations("common.stats.totalTasks"),
       translations("common.stats.completedTasks"),
       translations("common.stats.inProgressTasks"),
@@ -1570,7 +1547,7 @@ export const exportAnalyticsPDF = async (
   y = ensureSpace(doc, y, 40, ph);
   y = drawSectionTitle(
     doc,
-    translations("dashboard.analytics.team.performance"),
+    translations("analytics.team.performance"),
     y,
     pw,
     isRTL,
@@ -1592,7 +1569,7 @@ export const exportAnalyticsPDF = async (
   drawTable(
     doc,
     [
-      translations("dashboard.analytics.team.memberName"),
+      translations("analytics.team.memberName"),
       translations("common.stats.tasks"),
       translations("common.stats.completed"),
       translations("common.stats.inProgress"),

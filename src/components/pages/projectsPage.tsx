@@ -169,7 +169,7 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
         setProjects(loadedProjects);
       }
     } catch (_error) {
-      toast.error(t("dashboard.projects.messages.error.fetchFailed"));
+      toast.error(t("projects.messages.error.fetchFailed"));
     }
   }, [setProjects, t]);
 
@@ -181,7 +181,7 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
         setUsers(data.users || []);
       }
     } catch (_error) {
-      toast.error(t("dashboard.team.messages.error.fetchFailed"));
+      toast.error(t("team.messages.error.fetchFailed"));
     }
   }, [setUsers, t]);
 
@@ -261,12 +261,12 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
         const data = await response.json();
         addProject(data.project);
         setIsCreateDialogOpen(false);
-        toast.success(t("dashboard.projects.messages.success.created"));
+        toast.success(t("projects.messages.success.created"));
       } else {
-        toast.error(t("dashboard.projects.messages.error.createFailed"));
+        toast.error(t("projects.messages.error.createFailed"));
       }
     } catch (_error) {
-      toast.error(t("dashboard.projects.messages.error.createFailed"));
+      toast.error(t("projects.messages.error.createFailed"));
     }
   };
 
@@ -285,12 +285,12 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
         updateProject(selectedProject.id, data.project);
         setIsEditDialogOpen(false);
         setSelectedProject(null);
-        toast.success(t("dashboard.projects.messages.success.updated"));
+        toast.success(t("projects.messages.success.updated"));
       } else {
-        toast.error(t("dashboard.projects.messages.error.updateFailed"));
+        toast.error(t("projects.messages.error.updateFailed"));
       }
     } catch (_error) {
-      toast.error(t("dashboard.projects.messages.error.updateFailed"));
+      toast.error(t("projects.messages.error.updateFailed"));
     }
   };
 
@@ -302,12 +302,12 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
 
       if (response.ok) {
         deleteProject(projectId);
-        toast.success(t("dashboard.projects.messages.success.deleted"));
+        toast.success(t("projects.messages.success.deleted"));
       } else {
-        toast.error(t("dashboard.projects.messages.error.deleteFailed"));
+        toast.error(t("projects.messages.error.deleteFailed"));
       }
     } catch (_error) {
-      toast.error(t("dashboard.projects.messages.error.deleteFailed"));
+      toast.error(t("projects.messages.error.deleteFailed"));
     }
   };
 
@@ -345,7 +345,7 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
             <div className="relative flex-1">
               <Search className="absolute ltr:left-3 rtl:right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
-                placeholder={t("dashboard.projects.filters.search")}
+                placeholder={t("projects.filters.search")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="ltr:pl-10 rtl:pr-10"
@@ -361,23 +361,23 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
                 className="w-full sm:w-[200px]"
                 suppressHydrationWarning
               >
-                <SelectValue placeholder={t("dashboard.filters.status")} />
+                <SelectValue placeholder={t("common.filters.status")} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">
-                  {t("dashboard.filters.allStatuses")}
+                  {t("common.filters.allStatuses")}
                 </SelectItem>
                 <SelectItem value="planning">
-                  {t("dashboard.projects.status.planning")}
+                  {t("projects.status.planning")}
                 </SelectItem>
                 <SelectItem value="active">
-                  {t("dashboard.projects.status.active")}
+                  {t("projects.status.active")}
                 </SelectItem>
                 <SelectItem value="completed">
-                  {t("dashboard.projects.status.completed")}
+                  {t("projects.status.completed")}
                 </SelectItem>
                 <SelectItem value="on_hold">
-                  {t("dashboard.projects.status.on_hold")}
+                  {t("projects.status.on_hold")}
                 </SelectItem>
               </SelectContent>
             </Select>
@@ -386,7 +386,7 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
           {user.role === "leader" && (
             <Button onClick={() => setIsCreateDialogOpen(true)}>
               <Plus className="h-4 w-4" />
-              {t("dashboard.projects.list.createButton")}
+              {t("projects.list.createButton")}
             </Button>
           )}
         </div>
@@ -394,7 +394,7 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
         {displayedProjects.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-muted-foreground">
-              {t("dashboard.projects.list.noProjects")}
+              {t("projects.list.noProjects")}
             </p>
           </div>
         ) : (
@@ -452,11 +452,9 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
           onPointerDownOutside={(e: Event) => e.preventDefault()}
         >
           <DialogHeader>
-            <DialogTitle>
-              {t("dashboard.projects.modals.create.title")}
-            </DialogTitle>
+            <DialogTitle>{t("projects.modals.create.title")}</DialogTitle>
             <DialogDescription>
-              {t("dashboard.projects.modals.create.description")}
+              {t("projects.modals.create.description")}
             </DialogDescription>
           </DialogHeader>
           <ProjectForm
@@ -473,11 +471,9 @@ export function ProjectsPage({ user }: ProjectsPageProps) {
           onPointerDownOutside={(e: Event) => e.preventDefault()}
         >
           <DialogHeader>
-            <DialogTitle>
-              {t("dashboard.projects.modals.edit.title")}
-            </DialogTitle>
+            <DialogTitle>{t("projects.modals.edit.title")}</DialogTitle>
             <DialogDescription>
-              {t("dashboard.projects.modals.edit.description")}
+              {t("projects.modals.edit.description")}
             </DialogDescription>
           </DialogHeader>
           {selectedProject && (

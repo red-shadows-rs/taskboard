@@ -138,7 +138,7 @@ export function TaskDetailsDialog({
             {language === "ar" ? task.title.ar : task.title.en}
           </DialogTitle>
           <DialogDescription className="sr-only">
-            {t("dashboard.tasks.card.description")}
+            {t("tasks.card.description")}
           </DialogDescription>
         </DialogHeader>
         <DialogBody>
@@ -155,7 +155,7 @@ export function TaskDetailsDialog({
             <div className="space-y-1">
               <h4 className="text-sm font-medium flex items-center gap-2 text-muted-foreground">
                 <AlignLeft className="h-4 w-4" />
-                {t("dashboard.tasks.card.description")}
+                {t("tasks.card.description")}
               </h4>
               <div
                 className="text-sm prose prose-sm dark:prose-invert max-w-none leading-relaxed"
@@ -198,7 +198,7 @@ export function TaskDetailsDialog({
               <div className="space-y-1">
                 <h4 className="text-sm font-medium flex items-center gap-2 text-muted-foreground">
                   <Image className="h-4 w-4" />
-                  {t("dashboard.tasks.card.attachments")}
+                  {t("tasks.card.attachments")}
                 </h4>
                 <div className="grid grid-cols-1 gap-4">
                   {task.attachments.map((path, index) => (
@@ -230,7 +230,7 @@ export function TaskDetailsDialog({
                 <div className="space-y-1.5 col-span-2">
                   <h4 className="text-xs font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                     <Folder className="h-3.5 w-3.5" />
-                    {t("dashboard.projects.card.title")}
+                    {t("projects.card.title")}
                   </h4>
                   <Badge
                     variant="outline"
@@ -258,7 +258,7 @@ export function TaskDetailsDialog({
               <div className="space-y-1.5">
                 <h4 className="text-xs font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                   <Activity className="h-3.5 w-3.5" />
-                  {t("dashboard.tasks.card.status")}
+                  {t("tasks.card.status")}
                 </h4>
                 <Badge
                   className={cn(
@@ -274,7 +274,7 @@ export function TaskDetailsDialog({
               <div className="space-y-1.5">
                 <h4 className="text-xs font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                   <Flag className="h-3.5 w-3.5" />
-                  {t("dashboard.tasks.card.priority")}
+                  {t("tasks.card.priority")}
                 </h4>
                 <Badge
                   className={cn(
@@ -283,14 +283,14 @@ export function TaskDetailsDialog({
                   )}
                   variant="outline"
                 >
-                  {t(`dashboard.tasks.priority.${task.priority}`)}
+                  {t(`tasks.priority.${task.priority}`)}
                 </Badge>
               </div>
 
               <div className="space-y-1.5">
                 <h4 className="text-xs font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                   <DollarSign className="h-3.5 w-3.5" />
-                  {t("dashboard.tasks.card.price")}
+                  {t("tasks.card.price")}
                 </h4>
                 {(task.assigneePrices ?? []).length > 0 ? (
                   <div className="space-y-1.5">
@@ -321,7 +321,7 @@ export function TaskDetailsDialog({
               <div className="space-y-1.5">
                 <h4 className="text-xs font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                   <Clock className="h-3.5 w-3.5" />
-                  {t("dashboard.tasks.card.createdAt")}
+                  {t("tasks.card.createdAt")}
                 </h4>
                 <div className="flex items-center gap-2 text-sm font-medium bg-secondary/30 rounded px-2 py-1 w-fit">
                   <Clock className="h-4 w-4 text-blue-600 dark:text-blue-400" />
@@ -333,7 +333,7 @@ export function TaskDetailsDialog({
                 <div className="space-y-1.5">
                   <h4 className="text-xs font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                     <Calendar className="h-3.5 w-3.5" />
-                    {t("dashboard.tasks.card.dueDate")}
+                    {t("tasks.card.dueDate")}
                   </h4>
                   <div className="flex items-center gap-2 text-sm font-medium bg-secondary/30 rounded px-2 py-1 w-fit">
                     <Calendar className="h-4 w-4 text-orange-600 dark:text-orange-400" />
@@ -345,7 +345,7 @@ export function TaskDetailsDialog({
               <div className="space-y-1.5 col-span-2">
                 <h4 className="text-xs font-semibold text-muted-foreground uppercase flex items-center gap-2">
                   <UserIcon className="h-3.5 w-3.5" />
-                  {t("dashboard.tasks.form.fields.assignedTo")}
+                  {t("tasks.form.fields.assignedTo")}
                 </h4>
                 {assignedUsers.length > 0 ? (
                   <div className="flex flex-wrap gap-2">
@@ -365,7 +365,7 @@ export function TaskDetailsDialog({
                 ) : (
                   <p className="text-sm text-muted-foreground italic flex items-center gap-2">
                     <Ban className="h-3 w-3" />
-                    {t("dashboard.tasks.card.assignee")}
+                    {t("tasks.card.assignee")}
                   </p>
                 )}
               </div>
@@ -375,7 +375,7 @@ export function TaskDetailsDialog({
               <div className="space-y-1 pt-4 border-t">
                 <h4 className="text-sm font-medium flex items-center gap-2 text-muted-foreground">
                   <Tag className="h-4 w-4" />
-                  {t("dashboard.tasks.card.tags")}
+                  {t("tasks.card.tags")}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {task.tags.map((tag, i) => (
@@ -580,7 +580,7 @@ export function TaskCard({
                 variant="outline"
               >
                 <Flag className="ltr:mr-1 rtl:ml-1 h-3 w-3" />
-                {t(`dashboard.tasks.priority.${task.priority}`)}
+                {t(`tasks.priority.${task.priority}`)}
               </Badge>
               {(task.assigneePrices ?? []).reduce((s, ap) => s + ap.price, 0) >
                 0 && (
@@ -610,7 +610,7 @@ export function TaskCard({
                 {task.createdAt && (
                   <div
                     className="flex items-center gap-1"
-                    title={t("dashboard.tasks.card.createdAt")}
+                    title={t("tasks.card.createdAt")}
                   >
                     <Clock className="h-3 w-3 shrink-0 text-blue-600 dark:text-blue-400" />
                     <span className="whitespace-nowrap">
@@ -622,7 +622,7 @@ export function TaskCard({
                 {task.dueDate && task.dueDate !== "" && (
                   <div
                     className="flex items-center gap-1"
-                    title={t("dashboard.tasks.card.dueDate")}
+                    title={t("tasks.card.dueDate")}
                   >
                     <Calendar className="h-3 w-3 shrink-0 text-orange-600 dark:text-orange-400" />
                     <span className="whitespace-nowrap">
@@ -718,10 +718,10 @@ export function TaskCard({
         >
           <AlertDialogHeader>
             <AlertDialogTitle>
-              {t("dashboard.tasks.modals.delete.title")}
+              {t("tasks.modals.delete.title")}
             </AlertDialogTitle>
             <AlertDialogDescription>
-              {t("dashboard.tasks.modals.delete.description")}
+              {t("tasks.modals.delete.description")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="flex gap-2 pt-4">
@@ -979,32 +979,28 @@ export function TaskForm({
         {!showStatusOnly && !isRestrictedView && (
           <div className="space-y-4">
             <div className="space-y-1">
-              <Label htmlFor="title-en">
-                {t("dashboard.tasks.form.fields.titleEn")}
-              </Label>
+              <Label htmlFor="title-en">{t("tasks.form.fields.titleEn")}</Label>
               <Input id="title-en" dir="ltr" {...register("title.en")} />
               {errors.title?.en && (
                 <p className="text-sm text-red-600 mt-1">
-                  {t("dashboard.tasks.validation.titleMinEn")}
+                  {t("tasks.validation.titleMinEn")}
                 </p>
               )}
             </div>
 
             <div className="space-y-1">
-              <Label htmlFor="title-ar">
-                {t("dashboard.tasks.form.fields.titleAr")}
-              </Label>
+              <Label htmlFor="title-ar">{t("tasks.form.fields.titleAr")}</Label>
               <Input id="title-ar" dir="rtl" {...register("title.ar")} />
               {errors.title?.ar && (
                 <p className="text-sm text-red-600 mt-1">
-                  {t("dashboard.tasks.validation.titleMinAr")}
+                  {t("tasks.validation.titleMinAr")}
                 </p>
               )}
             </div>
 
             <div className="space-y-1">
               <Label htmlFor="description-en">
-                {t("dashboard.tasks.form.fields.descriptionEn")}
+                {t("tasks.form.fields.descriptionEn")}
               </Label>
               <RichTextEditor
                 content={watch("description.en")}
@@ -1015,14 +1011,14 @@ export function TaskForm({
               />
               {errors.description?.en && (
                 <p className="text-sm text-red-600 mt-1">
-                  {t("dashboard.tasks.validation.descriptionMin")}
+                  {t("tasks.validation.descriptionMin")}
                 </p>
               )}
             </div>
 
             <div className="space-y-1">
               <Label htmlFor="description-ar">
-                {t("dashboard.tasks.form.fields.descriptionAr")}
+                {t("tasks.form.fields.descriptionAr")}
               </Label>
               <RichTextEditor
                 content={watch("description.ar")}
@@ -1033,13 +1029,13 @@ export function TaskForm({
               />
               {errors.description?.ar && (
                 <p className="text-sm text-red-600 mt-1">
-                  {t("dashboard.tasks.validation.descriptionMin")}
+                  {t("tasks.validation.descriptionMin")}
                 </p>
               )}
             </div>
 
             <div className="space-y-3">
-              <Label>{t("dashboard.tasks.form.fields.attachments")}</Label>
+              <Label>{t("tasks.form.fields.attachments")}</Label>
               {existingAttachments.length > 0 || previews.length > 0 ? (
                 <>
                   <div className="grid grid-cols-2 gap-4">
@@ -1110,7 +1106,7 @@ export function TaskForm({
                     }
                   >
                     <Plus className="h-4 w-4" />
-                    {t("dashboard.tasks.form.actions.addMore")}
+                    {t("tasks.form.actions.addMore")}
                   </Button>
                   <input
                     id="image-upload"
@@ -1140,12 +1136,12 @@ export function TaskForm({
                     <Upload className="h-8 w-8" />
                     <div className="text-sm">
                       <span className="font-semibold text-primary">
-                        {t("dashboard.tasks.form.upload.click")}
+                        {t("tasks.form.upload.click")}
                       </span>{" "}
-                      {t("dashboard.tasks.form.upload.dragDrop")}
+                      {t("tasks.form.upload.dragDrop")}
                     </div>
                     <p className="text-xs text-muted-foreground/70">
-                      {t("dashboard.tasks.form.upload.fileTypes")}
+                      {t("tasks.form.upload.fileTypes")}
                     </p>
                   </div>
                   <input
@@ -1167,9 +1163,7 @@ export function TaskForm({
             className={`grid gap-4 ${isRestrictedView || showStatusOnly ? "grid-cols-1" : "grid-cols-2"}`}
           >
             <div className="space-y-1">
-              <Label htmlFor="status">
-                {t("dashboard.tasks.form.fields.status")}
-              </Label>
+              <Label htmlFor="status">{t("tasks.form.fields.status")}</Label>
               <Select
                 value={status}
                 onValueChange={(value: string) =>
@@ -1186,7 +1180,7 @@ export function TaskForm({
                   dir={language === "ar" ? "rtl" : "ltr"}
                 >
                   <SelectValue
-                    placeholder={t("dashboard.tasks.placeholders.selectStatus")}
+                    placeholder={t("tasks.placeholders.selectStatus")}
                   />
                 </SelectTrigger>
                 <SelectContent>
@@ -1215,9 +1209,7 @@ export function TaskForm({
 
             {!showStatusOnly && !isRestrictedView && (
               <div className="space-y-1">
-                <Label htmlFor="priority">
-                  {t("dashboard.tasks.card.priority")}
-                </Label>
+                <Label htmlFor="priority">{t("tasks.card.priority")}</Label>
                 <Select
                   value={priority}
                   onValueChange={(value: string) =>
@@ -1233,23 +1225,21 @@ export function TaskForm({
                     dir={language === "ar" ? "rtl" : "ltr"}
                   >
                     <SelectValue
-                      placeholder={t(
-                        "dashboard.tasks.placeholders.selectPriority",
-                      )}
+                      placeholder={t("tasks.placeholders.selectPriority")}
                     />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="low">
-                      {t("dashboard.tasks.priority.low")}
+                      {t("tasks.priority.low")}
                     </SelectItem>
                     <SelectItem value="medium">
-                      {t("dashboard.tasks.priority.medium")}
+                      {t("tasks.priority.medium")}
                     </SelectItem>
                     <SelectItem value="high">
-                      {t("dashboard.tasks.priority.high")}
+                      {t("tasks.priority.high")}
                     </SelectItem>
                     <SelectItem value="urgent">
-                      {t("dashboard.tasks.priority.urgent")}
+                      {t("tasks.priority.urgent")}
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -1265,7 +1255,7 @@ export function TaskForm({
 
         {!showStatusOnly && !isRestrictedView && !isClient && (
           <div className="space-y-1">
-            <Label>{t("dashboard.tasks.form.fields.dueDate")}</Label>
+            <Label>{t("tasks.form.fields.dueDate")}</Label>
             <div className="flex gap-2">
               <Popover>
                 <PopoverTrigger asChild>
@@ -1282,9 +1272,7 @@ export function TaskForm({
                         locale: language === "ar" ? ar : undefined,
                       })
                     ) : (
-                      <span>
-                        {t("dashboard.tasks.placeholders.selectDate")}
-                      </span>
+                      <span>{t("tasks.placeholders.selectDate")}</span>
                     )}
                   </Button>
                 </PopoverTrigger>
@@ -1326,7 +1314,7 @@ export function TaskForm({
 
         {!showStatusOnly && !isRestrictedView && !isClient && (
           <div className="space-y-1">
-            <Label>{t("dashboard.tasks.card.assignee")}</Label>
+            <Label>{t("tasks.card.assignee")}</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
@@ -1336,7 +1324,7 @@ export function TaskForm({
                 >
                   {selectedMembers.length === 0 ? (
                     <span className="text-muted-foreground font-normal">
-                      {t("dashboard.tasks.placeholders.selectMembers")}
+                      {t("tasks.placeholders.selectMembers")}
                     </span>
                   ) : (
                     <div className="flex flex-wrap gap-1">
@@ -1370,7 +1358,7 @@ export function TaskForm({
                 <div className="max-h-80 overflow-auto p-2">
                   {users.filter((u) => u.role !== "client").length === 0 ? (
                     <div className="py-6 text-center text-sm text-muted-foreground">
-                      {t("dashboard.team.list.noMembers")}
+                      {t("team.list.noMembers")}
                     </div>
                   ) : (
                     <div className="space-y-1">
@@ -1428,7 +1416,7 @@ export function TaskForm({
           !showStatusOnly &&
           selectedMembers.length > 0 && (
             <div className="space-y-1 mt-4">
-              <Label>{t("dashboard.tasks.card.price")}</Label>
+              <Label>{t("tasks.card.price")}</Label>
               <div className="border rounded-md overflow-hidden">
                 <table className="w-full">
                   <tbody>
@@ -1483,7 +1471,7 @@ export function TaskForm({
 
         {!showStatusOnly && !isRestrictedView && !isClient && (
           <div className="space-y-1 mb-6">
-            <Label>{t("dashboard.tasks.form.fields.tags")}</Label>
+            <Label>{t("tasks.form.fields.tags")}</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
@@ -1494,7 +1482,7 @@ export function TaskForm({
                 >
                   {tags.length === 0 ? (
                     <span className="text-muted-foreground">
-                      {t("dashboard.tasks.placeholders.addTag")}
+                      {t("tasks.placeholders.addTag")}
                     </span>
                   ) : (
                     <div className="flex flex-wrap gap-1 flex-1">
@@ -1519,7 +1507,7 @@ export function TaskForm({
                 dir={language === "ar" ? "rtl" : "ltr"}
               >
                 <div className="p-3 border-b space-y-1">
-                  <Label>{t("dashboard.tasks.form.fields.addTag")}</Label>
+                  <Label>{t("tasks.form.fields.addTag")}</Label>
                   <div className="flex gap-2">
                     <Input
                       value={tagInput}
@@ -1579,7 +1567,7 @@ export function TaskForm({
                   {tags.length === 0 &&
                     getFilteredTags(tagInput).length === 0 && (
                       <div className="py-6 text-center text-sm text-muted-foreground">
-                        {t("dashboard.tasks.list.noTags")}
+                        {t("tasks.list.noTags")}
                       </div>
                     )}
                 </div>

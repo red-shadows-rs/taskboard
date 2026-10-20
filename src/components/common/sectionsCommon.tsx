@@ -53,7 +53,7 @@ export function SectionDetailsDialog({
             {language === "ar" ? section.title.ar : section.title.en}
           </DialogTitle>
           <DialogDescription className="sr-only">
-            {t("dashboard.tasks.card.description")}
+            {t("tasks.card.description")}
           </DialogDescription>
         </DialogHeader>
 
@@ -63,7 +63,7 @@ export function SectionDetailsDialog({
               <div className="space-y-1.5 col-span-2">
                 <h4 className="text-xs font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                   <Folder className="h-3.5 w-3.5" />
-                  {t("dashboard.projects.card.title")}
+                  {t("projects.card.title")}
                 </h4>
                 <Badge
                   variant="outline"
@@ -218,8 +218,8 @@ export function SectionForm({ section, onSubmit, onCancel }: SectionFormProps) {
   const sectionFormSchema = z.object({
     projectId: z.string(),
     title: z.object({
-      en: z.string().min(3, t("dashboard.projects.validation.titleMinEn")),
-      ar: z.string().min(3, t("dashboard.projects.validation.titleMinAr")),
+      en: z.string().min(3, t("projects.validation.titleMinEn")),
+      ar: z.string().min(3, t("projects.validation.titleMinAr")),
     }),
     order: z.number().optional(),
   });
@@ -252,25 +252,21 @@ export function SectionForm({ section, onSubmit, onCancel }: SectionFormProps) {
     >
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain space-y-4 px-1 -mx-1 py-4">
         <div className="space-y-1">
-          <Label htmlFor="title-en">
-            {t("dashboard.projects.form.fields.titleEn")}
-          </Label>
+          <Label htmlFor="title-en">{t("projects.form.fields.titleEn")}</Label>
           <Input id="title-en" dir="ltr" {...register("title.en")} />
           {errors.title?.en && (
             <p className="text-sm text-red-600 mt-1">
-              {t("dashboard.projects.validation.titleMinEn")}
+              {t("projects.validation.titleMinEn")}
             </p>
           )}
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="title-ar">
-            {t("dashboard.projects.form.fields.titleAr")}
-          </Label>
+          <Label htmlFor="title-ar">{t("projects.form.fields.titleAr")}</Label>
           <Input id="title-ar" dir="rtl" {...register("title.ar")} />
           {errors.title?.ar && (
             <p className="text-sm text-red-600 mt-1">
-              {t("dashboard.projects.validation.titleMinAr")}
+              {t("projects.validation.titleMinAr")}
             </p>
           )}
         </div>

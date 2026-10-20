@@ -317,14 +317,14 @@ export function FinancialOverview({
       bg: "bg-emerald-50 dark:bg-emerald-900/10",
     },
     {
-      title: t("dashboard.analytics.financial.projectsWithBudget"),
+      title: t("analytics.financial.projectsWithBudget"),
       value: financialData.projectTotals.length,
       icon: FolderKanban,
       color: "text-blue-600 dark:text-blue-400",
       bg: "bg-blue-50 dark:bg-blue-900/10",
     },
     {
-      title: t("dashboard.analytics.financial.paidMembers"),
+      title: t("analytics.financial.paidMembers"),
       value: financialData.userTotals.length,
       icon: Users,
       color: "text-purple-600 dark:text-purple-400",
@@ -372,7 +372,7 @@ export function FinancialOverview({
                   <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
                     <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
                     <span className="flex-1 rtl:text-right">
-                      {t("dashboard.analytics.financial.byProject")}
+                      {t("analytics.financial.byProject")}
                     </span>
                   </CardTitle>
                 </CardHeader>
@@ -405,10 +405,7 @@ export function FinancialOverview({
                                 </p>
                                 <p className="text-sm">
                                   <span className="text-muted-foreground">
-                                    {t(
-                                      "dashboard.analytics.financial.totalLabel",
-                                    )}
-                                    :{" "}
+                                    {t("analytics.financial.totalLabel")}:{" "}
                                   </span>
                                   <span className="font-medium text-emerald-600 dark:text-emerald-400">
                                     {formatPrice(
@@ -430,7 +427,7 @@ export function FinancialOverview({
                       <Bar
                         dataKey="total"
                         fill="#10B981"
-                        name={t("dashboard.analytics.financial.totalLabel")}
+                        name={t("analytics.financial.totalLabel")}
                         radius={[4, 4, 0, 0]}
                         barSize={40}
                       />
@@ -448,7 +445,7 @@ export function FinancialOverview({
                   <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
                     <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
                     <span className="flex-1 rtl:text-right">
-                      {t("dashboard.analytics.financial.byMember")}
+                      {t("analytics.financial.byMember")}
                     </span>
                   </CardTitle>
                 </CardHeader>
@@ -481,10 +478,7 @@ export function FinancialOverview({
                                 </p>
                                 <p className="text-sm">
                                   <span className="text-muted-foreground">
-                                    {t(
-                                      "dashboard.analytics.financial.totalLabel",
-                                    )}
-                                    :{" "}
+                                    {t("analytics.financial.totalLabel")}:{" "}
                                   </span>
                                   <span className="font-medium text-emerald-600 dark:text-emerald-400">
                                     {formatPrice(
@@ -506,7 +500,7 @@ export function FinancialOverview({
                       <Bar
                         dataKey="total"
                         fill="#3B82F6"
-                        name={t("dashboard.analytics.financial.totalLabel")}
+                        name={t("analytics.financial.totalLabel")}
                         radius={[4, 4, 0, 0]}
                         barSize={40}
                       />
@@ -520,14 +514,14 @@ export function FinancialOverview({
       )}
 
       {!hasProjectDetails ? (
-        <EmptyState message={t("dashboard.analytics.financial.noData")} />
+        <EmptyState message={t("analytics.financial.noData")} />
       ) : (
         <Card>
           <CardHeader className="flex flex-col space-y-1.5 p-6 border-b border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
             <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
               <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
               <span className="flex-1 rtl:text-right">
-                {t("dashboard.analytics.financial.details")}
+                {t("analytics.financial.details")}
               </span>
             </CardTitle>
           </CardHeader>
@@ -539,7 +533,7 @@ export function FinancialOverview({
                     {isRTL ? (
                       <>
                         <th className="ltr:text-left rtl:text-right py-3.5 px-4 font-semibold text-sm">
-                          {t("dashboard.analytics.financial.totalLabel")}
+                          {t("analytics.financial.totalLabel")}
                         </th>
                         {[...financialData.projectTotals].reverse().map((p) => (
                           <th
@@ -550,13 +544,13 @@ export function FinancialOverview({
                           </th>
                         ))}
                         <th className="ltr:text-left rtl:text-right py-3.5 px-4 font-semibold text-sm">
-                          {t("dashboard.analytics.financial.nameLabel")}
+                          {t("analytics.financial.nameLabel")}
                         </th>
                       </>
                     ) : (
                       <>
                         <th className="ltr:text-left rtl:text-right py-3.5 px-4 font-semibold text-sm">
-                          {t("dashboard.analytics.financial.nameLabel")}
+                          {t("analytics.financial.nameLabel")}
                         </th>
                         {financialData.projectTotals.map((p) => (
                           <th
@@ -567,7 +561,7 @@ export function FinancialOverview({
                           </th>
                         ))}
                         <th className="ltr:text-left rtl:text-right py-3.5 px-4 font-semibold text-sm">
-                          {t("dashboard.analytics.financial.totalLabel")}
+                          {t("analytics.financial.totalLabel")}
                         </th>
                       </>
                     )}
@@ -644,13 +638,13 @@ export function FinancialOverview({
                           </td>
                         ))}
                         <td className="ltr:text-left rtl:text-right py-3.5 px-4 text-sm font-medium">
-                          {t("dashboard.analytics.financial.projectTotal")}
+                          {t("analytics.financial.projectTotal")}
                         </td>
                       </>
                     ) : (
                       <>
                         <td className="ltr:text-left rtl:text-right py-3.5 px-4 text-sm font-medium">
-                          {t("dashboard.analytics.financial.projectTotal")}
+                          {t("analytics.financial.projectTotal")}
                         </td>
                         {financialData.projectTotals.map((p) => (
                           <td
@@ -755,22 +749,22 @@ export function TaskCharts({ tasks, language: propLanguage }: TaskChartsProps) {
   const priorityData = useMemo(
     () => [
       {
-        name: t("dashboard.tasks.priority.low"),
+        name: t("tasks.priority.low"),
         value: tasks.filter((t) => t.priority === "low").length,
         fill: "#10B981",
       },
       {
-        name: t("dashboard.tasks.priority.medium"),
+        name: t("tasks.priority.medium"),
         value: tasks.filter((t) => t.priority === "medium").length,
         fill: "#3B82F6",
       },
       {
-        name: t("dashboard.tasks.priority.high"),
+        name: t("tasks.priority.high"),
         value: tasks.filter((t) => t.priority === "high").length,
         fill: "#F59E0B",
       },
       {
-        name: t("dashboard.tasks.priority.urgent"),
+        name: t("tasks.priority.urgent"),
         value: tasks.filter((t) => t.priority === "urgent").length,
         fill: "#EF4444",
       },
@@ -827,7 +821,7 @@ export function TaskCharts({ tasks, language: propLanguage }: TaskChartsProps) {
         <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
           <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
           <span className="flex-1 rtl:text-right">
-            {t("dashboard.analytics.labels.tasksByStatus")}
+            {t("analytics.labels.tasksByStatus")}
           </span>
         </CardTitle>
       </CardHeader>
@@ -872,7 +866,7 @@ export function TaskCharts({ tasks, language: propLanguage }: TaskChartsProps) {
         <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
           <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
           <span className="flex-1 rtl:text-right">
-            {t("dashboard.analytics.trends.byPriority")}
+            {t("analytics.trends.byPriority")}
           </span>
         </CardTitle>
       </CardHeader>
@@ -917,7 +911,7 @@ export function TaskCharts({ tasks, language: propLanguage }: TaskChartsProps) {
   if (tasks.length === 0) {
     return (
       <ChartErrorBoundary>
-        <EmptyState message={t("dashboard.analytics.labels.noData")} />
+        <EmptyState message={t("analytics.labels.noData")} />
       </ChartErrorBoundary>
     );
   }
@@ -973,7 +967,7 @@ export function ProjectOverviewChart({
   if (projects.length === 0) {
     return (
       <ChartErrorBoundary>
-        <EmptyState message={t("dashboard.analytics.labels.noData")} />
+        <EmptyState message={t("analytics.labels.noData")} />
       </ChartErrorBoundary>
     );
   }
@@ -985,7 +979,7 @@ export function ProjectOverviewChart({
           <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
             <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
             <span className="flex-1 rtl:text-right">
-              {t("dashboard.analytics.projects.title")}
+              {t("analytics.projects.title")}
             </span>
           </CardTitle>
         </CardHeader>
@@ -1102,7 +1096,7 @@ export function TeamPerformanceChart({
   if (users.length === 0) {
     return (
       <ChartErrorBoundary>
-        <EmptyState message={t("dashboard.analytics.labels.noData")} />
+        <EmptyState message={t("analytics.labels.noData")} />
       </ChartErrorBoundary>
     );
   }
@@ -1114,7 +1108,7 @@ export function TeamPerformanceChart({
           <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
             <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
             <span className="flex-1 rtl:text-right">
-              {t("dashboard.analytics.team.title")}
+              {t("analytics.team.title")}
             </span>
           </CardTitle>
         </CardHeader>
@@ -1252,7 +1246,7 @@ export function TaskTrendsChart({ tasks }: TaskTrendsChartProps) {
   if (tasks.length === 0) {
     return (
       <ChartErrorBoundary>
-        <EmptyState message={t("dashboard.analytics.labels.noData")} />
+        <EmptyState message={t("analytics.labels.noData")} />
       </ChartErrorBoundary>
     );
   }
@@ -1264,7 +1258,7 @@ export function TaskTrendsChart({ tasks }: TaskTrendsChartProps) {
           <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
             <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
             <span className="flex-1 rtl:text-right">
-              {t("dashboard.analytics.trends.title")}
+              {t("analytics.trends.title")}
             </span>
           </CardTitle>
         </CardHeader>
@@ -1313,7 +1307,7 @@ export function TaskTrendsChart({ tasks }: TaskTrendsChartProps) {
                 dataKey="created"
                 stroke="#3B82F6"
                 strokeWidth={2}
-                name={t("dashboard.analytics.trends.createdTasks")}
+                name={t("analytics.trends.createdTasks")}
                 dot={{ fill: "#3B82F6" }}
               />
               <Line
@@ -1412,12 +1406,12 @@ export function TrendsSummaryTable({ tasks }: TrendsSummaryTableProps) {
   const columns: ColumnDef[] = [
     {
       key: "date",
-      header: t("dashboard.analytics.trends.dateRange"),
+      header: t("analytics.trends.dateRange"),
       cell: (row) => row.date,
     },
     {
       key: "created",
-      header: t("dashboard.analytics.trends.createdTasks"),
+      header: t("analytics.trends.createdTasks"),
       numeric: true,
       cell: (row) => row.created,
     },
@@ -1460,7 +1454,7 @@ export function TrendsSummaryTable({ tasks }: TrendsSummaryTableProps) {
   const displayColumns = isRTL ? [...columns].reverse() : columns;
 
   if (trendsData.length === 0) {
-    return <EmptyState message={t("dashboard.analytics.labels.noData")} />;
+    return <EmptyState message={t("analytics.labels.noData")} />;
   }
 
   return (
@@ -1469,7 +1463,7 @@ export function TrendsSummaryTable({ tasks }: TrendsSummaryTableProps) {
         <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
           <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
           <span className="flex-1 rtl:text-right">
-            {t("dashboard.analytics.trends.summary")}
+            {t("analytics.trends.summary")}
           </span>
         </CardTitle>
       </CardHeader>
@@ -1522,22 +1516,22 @@ export function ProjectStatusChart({ projects }: ProjectStatusChartProps) {
   const statusData = useMemo(
     () => [
       {
-        name: t("dashboard.projects.status.planning"),
+        name: t("projects.status.planning"),
         value: projects.filter((p) => p.status === "planning").length,
         color: "#6B7280",
       },
       {
-        name: t("dashboard.projects.status.active"),
+        name: t("projects.status.active"),
         value: projects.filter((p) => p.status === "active").length,
         color: "#3B82F6",
       },
       {
-        name: t("dashboard.projects.status.completed"),
+        name: t("projects.status.completed"),
         value: projects.filter((p) => p.status === "completed").length,
         color: "#10B981",
       },
       {
-        name: t("dashboard.projects.status.on_hold"),
+        name: t("projects.status.on_hold"),
         value: projects.filter((p) => p.status === "on_hold").length,
         color: "#F59E0B",
       },
@@ -1548,7 +1542,7 @@ export function ProjectStatusChart({ projects }: ProjectStatusChartProps) {
   if (projects.length === 0) {
     return (
       <ChartErrorBoundary>
-        <EmptyState message={t("dashboard.analytics.labels.noData")} />
+        <EmptyState message={t("analytics.labels.noData")} />
       </ChartErrorBoundary>
     );
   }
@@ -1560,7 +1554,7 @@ export function ProjectStatusChart({ projects }: ProjectStatusChartProps) {
           <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
             <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
             <span className="flex-1 rtl:text-right">
-              {t("dashboard.analytics.projects.projectStatusDistribution")}
+              {t("analytics.projects.projectStatusDistribution")}
             </span>
           </CardTitle>
         </CardHeader>
@@ -1684,7 +1678,7 @@ export function ProjectHealthTable({
   const columns: ProjectHealthColumnDef[] = [
     {
       key: "name",
-      header: t("dashboard.analytics.projects.projectName"),
+      header: t("analytics.projects.projectName"),
       cell: (row) => row.name,
     },
     {
@@ -1695,7 +1689,7 @@ export function ProjectHealthTable({
     },
     {
       key: "completedTasks",
-      header: t("dashboard.analytics.team.completedTasks"),
+      header: t("analytics.team.completedTasks"),
       numeric: true,
       cell: (row) => row.completedTasks,
     },
@@ -1744,7 +1738,7 @@ export function ProjectHealthTable({
                   : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400"
           }`}
         >
-          {t(`dashboard.projects.status.${row.status}`)}
+          {t(`projects.status.${row.status}`)}
         </span>
       ),
     },
@@ -1758,7 +1752,7 @@ export function ProjectHealthTable({
         <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
           <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
           <span className="flex-1 rtl:text-right">
-            {t("dashboard.analytics.projects.projectHealth")}
+            {t("analytics.projects.projectHealth")}
           </span>
         </CardTitle>
       </CardHeader>
@@ -1866,7 +1860,7 @@ export function TeamPerformanceTable({
   const columns: TeamColumnDef[] = [
     {
       key: "name",
-      header: t("dashboard.analytics.team.memberName"),
+      header: t("analytics.team.memberName"),
       cell: (row) => row.name,
     },
     {
@@ -1877,7 +1871,7 @@ export function TeamPerformanceTable({
     },
     {
       key: "completedTasks",
-      header: t("dashboard.analytics.team.completedTasks"),
+      header: t("analytics.team.completedTasks"),
       numeric: true,
       cell: (row) => row.completedTasks,
     },
@@ -1901,7 +1895,7 @@ export function TeamPerformanceTable({
     },
     {
       key: "userPrice",
-      header: t("dashboard.tasks.card.price"),
+      header: t("tasks.card.price"),
       numeric: true,
       cell: (row) => (
         <span className="text-emerald-600 dark:text-emerald-400 font-semibold tabular-nums">
@@ -1937,7 +1931,7 @@ export function TeamPerformanceTable({
         <CardTitle className="text-base font-semibold flex items-center gap-2 rtl:flex-row-reverse w-full">
           <div className="w-1 h-5 bg-primary rounded-full shrink-0" />
           <span className="flex-1 rtl:text-right">
-            {t("dashboard.analytics.team.details")}
+            {t("analytics.team.details")}
           </span>
         </CardTitle>
       </CardHeader>

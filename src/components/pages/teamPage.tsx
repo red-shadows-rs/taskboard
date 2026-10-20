@@ -26,7 +26,7 @@ export function TeamMembers({ user }: TeamMembersProps) {
         setUsers(data.users || data);
       }
     } catch (_error) {
-      toast.error(t("dashboard.team.messages.error.fetchFailed"));
+      toast.error(t("team.messages.error.fetchFailed"));
     }
   }, [setUsers, t]);
 
@@ -45,12 +45,12 @@ export function TeamMembers({ user }: TeamMembersProps) {
 
         if (response.ok) {
           await fetchUsers();
-          toast.success(t("dashboard.team.messages.success.added"));
+          toast.success(t("team.messages.success.added"));
         } else {
-          toast.error(t("dashboard.team.messages.error.addFailed"));
+          toast.error(t("team.messages.error.addFailed"));
         }
       } catch (_error) {
-        toast.error(t("dashboard.team.messages.error.addFailed"));
+        toast.error(t("team.messages.error.addFailed"));
       }
     },
     [fetchUsers, t],
@@ -67,12 +67,12 @@ export function TeamMembers({ user }: TeamMembersProps) {
 
         if (response.ok) {
           await fetchUsers();
-          toast.success(t("dashboard.team.messages.success.updated"));
+          toast.success(t("team.messages.success.updated"));
         } else {
-          toast.error(t("dashboard.team.messages.error.updateFailed"));
+          toast.error(t("team.messages.error.updateFailed"));
         }
       } catch (_error) {
-        toast.error(t("dashboard.team.messages.error.updateFailed"));
+        toast.error(t("team.messages.error.updateFailed"));
       }
     },
     [fetchUsers, t],
@@ -87,12 +87,12 @@ export function TeamMembers({ user }: TeamMembersProps) {
 
         if (response.ok) {
           await fetchUsers();
-          toast.success(t("dashboard.team.messages.success.deleted"));
+          toast.success(t("team.messages.success.deleted"));
         } else {
-          toast.error(t("dashboard.team.messages.error.deleteFailed"));
+          toast.error(t("team.messages.error.deleteFailed"));
         }
       } catch (_error) {
-        toast.error(t("dashboard.team.messages.error.deleteFailed"));
+        toast.error(t("team.messages.error.deleteFailed"));
       }
     },
     [fetchUsers, t],
@@ -110,10 +110,10 @@ export function TeamMembers({ user }: TeamMembersProps) {
         if (response.ok) {
           await fetchUsers();
         } else {
-          toast.error(t("dashboard.team.messages.error.updateFailed"));
+          toast.error(t("team.messages.error.updateFailed"));
         }
       } catch (_error) {
-        toast.error(t("dashboard.team.messages.error.updateFailed"));
+        toast.error(t("team.messages.error.updateFailed"));
       }
     },
     [fetchUsers, t],

@@ -109,11 +109,10 @@ export function ProjectSection({
         language,
         translations: t,
       });
-      toast.success(t("dashboard.tasks.messages.success.reportGenerated"));
+      toast.success(t("tasks.messages.success.reportGenerated"));
     } catch (_error) {
       toast.error(
-        t("dashboard.tasks.messages.error.exportFailed") ||
-          "Failed to export PDF",
+        t("tasks.messages.error.exportFailed") || "Failed to export PDF",
       );
     }
   };
@@ -163,7 +162,7 @@ export function ProjectSection({
               {language === "ar" ? section.title.ar : section.title.en}
             </h3>
             <Badge variant="outline" className="text-xs">
-              {tasks.length} {t("dashboard.tasks.header.title")}
+              {tasks.length} {t("tasks.header.title")}
             </Badge>
           </div>
 
@@ -175,7 +174,7 @@ export function ProjectSection({
                 e.stopPropagation();
                 handleExportSection();
               }}
-              title={t("dashboard.projects.card.actions.export")}
+              title={t("projects.card.actions.export")}
             >
               <FileDown className="h-4 w-4" />
             </Button>
@@ -188,7 +187,7 @@ export function ProjectSection({
                     e.stopPropagation();
                     onEditSection(section);
                   }}
-                  title={t("dashboard.tasks.list.editSection")}
+                  title={t("tasks.list.editSection")}
                 >
                   <Pencil className="h-4 w-4" />
                 </Button>
@@ -222,7 +221,7 @@ export function ProjectSection({
                 <div className="py-3 flex justify-between items-center">
                   <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
                     {" "}
-                    {t("dashboard.tasks.list.actionItems")}{" "}
+                    {t("tasks.list.actionItems")}{" "}
                   </h4>
                   {isLeaderOrClient && (
                     <Button
@@ -235,7 +234,7 @@ export function ProjectSection({
                       className="gap-2 h-9"
                     >
                       <Plus className="h-3.5 w-3.5" />
-                      {t("dashboard.tasks.list.createButton")}
+                      {t("tasks.list.createButton")}
                     </Button>
                   )}
                 </div>
@@ -247,7 +246,7 @@ export function ProjectSection({
                   >
                     {tasks.length === 0 ? (
                       <p className="text-sm text-muted-foreground italic py-2 pl-4 border-l-2">
-                        {t("dashboard.tasks.list.noTasks")}
+                        {t("tasks.list.noTasks")}
                       </p>
                     ) : (
                       <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

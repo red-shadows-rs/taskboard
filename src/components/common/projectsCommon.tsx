@@ -124,7 +124,7 @@ export function ProjectCard({
                       borderColor: `${project.color}20`,
                     }}
                   >
-                    {t(`dashboard.projects.status.${project.status}`)}
+                    {t(`projects.status.${project.status}`)}
                   </Badge>
                 </div>
               </div>
@@ -166,7 +166,7 @@ export function ProjectCard({
             <div className="flex items-center gap-1.5">
               <Users className="h-3.5 w-3.5" />
               <span>
-                {teamMembersCount} {t("dashboard.projects.form.labels.members")}
+                {teamMembersCount} {t("projects.form.labels.members")}
               </span>
             </div>
             <div className="flex items-center gap-1.5">
@@ -187,10 +187,10 @@ export function ProjectCard({
         >
           <AlertDialogHeader>
             <AlertDialogTitle>
-              {t("dashboard.projects.modals.delete.title")}
+              {t("projects.modals.delete.title")}
             </AlertDialogTitle>
             <AlertDialogDescription>
-              {t("dashboard.projects.modals.delete.description")}
+              {t("projects.modals.delete.description")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="flex gap-2 pt-4">
@@ -299,34 +299,28 @@ export function ProjectForm({
     >
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain space-y-4 px-1 -mx-1">
         <div className="space-y-1">
-          <Label htmlFor="title-en">
-            {t("dashboard.projects.form.fields.titleEn")}
-          </Label>
+          <Label htmlFor="title-en">{t("projects.form.fields.titleEn")}</Label>
           <Input id="title-en" {...register("title.en")} dir="ltr" />
           {errors.title?.en && (
             <p className="text-sm text-red-600">
-              {t("dashboard.projects.validation.titleMinEn")}
+              {t("projects.validation.titleMinEn")}
             </p>
           )}
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="title-ar">
-            {t("dashboard.projects.form.fields.titleAr")}
-          </Label>
+          <Label htmlFor="title-ar">{t("projects.form.fields.titleAr")}</Label>
           <Input id="title-ar" {...register("title.ar")} dir="rtl" />
           {errors.title?.ar && (
             <p className="text-sm text-red-600">
-              {t("dashboard.projects.validation.titleMinAr")}
+              {t("projects.validation.titleMinAr")}
             </p>
           )}
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1">
-            <Label htmlFor="status">
-              {t("dashboard.projects.form.fields.status")}
-            </Label>
+            <Label htmlFor="status">{t("projects.form.fields.status")}</Label>
             <Select
               value={watch("status") || undefined}
               onValueChange={(value: string) =>
@@ -340,23 +334,21 @@ export function ProjectForm({
                 className={!watch("status") ? "text-muted-foreground" : ""}
               >
                 <SelectValue
-                  placeholder={t(
-                    "dashboard.projects.placeholders.selectStatus",
-                  )}
+                  placeholder={t("projects.placeholders.selectStatus")}
                 />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="planning">
-                  {t("dashboard.projects.status.planning")}
+                  {t("projects.status.planning")}
                 </SelectItem>
                 <SelectItem value="active">
-                  {t("dashboard.projects.status.active")}
+                  {t("projects.status.active")}
                 </SelectItem>
                 <SelectItem value="completed">
-                  {t("dashboard.projects.status.completed")}
+                  {t("projects.status.completed")}
                 </SelectItem>
                 <SelectItem value="on_hold">
-                  {t("dashboard.projects.status.on_hold")}
+                  {t("projects.status.on_hold")}
                 </SelectItem>
               </SelectContent>
             </Select>
@@ -368,7 +360,7 @@ export function ProjectForm({
           </div>
 
           <div className="space-y-1">
-            <Label>{t("dashboard.projects.form.labels.selectColor")}</Label>
+            <Label>{t("projects.form.labels.selectColor")}</Label>
             <div className="flex gap-3 flex-wrap">
               {colors.map((color) => (
                 <button
@@ -393,7 +385,7 @@ export function ProjectForm({
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1 flex flex-col">
             <Label htmlFor="startDate">
-              {t("dashboard.projects.form.fields.startDate")}
+              {t("projects.form.fields.startDate")}
             </Label>
             <div className="flex gap-2">
               <Popover>
@@ -408,9 +400,7 @@ export function ProjectForm({
                     {watch("startDate") ? (
                       format(new Date(watch("startDate")!), "MM/dd/yyyy")
                     ) : (
-                      <span>
-                        {t("dashboard.projects.placeholders.selectStartDate")}
-                      </span>
+                      <span>{t("projects.placeholders.selectStartDate")}</span>
                     )}
                   </Button>
                 </PopoverTrigger>
@@ -451,9 +441,7 @@ export function ProjectForm({
           </div>
 
           <div className="space-y-1 flex flex-col">
-            <Label htmlFor="endDate">
-              {t("dashboard.projects.form.fields.endDate")}
-            </Label>
+            <Label htmlFor="endDate">{t("projects.form.fields.endDate")}</Label>
             <div className="flex gap-2">
               <Popover>
                 <PopoverTrigger asChild>
@@ -467,9 +455,7 @@ export function ProjectForm({
                     {watch("endDate") ? (
                       format(new Date(watch("endDate")!), "MM/dd/yyyy")
                     ) : (
-                      <span>
-                        {t("dashboard.projects.placeholders.selectEndDate")}
-                      </span>
+                      <span>{t("projects.placeholders.selectEndDate")}</span>
                     )}
                   </Button>
                 </PopoverTrigger>
@@ -509,7 +495,7 @@ export function ProjectForm({
         </div>
 
         <div className="space-y-1">
-          <Label>{t("dashboard.projects.form.fields.teamMembers")}</Label>
+          <Label>{t("projects.form.fields.teamMembers")}</Label>
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -519,7 +505,7 @@ export function ProjectForm({
               >
                 {selectedMembers.length === 0 ? (
                   <span className="text-muted-foreground font-normal">
-                    {t("dashboard.team.placeholders.selectMembers")}
+                    {t("team.placeholders.selectMembers")}
                   </span>
                 ) : (
                   <div className="flex flex-wrap gap-1">
@@ -551,7 +537,7 @@ export function ProjectForm({
               <div className="max-h-80 overflow-auto p-2">
                 {users.length === 0 ? (
                   <div className="py-6 text-center text-sm text-muted-foreground">
-                    {t("dashboard.team.list.noMembers")}
+                    {t("team.list.noMembers")}
                   </div>
                 ) : (
                   <div className="space-y-1">

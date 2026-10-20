@@ -95,5 +95,12 @@
     "exitButton": "Exit Demo",
     "tryDemo": "Launch Live Demo",
     "instantAccess": "Instant one-click access with pre-seeded projects and tasks"
+  },
+  "filters": {
+    "search": "Search...",
+    "project": "Filter by Project",
+    "status": "Filter by Status",
+    "allProjects": "All Projects",
+    "allStatuses": "All Statuses"
   }
 }

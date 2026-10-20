@@ -138,9 +138,9 @@ export default function Analytics({ user }: AnalyticsProps) {
         language,
         translations: t,
       });
-      toast.success(t("dashboard.analytics.messages.success.exported"));
+      toast.success(t("analytics.messages.success.exported"));
     } catch {
-      toast.error(t("dashboard.analytics.messages.error.fetchFailed"));
+      toast.error(t("analytics.messages.error.fetchFailed"));
     }
   }, [
     filteredTasks,
@@ -190,7 +190,7 @@ export default function Analytics({ user }: AnalyticsProps) {
         setSections(sectionsData.sections || []);
       }
     } catch {
-      toast.error(t("dashboard.analytics.messages.error.fetchFailed"));
+      toast.error(t("analytics.messages.error.fetchFailed"));
     }
   }, [t, user.id, user.role]);
 
@@ -200,11 +200,11 @@ export default function Analytics({ user }: AnalyticsProps) {
 
   const dateRanges: { value: DateRange; label: string }[] = useMemo(
     () => [
-      { value: "all", label: t("dashboard.analytics.dateRange.all") },
-      { value: "1d", label: t("dashboard.analytics.dateRange.1d") },
-      { value: "7d", label: t("dashboard.analytics.dateRange.7d") },
-      { value: "30d", label: t("dashboard.analytics.dateRange.30d") },
-      { value: "90d", label: t("dashboard.analytics.dateRange.90d") },
+      { value: "all", label: t("analytics.dateRange.all") },
+      { value: "1d", label: t("analytics.dateRange.1d") },
+      { value: "7d", label: t("analytics.dateRange.7d") },
+      { value: "30d", label: t("analytics.dateRange.30d") },
+      { value: "90d", label: t("analytics.dateRange.90d") },
     ],
     [t],
   );
@@ -234,9 +234,7 @@ export default function Analytics({ user }: AnalyticsProps) {
               className="w-full sm:w-[200px]"
               suppressHydrationWarning
             >
-              <SelectValue
-                placeholder={t("dashboard.analytics.filters.dateRange")}
-              />
+              <SelectValue placeholder={t("analytics.filters.dateRange")} />
             </SelectTrigger>
             <SelectContent>
               {dateRanges.map((range) => (
@@ -256,13 +254,11 @@ export default function Analytics({ user }: AnalyticsProps) {
               className="w-full sm:w-[200px]"
               suppressHydrationWarning
             >
-              <SelectValue
-                placeholder={t("dashboard.analytics.filters.allProjects")}
-              />
+              <SelectValue placeholder={t("analytics.filters.allProjects")} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">
-                {t("dashboard.analytics.filters.allProjects")}
+                {t("analytics.filters.allProjects")}
               </SelectItem>
               {projects.map((project) => (
                 <SelectItem key={project.id} value={project.id}>
@@ -275,7 +271,7 @@ export default function Analytics({ user }: AnalyticsProps) {
 
         <Button onClick={handleExportReport}>
           <Download className="h-4 w-4" />
-          {t("dashboard.analytics.actions.export")}
+          {t("analytics.actions.export")}
         </Button>
       </div>
 
@@ -287,7 +283,7 @@ export default function Analytics({ user }: AnalyticsProps) {
               value={tab}
               className="rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-sm font-medium transition-all"
             >
-              {t(`dashboard.analytics.tabs.${tab}`)}
+              {t(`analytics.tabs.${tab}`)}
             </TabsTrigger>
           ))}
         </TabsList>
@@ -299,7 +295,7 @@ export default function Analytics({ user }: AnalyticsProps) {
             users={filteredUsers}
           />
           {filteredTasks.length === 0 ? (
-            <EmptyState message={t("dashboard.analytics.labels.noData")} />
+            <EmptyState message={t("analytics.labels.noData")} />
           ) : (
             <TaskCharts tasks={filteredTasks} language={language} />
           )}
@@ -307,7 +303,7 @@ export default function Analytics({ user }: AnalyticsProps) {
 
         <TabsContent value="projects" className="space-y-6 mt-8">
           {filteredProjects.length === 0 ? (
-            <EmptyState message={t("dashboard.analytics.labels.noData")} />
+            <EmptyState message={t("analytics.labels.noData")} />
           ) : (
             <>
               <ProjectOverviewChart
@@ -327,7 +323,7 @@ export default function Analytics({ user }: AnalyticsProps) {
 
         <TabsContent value="team" className="space-y-6 mt-8">
           {filteredUsers.length === 0 ? (
-            <EmptyState message={t("dashboard.analytics.labels.noData")} />
+            <EmptyState message={t("analytics.labels.noData")} />
           ) : (
             <>
               <TeamPerformanceChart
@@ -344,7 +340,7 @@ export default function Analytics({ user }: AnalyticsProps) {
 
         <TabsContent value="trends" className="space-y-6 mt-8">
           {filteredTasks.length === 0 ? (
-            <EmptyState message={t("dashboard.analytics.labels.noData")} />
+            <EmptyState message={t("analytics.labels.noData")} />
           ) : (
             <>
               <TaskTrendsChart tasks={filteredTasks} />
@@ -355,7 +351,7 @@ export default function Analytics({ user }: AnalyticsProps) {
 
         <TabsContent value="financial" className="space-y-6 mt-8">
           {filteredTasks.length === 0 && filteredProjects.length === 0 ? (
-            <EmptyState message={t("dashboard.analytics.labels.noData")} />
+            <EmptyState message={t("analytics.labels.noData")} />
           ) : (
             <FinancialOverview
               tasks={filteredTasks}

@@ -500,7 +500,7 @@ const KanbanBoard = memo(function KanbanBoard({
 
                     {columnTasks.length === 0 && (
                       <div className="flex items-center justify-center text-center text-muted-foreground text-sm h-full">
-                        {t("dashboard.tasks.list.noTasks")}
+                        {t("tasks.list.noTasks")}
                       </div>
                     )}
                   </CardContent>

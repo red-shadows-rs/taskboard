@@ -15,15 +15,15 @@ export function DynamicMetadata() {
     if (pathname === "/login") {
       titleKey = "auth.meta.title";
     } else if (pathname === "/tasks") {
-      titleKey = "dashboard.tasks.meta.title";
+      titleKey = "tasks.meta.title";
     } else if (pathname === "/analytics") {
-      titleKey = "dashboard.analytics.meta.title";
+      titleKey = "analytics.meta.title";
     } else if (pathname === "/team") {
-      titleKey = "dashboard.team.meta.title";
+      titleKey = "team.meta.title";
     } else if (pathname === "/profile") {
       titleKey = "profile.meta.title";
     } else if (pathname?.startsWith("/projects")) {
-      titleKey = "dashboard.projects.meta.title";
+      titleKey = "projects.meta.title";
     }
 
     document.title = t(titleKey);

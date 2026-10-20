@@ -143,7 +143,7 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
         setProject(data.project);
       }
     } catch (_error) {
-      toast.error(t("dashboard.projects.messages.error.fetchFailed"));
+      toast.error(t("projects.messages.error.fetchFailed"));
     }
   }, [projectId, t]);
 
@@ -162,7 +162,7 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
         setExpandedSections(new Set(projectSections.map((s: Section) => s.id)));
       }
     } catch (_error) {
-      toast.error(t("dashboard.projects.messages.error.fetchFailed"));
+      toast.error(t("projects.messages.error.fetchFailed"));
     }
   }, [projectId, setSections, t]);
 
@@ -174,7 +174,7 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
         setUsers(data.users || []);
       }
     } catch (_error) {
-      toast.error(t("dashboard.team.messages.error.fetchFailed"));
+      toast.error(t("team.messages.error.fetchFailed"));
     }
   }, [setUsers, t]);
 
@@ -190,7 +190,7 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
         setTasks(data.tasks || []);
       }
     } catch (_error) {
-      toast.error(t("dashboard.tasks.messages.error.fetchFailed"));
+      toast.error(t("tasks.messages.error.fetchFailed"));
     }
   }, [setTasks, t, projectId]);
 
@@ -482,12 +482,12 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
         addSection(data.section);
         setIsCreateSectionDialogOpen(false);
         setExpandedSections((prev) => new Set(prev).add(data.section.id));
-        toast.success(t("dashboard.tasks.messages.success.created"));
+        toast.success(t("tasks.messages.success.created"));
       } else {
-        toast.error(t("dashboard.tasks.messages.error.createFailed"));
+        toast.error(t("tasks.messages.error.createFailed"));
       }
     } catch (_error) {
-      toast.error(t("dashboard.tasks.messages.error.createFailed"));
+      toast.error(t("tasks.messages.error.createFailed"));
     }
   };
 
@@ -522,19 +522,19 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
               data.task = uploadData.task;
             }
           } catch (_error) {
-            toast.error(t("dashboard.tasks.messages.error.uploadFailed"));
+            toast.error(t("tasks.messages.error.uploadFailed"));
           }
         }
 
         addTask(data.task);
         setIsCreateTaskDialogOpen(false);
         setSelectedSection(null);
-        toast.success(t("dashboard.tasks.messages.success.created"));
+        toast.success(t("tasks.messages.success.created"));
       } else {
-        toast.error(t("dashboard.tasks.messages.error.createFailed"));
+        toast.error(t("tasks.messages.error.createFailed"));
       }
     } catch (_error) {
-      toast.error(t("dashboard.tasks.messages.error.createFailed"));
+      toast.error(t("tasks.messages.error.createFailed"));
     }
   };
 
@@ -569,19 +569,19 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
               data.task = uploadData.task;
             }
           } catch (_error) {
-            toast.error(t("dashboard.tasks.messages.error.uploadFailed"));
+            toast.error(t("tasks.messages.error.uploadFailed"));
           }
         }
 
         updateTask(selectedTask.id, data.task);
         setIsEditTaskDialogOpen(false);
         setSelectedTask(null);
-        toast.success(t("dashboard.tasks.messages.success.updated"));
+        toast.success(t("tasks.messages.success.updated"));
       } else {
-        toast.error(t("dashboard.tasks.messages.error.updateFailed"));
+        toast.error(t("tasks.messages.error.updateFailed"));
       }
     } catch (_error) {
-      toast.error(t("dashboard.tasks.messages.error.updateFailed"));
+      toast.error(t("tasks.messages.error.updateFailed"));
     }
   };
 
@@ -599,12 +599,12 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
         updateSection(selectedSection.id, data.section);
         setIsEditSectionDialogOpen(false);
         setSelectedSection(null);
-        toast.success(t("dashboard.tasks.messages.success.updated"));
+        toast.success(t("tasks.messages.success.updated"));
       } else {
-        toast.error(t("dashboard.tasks.messages.error.updateFailed"));
+        toast.error(t("tasks.messages.error.updateFailed"));
       }
     } catch (_error) {
-      toast.error(t("dashboard.tasks.messages.error.updateFailed"));
+      toast.error(t("tasks.messages.error.updateFailed"));
     }
   };
 
@@ -615,10 +615,10 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
       });
       if (response.ok) {
         deleteSection(sectionId);
-        toast.success(t("dashboard.tasks.messages.success.deleted"));
+        toast.success(t("tasks.messages.success.deleted"));
       }
     } catch (_error) {
-      toast.error(t("dashboard.tasks.messages.error.deleteFailed"));
+      toast.error(t("tasks.messages.error.deleteFailed"));
     }
   };
 
@@ -630,12 +630,12 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
 
       if (response.ok) {
         deleteTask(taskId);
-        toast.success(t("dashboard.tasks.messages.success.deleted"));
+        toast.success(t("tasks.messages.success.deleted"));
       } else {
-        toast.error(t("dashboard.tasks.messages.error.deleteFailed"));
+        toast.error(t("tasks.messages.error.deleteFailed"));
       }
     } catch (_error) {
-      toast.error(t("dashboard.tasks.messages.error.deleteFailed"));
+      toast.error(t("tasks.messages.error.deleteFailed"));
     }
   };
 
@@ -652,7 +652,7 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
         updateTask(taskId, data.task);
       }
     } catch (_error) {
-      toast.error(t("dashboard.tasks.messages.error.updateFailed"));
+      toast.error(t("tasks.messages.error.updateFailed"));
     }
   };
 
@@ -683,9 +683,9 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
         language,
         translations: t,
       });
-      toast.success(t("dashboard.projects.messages.success.reportGenerated"));
+      toast.success(t("projects.messages.success.reportGenerated"));
     } catch (_error) {
-      toast.error(t("dashboard.projects.messages.error.exportFailed"));
+      toast.error(t("projects.messages.error.exportFailed"));
     }
   };
 
@@ -718,19 +718,19 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             >
               <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
-              <span>{t("dashboard.projects.header.title")}</span>
+              <span>{t("projects.header.title")}</span>
             </Link>
             <h1 className="text-2xl font-bold tracking-tight">
               {language === "ar" ? project.title.ar : project.title.en}
             </h1>
             <Badge variant="outline">
-              {t(`dashboard.projects.status.${project.status}`)}
+              {t(`projects.status.${project.status}`)}
             </Badge>
           </div>
           <div className="flex gap-2">
             <Button variant="outline" size="sm" onClick={handleExportProject}>
               <FileText className="h-4 w-4 ltr:mr-2 rtl:ml-2" />
-              {t("dashboard.projects.card.actions.export")}
+              {t("projects.card.actions.export")}
             </Button>
           </div>
         </div>
@@ -739,7 +739,7 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
           <div className="relative flex-1 w-full">
             <Search className="absolute ltr:left-3 rtl:right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
-              placeholder={t("dashboard.tasks.filters.searchSections")}
+              placeholder={t("tasks.filters.searchSections")}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="ltr:pl-10 rtl:pr-10"
@@ -752,7 +752,7 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
                 className="gap-2 flex-1 sm:flex-initial whitespace-nowrap"
               >
                 <Plus className="h-4 w-4" />
-                {t("dashboard.tasks.list.createSection")}
+                {t("tasks.list.createSection")}
               </Button>
             )}
           </div>
@@ -772,10 +772,10 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
                   <FileText className="h-8 w-8 text-muted-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-1">
-                  {t("dashboard.tasks.list.noTasks")}
+                  {t("tasks.list.noTasks")}
                 </h3>
                 <p className="text-muted-foreground max-w-sm mx-auto mb-4">
-                  {t("dashboard.tasks.modals.create.description")}
+                  {t("tasks.modals.create.description")}
                 </p>
               </div>
             ) : (
@@ -882,11 +882,9 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
             onPointerDownOutside={(e: Event) => e.preventDefault()}
           >
             <DialogHeader>
-              <DialogTitle>
-                {t("dashboard.tasks.modals.createSection.title")}
-              </DialogTitle>
+              <DialogTitle>{t("tasks.modals.createSection.title")}</DialogTitle>
               <DialogDescription>
-                {t("dashboard.tasks.modals.createSection.description")}
+                {t("tasks.modals.createSection.description")}
               </DialogDescription>
             </DialogHeader>
             <SectionForm
@@ -905,11 +903,9 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
             onPointerDownOutside={(e: Event) => e.preventDefault()}
           >
             <DialogHeader>
-              <DialogTitle>
-                {t("dashboard.tasks.modals.editSection.title")}
-              </DialogTitle>
+              <DialogTitle>{t("tasks.modals.editSection.title")}</DialogTitle>
               <DialogDescription>
-                {t("dashboard.tasks.modals.editSection.description")}
+                {t("tasks.modals.editSection.description")}
               </DialogDescription>
             </DialogHeader>
             {selectedSection && (
@@ -934,11 +930,9 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
             onPointerDownOutside={(e: Event) => e.preventDefault()}
           >
             <DialogHeader>
-              <DialogTitle>
-                {t("dashboard.tasks.modals.create.title")}
-              </DialogTitle>
+              <DialogTitle>{t("tasks.modals.create.title")}</DialogTitle>
               <DialogDescription>
-                {t("dashboard.tasks.modals.create.description")}
+                {t("tasks.modals.create.description")}
               </DialogDescription>
             </DialogHeader>
             {selectedSection && (
@@ -963,11 +957,9 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
             onPointerDownOutside={(e: Event) => e.preventDefault()}
           >
             <DialogHeader>
-              <DialogTitle>
-                {t("dashboard.tasks.modals.edit.title")}
-              </DialogTitle>
+              <DialogTitle>{t("tasks.modals.edit.title")}</DialogTitle>
               <DialogDescription>
-                {t("dashboard.tasks.modals.edit.description")}
+                {t("tasks.modals.edit.description")}
               </DialogDescription>
             </DialogHeader>
             {selectedTask && (
@@ -994,10 +986,10 @@ export function ProjectDetailPage({ user, projectId }: ProjectDetailPageProps) {
           >
             <AlertDialogHeader>
               <AlertDialogTitle>
-                {t("dashboard.tasks.modals.deleteSection.title")}
+                {t("tasks.modals.deleteSection.title")}
               </AlertDialogTitle>
               <AlertDialogDescription>
-                {t("dashboard.tasks.modals.deleteSection.description")}
+                {t("tasks.modals.deleteSection.description")}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <div className="flex gap-2 pt-4">

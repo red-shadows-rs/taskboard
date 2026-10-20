@@ -80,11 +80,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
           Array.isArray(modules) && modules.length > 0
             ? modules
             : [
-                "dashboard/analytics",
-                "dashboard/projects",
-                "dashboard/tasks",
-                "dashboard/team",
-                "dashboard",
+                "analytics",
+                "projects",
+                "tasks",
+                "team",
                 "auth",
                 "profile",
                 "common",
@@ -130,24 +129,50 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = lang;
   };
 
-  const t = useCallback(
-    (key: string): string => {
-      if (!isLoaded) return "";
-
-      const keys = key.split(".");
+  const resolveKey = useCallback(
+    (lookupKey: string): string | null => {
+      const keys = lookupKey.split(".");
       let value: string | TranslationValue = translationsState[language];
 
       for (const k of keys) {
         if (value && typeof value === "object") {
           value = value[k];
         } else {
-          return key;
+          return null;
         }
       }
 
-      return typeof value === "string" ? value : key;
+      return typeof value === "string" ? value : null;
     },
-    [isLoaded, translationsState, language],
+    [translationsState, language],
+  );
+
+  const t = useCallback(
+    (key: string): string => {
+      if (!isLoaded) return "";
+
+      const direct = resolveKey(key);
+      if (direct !== null) return direct;
+
+      if (key.startsWith("dashboard.")) {
+        const stripped = key.slice("dashboard.".length);
+        const fallbackDirect = resolveKey(stripped);
+        if (fallbackDirect !== null) return fallbackDirect;
+
+        if (stripped.startsWith("filters.")) {
+          const commonFilter = resolveKey(`common.${stripped}`);
+          if (commonFilter !== null) return commonFilter;
+        }
+      }
+
+      if (key.startsWith("filters.")) {
+        const commonFilter = resolveKey(`common.${key}`);
+        if (commonFilter !== null) return commonFilter;
+      }
+
+      return key;
+    },
+    [isLoaded, resolveKey],
   );
 
   useEffect(() => {

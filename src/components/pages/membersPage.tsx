@@ -250,10 +250,10 @@ const SortableMemberCard = memo(function SortableMemberCard({
                 >
                   <AlertDialogHeader>
                     <AlertDialogTitle>
-                      {t("dashboard.team.modals.delete.title")}
+                      {t("team.modals.delete.title")}
                     </AlertDialogTitle>
                     <AlertDialogDescription>
-                      {t("dashboard.team.modals.delete.description")}
+                      {t("team.modals.delete.description")}
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <div className="flex gap-2 pt-4">
@@ -571,7 +571,7 @@ export function MembersManagement({
           <div className="relative flex-1">
             <Search className="absolute ltr:left-3 rtl:right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder={t("dashboard.team.list.search")}
+              placeholder={t("team.list.search")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="ltr:pl-10 rtl:pr-10"
@@ -585,12 +585,10 @@ export function MembersManagement({
             dir={language === "ar" ? "rtl" : "ltr"}
           >
             <SelectTrigger className="w-full sm:w-[180px]">
-              <SelectValue placeholder={t("dashboard.team.filters.role")} />
+              <SelectValue placeholder={t("team.filters.role")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">
-                {t("dashboard.team.filters.allRoles")}
-              </SelectItem>
+              <SelectItem value="all">{t("team.filters.allRoles")}</SelectItem>
               <SelectItem value="leader">{t("common.role.leader")}</SelectItem>
               <SelectItem value="client">{t("common.role.client")}</SelectItem>
               <SelectItem value="member">{t("common.role.member")}</SelectItem>
@@ -603,7 +601,7 @@ export function MembersManagement({
             <DialogTrigger asChild>
               <Button className="gap-2 whitespace-nowrap">
                 <UserPlus className="h-4 w-4" />
-                {t("dashboard.team.list.addButton")}
+                {t("team.list.addButton")}
               </Button>
             </DialogTrigger>
             <DialogContent
@@ -611,11 +609,9 @@ export function MembersManagement({
               onPointerDownOutside={(e: Event) => e.preventDefault()}
             >
               <DialogHeader>
-                <DialogTitle>
-                  {t("dashboard.team.modals.create.title")}
-                </DialogTitle>
+                <DialogTitle>{t("team.modals.create.title")}</DialogTitle>
                 <DialogDescription>
-                  {t("dashboard.team.modals.create.description")}
+                  {t("team.modals.create.description")}
                 </DialogDescription>
               </DialogHeader>
               <DialogBody>
@@ -623,7 +619,7 @@ export function MembersManagement({
                   <div className="space-y-1">
                     <Label htmlFor="name" className="flex items-center gap-2">
                       <UserIcon className="h-4 w-4" />
-                      {t("dashboard.team.form.fields.name")}
+                      {t("team.form.fields.name")}
                     </Label>
                     <Input
                       id="name"
@@ -639,7 +635,7 @@ export function MembersManagement({
                   <div className="space-y-1">
                     <Label htmlFor="email" className="flex items-center gap-2">
                       <Mail className="h-4 w-4" />
-                      {t("dashboard.team.form.fields.email")}
+                      {t("team.form.fields.email")}
                     </Label>
                     <Input
                       id="email"
@@ -661,7 +657,7 @@ export function MembersManagement({
                       className="flex items-center gap-2"
                     >
                       <Lock className="h-4 w-4" />
-                      {t("dashboard.team.form.fields.password")}
+                      {t("team.form.fields.password")}
                     </Label>
                     <div className="relative">
                       <Input
@@ -698,7 +694,7 @@ export function MembersManagement({
                   <div className="space-y-1">
                     <Label htmlFor="role" className="flex items-center gap-2">
                       <Shield className="h-4 w-4" />
-                      {t("dashboard.team.form.fields.role")}
+                      {t("team.form.fields.role")}
                     </Label>
                     <Select
                       value={newMember.role || undefined}
@@ -713,9 +709,7 @@ export function MembersManagement({
                         }
                       >
                         <SelectValue
-                          placeholder={t(
-                            "dashboard.team.placeholders.selectRole",
-                          )}
+                          placeholder={t("team.placeholders.selectRole")}
                         />
                       </SelectTrigger>
                       <SelectContent>
@@ -739,7 +733,7 @@ export function MembersManagement({
               <div className="flex gap-2 pt-4 shrink-0">
                 <Button onClick={handleAddMember} className="flex-1">
                   <Plus className="h-4 w-4" />
-                  {t("dashboard.team.form.actions.create")}
+                  {t("team.form.actions.create")}
                 </Button>
                 <Button
                   variant="outline"
@@ -798,7 +792,7 @@ export function MembersManagement({
                   </div>
                   {group.length === 0 && (
                     <div className="text-center py-8 text-muted-foreground">
-                      {t("dashboard.team.list.noMembers")}
+                      {t("team.list.noMembers")}
                     </div>
                   )}
                 </DroppableRoleGroup>
@@ -865,9 +859,9 @@ export function MembersManagement({
           onPointerDownOutside={(e: Event) => e.preventDefault()}
         >
           <DialogHeader>
-            <DialogTitle>{t("dashboard.team.modals.edit.title")}</DialogTitle>
+            <DialogTitle>{t("team.modals.edit.title")}</DialogTitle>
             <DialogDescription>
-              {t("dashboard.team.modals.edit.description")}
+              {t("team.modals.edit.description")}
             </DialogDescription>
           </DialogHeader>
           <DialogBody>
@@ -879,7 +873,7 @@ export function MembersManagement({
                     className="flex items-center gap-2"
                   >
                     <UserIcon className="h-4 w-4" />
-                    {t("dashboard.team.form.labels.memberName")}
+                    {t("team.form.labels.memberName")}
                   </Label>
                   <Input
                     id="edit-name"
@@ -903,7 +897,7 @@ export function MembersManagement({
                     className="flex items-center gap-2"
                   >
                     <Mail className="h-4 w-4" />
-                    {t("dashboard.team.form.labels.memberEmail")}
+                    {t("team.form.labels.memberEmail")}
                   </Label>
                   <Input
                     id="edit-email"
@@ -928,13 +922,13 @@ export function MembersManagement({
                     className="flex items-center gap-2"
                   >
                     <Lock className="h-4 w-4" />
-                    {t("dashboard.team.form.fields.password")}
+                    {t("team.form.fields.password")}
                   </Label>
                   <div className="relative">
                     <Input
                       id="edit-password"
                       type={isEditPasswordVisible ? "text" : "password"}
-                      placeholder={t("dashboard.team.placeholders.leaveBlank")}
+                      placeholder={t("team.placeholders.leaveBlank")}
                       value={editingMember.password || ""}
                       onChange={(e) =>
                         setEditingMember({
@@ -971,7 +965,7 @@ export function MembersManagement({
                     className="flex items-center gap-2"
                   >
                     <Shield className="h-4 w-4" />
-                    {t("dashboard.team.form.fields.role")}
+                    {t("team.form.fields.role")}
                   </Label>
                   <Select
                     value={editingMember.role}

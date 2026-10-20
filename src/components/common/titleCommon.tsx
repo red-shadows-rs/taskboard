@@ -22,13 +22,13 @@ export function PageTitle({ title }: PageTitleProps) {
 
   useEffect(() => {
     const titleMap: Record<string, string> = {
-      dashboard: "dashboard.meta.title",
-      tasks: "dashboard.tasks.meta.title",
-      projects: "dashboard.projects.meta.title",
-      team: "dashboard.team.meta.title",
+      dashboard: "projects.meta.title",
+      tasks: "tasks.meta.title",
+      projects: "projects.meta.title",
+      team: "team.meta.title",
       profile: "profile.meta.title",
       login: "auth.meta.title",
-      analytics: "dashboard.analytics.meta.title",
+      analytics: "analytics.meta.title",
       error: "common.errorPage.title",
       notFound: "common.notFound.title",
     };

@@ -316,8 +316,8 @@ export function Dashboard({
               <Input
                 placeholder={
                   dataMode === "tasks"
-                    ? t("dashboard.tasks.filters.search")
-                    : t("dashboard.filters.search")
+                    ? t("tasks.filters.search")
+                    : t("common.filters.search")
                 }
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -334,11 +334,11 @@ export function Dashboard({
                 className="w-full sm:w-[180px]"
                 suppressHydrationWarning
               >
-                <SelectValue placeholder={t("dashboard.filters.project")} />
+                <SelectValue placeholder={t("common.filters.project")} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">
-                  {t("dashboard.filters.allProjects")}
+                  {t("common.filters.allProjects")}
                 </SelectItem>
                 {projects.map((project) => (
                   <SelectItem key={project.id} value={project.id}>
@@ -357,11 +357,11 @@ export function Dashboard({
                 className="w-full sm:w-[180px]"
                 suppressHydrationWarning
               >
-                <SelectValue placeholder={t("dashboard.filters.status")} />
+                <SelectValue placeholder={t("common.filters.status")} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">
-                  {t("dashboard.filters.allStatuses")}
+                  {t("common.filters.allStatuses")}
                 </SelectItem>
                 <SelectItem value="todo">{t("common.status.todo")}</SelectItem>
                 <SelectItem value="in_progress">
@@ -412,7 +412,7 @@ export function Dashboard({
               displayedTasks.length === 0 ? (
                 <div className="text-center py-12">
                   <p className="text-muted-foreground">
-                    {t("dashboard.tasks.list.noTasks")}
+                    {t("tasks.list.noTasks")}
                   </p>
                 </div>
               ) : (
@@ -438,7 +438,7 @@ export function Dashboard({
             ) : displayedSections.length === 0 ? (
               <div className="text-center py-12">
                 <p className="text-muted-foreground">
-                  {t("dashboard.tasks.list.noTasks")}
+                  {t("tasks.list.noTasks")}
                 </p>
               </div>
             ) : (
@@ -491,11 +491,9 @@ export function Dashboard({
       >
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>
-              {t("dashboard.tasks.modals.editSection.title")}
-            </DialogTitle>
+            <DialogTitle>{t("tasks.modals.editSection.title")}</DialogTitle>
             <DialogDescription>
-              {t("dashboard.tasks.modals.editSection.description")}
+              {t("tasks.modals.editSection.description")}
             </DialogDescription>
           </DialogHeader>
           {selectedSection && (
@@ -520,9 +518,9 @@ export function Dashboard({
       >
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>{t("dashboard.tasks.modals.edit.title")}</DialogTitle>
+            <DialogTitle>{t("tasks.modals.edit.title")}</DialogTitle>
             <DialogDescription>
-              {t("dashboard.tasks.modals.edit.description")}
+              {t("tasks.modals.edit.description")}
             </DialogDescription>
           </DialogHeader>
           {selectedTask && (
